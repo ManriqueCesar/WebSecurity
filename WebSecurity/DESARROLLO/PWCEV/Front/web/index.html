@@ -6,7 +6,7 @@
   <title>WebSecurity | Log in</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <!-- Bootstrap 3.3.7 -->
+  <!-- Bootstrap -->
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
@@ -28,49 +28,58 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <body class="hold-transition login-page">
+ <div class="container"> 
+    <div id="loginBox" class="login-box col-sm-6" >
   
-<div class="login-box">
- 
-  <div class="login-logo">
-    <img src="dist/img/security.png" class="user-image" alt="WebSecurity" style="width:300px; height:180px;">
-  </div>
-  <!-- /.login-logo -->
-  <div class="login-box-body">
-    <p class="login-box-msg">Logueate para iniciar session</p>
+    <div class="login-logo">
+      <img src="dist/img/security.png" class="user-image" alt="WebSecurity" style="width:300px; height:180px;">
+    </div>
+    <!-- /.login-logo -->
+    <div class="login-box-body">
+      <p class="login-box-msg">Logueate para iniciar session</p>
 
-    <form action="cotizador.html" method="get">
-      <div class="form-group has-feedback">
-        <input type="email" class="form-control" placeholder="Email">
-        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-      </div>
-      <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Password">
-        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-      </div>
-      <div class="row">
-        <div class="col-xs-8">
-          
+      <form action="newTest.html" method="get">
+        <div class="form-group has-feedback">
+          <input type="email" class="form-control" placeholder="Email" >
+          <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
         </div>
-        <!-- /.col -->
-        <div class="col-sm-4 center" >
-          <button href="test.html" type="submit" class="btn btn-primary btn-block btn-flat">Ingresar</button>
+        <div class="form-group has-feedback">
+          <input type="password" class="form-control" placeholder="Password" >
+          <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         </div>
+        <div class="row">
+          <div class="col-xs-8">
+            
+          </div>
+          <!-- /.col -->
+          <div class="col-sm-12"> 
+            <button href="test.html" type="submit" class="btn btn-primary btn-block btn-flat">Ingresar</button>
+          </div>
+      
         <!-- /.col -->
       </div>
+      
     </form>
+    <button  id="btn-video" class="btn btn-primary btn-block btn-flat">Habilitar webCam</button>
+     
 
     <!-- /.social-auth-links -->
 
-    <a href="#">Olvide mi password</a><br>
-    <a href="register.html" class="text-center">Registrate</a>
-  
-  </div>
 
-  <!-- /.login-box-body -->
-</div>
-<div class="container align-self-center" >
-  <video id="video" width="720" height="560" autoplay muted></video>
-</div>
+  
+   </div>
+
+     
+
+    </div><!-- /.login-box-body -->
+
+    <video id="video" width="720" height="560" autoplay muted></video>
+  </div>
+ 
+
+
+
+
 <!-- /.login-box -->
 
 <style>
@@ -92,7 +101,7 @@
 
 <!-- jQuery 3 -->
 <script src="bower_components/jquery/node_modules/jquery/dist/jquery.min.js"></script>
-<!-- Bootstrap 3.3.7 -->
+<!-- Bootstrap -->
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- iCheck -->
 <script src="plugins/iCheck/icheck.min.js"></script>
@@ -104,6 +113,15 @@
       increaseArea: '20%' /* optional */
     });
   });
+
+
+
+  $(document).on('click', '#btn-video', function (event) {
+    document.getElementById("loginBox").style.display = "none";
+    console.log('video habilitado');
+  });
+
+    
 </script>
   <script defer src="../../Api Reconocimiento Facial/face-api.min.js"></script>
   <script defer src="../../Api Reconocimiento Facial/script.js"></script>
