@@ -1,551 +1,647 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminLTE 3 | User Profile</title>
+  <title>Docente | CrearExamen</title>
 
   <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="bower_components/AdminLTE/plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="bower_components/AdminLTE/dist/css/adminlte.min.css">
   <!-- daterange picker -->
   <link rel="stylesheet" href="bower_components/AdminLTE/plugins/daterangepicker/daterangepicker.css">
-   <!-- Tempusdominus Bootstrap 4 -->
-   <link rel="stylesheet" href="bower_components/AdminLTE/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <!-- Tempusdominus Bootstrap 4 -->
+  <link rel="stylesheet"
+    href="bower_components/AdminLTE/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
   <!-- Select2 -->
   <link rel="stylesheet" href="bower_components/AdminLTE/plugins/select2/css/select2.min.css">
   <link rel="stylesheet" href="bower_components/AdminLTE/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
 
 
 </head>
+
 <body class="hold-transition sidebar-mini">
-<div class="wrapper">
-  <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-    <!-- Left navbar links -->
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="/DESARROLLO/PWCEV/Front/web/newTest.html" class="nav-link">Crear Examen</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Ver Exámenes</a>
-      </li>
-    </ul>
+  <div class="wrapper">
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+      <!-- Left navbar links -->
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+          <a href="/DESARROLLO/PWCEV/Front/web/newTest.html" class="nav-link">Crear Examen</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+          <a href="#" class="nav-link">Ver Exámenes</a>
+        </li>
+      </ul>
 
 
-    <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">
-      <!-- Messages Dropdown Menu -->
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-comments"></i>
-          <span class="badge badge-danger navbar-badge">3</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="bower_components/AdminLTE/dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  Brad Diesel
-                  <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">Call me whenever you can...</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
+      <!-- Right navbar links -->
+      <ul class="navbar-nav ml-auto">
+        <!-- Messages Dropdown Menu -->
+        <li class="nav-item dropdown">
+          <a class="nav-link" data-toggle="dropdown" href="#">
+            <i class="far fa-comments"></i>
+            <span class="badge badge-danger navbar-badge">3</span>
           </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="bower_components/AdminLTE/dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  John Pierce
-                  <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">I got your message bro</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="bower_components/AdminLTE/dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  Nora Silvester
-                  <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">The subject goes here</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-        </div>
-      </li>
-      <!-- Notifications Dropdown Menu -->
-      <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-bell"></i>
-          <span class="badge badge-warning navbar-badge">15</span>
-        </a>
-        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <span class="dropdown-item dropdown-header">15 Notifications</span>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-envelope mr-2"></i> 4 new messages
-            <span class="float-right text-muted text-sm">3 mins</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-users mr-2"></i> 8 friend requests
-            <span class="float-right text-muted text-sm">12 hours</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <i class="fas fa-file mr-2"></i> 3 new reports
-            <span class="float-right text-muted text-sm">2 days</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-        </div>
-      </li>
-
-    </ul>
-  </nav>
-  <!-- /.navbar -->
-
-  <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
-    <a href="/DESARROLLO/PWCEV/Front/web/index.html" class="brand-link">
-      <img src="bower_components/AdminLTE/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
-    </a>
-
-    <!-- Sidebar -->
-    <div class="sidebar">
-      <!-- Sidebar user (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-          <img src="dist/img/security.png" class="img-circle elevation-2" alt="User Image">
-        </div>
-        <div class="info">
-          <a href="#" class="d-block">Cesar Manrique</a>
-        </div>
-      </div>
-
-      <!-- Sidebar Menu -->
-    
-      <!-- /.sidebar-menu -->
-    </div>
-    <!-- /.sidebar -->
-  </aside>
-
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>Profile</h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">User Profile</li>
-            </ol>
-          </div>
-        </div>
-      </div><!-- /.container-fluid -->
-    </section>
-
-    <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-3">
-
-            <!-- Profile Image -->
-            <div class="card card-primary card-outline">
-              <div class="card-body box-profile">
-                <div class="text-center">
-                  <img class="profile-user-img img-fluid img-circle"
-                       src="dist/img/user-test.jpg"
-                       alt="User profile picture">
+          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+            <a href="#" class="dropdown-item">
+              <!-- Message Start -->
+              <div class="media">
+                <img src="bower_components/AdminLTE/dist/img/user1-128x128.jpg" alt="User Avatar"
+                  class="img-size-50 mr-3 img-circle">
+                <div class="media-body">
+                  <h3 class="dropdown-item-title">
+                    Brad Diesel
+                    <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
+                  </h3>
+                  <p class="text-sm">Call me whenever you can...</p>
+                  <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
                 </div>
-
-                <h3 class="profile-username text-center">Cesar Manrique</h3>
-
-                <p class="text-muted text-center">Software Engineer</p>
-
-                <ul class="list-group list-group-unbordered mb-3">
-                  <li class="list-group-item">
-                    <b>Éxamenes creados</b> <a class="float-right">1,322</a>
-                  </li>
-                  <li class="list-group-item">
-                    <b>Alumnos</b> <a class="float-right">543</a>
-                  </li>
-
-                </ul>
-
-                <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
               </div>
-              <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
-
-  
+              <!-- Message End -->
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="#" class="dropdown-item">
+              <!-- Message Start -->
+              <div class="media">
+                <img src="bower_components/AdminLTE/dist/img/user8-128x128.jpg" alt="User Avatar"
+                  class="img-size-50 img-circle mr-3">
+                <div class="media-body">
+                  <h3 class="dropdown-item-title">
+                    John Pierce
+                    <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
+                  </h3>
+                  <p class="text-sm">I got your message bro</p>
+                  <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                </div>
+              </div>
+              <!-- Message End -->
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="#" class="dropdown-item">
+              <!-- Message Start -->
+              <div class="media">
+                <img src="bower_components/AdminLTE/dist/img/user3-128x128.jpg" alt="User Avatar"
+                  class="img-size-50 img-circle mr-3">
+                <div class="media-body">
+                  <h3 class="dropdown-item-title">
+                    Nora Silvester
+                    <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
+                  </h3>
+                  <p class="text-sm">The subject goes here</p>
+                  <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                </div>
+              </div>
+              <!-- Message End -->
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
           </div>
-          <!-- /.col -->
-          <div class="col-md-9">
-            <div class="card">
-              <div class="card-header p-2">
-                <ul class="nav nav-pills">
-                  <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Examen</a></li>
-        
-                  <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Parámetros</a></li>
-                </ul>
-              </div><!-- /.card-header -->
-              <div class="card-body">
-                <div class="tab-content">
-                  <div class="active tab-pane" id="activity">
-                    <!-- Post -->
-                    <div class="post">
-                      <div class="user-block">
-                     
-                 
+        </li>
+        <!-- Notifications Dropdown Menu -->
+        <li class="nav-item dropdown">
+          <a class="nav-link" data-toggle="dropdown" href="#">
+            <i class="far fa-bell"></i>
+            <span class="badge badge-warning navbar-badge">15</span>
+          </a>
+          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+            <span class="dropdown-item dropdown-header">15 Notifications</span>
+            <div class="dropdown-divider"></div>
+            <a href="#" class="dropdown-item">
+              <i class="fas fa-envelope mr-2"></i> 4 new messages
+              <span class="float-right text-muted text-sm">3 mins</span>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="#" class="dropdown-item">
+              <i class="fas fa-users mr-2"></i> 8 friend requests
+              <span class="float-right text-muted text-sm">12 hours</span>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="#" class="dropdown-item">
+              <i class="fas fa-file mr-2"></i> 3 new reports
+              <span class="float-right text-muted text-sm">2 days</span>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+          </div>
+        </li>
+
+      </ul>
+    </nav>
+    <!-- /.navbar -->
+
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+      <!-- Brand Logo -->
+      <a href="index.html" class="brand-link">
+        <img src="bower_components/AdminLTE/dist/img/AdminLTELogo.png" alt="AdminLTE Logo"
+          class="brand-image img-circle elevation-3" style="opacity: .8">
+        <span class="brand-text font-weight-light">Web Security</span>
+      </a>
+
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <!-- Sidebar user (optional) -->
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+          <div class="image">
+            <img src="dist/img/security.png" class="img-circle elevation-2" alt="User Image">
+          </div>
+          <div class="info">
+            <a href="#" class="d-block">Cesar Manrique</a>
+          </div>
+        </div>
+
+        <!-- Sidebar Menu -->
+
+        <!-- /.sidebar-menu -->
+      </div>
+      <!-- /.sidebar -->
+    </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <section class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1>Crear Examen</h1>
+            </div>
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item active">Crear exámenes</li>
+              </ol>
+            </div>
+          </div>
+        </div><!-- /.container-fluid -->
+      </section>
+
+      <!-- Main content -->
+      <section class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-3">
+
+              <!-- Profile Image -->
+              <div class="card card-primary card-outline">
+                <div class="card-body box-profile">
+                  <div class="text-center">
+                    <img class="profile-user-img img-fluid img-circle" src="dist/img/user-test.jpg"
+                      alt="User profile picture">
+                  </div>
+
+                  <h3 class="profile-username text-center">Cesar Manrique</h3>
+                  <p class="text-muted text-center">Software Engineer</p>
+                  <ul class="list-group list-group-unbordered mb-3">
+                    <li class="list-group-item">
+                      <b>Éxamenes creados</b> <a class="float-right">1,322</a>
+                    </li>
+                    <li class="list-group-item">
+                      <b>Alumnos</b> <a class="float-right">543</a>
+                    </li>
+
+                  </ul>
+
+                  <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
+                </div>
+                <!-- /.card-body -->
+              </div>
+              <!-- /.card -->
+
+
+            </div>
+            <!-- /.col -->
+            <div class="col-md-9">
+              <div class="card">
+                <div class="card-header p-2">
+                  <ul class="nav nav-pills">
+                    <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Examen</a></li>
+
+                    <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Parámetros</a></li>
+                  </ul>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                  <div class="tab-content">
+                    <div class="active tab-pane" id="activity">
+                      <!-- Post -->
+                      <div class="post">
+                        <div class="user-block">
+
+
                           <div id="examen-editable-holder">
-                           <label class="editable" style="color:blue";> Ingresar el Título del Examen </label>
+                            <label class="editable" style="color:blue" ;> Ingresar el Título del Examen </label>
                           </div>
                           <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>
-                        </span>
-                       
-                      </div>
-                      <!-- /.user-block -->
-                      <div id="reglas-editable-holder">
-                        <label class="editable">Editable. Ingresar aquí las reglas del examen</label>
-                        
-                      </div>
-                      <div class="container">
-                        <ol>
-                        <li>Pregunta </li>
-                        <li>Pregunta </li>
-                        <li>Pregunta </li>
-                        <li>Pregunta </li>
-                        <li>Pregunta </li>
-                      </ol>
-                      </div>    
+                          </span>
+
+                        </div>
+                        <!-- /.user-block -->
+                        <div id="reglas-editable-holder">
+                          <label class="editable">Editable. Ingresar aquí la descrición</label>
+
+                        </div>
+                        <div class="container">
+                          <ol>
+                            <li>Pregunta </li>
+                          </ol>
+                        </div>
 
 
-                    
+
+                      </div>
+                      <!-- /.post -->
+
+                      <!-- Post -->
+                      <div class="post">
+                        <div class="user-block">
+                          <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>
+                          </span>
+
+                        </div>
+                        <!-- /.user-block -->
+                        <div id="desc-editable-holder">
+                          <label class="editable">Editable. Ingresar aquí la descripcion</label>
+
+                        </div>
+                        <div class="container">
+                          <ol>
+                            <li>Pregunta </li>
+                          </ol>
+                        </div>
+                      </div>
+                      <!-- /.post -->
+
+
+                      <!-- Post -->
+                      <div class="post">
+                        <div class="user-block">
+                          <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>
+                          </span>
+
+                        </div>
+                        <!-- /.user-block -->
+                        <div id="desc-editable-holder">
+                          <label class="editable">Editable. Ingresar aquí la descripcion</label>
+
+                        </div>
+                        <div class="container">
+                          <ol>
+                            <li>Pregunta </li>
+                          </ol>
+                        </div>
+                      </div>
+                      <!-- /.post -->
+
+                      <!-- Post -->
+                      <div class="post">
+                        <div class="user-block">
+                          <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>
+                          </span>
+
+                        </div>
+                        <!-- /.user-block -->
+                        <div id="desc-editable-holder">
+                          <label class="editable">Editable. Ingresar aquí la descripcion</label>
+
+                        </div>
+                        <div class="container">
+                          <ol>
+                            <li>Pregunta </li>
+                          </ol>
+                        </div>
+                      </div>
+                      <!-- /.post -->
+
+                      <!-- Post -->
+                      <div class="post">
+                        <div class="user-block">
+                          <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>
+                          </span>
+
+                        </div>
+                        <!-- /.user-block -->
+                        <div id="desc-editable-holder">
+                          <label class="editable">Editable. Ingresar aquí la descripcion</label>
+
+                        </div>
+                        <div class="container">
+                          <ol>
+                            <li>Pregunta </li>
+                          </ol>
+                        </div>
+                      </div>
+                      <!-- /.post -->
+
+
+
+
+
+
+
+
+
                     </div>
-                    <!-- /.post -->
-
-                  </div>
-                  <!-- /.tab-pane -->
-                  <div class="tab-pane" id="timeline">
-                    <!-- The timeline -->
-                    <div class="timeline timeline-inverse">
-                      <!-- timeline time label -->
-                      <div class="time-label">
-                        <span class="bg-danger">
-                          10 Feb. 2014
-                        </span>
-                      </div>
-                      <!-- /.timeline-label -->
-                      <!-- timeline item -->
-                      <div>
-                        <i class="fas fa-envelope bg-primary"></i>
-
-                        <div class="timeline-item">
-                          <span class="time"><i class="far fa-clock"></i> 12:05</span>
-
-                          <h3 class="timeline-header"><a href="#">Support Team</a> sent you an email</h3>
-
-                          <div class="timeline-body">
-                          *Ingresar aquí las reglas del examen*
-                          </div>
-                          <div class="timeline-footer">
-                            <a href="#" class="btn btn-primary btn-sm">Read more</a>
-                            <a href="#" class="btn btn-danger btn-sm">Delete</a>
-                          </div>
+                    <!-- /.tab-pane -->
+                    <div class="tab-pane" id="timeline">
+                      <!-- The timeline -->
+                      <div class="timeline timeline-inverse">
+                        <!-- timeline time label -->
+                        <div class="time-label">
+                          <span class="bg-danger">
+                            10 Feb. 2014
+                          </span>
                         </div>
-                      </div>
-                      <!-- END timeline item -->
-                      <!-- timeline item -->
-                      <div>
-                        <i class="fas fa-user bg-info"></i>
+                        <!-- /.timeline-label -->
+                        <!-- timeline item -->
+                        <div>
+                          <i class="fas fa-envelope bg-primary"></i>
 
-                        <div class="timeline-item">
-                          <span class="time"><i class="far fa-clock"></i> 5 mins ago</span>
+                          <div class="timeline-item">
+                            <span class="time"><i class="far fa-clock"></i> 12:05</span>
 
-                          <h3 class="timeline-header border-0"><a href="#">Sarah Young</a> accepted your friend request
-                          </h3>
-                        </div>
-                      </div>
-                      <!-- END timeline item -->
-                      <!-- timeline item -->
-                      <div>
-                        <i class="fas fa-comments bg-warning"></i>
+                            <h3 class="timeline-header"><a href="#">Support Team</a> sent you an email</h3>
 
-                        <div class="timeline-item">
-                          <span class="time"><i class="far fa-clock"></i> 27 mins ago</span>
-
-                          <h3 class="timeline-header"><a href="#">Jay White</a> commented on your post</h3>
-
-                          <div class="timeline-body">
-                            Take me to your leader!
-                            Switzerland is small and neutral!
-                            We are more like Germany, ambitious and misunderstood!
-                          </div>
-                          <div class="timeline-footer">
-                            <a href="#" class="btn btn-warning btn-flat btn-sm">View comment</a>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- END timeline item -->
-                      <!-- timeline time label -->
-                      <div class="time-label">
-                        <span class="bg-success">
-                          3 Jan. 2014
-                        </span>
-                      </div>
-                      <!-- /.timeline-label -->
-                      <!-- timeline item -->
-                      <div>
-                        <i class="fas fa-camera bg-purple"></i>
-
-                        <div class="timeline-item">
-                          <span class="time"><i class="far fa-clock"></i> 2 days ago</span>
-
-                          <h3 class="timeline-header"><a href="#">Mina Lee</a> uploaded new photos</h3>
-
-                          <div class="timeline-body">
-                            <img src="https://placehold.it/150x100" alt="...">
-                            <img src="https://placehold.it/150x100" alt="...">
-                            <img src="https://placehold.it/150x100" alt="...">
-                            <img src="https://placehold.it/150x100" alt="...">
-                          </div>
-                        </div>
-                      </div>
-                      <!-- END timeline item -->
-                      <div>
-                        <i class="far fa-clock bg-gray"></i>
-                      </div>
-                    </div>
-                  </div>
-
-
-                  <div class="tab-pane" id="settings">
-                    <form class="form-horizontal">
-
-                      <div class="form-group row">
-                        <label for="inputName" class="col-sm-2 col-form-label">Titulo</label>
-                        <div class="col-sm-10">
-                          <input type="email" class="form-control" id="inputName" placeholder="Name">
-                        </div>
-                      </div>
-
-                            <div class="form-group row">
-                              <label for="inputFecha" class="col-sm-2 col-form-label">Fecha</label>
-                              <div class="col-sm-10 input-group-prepend">
-                                 <span class="input-group-text"><i class="far fa-clock"></i></span>
-                                 <input type="text" class="form-control float-right" id="reservationtime">
-                              </div>
+                            <div class="timeline-body">
+                              *Ingresar aquí las reglas del examen*
                             </div>
-                      
-                    
-                     
+                            <div class="timeline-footer">
+                              <a href="#" class="btn btn-primary btn-sm">Read more</a>
+                              <a href="#" class="btn btn-danger btn-sm">Delete</a>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- END timeline item -->
+                        <!-- timeline item -->
+                        <div>
+                          <i class="fas fa-user bg-info"></i>
 
-                      <div class="form-group row">
-                        <label for="inputName2" class="col-sm-2 col-form-label">Alumnos</label>
-                        <div class="col-sm-10">
-                          <input type="text" class="form-control" id="inputName2" placeholder="Name">
+                          <div class="timeline-item">
+                            <span class="time"><i class="far fa-clock"></i> 5 mins ago</span>
+
+                            <h3 class="timeline-header border-0"><a href="#">Sarah Young</a> accepted your friend
+                              request
+                            </h3>
+                          </div>
+                        </div>
+                        <!-- END timeline item -->
+                        <!-- timeline item -->
+                        <div>
+                          <i class="fas fa-comments bg-warning"></i>
+
+                          <div class="timeline-item">
+                            <span class="time"><i class="far fa-clock"></i> 27 mins ago</span>
+
+                            <h3 class="timeline-header"><a href="#">Jay White</a> commented on your post</h3>
+
+                            <div class="timeline-body">
+                              Take me to your leader!
+                              Switzerland is small and neutral!
+                              We are more like Germany, ambitious and misunderstood!
+                            </div>
+                            <div class="timeline-footer">
+                              <a href="#" class="btn btn-warning btn-flat btn-sm">View comment</a>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- END timeline item -->
+                        <!-- timeline time label -->
+                        <div class="time-label">
+                          <span class="bg-success">
+                            3 Jan. 2014
+                          </span>
+                        </div>
+                        <!-- /.timeline-label -->
+                        <!-- timeline item -->
+                        <div>
+                          <i class="fas fa-camera bg-purple"></i>
+
+                          <div class="timeline-item">
+                            <span class="time"><i class="far fa-clock"></i> 2 days ago</span>
+
+                            <h3 class="timeline-header"><a href="#">Mina Lee</a> uploaded new photos</h3>
+
+                            <div class="timeline-body">
+                              <img src="https://placehold.it/150x100" alt="...">
+                              <img src="https://placehold.it/150x100" alt="...">
+                              <img src="https://placehold.it/150x100" alt="...">
+                              <img src="https://placehold.it/150x100" alt="...">
+                            </div>
+                          </div>
+                        </div>
+                        <!-- END timeline item -->
+                        <div>
+                          <i class="far fa-clock bg-gray"></i>
                         </div>
                       </div>
+                    </div>
+                    <div class="tab-pane" id="settings">
+                      <form class="form-horizontal">
 
-                  
-                      <div class="form-group row">
-                        <div class="offset-sm-2 col-sm-10">
-                          <button type="submit" class="btn btn-danger">Submit</button>
+                        <div class="form-group row">
+                          <label for="inputName" class="col-sm-2 col-form-label">Titulo</label>
+                          <div class="col-sm-10">
+                            <input type="email" class="form-control" id="inputName" placeholder="Name">
+                          </div>
                         </div>
-                      </div>
-                    </form>
+                        <div class="form-group row">
+                          <label for="inputFecha" class="col-sm-2 col-form-label">Fecha</label>
+                          <div class="col-sm-10 input-group-prepend">
+                            <span class="input-group-text"><i class="far fa-clock"></i></span>
+                            <input type="text" class="form-control float-right" id="reservationtime">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label for="inputName2" class="col-sm-2 col-form-label">Alumnos</label>
+                          <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputName2" placeholder="Name">
+                          </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                          <div class="offset-sm-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger">Submit</button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                    <section class="content">
+                      <div class="container-fluid">
+                        <div class="row">
+                          <!-- /.col (left) -->
+
+                          <!-- /.col (right) -->
+                        </div>
+                        <!-- /.row -->
+                      </div><!-- /.container-fluid -->
+                    </section>
+                    <!-- /.tab-pane -->
                   </div>
-                  <section class="content">
-                    <div class="container-fluid">
-                      <div class="row">
-                        <!-- /.col (left) -->
-        
-                        <!-- /.col (right) -->
-                      </div>
-                      <!-- /.row -->
-                    </div><!-- /.container-fluid -->
-                  </section>
-                  <!-- /.tab-pane -->
-                </div>
-                <!-- /.tab-content -->
-              </div><!-- /.card-body -->
+                  <!-- /.tab-content -->
+                </div><!-- /.card-body -->
+
+
+              </div>
+              <!-- /.card -->
             </div>
-            <!-- /.card -->
+            <!-- /.col -->
           </div>
-          <!-- /.col -->
-        </div>
-        <!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
-  <footer class="main-footer">
-    <div class="float-right d-none d-sm-block">
-      <b>Version</b> 1.0.0-pre
+          <!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </section>
+      <!-- /.content -->
     </div>
-    <strong>Copyright &copy; 2020 <a href="https://github.com/ManriqueCesar/WebSecurity">Grupo 3</a>.</strong> All rights reserved.
-  </footer>
+    <!-- /.content-wrapper -->
+    <footer class="main-footer">
+      <div class="float-right d-none d-sm-block">
+        <b>Version</b> 1.0.0-pre
+      </div>
+      <strong>Copyright &copy; 2020 <a href="https://github.com/ManriqueCesar/WebSecurity">Grupo 3</a>.</strong> All
+      rights reserved.
+    </footer>
 
-  
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
-</div>
-<!-- ./wrapper -->
 
-<!-- jQuery -->
-<script src="bower_components/AdminLTE/plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="bower_components/AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- Select2 -->
-<script src="bower_components/AdminLTE/plugins/select2/js/select2.full.min.js"></script>
-<!-- InputMask -->
-<script src="bower_components/AdminLTE/plugins/moment/moment.min.js"></script>
-<script src="bower_components/AdminLTE/plugins/inputmask/jquery.inputmask.min.js"></script>
-<!-- date-range-picker -->
-<script src="bower_components/AdminLTE/plugins/daterangepicker/daterangepicker.js"></script>
-<!-- Tempusdominus Bootstrap 4 -->
-<script src="bower_components/AdminLTE/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+      <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+  </div>
+  <!-- ./wrapper -->
 
-<script>
-$('#reglas-editable-holder').on('click', "label.editable", function() { 	
- 		var $lbl = $(this), o = $lbl.text(),
-    	$txt = $('<input type="text" class="editable-label-text" value="'+o+'" />');
-    $lbl
-    .replaceWith($txt);
-    $txt.focus();
-    
-    $txt.blur(function() {
-    	$txt.replaceWith($lbl);
-    })
-    .keydown(function(evt){
-    	if(evt.keyCode == 13) {
-      	var no = $(this).val();
-      	$lbl.text(no);
-        $txt.replaceWith($lbl);
-      }
+  <!-- jQuery -->
+  <script src="bower_components/AdminLTE/plugins/jquery/jquery.min.js"></script>
+  <!-- Bootstrap 4 -->
+  <script src="bower_components/AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- Select2 -->
+  <script src="bower_components/AdminLTE/plugins/select2/js/select2.full.min.js"></script>
+  <!-- InputMask -->
+  <script src="bower_components/AdminLTE/plugins/moment/moment.min.js"></script>
+  <script src="bower_components/AdminLTE/plugins/inputmask/jquery.inputmask.min.js"></script>
+  <!-- date-range-picker -->
+  <script src="bower_components/AdminLTE/plugins/daterangepicker/daterangepicker.js"></script>
+  <!-- Tempusdominus Bootstrap 4 -->
+  <script src="bower_components/AdminLTE/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js">
+  </script>
+
+  <script>
+    $('#reglas-editable-holder').on('click', "label.editable", function () {
+      var $lbl = $(this),
+        o = $lbl.text(),
+        $txt = $('<input type="text" class="editable-label-text" value="' + o + '" />');
+      $lbl
+        .replaceWith($txt);
+      $txt.focus();
+
+      $txt.blur(function () {
+          $txt.replaceWith($lbl);
+        })
+        .keydown(function (evt) {
+          if (evt.keyCode == 13) {
+            var no = $(this).val();
+            $lbl.text(no);
+            $txt.replaceWith($lbl);
+          }
+        });
     });
- }); 
 
- $('#examen-editable-holder').on('click', "label.editable", function() { 	
- 		var $lbl = $(this), o = $lbl.text(),
-    	$txt = $('<input type="text" class="editable-label-text" value="'+o+'" />');
-    $lbl
-    .replaceWith($txt);
-    $txt.focus();
-    
-    $txt.blur(function() {
-    	$txt.replaceWith($lbl);
-    })
-    .keydown(function(evt){
-    	if(evt.keyCode == 13) {
-      	var no = $(this).val();
-      	$lbl.text(no);
-        $txt.replaceWith($lbl);
-      }
+    $('#examen-editable-holder').on('click', "label.editable", function () {
+      var $lbl = $(this),
+        o = $lbl.text(),
+        $txt = $('<input type="text" class="editable-label-text" value="' + o + '" />');
+      $lbl
+        .replaceWith($txt);
+      $txt.focus();
+
+      $txt.blur(function () {
+          $txt.replaceWith($lbl);
+        })
+        .keydown(function (evt) {
+          if (evt.keyCode == 13) {
+            var no = $(this).val();
+            $lbl.text(no);
+            $txt.replaceWith($lbl);
+          }
+        });
     });
- }); 
- $(function () {
-    //Initialize Select2 Elements
-    //Initialize Select2 Elements
-  console.log("asdasd");
-    //Datemask dd/mm/yyyy
-    $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
-    //Datemask2 mm/dd/yyyy
-    $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
-    //Money Euro
-    $('[data-mask]').inputmask()
+    $(function () {
+      //Initialize Select2 Elements
+      //Initialize Select2 Elements
+      console.log("asdasd");
+      //Datemask dd/mm/yyyy
+      $('#datemask').inputmask('dd/mm/yyyy', {
+        'placeholder': 'dd/mm/yyyy'
+      })
+      //Datemask2 mm/dd/yyyy
+      $('#datemask2').inputmask('mm/dd/yyyy', {
+        'placeholder': 'mm/dd/yyyy'
+      })
+      //Money Euro
+      $('[data-mask]').inputmask()
 
-    //Date range picker
-    $('#reservationdate').datetimepicker({
+      //Date range picker
+      $('#reservationdate').datetimepicker({
         format: 'L'
-    });
-    //Date range picker
-    $('#reservation').daterangepicker()
-    //Date range picker with time picker
-    $('#reservationtime').daterangepicker({
-      timePicker: true,
-      timePickerIncrement: 30,
-      locale: {
-        format: 'MM/DD/YYYY hh:mm A'
-      }
-    })
-    //Date range as a button
-    $('#daterange-btn').daterangepicker(
-      {
-        ranges   : {
-          'Today'       : [moment(), moment()],
-          'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-          'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
-          'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-          'This Month'  : [moment().startOf('month'), moment().endOf('month')],
-          'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+      });
+      //Date range picker
+      $('#reservation').daterangepicker()
+      //Date range picker with time picker
+      $('#reservationtime').daterangepicker({
+        timePicker: true,
+        timePickerIncrement: 30,
+        locale: {
+          format: 'MM/DD/YYYY hh:mm A'
+        }
+      })
+      //Date range as a button
+      $('#daterange-btn').daterangepicker({
+          ranges: {
+            'Today': [moment(), moment()],
+            'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+            'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+            'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+            'This Month': [moment().startOf('month'), moment().endOf('month')],
+            'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf(
+              'month')]
+          },
+          startDate: moment().subtract(29, 'days'),
+          endDate: moment()
         },
-        startDate: moment().subtract(29, 'days'),
-        endDate  : moment()
-      },
-      function (start, end) {
-        $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
-      }
-    )
+        function (start, end) {
+          $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
+        }
+      )
 
-    //Timepicker
-    $('#timepicker').datetimepicker({
-      format: 'LT'
+      //Timepicker
+      $('#timepicker').datetimepicker({
+        format: 'LT'
+      })
+
+
+
+      //Colorpicker
+      $('.my-colorpicker1').colorpicker()
+      //color picker with addon
+      $('.my-colorpicker2').colorpicker()
+
+      $('.my-colorpicker2').on('colorpickerChange', function (event) {
+        $('.my-colorpicker2 .fa-square').css('color', event.color.toString());
+      });
+
     })
-
-
-
-    //Colorpicker
-    $('.my-colorpicker1').colorpicker()
-    //color picker with addon
-    $('.my-colorpicker2').colorpicker()
-
-    $('.my-colorpicker2').on('colorpickerChange', function(event) {
-      $('.my-colorpicker2 .fa-square').css('color', event.color.toString());
-    });
-
-  })
-</script>
+  </script>
 
 
 </body>
+
 </html>
