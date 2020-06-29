@@ -21,7 +21,8 @@
   <!-- Select2 -->
   <link rel="stylesheet" href="bower_components/AdminLTE/plugins/select2/css/select2.min.css">
   <link rel="stylesheet" href="bower_components/AdminLTE/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
-
+  <!-- Theme style -->
+  <link rel="stylesheet" href="bower_components/AdminLTE/dist/css/adminlte.min.css">
 
 </head>
 
@@ -35,10 +36,13 @@
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="/DESARROLLO/PWCEV/Front/web/newTest.html" class="nav-link">Crear Examen</a>
+          <a href="#" class="nav-link">Crear Examen</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="#" class="nav-link">Ver Exámenes</a>
+          <a href="newCourse.html" class="nav-link">Crear Curso</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+          <a href="list.html" class="nav-link">Ver Resultados</a>
         </li>
       </ul>
 
@@ -144,7 +148,7 @@
       <a href="index.html" class="brand-link">
         <img src="bower_components/AdminLTE/dist/img/AdminLTELogo.png" alt="AdminLTE Logo"
           class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">Web Security</span>
+        <span class="brand-text font-weight-light" style="color:darkgrey">WebSecurity</span>
       </a>
 
       <!-- Sidebar -->
@@ -194,31 +198,50 @@
               <!-- Profile Image -->
               <div class="card card-primary card-outline">
                 <div class="card-body box-profile">
-                  <div class="text-center">
-                    <img class="profile-user-img img-fluid img-circle" src="dist/img/user-test.jpg"
-                      alt="User profile picture">
+
+
+                  <div class="position-relative p-3 bg-gray" style="height: 35%">
+                    <div class="ribbon-wrapper">
+                      <div class="ribbon bg-primary">
+                        NOTA
+                      </div>
+                    </div>
+                    ¿Cómo crear un examen?<br>
+                    <div class="text-left">
+                      <li>
+                        <small>Crea tu curso en Crear Curso</small>
+                      </li>
+                      <li>
+                        <small>Usa el bóton Crear Pregunta para asignar la cantidad de preguntas.</small>
+                      </li>
+                      <li>
+                        <small>Edita los campos </small>
+                      </li>
+                      <li>
+                        <small>Define los Parámetros</small>
+                      </li>
+                      <li>
+                        <small>¡Puedes crear hasta 10 preguntas!</small>
+                      </li>
+                    </div>
+                    <div class="text-center">
+                      <a href="#" style="color:skyblue" data-toggle="modal" data-target="#modal-default">Ver más...</a>
+
+
+                    </div>
                   </div>
 
-                  <h3 class="profile-username text-center">Cesar Manrique</h3>
-                  <p class="text-muted text-center">Software Engineer</p>
-                  <ul class="list-group list-group-unbordered mb-3">
-                    <li class="list-group-item">
-                      <b>Éxamenes creados</b> <a class="float-right">1,322</a>
-                    </li>
-                    <li class="list-group-item">
-                      <b>Alumnos</b> <a class="float-right">543</a>
-                    </li>
 
-                  </ul>
 
-                  <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
                 </div>
+
+                <button type="submit" class="addRow btn btn-info">Agregar Pregunta</button>
                 <!-- /.card-body -->
               </div>
               <!-- /.card -->
-
-
             </div>
+
+
             <!-- /.col -->
             <div class="col-md-9">
               <div class="card">
@@ -227,6 +250,7 @@
                     <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Examen</a></li>
 
                     <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Parámetros</a></li>
+
                   </ul>
                 </div>
                 <!-- /.card-header -->
@@ -237,213 +261,52 @@
                       <div class="post">
                         <div class="user-block">
 
-
-                          <div id="examen-editable-holder">
+                          <div class="box-heager" id="examen-editable-holder">
                             <label class="editable" style="color:blue" ;> Ingresar el Título del Examen </label>
                           </div>
                           <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>
                           </span>
-
                         </div>
                         <!-- /.user-block -->
-                        <div id="reglas-editable-holder">
-                          <label class="editable">Editable. Ingresar aquí la descrición</label>
 
-                        </div>
                         <div class="container">
-                          <ol>
-                            <li>Pregunta </li>
-                          </ol>
                         </div>
+                        <div id="container">
+                          <div id="campaign">
+                            <form id="original">
+                              <div id="reglas-editable-holder">
+                                <label class="editable">Editable. Ingresar aquí la descrición</label>
+                              </div>
+                              <div>
+                                <div>
+                                  <input type="radio" class="align-items-center" id="">Pregunta
+                                </div>
+                                <div>
+                                  <input type="radio" class="align-items-center" id="">Pregunta
+                                </div>
+                                <div>
+                                  <input type="radio" class="align-items-center" id="">Pregunta
+                                </div>
+                                <div>
+                                  <input type="radio" class="align-items-center" id="">Pregunta
+                                </div>
+                                <div>
+                                  <input type="radio" class="align-items-center" id="">Pregunta
+                                </div>
 
-
-
-                      </div>
-                      <!-- /.post -->
-
-                      <!-- Post -->
-                      <div class="post">
-                        <div class="user-block">
-                          <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>
-                          </span>
-
-                        </div>
-                        <!-- /.user-block -->
-                        <div id="desc-editable-holder">
-                          <label class="editable">Editable. Ingresar aquí la descripcion</label>
-
-                        </div>
-                        <div class="container">
-                          <ol>
-                            <li>Pregunta </li>
-                          </ol>
-                        </div>
-                      </div>
-                      <!-- /.post -->
-
-
-                      <!-- Post -->
-                      <div class="post">
-                        <div class="user-block">
-                          <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>
-                          </span>
-
-                        </div>
-                        <!-- /.user-block -->
-                        <div id="desc-editable-holder">
-                          <label class="editable">Editable. Ingresar aquí la descripcion</label>
-
-                        </div>
-                        <div class="container">
-                          <ol>
-                            <li>Pregunta </li>
-                          </ol>
+                                <hr>
+                              </div>
+                            </form>
+                            <form id="copy">
+                            </form>
+                            <span id="campaigntext"></span>
+                          </div>
                         </div>
                       </div>
-                      <!-- /.post -->
-
-                      <!-- Post -->
-                      <div class="post">
-                        <div class="user-block">
-                          <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>
-                          </span>
-
-                        </div>
-                        <!-- /.user-block -->
-                        <div id="desc-editable-holder">
-                          <label class="editable">Editable. Ingresar aquí la descripcion</label>
-
-                        </div>
-                        <div class="container">
-                          <ol>
-                            <li>Pregunta </li>
-                          </ol>
-                        </div>
-                      </div>
-                      <!-- /.post -->
-
-                      <!-- Post -->
-                      <div class="post">
-                        <div class="user-block">
-                          <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>
-                          </span>
-
-                        </div>
-                        <!-- /.user-block -->
-                        <div id="desc-editable-holder">
-                          <label class="editable">Editable. Ingresar aquí la descripcion</label>
-
-                        </div>
-                        <div class="container">
-                          <ol>
-                            <li>Pregunta </li>
-                          </ol>
-                        </div>
-                      </div>
-                      <!-- /.post -->
-
-
-
-
-
-
-
-
 
                     </div>
                     <!-- /.tab-pane -->
-                    <div class="tab-pane" id="timeline">
-                      <!-- The timeline -->
-                      <div class="timeline timeline-inverse">
-                        <!-- timeline time label -->
-                        <div class="time-label">
-                          <span class="bg-danger">
-                            10 Feb. 2014
-                          </span>
-                        </div>
-                        <!-- /.timeline-label -->
-                        <!-- timeline item -->
-                        <div>
-                          <i class="fas fa-envelope bg-primary"></i>
 
-                          <div class="timeline-item">
-                            <span class="time"><i class="far fa-clock"></i> 12:05</span>
-
-                            <h3 class="timeline-header"><a href="#">Support Team</a> sent you an email</h3>
-
-                            <div class="timeline-body">
-                              *Ingresar aquí las reglas del examen*
-                            </div>
-                            <div class="timeline-footer">
-                              <a href="#" class="btn btn-primary btn-sm">Read more</a>
-                              <a href="#" class="btn btn-danger btn-sm">Delete</a>
-                            </div>
-                          </div>
-                        </div>
-                        <!-- END timeline item -->
-                        <!-- timeline item -->
-                        <div>
-                          <i class="fas fa-user bg-info"></i>
-
-                          <div class="timeline-item">
-                            <span class="time"><i class="far fa-clock"></i> 5 mins ago</span>
-
-                            <h3 class="timeline-header border-0"><a href="#">Sarah Young</a> accepted your friend
-                              request
-                            </h3>
-                          </div>
-                        </div>
-                        <!-- END timeline item -->
-                        <!-- timeline item -->
-                        <div>
-                          <i class="fas fa-comments bg-warning"></i>
-
-                          <div class="timeline-item">
-                            <span class="time"><i class="far fa-clock"></i> 27 mins ago</span>
-
-                            <h3 class="timeline-header"><a href="#">Jay White</a> commented on your post</h3>
-
-                            <div class="timeline-body">
-                              Take me to your leader!
-                              Switzerland is small and neutral!
-                              We are more like Germany, ambitious and misunderstood!
-                            </div>
-                            <div class="timeline-footer">
-                              <a href="#" class="btn btn-warning btn-flat btn-sm">View comment</a>
-                            </div>
-                          </div>
-                        </div>
-                        <!-- END timeline item -->
-                        <!-- timeline time label -->
-                        <div class="time-label">
-                          <span class="bg-success">
-                            3 Jan. 2014
-                          </span>
-                        </div>
-                        <!-- /.timeline-label -->
-                        <!-- timeline item -->
-                        <div>
-                          <i class="fas fa-camera bg-purple"></i>
-
-                          <div class="timeline-item">
-                            <span class="time"><i class="far fa-clock"></i> 2 days ago</span>
-
-                            <h3 class="timeline-header"><a href="#">Mina Lee</a> uploaded new photos</h3>
-
-                            <div class="timeline-body">
-                              <img src="https://placehold.it/150x100" alt="...">
-                              <img src="https://placehold.it/150x100" alt="...">
-                              <img src="https://placehold.it/150x100" alt="...">
-                              <img src="https://placehold.it/150x100" alt="...">
-                            </div>
-                          </div>
-                        </div>
-                        <!-- END timeline item -->
-                        <div>
-                          <i class="far fa-clock bg-gray"></i>
-                        </div>
-                      </div>
-                    </div>
                     <div class="tab-pane" id="settings">
                       <form class="form-horizontal">
 
@@ -453,6 +316,7 @@
                             <input type="email" class="form-control" id="inputName" placeholder="Name">
                           </div>
                         </div>
+
                         <div class="form-group row">
                           <label for="inputFecha" class="col-sm-2 col-form-label">Fecha</label>
                           <div class="col-sm-10 input-group-prepend">
@@ -460,17 +324,21 @@
                             <input type="text" class="form-control float-right" id="reservationtime">
                           </div>
                         </div>
+
                         <div class="form-group row">
-                          <label for="inputName2" class="col-sm-2 col-form-label">Alumnos</label>
+                          <label for="inputName" class="col-sm-2 col-form-label">Curso</label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputName2" placeholder="Name">
+                            <select class="form-control" id="periodo" name="periodo">
+                              <option value=""></option>
+                              <option value="GCM">Gestion de Configuración y Mantenimiento</option>
+                              <option value="CS">Calidad de software</option>
+                            </select>
                           </div>
                         </div>
 
-
                         <div class="form-group row">
                           <div class="offset-sm-2 col-sm-10">
-                            <button type="submit" class="btn btn-danger">Submit</button>
+                            <button type="submit" class="btn btn-danger">Crear examen</button>
                           </div>
                         </div>
                       </form>
@@ -502,6 +370,44 @@
       <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
+
+    <div class="modal fade" id="modal-default">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="text-center">
+            <h3 class="modal-title">Instrucciones</h3>
+            <hr>
+          </div>
+
+          <div class="box-body with-border">
+            <form class="form-horizontal" id="frm-usos">
+              <ol>
+                <li>Crea tu curso en <b>"Crear Curso"</b></li>
+                <li>Crea la cantidad de preguntas de tu examen</li>
+                <li>Edita el título, la descripción y las alternativas.</li>
+                <li>Selecciona la alternativa correcta haciendo click en: <input type="radio" checked="checked" />
+                </li>
+                <li>Ve a <button class="btn btn-primary text-center btn-sm">Parámetros</button> y asigna la fecha y hora
+                  que desees que empiece el examen.</li>
+                <li>Selecciona el curso.</li>
+                <li>Ya creado el examen se <b>generará un código</b> para que lo compartas con tus alumnos.</li>
+                <li>Una vez finalizado el examen podrás acceder a <b>"Ver Resultados"</b> para ver los resultados.</li>
+              </ol>
+
+              <div class="modal-footer center-block">
+
+                <button type="button" class="btn btn-success" data-dismiss="modal">¡Entendido!</button>
+
+              </div>
+            </form>
+          </div>
+
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+
     <footer class="main-footer">
       <div class="float-right d-none d-sm-block">
         <b>Version</b> 1.0.0-pre
@@ -530,117 +436,13 @@
   <script src="bower_components/AdminLTE/plugins/inputmask/jquery.inputmask.min.js"></script>
   <!-- date-range-picker -->
   <script src="bower_components/AdminLTE/plugins/daterangepicker/daterangepicker.js"></script>
+
   <!-- Tempusdominus Bootstrap 4 -->
   <script src="bower_components/AdminLTE/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js">
   </script>
-
-  <script>
-    $('#reglas-editable-holder').on('click', "label.editable", function () {
-      var $lbl = $(this),
-        o = $lbl.text(),
-        $txt = $('<input type="text" class="editable-label-text" value="' + o + '" />');
-      $lbl
-        .replaceWith($txt);
-      $txt.focus();
-
-      $txt.blur(function () {
-          $txt.replaceWith($lbl);
-        })
-        .keydown(function (evt) {
-          if (evt.keyCode == 13) {
-            var no = $(this).val();
-            $lbl.text(no);
-            $txt.replaceWith($lbl);
-          }
-        });
-    });
-
-    $('#examen-editable-holder').on('click', "label.editable", function () {
-      var $lbl = $(this),
-        o = $lbl.text(),
-        $txt = $('<input type="text" class="editable-label-text" value="' + o + '" />');
-      $lbl
-        .replaceWith($txt);
-      $txt.focus();
-
-      $txt.blur(function () {
-          $txt.replaceWith($lbl);
-        })
-        .keydown(function (evt) {
-          if (evt.keyCode == 13) {
-            var no = $(this).val();
-            $lbl.text(no);
-            $txt.replaceWith($lbl);
-          }
-        });
-    });
-    $(function () {
-      //Initialize Select2 Elements
-      //Initialize Select2 Elements
-      console.log("asdasd");
-      //Datemask dd/mm/yyyy
-      $('#datemask').inputmask('dd/mm/yyyy', {
-        'placeholder': 'dd/mm/yyyy'
-      })
-      //Datemask2 mm/dd/yyyy
-      $('#datemask2').inputmask('mm/dd/yyyy', {
-        'placeholder': 'mm/dd/yyyy'
-      })
-      //Money Euro
-      $('[data-mask]').inputmask()
-
-      //Date range picker
-      $('#reservationdate').datetimepicker({
-        format: 'L'
-      });
-      //Date range picker
-      $('#reservation').daterangepicker()
-      //Date range picker with time picker
-      $('#reservationtime').daterangepicker({
-        timePicker: true,
-        timePickerIncrement: 30,
-        locale: {
-          format: 'MM/DD/YYYY hh:mm A'
-        }
-      })
-      //Date range as a button
-      $('#daterange-btn').daterangepicker({
-          ranges: {
-            'Today': [moment(), moment()],
-            'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-            'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-            'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-            'This Month': [moment().startOf('month'), moment().endOf('month')],
-            'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf(
-              'month')]
-          },
-          startDate: moment().subtract(29, 'days'),
-          endDate: moment()
-        },
-        function (start, end) {
-          $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
-        }
-      )
-
-      //Timepicker
-      $('#timepicker').datetimepicker({
-        format: 'LT'
-      })
-
-
-
-      //Colorpicker
-      $('.my-colorpicker1').colorpicker()
-      //color picker with addon
-      $('.my-colorpicker2').colorpicker()
-
-      $('.my-colorpicker2').on('colorpickerChange', function (event) {
-        $('.my-colorpicker2 .fa-square').css('color', event.color.toString());
-      });
-
-    })
-  </script>
-
+  <!-- AdminLTE App -->
+  <script src="bower_components/AdminLTE/dist/js/adminlte.min.js"></script>
+  <script src="script/newTest.js"></script>
 
 </body>
 
