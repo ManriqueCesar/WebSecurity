@@ -36,7 +36,7 @@
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="/DESARROLLO/PWCEV/Front/web/newTest.html" class="nav-link">Crear Examen</a>
+          <a href="#" class="nav-link">Crear Examen</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
           <a href="list.html" class="nav-link">Ver Exámenes</a>
@@ -145,7 +145,7 @@
       <a href="index.html" class="brand-link">
         <img src="bower_components/AdminLTE/dist/img/AdminLTELogo.png" alt="AdminLTE Logo"
           class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">Web Security</span>
+        <span class="brand-text font-weight-light" style="color:darkgrey">WebSecurity</span>
       </a>
 
       <!-- Sidebar -->
@@ -195,31 +195,60 @@
               <!-- Profile Image -->
               <div class="card card-primary card-outline">
                 <div class="card-body box-profile">
-                  <div class="text-center">
-                    <img class="profile-user-img img-fluid img-circle" src="dist/img/user-test.jpg"
-                      alt="User profile picture">
+
+
+                  <div class="position-relative p-3 bg-gray" style="height: 35%">
+                    <div class="ribbon-wrapper">
+                      <div class="ribbon bg-primary">
+                        NOTA
+                      </div>
+                    </div>
+                    Cómo crear un examen <br>
+                    <div class="text-left">
+                    <li>
+                      <small>Usa el bóton Crear Pregunta para asignar la cantidad de preguntas.</small>
+                    </li>
+                    <li>
+                      <small>Edita los campos </small>
+                    </li>
+                    <li>
+                      <small>Define los Parámetros</small>
+                    </li>
+                    <li>
+                      <small>¡Puedes crear hasta 10 preguntas!</small>
+                    </li>
+                  </div>
+                    <div class="text-center">
+                      <a href="#" style="color:skyblue" data-toggle="modal" data-target="#modal-default">Ver más...</a>
+
+
+                    </div>
                   </div>
 
-                  <h3 class="profile-username text-center">Cesar Manrique</h3>
-                  <p class="text-muted text-center">Software Engineer</p>
-                  <ul class="list-group list-group-unbordered mb-3">
-                    <li class="list-group-item">
-                      <b>Éxamenes creados</b> <a class="float-right">1,322</a>
-                    </li>
-                    <li class="list-group-item">
-                      <b>Alumnos</b> <a class="float-right">543</a>
-                    </li>
 
-                  </ul>
 
-                  <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
                 </div>
+
+                <button type="submit" class="addRow btn btn-info">Agregar Pregunta</button>
                 <!-- /.card-body -->
               </div>
               <!-- /.card -->
 
 
+
+
+
+
+
+
             </div>
+
+
+
+
+
+
+
             <!-- /.col -->
             <div class="col-md-9">
               <div class="card">
@@ -238,7 +267,7 @@
                       <!-- Post -->
                       <div class="post">
                         <div class="user-block">
-                          <button type="submit" class="addRow btn btn-info">Agregar</button>
+
                           <div class="box-heager" id="examen-editable-holder">
                             <label class="editable" style="color:blue" ;> Ingresar el Título del Examen </label>
                           </div>
@@ -451,8 +480,43 @@
         </div><!-- /.container-fluid -->
       </section>
       <!-- /.content -->
-    </div>
+     </div>
     <!-- /.content-wrapper -->
+
+      <div class="modal fade" id="modal-default">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="text-center">
+              <h3 class="modal-title">Instrucciones</h3>
+              <hr>
+            </div>
+          
+            <div class="box-body with-border" >
+              <form class="form-horizontal" id="frm-usos">
+                <ol>
+                  <li>Crea la cantidad de preguntas de tu examen. Límite 10.</li>
+                  <li>Edita el título, la descripción y las alternativas.</li>
+                  <li>Selecciona la alternativa correcta haciendo click en : <input type="radio" checked="checked" /> </li>
+                  <li>Ve a <button class="btn btn-primary text-center btn-sm">Parámetros</button> y asigna la fecha y hora que desees que empiece el examen.</li>
+                  <li>Ingresa los correos de tus alumnos.</li>
+                  <li>Ya creado el examen se <b>generará un código</b> para que lo compartas con tus alumnos.</li>
+                  <li>Una vez finalizado el examen podrás acceder a  <b>"Ver Exámenes"</b> para ver los resultados.</li>
+                  </ol>
+               
+                <div class="modal-footer center-block">
+                 
+                  <button type="button" class="btn btn-success" data-dismiss="modal">¡Entendido!</button>
+           
+                </div>
+              </form>
+            </div>
+
+          </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+
     <footer class="main-footer">
       <div class="float-right d-none d-sm-block">
         <b>Version</b> 1.0.0-pre
