@@ -1,44 +1,65 @@
 $(document).ready(function() {
 
-$('#reglas-editable-holder').on('click', "label.editable", function () {
-  var $lbl = $(this),
-    o = $lbl.text(),
-    $txt = $('<input type="text" class="editable-label-text" value="' + o + '" />');
-  $lbl
-    .replaceWith($txt);
-  $txt.focus();
 
-  $txt.blur(function () {
-      $txt.replaceWith($lbl);
-    })
-    .keydown(function (evt) {
-      if (evt.keyCode == 13) {
-        var no = $(this).val();
-        $lbl.text(no);
-        $txt.replaceWith($lbl);
-      }
-    });
+
+var defaultTítulo = 'Ingresar el título del examen';
+
+function endEdit(e) {
+  var input = $(e.target),
+      label = input && input.prev();
+
+  label.text(input.val() === '' ? defaultTítulo : input.val());
+  input.hide();
+  label.show();
+}
+
+$('.clickedit').hide()
+.focusout(endEdit)
+.keyup(function (e) {
+  if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
+      endEdit(e);
+      return false;
+  } else {
+      return true;
+  }
+})
+.prev().click(function () {
+  $(this).hide();
+  $(this).next().show().focus();
 });
 
-$('#examen-editable-holder').on('click', "label.editable", function () {
-  var $lbl = $(this),
-    o = $lbl.text(),
-    $txt = $('<input type="text" class="editable-label-text" value="' + o + '" />');
-  $lbl
-    .replaceWith($txt);
-  $txt.focus();
+var defaultDescripción = 'Ingresar la descripción';
 
-  $txt.blur(function () {
-      $txt.replaceWith($lbl);
-    })
-    .keydown(function (evt) {
-      if (evt.keyCode == 13) {
-        var no = $(this).val();
-        $lbl.text(no);
-        $txt.replaceWith($lbl);
-      }
-    });
+function endEdit2(e) {
+  var input = $(e.target),
+      label = input && input.prev();
+
+  label.text(input.val() === '' ? defaultDescripción : input.val());
+  input.hide();
+  label.show();
+}
+
+$('.clickedit2').hide()
+.focusout(endEdit2)
+.keyup(function (e) {
+  if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
+      endEdit(e);
+      return false;
+  } else {
+      return true;
+  }
+})
+.prev().click(function () {
+  $(this).hide();
+  $(this).next().show().focus();
 });
+
+
+
+
+
+
+
 $(function () {
   //Initialize Select2 Elements
   //Initialize Select2 Elements
@@ -97,6 +118,8 @@ $(function () {
 var uniqueId = 1;
 $(function() {
      $('.addRow').click(function() {
+
+      //$("#original").clone().appendTo("#containers");
          var copy = $("#original").clone(true);
          var formId = 'NewForm' + uniqueId;
          copy.attr('id', formId );
@@ -105,7 +128,36 @@ $(function() {
             $(this).attr('id', $(this).attr('id') + uniqueId); 
              
          });
-         uniqueId++;  
+         uniqueId++; 
      });
 });
-})
+
+contador = 0;
+
+
+
+
+$('#close').click(function () {
+  console.log("asd1");
+  var id = $(this).closest("form")
+  console.log(id)
+  $( ".NewForm" ).remove();
+  console.log("asd2");
+});
+
+
+
+
+});
+
+
+$('.addRow').mousedown(function() {
+  contador++;
+  console.log(contador)
+  if(contador>9){
+    console.log('maximo')
+    $('.addRow').prop('disabled', true);
+
+  }
+  //$( this ).append( "<span style='color:#00f;'>Mouse down.</span>" );
+});

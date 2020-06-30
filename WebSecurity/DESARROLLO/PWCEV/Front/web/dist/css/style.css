@@ -1,0 +1,10 @@
+
+input[type="text"],
+.uneditable-input {
+    border: 1px solid #cccccc;
+    width: 350px;
+    color: #555555;
+    border-radius: 5px;
+    border-color: rgba(82, 168, 236, 0.8);
+    outline: 0;
+}
