@@ -1,9 +1,14 @@
 package com.websecurity.pwcev.apirest.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,8 +34,24 @@ public class RespuestaController {
 	}
 	
 	@GetMapping("/{id}")
-	public Optional<Respuesta> listarPorId(@PathVariable("id") Integer idRespuesta) {
-		return service.findById(idRespuesta);
+public ResponseEntity<?> listarPorId(@PathVariable("id") Integer idRespuesta) {
+		
+		Optional<Respuesta> respuesta = null;
+		Map<String, Object> response = new HashMap<>();
+		
+		try {
+			respuesta = service.findById(idRespuesta);
+		} catch (DataAccessException e) {
+			response.put("mensaje", "Error al realizar la consulta en la base de datos");
+			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
+		}
+		
+		if (respuesta.isEmpty()) {
+			response.put("mensaje", "La pregunta con ID: ".concat(idRespuesta.toString().concat(" no existe en la base de datos!")));
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<Optional<Respuesta>>(respuesta,HttpStatus.OK);
 	}
 	
 	@PostMapping
