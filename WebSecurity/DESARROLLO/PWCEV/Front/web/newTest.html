@@ -9,6 +9,8 @@
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+
+
   <!-- Font Awesome -->
   <link rel="stylesheet" href="bower_components/AdminLTE/plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
@@ -23,7 +25,8 @@
   <link rel="stylesheet" href="bower_components/AdminLTE/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="bower_components/AdminLTE/dist/css/adminlte.min.css">
-
+  <!-- Plugin css BootsTrap -->
+  <link rel="stylesheet" href="dist/css/style.css">
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -45,101 +48,8 @@
           <a href="list.html" class="nav-link">Ver Resultados</a>
         </li>
       </ul>
-
-
-      <!-- Right navbar links -->
-      <ul class="navbar-nav ml-auto">
-        <!-- Messages Dropdown Menu -->
-        <li class="nav-item dropdown">
-          <a class="nav-link" data-toggle="dropdown" href="#">
-            <i class="far fa-comments"></i>
-            <span class="badge badge-danger navbar-badge">3</span>
-          </a>
-          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-            <a href="#" class="dropdown-item">
-              <!-- Message Start -->
-              <div class="media">
-                <img src="bower_components/AdminLTE/dist/img/user1-128x128.jpg" alt="User Avatar"
-                  class="img-size-50 mr-3 img-circle">
-                <div class="media-body">
-                  <h3 class="dropdown-item-title">
-                    Brad Diesel
-                    <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
-                  </h3>
-                  <p class="text-sm">Call me whenever you can...</p>
-                  <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                </div>
-              </div>
-              <!-- Message End -->
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <!-- Message Start -->
-              <div class="media">
-                <img src="bower_components/AdminLTE/dist/img/user8-128x128.jpg" alt="User Avatar"
-                  class="img-size-50 img-circle mr-3">
-                <div class="media-body">
-                  <h3 class="dropdown-item-title">
-                    John Pierce
-                    <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                  </h3>
-                  <p class="text-sm">I got your message bro</p>
-                  <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                </div>
-              </div>
-              <!-- Message End -->
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <!-- Message Start -->
-              <div class="media">
-                <img src="bower_components/AdminLTE/dist/img/user3-128x128.jpg" alt="User Avatar"
-                  class="img-size-50 img-circle mr-3">
-                <div class="media-body">
-                  <h3 class="dropdown-item-title">
-                    Nora Silvester
-                    <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
-                  </h3>
-                  <p class="text-sm">The subject goes here</p>
-                  <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-                </div>
-              </div>
-              <!-- Message End -->
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
-          </div>
-        </li>
-        <!-- Notifications Dropdown Menu -->
-        <li class="nav-item dropdown">
-          <a class="nav-link" data-toggle="dropdown" href="#">
-            <i class="far fa-bell"></i>
-            <span class="badge badge-warning navbar-badge">15</span>
-          </a>
-          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-            <span class="dropdown-item dropdown-header">15 Notifications</span>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-envelope mr-2"></i> 4 new messages
-              <span class="float-right text-muted text-sm">3 mins</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-users mr-2"></i> 8 friend requests
-              <span class="float-right text-muted text-sm">12 hours</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-file mr-2"></i> 3 new reports
-              <span class="float-right text-muted text-sm">2 days</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-          </div>
-        </li>
-
-      </ul>
     </nav>
+
     <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
@@ -226,18 +136,14 @@
                     </div>
                     <div class="text-center">
                       <a href="#" style="color:skyblue" data-toggle="modal" data-target="#modal-default">Ver más...</a>
-
-
                     </div>
                   </div>
-
-
-
                 </div>
 
                 <button type="submit" class="addRow btn btn-info">Agregar Pregunta</button>
                 <!-- /.card-body -->
               </div>
+
               <!-- /.card -->
             </div>
 
@@ -262,46 +168,81 @@
                         <div class="user-block">
 
                           <div class="box-heager" id="examen-editable-holder">
-                            <label class="editable" style="color:blue" ;> Ingresar el Título del Examen </label>
+                            <div>
+                              <label style="color:blue;">Ingresar el título del examen</label>
+                              <input class="clickedit" type="text" />
+                              <div class="clearfix"></div>
+                            </div>
                           </div>
-                          <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>
                           </span>
                         </div>
                         <!-- /.user-block -->
 
+                        <!-- Contenido base -->
                         <div class="container">
-                        </div>
-                        <div id="container">
                           <div id="campaign">
-                            <form id="original">
-                              <div id="reglas-editable-holder">
-                                <label class="editable">Editable. Ingresar aquí la descrición</label>
-                              </div>
+                            <form id="base">
+                              <a href="#" class="float-right btn-tool" id="close"><i class="fas fa-times"></i></a>
+                              <label>Editar la descripción</label>
+                              <input class="clickedit2" type="text" />
+                              <div class="clearfix"></div>
                               <div>
                                 <div>
-                                  <input type="radio" class="align-items-center" id="">Pregunta
+                                  <input type="radio" id="">Pregunta
                                 </div>
                                 <div>
-                                  <input type="radio" class="align-items-center" id="">Pregunta
+                                  <input type="radio" id="">Pregunta
                                 </div>
                                 <div>
-                                  <input type="radio" class="align-items-center" id="">Pregunta
+                                  <input type="radio" id="">Pregunta
                                 </div>
                                 <div>
-                                  <input type="radio" class="align-items-center" id="">Pregunta
+                                  <input type="radio" id="">Pregunta
                                 </div>
                                 <div>
-                                  <input type="radio" class="align-items-center" id="">Pregunta
+                                  <input type="radio" id="">Pregunta
                                 </div>
-
                                 <hr>
                               </div>
-                            </form>
-                            <form id="copy">
                             </form>
                             <span id="campaigntext"></span>
                           </div>
                         </div>
+                        <!-- /.Contenido base -->
+
+
+                        <!-- Contenido para duplicar -->
+                         <div class="container" style="display: none;">
+                          <div id="campaign">
+                            <form id="original">
+                              <a href="#" class="float-right btn-tool" id="close"><i class="fas fa-times"></i></a>
+                              <label>Editar la descripción</label>
+                              <input class="clickedit2" type="text" />
+                              <div class="clearfix"></div>
+                              <div>
+                                <div>
+                                  <input type="radio" id="">Pregunta
+                                </div>
+                                <div>
+                                  <input type="radio" id="">Pregunta
+                                </div>
+                                <div>
+                                  <input type="radio" id="">Pregunta
+                                </div>
+                                <div>
+                                  <input type="radio" id="">Pregunta
+                                </div>
+                                <div>
+                                  <input type="radio" id="">Pregunta
+                                </div>
+                                <hr>
+                              </div>
+                            </form>
+                            <span id="campaigntext"></span>
+                          </div>
+                        </div>
+                        <!-- /Contenido para duplicar -->
+
                       </div>
 
                     </div>
@@ -408,6 +349,7 @@
       <!-- /.modal-dialog -->
     </div>
 
+
     <footer class="main-footer">
       <div class="float-right d-none d-sm-block">
         <b>Version</b> 1.0.0-pre
@@ -422,12 +364,14 @@
       <!-- Control sidebar content goes here -->
     </aside>
     <!-- /.control-sidebar -->
+
   </div>
   <!-- ./wrapper -->
 
   <!-- jQuery -->
   <script src="bower_components/AdminLTE/plugins/jquery/jquery.min.js"></script>
   <!-- Bootstrap 4 -->
+  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="bower_components/AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- Select2 -->
   <script src="bower_components/AdminLTE/plugins/select2/js/select2.full.min.js"></script>
