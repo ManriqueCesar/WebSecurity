@@ -45,7 +45,7 @@ public class PreguntaController {
 		} catch (DataAccessException e) {
 			response.put("mensaje", "Error al realizar la consulta en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
-			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
 		if (pregunta.isEmpty()) {
@@ -56,17 +56,56 @@ public class PreguntaController {
 	}
 	
 	@PostMapping
-	public Pregunta registrar(@RequestBody Pregunta pre) {
-		return service.registrar(pre);
+	public ResponseEntity<?> registrar(@RequestBody Pregunta pre) {
+		Pregunta pregunta = null;
+		Map<String, Object> response = new HashMap<>();
+		
+		try {
+			pregunta = service.registrar(pre);
+		} catch (DataAccessException e) {
+			response.put("mensaje", "Error al realizar el insert en la base de datos.");
+			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		
+		response.put("mensaje", "La pregunta ha sido creado con éxito!");
+		response.put("examen",pregunta);
+		return new ResponseEntity<Map<String,Object>>(response, HttpStatus.CREATED);
 	}
 	
 	@PutMapping
-	public Pregunta modificar(@RequestBody Pregunta pre) {
-		return service.modificar(pre);
+	public ResponseEntity<?> modificar(@RequestBody Pregunta pre) {
+		
+		Pregunta pregunta = null;
+		Map<String, Object> response = new HashMap<>();
+		
+		try {
+			pregunta = service.modificar(pre);
+		} catch (DataAccessException e) {
+			response.put("mensaje", "Error al realizar el update en la base de datos.");
+			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		
+		response.put("mensaje", "La pregunta ha sido actualizado con éxito!");
+		response.put("examen",pregunta);
+		return new ResponseEntity<Map<String,Object>>(response, HttpStatus.CREATED);
 	}
 	
 	@DeleteMapping("/{id}")
-	public void eliminar(@PathVariable("id") Integer idPregunta) {
-		service.eliminar(idPregunta);
+	public ResponseEntity<?> eliminar(@PathVariable("id") Integer idPregunta) {
+		
+		Map<String, Object> response = new HashMap<>();
+		
+		try {
+			service.eliminar(idPregunta);
+		} catch (DataAccessException e) {
+			response.put("mensaje", "Error al realizar el delete en la base de datos.");
+			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		
+		response.put("mensaje", "La pregunta ha sido eliminado con éxito!");
+		return new ResponseEntity<Map<String,Object>>(response, HttpStatus.OK);
 	}
 }

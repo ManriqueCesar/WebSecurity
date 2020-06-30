@@ -34,7 +34,7 @@ public class RespuestaController {
 	}
 	
 	@GetMapping("/{id}")
-public ResponseEntity<?> listarPorId(@PathVariable("id") Integer idRespuesta) {
+	public ResponseEntity<?> listarPorId(@PathVariable("id") Integer idRespuesta) {
 		
 		Optional<Respuesta> respuesta = null;
 		Map<String, Object> response = new HashMap<>();
@@ -44,29 +44,67 @@ public ResponseEntity<?> listarPorId(@PathVariable("id") Integer idRespuesta) {
 		} catch (DataAccessException e) {
 			response.put("mensaje", "Error al realizar la consulta en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
-			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
 		if (respuesta.isEmpty()) {
-			response.put("mensaje", "La pregunta con ID: ".concat(idRespuesta.toString().concat(" no existe en la base de datos!")));
+			response.put("mensaje", "La respuesta con ID: ".concat(idRespuesta.toString().concat(" no existe en la base de datos!")));
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
 		}
 		return new ResponseEntity<Optional<Respuesta>>(respuesta,HttpStatus.OK);
 	}
 	
 	@PostMapping
-	public Respuesta registrar(@RequestBody Respuesta res) {
-		return service.registrar(res);
+	public ResponseEntity<?> registrar(@RequestBody Respuesta res) {
+		Respuesta respuesta = null;
+		Map<String, Object> response = new HashMap<>();
+		
+		try {
+			respuesta = service.registrar(res);
+		} catch (DataAccessException e) {
+			response.put("mensaje", "Error al realizar el insert en la base de datos.");
+			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		
+		response.put("mensaje", "La respuesta ha sido creado con éxito!");
+		response.put("examen",respuesta);
+		return new ResponseEntity<Map<String,Object>>(response, HttpStatus.CREATED);
 	}
 	
 	@PutMapping
-	public Respuesta modificar(@RequestBody Respuesta res) {
-		return service.modificar(res);
+	public ResponseEntity<?> modificar(@RequestBody Respuesta res) {
+		
+		Respuesta respuesta = null;
+		Map<String, Object> response = new HashMap<>();
+		
+		try {
+			respuesta = service.modificar(res);
+		} catch (DataAccessException e) {
+			response.put("mensaje", "Error al realizar el update en la base de datos.");
+			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		
+		response.put("mensaje", "La respuesta ha sido actualizado con éxito!");
+		response.put("examen",respuesta);
+		return new ResponseEntity<Map<String,Object>>(response, HttpStatus.CREATED);
 	}
 	
 	@DeleteMapping("/{id}")
-	public void eliminar(@PathVariable("id") Integer idRespuesta) {
-		service.eliminar(idRespuesta);
+	public ResponseEntity<?> eliminar(@PathVariable("id") Integer idRespuetsa) {
+		
+		Map<String, Object> response = new HashMap<>();
+		
+		try {
+			service.eliminar(idRespuetsa);
+		} catch (DataAccessException e) {
+			response.put("mensaje", "Error al realizar el delete en la base de datos.");
+			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		
+		response.put("mensaje", "La respuesta ha sido eliminado con éxito!");
+		return new ResponseEntity<Map<String,Object>>(response, HttpStatus.OK);
 	}
-
 }
