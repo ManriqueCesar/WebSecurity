@@ -155,7 +155,8 @@
                   <ul class="nav nav-pills">
                     <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Examen</a></li>
 
-                    <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab" id="params">Parámetros</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab"
+                        id="params">Parámetros</a></li>
 
                   </ul>
                 </div>
@@ -179,10 +180,12 @@
                         <!-- /.user-block -->
 
                         <!-- Contenido base -->
-                        <div class="container">
+             
                           <div id="campaign">
+                            <div class="form-group"> 
                             <form id="base">
                               <a href="#" class="float-right btn-tool" id="close"><i class="fas fa-times"></i></a>
+                            </div>
                               <label>Editar la descripción</label>
                               <input class="clickedit2" type="text" />
                               <div class="clearfix"></div>
@@ -207,32 +210,46 @@
                             </form>
                             <span id="campaigntext"></span>
                           </div>
-                        </div>
+                  
                         <!-- /.Contenido base -->
 
 
                         <!-- Contenido para duplicar -->
-                         <div class="container" style="display: none;">
-                          <div id="campaign">
-                            <form id="original">
-                              <a href="#" class="float-right btn-tool" id="close"><i class="fas fa-times"></i></a>
-                              <label>Editar la descripción</label>
-                              <input class="clickedit2" type="text" />
-                              <div class="clearfix"></div>
-                              <div id="bloque">
-                                <form id="alternativas"> 
-                                <div>
-                                  <input type="radio" id="alternativa6">Pregunta
+                        <div style="display: none;">
+                            <div id="campaign">
+                              <form id="original">
+                                <a href="#" class="float-right btn-tool" id="close"><i class="fas fa-times"></i></a>
+                                <label>Editar la descripción</label>
+                                <input class="clickedit2" type="text" />
+                                <div class="clearfix"></div>
+                                <div id="campaign">
+                                  <form id="bloque"> 
+                                    <div>
+                                      <input type="radio" id="alternativa">Pregunta
+                                    </div>
+                                    <div>
+                                      <input type="radio" id="alternativa">Pregunta
+                                    </div>
+                                    <div>
+                                      <input type="radio" id="alternativa">Pregunta
+                                    </div>
+                                    <div>
+                                      <input type="radio" id="alternativa">Pregunta
+                                    </div>
+                                    <div>
+                                      <input type="radio" id="alternativa">Pregunta
+                                    </div>
+
+                                  </form>
+                                  <hr>
                                 </div>
                               </form>
-                                <hr>
-                              </div>
-                            </form>
-                            <span id="campaigntext"></span>
-                          </div>
-                        </div>
-                        <!-- /Contenido para duplicar -->
+                              <span id="campaigntext"></span>
+                            </div>
+                          
+                          <!-- /Contenido para duplicar -->
 
+                        </div>
                       </div>
 
                     </div>

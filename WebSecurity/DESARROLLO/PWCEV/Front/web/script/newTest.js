@@ -93,29 +93,27 @@ function editarDescripcion() {
 
 function duplicarAlternativas(unique) {
 
-    console.log("duplicandoAlternativas");
-    //$("#original").clone().appendTo("#containers");
-    var copy = $("#alternativas").clone(true);
-    var formId = 'alternativa' + unique;
-    copy.attr('id', formId);
-    $('#bloque').append(copy);
-    $('#' + formId).find('input,select').each(function () {
-      $(this).attr('id', $(this).attr('id') + unique);
-
-    });
-    
-
+  console.log("duplicandoAlternativas");
+  //$("#original").clone().appendTo("#containers");
+  contador = 1;
+  var copy = $("#alternativas").clone(true);
+  var formId = 'opcion' + unique;
+  copy.attr('id', formId);
+  $('#bloque').append(copy);
+  $('#' + formId).find('input,select').each(function () {
+    $(this).attr('id', $(this).attr('id') + unique);
+    unique++;
+  });
+  contador++;
 }
 
-function duplicar(uniqueId, unique) {
-  duplicarAlternativas(unique);
-  unique++;
-  //$("#original").clone().appendTo("#containers");
+function duplicar(uniqueId,unique) {
 
   var copy = $("#original").clone(true);
   var formId = 'NewForm' + uniqueId;
   copy.attr('id', formId);
   $('#campaign').append(copy);
+
   $('#' + formId).find('input,select').each(function () {
     $(this).attr('id', $(this).attr('id') + uniqueId);
 
@@ -143,14 +141,16 @@ $(document).ready(function () {
   var uniqueId = 1;
   var unique = 7;
   var contador = 0;
+
+
   //funcion para duplicar preguntas
 
   $('.addRow').click(function () {
-
-    duplicar(uniqueId, unique);
+   // duplicarAlternativas(unique);
+    duplicar(uniqueId);
 
     uniqueId++;
-    unique++;
+    //unique++;
 
     contador++;
     if (contador > 8) {
@@ -159,7 +159,7 @@ $(document).ready(function () {
     }
   });
 
-  $(document).on('change', '[type=radio]', function (e) {});
+  // $(document).on('change', '[type=radio]', function (e) {});
 
 
 
