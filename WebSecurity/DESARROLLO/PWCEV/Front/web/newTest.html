@@ -155,7 +155,7 @@
                   <ul class="nav nav-pills">
                     <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Examen</a></li>
 
-                    <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Parámetros</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab" id="params">Parámetros</a></li>
 
                   </ul>
                 </div>
@@ -169,7 +169,7 @@
 
                           <div class="box-heager" id="examen-editable-holder">
                             <div>
-                              <label style="color:blue;">Ingresar el título del examen</label>
+                              <label id="txtTitulo" style="color:blue;">Ingresar el título del examen</label>
                               <input class="clickedit" type="text" />
                               <div class="clearfix"></div>
                             </div>
@@ -188,19 +188,19 @@
                               <div class="clearfix"></div>
                               <div>
                                 <div>
-                                  <input type="radio" id="">Pregunta
+                                  <input type="radio" id="alternativa1">Pregunta
                                 </div>
                                 <div>
-                                  <input type="radio" id="">Pregunta
+                                  <input type="radio" id="alternativa2">Pregunta
                                 </div>
                                 <div>
-                                  <input type="radio" id="">Pregunta
+                                  <input type="radio" id="alternativa3">Pregunta
                                 </div>
                                 <div>
-                                  <input type="radio" id="">Pregunta
+                                  <input type="radio" id="alternativa4">Pregunta
                                 </div>
                                 <div>
-                                  <input type="radio" id="">Pregunta
+                                  <input type="radio" id="alternativa5">Pregunta
                                 </div>
                                 <hr>
                               </div>
@@ -219,22 +219,12 @@
                               <label>Editar la descripción</label>
                               <input class="clickedit2" type="text" />
                               <div class="clearfix"></div>
-                              <div>
+                              <div id="bloque">
+                                <form id="alternativas"> 
                                 <div>
-                                  <input type="radio" id="">Pregunta
+                                  <input type="radio" id="alternativa6">Pregunta
                                 </div>
-                                <div>
-                                  <input type="radio" id="">Pregunta
-                                </div>
-                                <div>
-                                  <input type="radio" id="">Pregunta
-                                </div>
-                                <div>
-                                  <input type="radio" id="">Pregunta
-                                </div>
-                                <div>
-                                  <input type="radio" id="">Pregunta
-                                </div>
+                              </form>
                                 <hr>
                               </div>
                             </form>
@@ -254,7 +244,7 @@
                         <div class="form-group row">
                           <label for="inputName" class="col-sm-2 col-form-label">Titulo</label>
                           <div class="col-sm-10">
-                            <input type="email" class="form-control" id="inputName" placeholder="Name">
+                            <input type="text" class="form-control" id="inputTitulo" disabled>
                           </div>
                         </div>
 
