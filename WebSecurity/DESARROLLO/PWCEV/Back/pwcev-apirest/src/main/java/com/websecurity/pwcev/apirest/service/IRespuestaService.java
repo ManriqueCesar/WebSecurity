@@ -12,6 +12,6 @@ public interface IRespuestaService {
 	Respuesta modificar(Respuesta t);
 	List<Respuesta> listar();
 	void eliminar(Integer id);
-
+	boolean existeRespuesta(Integer id);
 
 }

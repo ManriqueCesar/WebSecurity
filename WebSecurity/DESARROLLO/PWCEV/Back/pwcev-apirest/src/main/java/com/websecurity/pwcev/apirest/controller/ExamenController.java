@@ -48,7 +48,7 @@ public class ExamenController {
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
-		if (examen.get() == null) {
+		if (!service.existeExamen(idExamen)) {
 			response.put("mensaje", "El examen ID: ".concat(idExamen.toString().concat(" no existe en la base de datos!")));
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
 		}

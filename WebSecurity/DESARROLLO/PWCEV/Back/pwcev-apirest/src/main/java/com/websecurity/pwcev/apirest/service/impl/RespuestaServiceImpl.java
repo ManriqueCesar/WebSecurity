@@ -42,4 +42,9 @@ public class RespuestaServiceImpl implements IRespuestaService{
 		return repo.findById(id);
 	}
 
+	@Override
+	public boolean existeRespuesta(Integer id) {
+		return repo.existsById(id);
+	}
+
 }

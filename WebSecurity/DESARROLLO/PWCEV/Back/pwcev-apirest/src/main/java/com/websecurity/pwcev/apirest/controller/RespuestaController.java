@@ -47,7 +47,7 @@ public class RespuestaController {
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
-		if (respuesta.get() == null) {
+		if (!service.existeRespuesta(idRespuesta)) {
 			response.put("mensaje", "La respuesta con ID: ".concat(idRespuesta.toString().concat(" no existe en la base de datos!")));
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
 		}
