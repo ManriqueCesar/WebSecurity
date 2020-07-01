@@ -1,3 +1,6 @@
+
+
+
 function cargarFecha() {
   //Initialize Select2 Elements
   //Initialize Select2 Elements
@@ -135,6 +138,7 @@ function validarRadio() {
 }
 
 $(document).ready(function () {
+  $('.addRow').prop('disabled', true);
   cargarFecha();
   editarTitulo();
   editarDescripcion();
@@ -176,5 +180,23 @@ $(document).ready(function () {
     console.log(titulo);
     $('#inputTitulo').val(titulo);
   });
+
+
+  $('#tabCurso').click(function () {
+    console.log("curso");
+    $('.addRow').prop('disabled', true);
+  });
+
+
+  $('#tabParam').click(function () {
+    console.log("params");
+    $('.addRow').prop('disabled', true);
+  });
+
+  $('#tabExamen').click(function () {
+    console.log("examen");
+    $('.addRow').prop('disabled', false);
+  });
+
 
 });

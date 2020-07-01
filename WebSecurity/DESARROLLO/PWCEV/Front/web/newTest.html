@@ -42,9 +42,6 @@
           <a href="#" class="nav-link">Crear Examen</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="newCourse.html" class="nav-link">Crear Curso</a>
-        </li>
-        <li class="nav-item d-none d-sm-inline-block">
           <a href="list.html" class="nav-link">Ver Resultados</a>
         </li>
       </ul>
@@ -135,7 +132,8 @@
                       </li>
                     </div>
                     <div class="text-center">
-                      <a href="#" style="color:skyblue" data-toggle="modal" data-target="#modal-default">Ver más...</a>
+                      <a id="vermas" href="#" style="color:skyblue" data-toggle="modal" data-target="#modal-default">Ver
+                        más...</a>
                     </div>
                   </div>
                 </div>
@@ -153,19 +151,28 @@
               <div class="card">
                 <div class="card-header p-2">
                   <ul class="nav nav-pills">
-                    <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Examen</a></li>
+                    <li class="nav-item">
+                      <a class="nav-link active" href="#crearCurso" data-toggle="tab" id="tabCurso">Crear Curso</a>
+                    </li>
 
-                    <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab"
-                        id="params">Parámetros</a></li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#activity" data-toggle="tab" id="tabExamen">Examen</a>
+                    </li>
+
+                    <li class="nav-item">
+                      <a class="nav-link" href="#settings" data-toggle="tab" id="tabParam">Parámetros</a>
+                    </li>
 
                   </ul>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
                   <div class="tab-content">
-                    <div class="active tab-pane" id="activity">
+                    <div class="tab-pane" id="activity">
                       <!-- Post -->
                       <div class="post">
+
+
                         <div class="user-block">
 
                           <div class="box-heager" id="examen-editable-holder">
@@ -180,73 +187,73 @@
                         <!-- /.user-block -->
 
                         <!-- Contenido base -->
-             
-                          <div id="campaign">
-                            <div class="form-group"> 
+
+                        <div id="campaign">
+                          <div class=" tab-pane form-group">
                             <form id="base">
                               <a href="#" class="float-right btn-tool" id="close"><i class="fas fa-times"></i></a>
-                            </div>
-                              <label>Editar la descripción</label>
-                              <input class="clickedit2" type="text" />
-                              <div class="clearfix"></div>
-                              <div>
-                                <div>
-                                  <input type="radio" id="alternativa1">Pregunta
-                                </div>
-                                <div>
-                                  <input type="radio" id="alternativa2">Pregunta
-                                </div>
-                                <div>
-                                  <input type="radio" id="alternativa3">Pregunta
-                                </div>
-                                <div>
-                                  <input type="radio" id="alternativa4">Pregunta
-                                </div>
-                                <div>
-                                  <input type="radio" id="alternativa5">Pregunta
-                                </div>
-                                <hr>
-                              </div>
-                            </form>
-                            <span id="campaigntext"></span>
                           </div>
-                  
+                          <label>Editar la descripción</label>
+                          <input class="clickedit2" type="text" />
+                          <div class="clearfix"></div>
+                          <div>
+                            <div>
+                              <input type="radio" id="alternativa1">Pregunta
+                            </div>
+                            <div>
+                              <input type="radio" id="alternativa2">Pregunta
+                            </div>
+                            <div>
+                              <input type="radio" id="alternativa3">Pregunta
+                            </div>
+                            <div>
+                              <input type="radio" id="alternativa4">Pregunta
+                            </div>
+                            <div>
+                              <input type="radio" id="alternativa5">Pregunta
+                            </div>
+                            <hr>
+                          </div>
+                          </form>
+                          <span id="campaigntext"></span>
+                        </div>
+
                         <!-- /.Contenido base -->
 
 
                         <!-- Contenido para duplicar -->
                         <div style="display: none;">
-                            <div id="campaign">
-                              <form id="original">
-                                <a href="#" class="float-right btn-tool" id="close"><i class="fas fa-times"></i></a>
-                                <label>Editar la descripción</label>
-                                <input class="clickedit2" type="text" />
-                                <div class="clearfix"></div>
-                                <div id="campaign">
-                                  <form id="bloque"> 
-                                    <div>
-                                      <input type="radio" id="alternativa">Pregunta
-                                    </div>
-                                    <div>
-                                      <input type="radio" id="alternativa">Pregunta
-                                    </div>
-                                    <div>
-                                      <input type="radio" id="alternativa">Pregunta
-                                    </div>
-                                    <div>
-                                      <input type="radio" id="alternativa">Pregunta
-                                    </div>
-                                    <div>
-                                      <input type="radio" id="alternativa">Pregunta
-                                    </div>
+                          <div id="campaign">
+                            <form id="original">
+                              <a href="#" class="float-right btn-tool" id="close"><i class="fas fa-times"></i></a>
+                              <label>Editar la descripción</label>
+                              <input class="clickedit2" type="text" />
+                              <div class="clearfix"></div>
+                              <div id="campaign">
+                                <form id="bloque">
+                                  <div>
+                                    <input type="radio" id="alternativa">Pregunta
+                                  </div>
+                                  <div>
+                                    <input type="radio" id="alternativa">Pregunta
+                                  </div>
+                                  <div>
+                                    <input type="radio" id="alternativa">Pregunta
+                                  </div>
+                                  <div>
+                                    <input type="radio" id="alternativa">Pregunta
+                                  </div>
+                                  <div>
+                                    <input type="radio" id="alternativa">Pregunta
+                                  </div>
 
-                                  </form>
-                                  <hr>
-                                </div>
-                              </form>
-                              <span id="campaigntext"></span>
-                            </div>
-                          
+                                </form>
+                                <hr>
+                              </div>
+                            </form>
+                            <span id="campaigntext"></span>
+                          </div>
+
                           <!-- /Contenido para duplicar -->
 
                         </div>
@@ -291,6 +298,68 @@
                         </div>
                       </form>
                     </div>
+
+                    <div class="active tab-pane" id="crearCurso">
+                      <form class="form-horizontal">
+
+
+                        <div class="form-group row">
+                          <label for="inputName" class="col-sm-2 col-form-label">Centro de estudios</label>
+                          <div class="col-sm-10">
+                            <input type="email" class="form-control" id="inputName"
+                              placeholder="Universidad Nacional Mayor de San Marcos" disabled>
+                          </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                          <label for="inputName" class="col-sm-2 col-form-label">Escuela</label>
+                          <div class="col-sm-10">
+                            <select class="form-control" id="periodo" name="periodo">
+                              <option value="escuela"></option>
+                              <option value="escuela">Ingeniería de sistemas</option>
+                              <option value="escuela">Ingeniería de software</option>
+                            </select>
+                          </div>
+                        </div>
+
+                        <div class="form-group row">
+                          <label for="inputName" class="col-sm-2 col-form-label">Curso</label>
+                          <div class="col-sm-10">
+                            <input type="email" class="form-control" id="inputName" placeholder="Nombre del curso"
+                              required>
+                          </div>
+                        </div>
+
+                        <div class="form-group row">
+                          <label for="inputName" class="col-sm-2 col-form-label">Periodo</label>
+                          <div class="col-sm-10">
+                            <select class="form-control" id="periodo" name="periodo">
+                              <option value="periodo"></option>
+                              <option value="periodo">2020-0</option>
+                              <option value="periodo">2020-I</option>
+                              <option value="periodo">2020-II</option>
+                              <option value="periodo">2021-0</option>
+                            </select>
+                          </div>
+                        </div>
+
+                        <div class="form-group row">
+                          <label for="inputName2" class="col-sm-2 col-form-label">Alumnos</label>
+                          <div class="col-sm-10">
+                            <textarea class="form-control" placeholder="ejemplo@unmsm.edu.pe"
+                              id="exampleFormControlTextarea1" rows="4"></textarea>
+                          </div>
+                        </div>
+
+                        <div class="form-group row">
+                          <div class="offset-sm-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger">Crear Curso</button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+
                     <section class="content">
                       <div class="container-fluid">
                         <div class="row">
@@ -330,8 +399,15 @@
           <div class="box-body with-border">
             <form class="form-horizontal" id="frm-usos">
               <ol>
-                <li>Crea tu curso en <b>"Crear Curso"</b></li>
-                <li>Crea la cantidad de preguntas de tu examen</li>
+
+                <li> En:
+                  <button class="btn btn-primary text-center btn-sm">Crear Curso</button>
+                  Ingresa el correo de los alumnos que estén matriculados en ese curso.
+                </li>
+                <li>Crea el Curso ingresando los datos solicitados.</li>
+                <li>Ve a <button class="btn btn-primary text-center btn-sm">Crear Examen</button>
+                 y define la cantidad de preguntas de tu examen (Max:10).
+                </li>
                 <li>Edita el título, la descripción y las alternativas.</li>
                 <li>Selecciona la alternativa correcta haciendo click en: <input type="radio" checked="checked" />
                 </li>
@@ -355,6 +431,7 @@
       </div>
       <!-- /.modal-dialog -->
     </div>
+
 
 
     <footer class="main-footer">
