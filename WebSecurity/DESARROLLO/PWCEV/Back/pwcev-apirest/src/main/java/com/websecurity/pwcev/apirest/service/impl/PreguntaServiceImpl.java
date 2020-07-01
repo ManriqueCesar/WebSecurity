@@ -42,4 +42,9 @@ public class PreguntaServiceImpl implements IPreguntaService{
 		return repo.findById(id);
 	}
 
+	@Override
+	public boolean existePregunta(Integer id) {
+		return repo.existsById(id);
+	}
+
 }

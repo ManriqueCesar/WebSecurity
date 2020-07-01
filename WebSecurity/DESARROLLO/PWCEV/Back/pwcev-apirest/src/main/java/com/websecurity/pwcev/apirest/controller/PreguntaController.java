@@ -48,7 +48,7 @@ public class PreguntaController {
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
-		if (pregunta.get() == null) {
+		if (!service.existePregunta(idPregunta)) {
 			response.put("mensaje", "La pregunta con ID: ".concat(idPregunta.toString().concat(" no existe en la base de datos!")));
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
 		}

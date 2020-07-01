@@ -12,6 +12,6 @@ public interface IPreguntaService{
 	Pregunta modificar(Pregunta t);
 	List<Pregunta> listar();
 	void eliminar(Integer id);
-
+	boolean existePregunta(Integer id);
 
 }

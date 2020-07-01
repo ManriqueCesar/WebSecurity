@@ -41,6 +41,11 @@ public class ExamenServiceImpl implements IExamenService{
 	public Optional<Examen> findById(Integer id) {
 		return repo.findById(id);
 	}
+
+	@Override
+	public boolean existeExamen(Integer id) {
+		return repo.existsById(id);
+	}
 	
 
 

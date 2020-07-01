@@ -12,4 +12,5 @@ public interface IExamenService{
 	Examen modificar(Examen t);
 	List<Examen> listar();
 	void eliminar(Integer id);
+	boolean existeExamen(Integer id);
 }
