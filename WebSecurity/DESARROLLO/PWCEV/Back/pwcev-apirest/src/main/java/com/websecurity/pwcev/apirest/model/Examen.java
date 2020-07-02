@@ -28,8 +28,8 @@ public class Examen {
 	private float TiempoDuracion;
 	
 	@ManyToOne
-	@JoinColumn(name = "id_usuario", nullable = false, foreignKey = @ForeignKey(name = "fk_examen_user"))
-	private Usuario user;
+	@JoinColumn(name = "id_curso", nullable = false, foreignKey = @ForeignKey(name = "fk_examen_curso"))
+	private Curso curso;
 
 	public Integer getIdExamen() {
 		return idExamen;
@@ -63,13 +63,15 @@ public class Examen {
 		TiempoDuracion = tiempoDuracion;
 	}
 
-	public Usuario getUser() {
-		return user;
+	public Curso getCurso() {
+		return curso;
 	}
 
-	public void setUser(Usuario user) {
-		this.user = user;
+	public void setCurso(Curso curso) {
+		this.curso = curso;
 	}
+
+	
 	
 	
 }
