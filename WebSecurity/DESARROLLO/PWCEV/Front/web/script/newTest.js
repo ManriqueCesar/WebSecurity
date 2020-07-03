@@ -125,18 +125,6 @@ function duplicar(uniqueId,unique) {
 }
 
 
-
-
-
-function validarRadio() {
-  // Uncheck radio buttons in #group1 and #group2
-  $('#group1 [type=radio]:checked, #group2 [type=radio]:checked').prop('checked', false).checkboxradio('refresh');
-  // "OR" to select all radio buttons in DOM
-  $('[type=radio]:checked').prop('checked', false).checkboxradio('refresh');
-  // Check clicked radio
-  $(this).prop('checked', true).checkboxradio('refresh');
-}
-
 $(document).ready(function () {
   $('.addRow').prop('disabled', true);
   cargarFecha();
@@ -175,13 +163,7 @@ $(document).ready(function () {
     console.log("asd2");
   });
 
-  $('#params').click(function () {
-    var titulo = $("#txtTitulo").text();
-    console.log(titulo);
-    $('#inputTitulo').val(titulo);
-  });
-
-
+  
   $('#tabCurso').click(function () {
     console.log("curso");
     $('.addRow').prop('disabled', true);
@@ -189,7 +171,10 @@ $(document).ready(function () {
 
 
   $('#tabParam').click(function () {
-    console.log("params");
+    var titulo = $("#txtTitulo").text();
+    console.log("aca");
+    console.log(titulo);
+    $('#inputTitulo').val(titulo);
     $('.addRow').prop('disabled', true);
   });
 
@@ -197,6 +182,18 @@ $(document).ready(function () {
     console.log("examen");
     $('.addRow').prop('disabled', false);
   });
+
+
+  $('#btn-crear').click(function ()
+   {
+    var texto =  $("#exampleFormControlTextarea1").val();
+    console.log(texto);
+    
+  });
+
+
+
+
 
 
 });
