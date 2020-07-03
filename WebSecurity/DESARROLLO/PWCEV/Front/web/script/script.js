@@ -34,17 +34,17 @@ video.addEventListener('play', async () => {
     const resizedDetections = faceapi.resizeResults(detections, displaySize)
     const results = resizedDetections.map(d => faceMatcher.findBestMatch(d.descriptor))
     console.log(results.toString());
-    $("#alumnos").text(results.toString());
+   
     var alumno = results.toString().includes("CesarManrique");
     if(alumno == true){
-
+      $("#alumnos").text(results.toString());
       console.log("bienvenido Cesar");
     }
   }, 500)
 })
 
 function loadLabeledImages() {
-  const labels = ['CesarManrique','Black Widow', 'Captain America', 'Hawkeye','Jim Rhodes']
+  const labels = ['Cesar Manrique','Black Widow', 'Captain America', 'Hawkeye','Fernando Fuentes']
   return Promise.all(
     labels.map(async label => {
       const descriptions = []
