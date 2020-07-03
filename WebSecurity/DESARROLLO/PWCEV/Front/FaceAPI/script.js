@@ -31,8 +31,13 @@ video.addEventListener('play', async () => {
     const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceDescriptors()
     const resizedDetections = faceapi.resizeResults(detections, displaySize)
     const results = resizedDetections.map(d => faceMatcher.findBestMatch(d.descriptor))
-    console.log(results.toString())
-  }, 100)
+    console.log(results.toString());
+
+    var alumno = results.toString().includes("CesarManrique");
+    if(alumno == true){
+      console.log("bienvenido Cesar");
+    }
+  }, 500)
 })
 
 function loadLabeledImages() {

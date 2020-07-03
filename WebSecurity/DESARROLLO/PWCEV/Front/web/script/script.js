@@ -1,15 +1,18 @@
+
+
 const video = document.getElementById('video')
 
 Promise.all([
-  faceapi.nets.tinyFaceDetector.loadFromUri('/models'),
-  faceapi.nets.faceLandmark68Net.loadFromUri('/models'),
-  faceapi.nets.faceRecognitionNet.loadFromUri('/models'),
-  faceapi.nets.faceExpressionNet.loadFromUri('/models'),
-  faceapi.nets.ssdMobilenetv1.loadFromUri('/models')
-]).then(startVideo)
+  faceapi.nets.tinyFaceDetector.loadFromUri('../web/dist/js/models'),
+  faceapi.nets.faceLandmark68Net.loadFromUri('../web/dist/js/models'),
+  faceapi.nets.faceRecognitionNet.loadFromUri('../web/dist/js/models'),
+  faceapi.nets.faceExpressionNet.loadFromUri('../web/dist/js/models'),
+  faceapi.nets.ssdMobilenetv1.loadFromUri('../web/dist/js/models')
 
-function startVideo() {
-  
+]).then(iniciarVideo)
+
+function iniciarVideo() {
+  console.log('Inicio')
   navigator.getUserMedia(
     { video: {} },
     stream => video.srcObject = stream,
@@ -25,29 +28,28 @@ video.addEventListener('play', async () => {
   document.body.append(canvas)
   const displaySize = { width: video.width, height: video.height }
   faceapi.matchDimensions(canvas, displaySize)
+
   setInterval(async () => {
     const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceDescriptors()
     const resizedDetections = faceapi.resizeResults(detections, displaySize)
-    console.log('run 2');
-    console.log(resizedDetections)
     const results = resizedDetections.map(d => faceMatcher.findBestMatch(d.descriptor))
-    console.log(results.toString())
-    //console.log(resizedDetections)
-    //canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
-    //faceapi.draw.drawDetections(canvas, resizedDetections)
-    //faceapi.draw.drawFaceLandmarks(canvas, resizedDetections)
-    //faceapi.draw.drawFaceExpressions(canvas, resizedDetections)
-    
-  }, 100)
+    console.log(results.toString());
+    $("#alumnos").text(results.toString());
+    var alumno = results.toString().includes("CesarManrique");
+    if(alumno == true){
+
+      console.log("bienvenido Cesar");
+    }
+  }, 500)
 })
 
 function loadLabeledImages() {
-  const labels = ['Cesar Manrique']
+  const labels = ['CesarManrique','Black Widow', 'Captain America', 'Hawkeye','Jim Rhodes']
   return Promise.all(
     labels.map(async label => {
       const descriptions = []
       for (let i = 1; i <= 2; i++) {
-        const img = await faceapi.fetchImage(`labeled_images/alumnos/${label}/${i}.jpg`)
+        const img = await faceapi.fetchImage(`../web/dist/js/labeled_images/${label}/${i}.jpg`)
         const detections = await faceapi.detectSingleFace(img).withFaceLandmarks().withFaceDescriptor()
         descriptions.push(detections.descriptor)
       }
@@ -55,3 +57,5 @@ function loadLabeledImages() {
     })
   )
 }
+
+iniciarVideo();

@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>WebSecurity | Log in</title>
   <!-- Tell the browser to be responsive to screen width -->
@@ -50,18 +51,37 @@
             </div>
             <!-- /.col -->
             <div class="col-sm-12">
-              <button href="test.html" type="submit" class="btn btn-primary btn-block btn-flat">Ingresar</button>
+              <button id="demo" href="test.html" type="submit" class="btn btn-primary btn-block btn-flat">Ingresar</button>
+       
             </div>
-
+           
             <!-- /.col -->
           </div>
 
         </form>
-        <button id="btn-video" class="btn btn-primary btn-block btn-flat">Habilitar webCam</button>
+        <button href="#" class="btn btn-primary btn-block btn-flat" data-toggle="modal" data-target="#modal-default">DemoFaceDetecion</button>
         <!-- /.social-auth-links -->
       </div>
     </div><!-- /.login-box-body -->
-    <video id="video" width="720" height="560" autoplay muted></video>
+
+    <div class="modal fade" id="modal-default">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="text-center">
+            <h3 class="modal-title">Demo Reconocimiento facial | Login Alumno</h3>
+            <label id="alumnos"></label>
+            <hr>
+          </div>
+
+          <div class="box-body with-border">
+            <video id="video" height="400" width="450"  autoplay muted></video>
+          </div>
+
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
   </div>
 
 
@@ -101,13 +121,10 @@
         increaseArea: '20%' /* optional */
       });
     });
-    $(document).on('click', '#btn-video', function (event) {
-      document.getElementById("loginBox").style.display = "none";
-      console.log('video habilitado');
-    });
+
   </script>
-  <script defer src="../../Api Reconocimiento Facial/face-api.min.js"></script>
-  <script defer src="../../Api Reconocimiento Facial/script.js"></script>
+  <script defer src="script/face-api.min.js"></script>
+  <script defer src="script/script.js"></script>
 </body>
 
 </html>
