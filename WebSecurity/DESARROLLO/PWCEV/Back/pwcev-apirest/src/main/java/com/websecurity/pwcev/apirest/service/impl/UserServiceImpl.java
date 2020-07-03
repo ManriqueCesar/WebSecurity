@@ -26,12 +26,9 @@ public class UserServiceImpl implements IUsuarioService{
 	}
 	@Override
 	public Optional<Usuario> buscarPorUsurnamePassword(String username, String password) {
-		
-		
+			
 		
 		Optional<Usuario> us = usuarioRepositorio.findByUsernameAndPassword(username,password);
-	
-		
 	
 	
 	return us;
