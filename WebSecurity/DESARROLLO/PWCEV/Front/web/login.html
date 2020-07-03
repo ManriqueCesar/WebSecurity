@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="dist/css/login.css">
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css'>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js'></script>
+    <title>WebSecurity | Log in</title>
+</head>
+<body>
+    <div class="container px-4 py-5 mx-auto">
+
+        <div class="card card0">
+            <div class="d-flex flex-lg-row flex-column-reverse">
+
+                <div class="card card1">
+                    <div class="row justify-content-center my-auto">
+                        <div class="col-md-8 col-10 my-5">
+                            <h2 class="mb-5 text-center heading">Web Security</h2>
+                            <h6 class="msg-info">INICIO DE SESIÓN</h6>
+                            <div class="form-group"> 
+                                <label class="form-control-label text-muted">Correo institucional</label> 
+                                    <input type="text" id="email" name="email" placeholder="ejemplo@unmsm.edu.pe" class="form-control"> </div>
+                                <div class="form-group"> <label class="form-control-label text-muted">Contraseña</label> 
+                                    <input type="password" id="psw" name="psw" class="form-control"> </div>
+                                <div class="row justify-content-center my-3 px-3"> 
+                                    <button class="btn-block btn-color">Ingresar</button> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                <div class="card card2">
+                    <div class="my-auto mx-md-5 px-md-5 right">
+                        <h3 class="text-white">CAMERA</h3> 
+                        <video id="video" width="350" height="500" autoplay muted></video>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>  
+
+    <script>
+            $(function () {
+              $('input').iCheck({
+                checkboxClass: 'icheckbox_square-blue',
+                radioClass: 'iradio_square-blue',
+                increaseArea: '20%' /* optional */
+              });
+            });
+            $(document).on('click', '#btn-video', function (event) {
+              document.getElementById("loginBox").style.display = "none";
+              console.log('video habilitado');
+            });
+          </script>
+    <script defer src="../../Api Reconocimiento Facial/face-api.min.js"></script>
+    <script defer src="../../Api Reconocimiento Facial/script.js"></script>
+</body>
+</html>
