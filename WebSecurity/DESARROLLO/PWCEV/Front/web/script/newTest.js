@@ -111,15 +111,19 @@ function duplicarAlternativas(unique) {
 }
 
 function duplicar(uniqueId) {
+  // Clone
   var copy = $("#original").clone(true);
-  var formId = 'NewForm' + uniqueId;
-  copy.attr('id', formId);
-  $('#campaign').append(copy);
 
-  $('#' + formId).find('input,select').each(function (index) {
+   // Set form id
+  copy.attr('id', 'NewForm' + uniqueId);
+
+  // Set inputs'id
+  copy.find('input, select').each(function (index) {
     $(this).attr('id', $(this).attr('id') + uniqueId + '-' + index);
   });
 
+  // Insert new form
+  $('#campaign').append(copy);
 }
 
 
@@ -140,7 +144,6 @@ $(document).ready(function () {
     duplicar(uniqueId);
 
     uniqueId++;
-    console.log(uniqueId);
     //unique++;
 
     contador++;
