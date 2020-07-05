@@ -12,4 +12,6 @@ public interface IDetalleCursoService {
 	List<DetalleCurso> listar();
 	void eliminar(Integer id);
 	
+	List<DetalleCurso> listarCursosPorIdUsuario(Integer idUsuario);
+	
 }
