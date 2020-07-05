@@ -110,16 +110,14 @@ function duplicarAlternativas(unique) {
   contador++;
 }
 
-function duplicar(uniqueId,unique) {
-
+function duplicar(uniqueId) {
   var copy = $("#original").clone(true);
   var formId = 'NewForm' + uniqueId;
   copy.attr('id', formId);
   $('#campaign').append(copy);
 
-  $('#' + formId).find('input,select').each(function () {
-    $(this).attr('id', $(this).attr('id') + uniqueId);
-
+  $('#' + formId).find('input,select').each(function (index) {
+    $(this).attr('id', $(this).attr('id') + uniqueId + '-' + index);
   });
 
 }
@@ -142,6 +140,7 @@ $(document).ready(function () {
     duplicar(uniqueId);
 
     uniqueId++;
+    console.log(uniqueId);
     //unique++;
 
     contador++;
