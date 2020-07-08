@@ -11,7 +11,9 @@ public interface IUsuarioService {
 	
 	Optional<Usuario> buscarPorUsurnamePassword(String username, String password);
 	Optional<Usuario> buscarPorId(int id);
+	Optional<Usuario> buscarPorEmail(String email);
 	
 	boolean existeUsuarioByUserPass(String username,String password);
-	
+	boolean existeUsuarioByEmail(String email);
+	boolean existeUsuarioById(Integer id);
 }
