@@ -119,9 +119,19 @@ function duplicar(uniqueId) {
 
   // Set inputs'id
   copy.find('input, select').each(function (index) {
-    $(this).attr('id', $(this).attr('id') + uniqueId + '-' + index);
+
+    $(this).attr('id', $(this).attr('id') + uniqueId + '-' + index); 
+    $(this).attr('name', $(this).attr('name') + uniqueId); 
+    $(this).attr('value', $(this).attr('value') + uniqueId + '-' + index);
   });
 
+  copy.find('label, select').each(function (index) {
+    $(this).attr('for', $(this).attr('for') + uniqueId + '-' + index); 
+
+  });
+
+
+ 
   // Insert new form
   $('#campaign').append(copy);
 }
