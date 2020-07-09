@@ -30,11 +30,11 @@ public class Curso {
 	@Column(name = "alumnos_email", nullable = false, length = 500)
 	private String alumnosEmail;
 
-	public Integer getIdExamen() {
+	public Integer getIdCurso() {
 		return idCurso;
 	}
 
-	public void setIdExamen(Integer idCurso) {
+	public void setIdCurso(Integer idCurso) {
 		this.idCurso = idCurso;
 	}
 
