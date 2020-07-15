@@ -125,12 +125,13 @@ function duplicar(uniqueId) {
     $(this).attr('value', $(this).attr('value') + uniqueId + '-' + index);
   });
 
-  //Set labels'for 
   copy.find('label, select').each(function (index) {
     $(this).attr('for', $(this).attr('for') + uniqueId + '-' + index); 
 
   });
 
+
+ 
   // Insert new form
   $('#campaign').append(copy);
 }
