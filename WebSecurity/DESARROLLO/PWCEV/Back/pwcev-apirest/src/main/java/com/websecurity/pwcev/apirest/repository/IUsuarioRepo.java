@@ -13,7 +13,8 @@ public interface IUsuarioRepo extends JpaRepository<Usuario, Integer>{
 	
 	Usuario findOneByEmail(String email);
 	Optional<Usuario> findByUsernameAndPassword(String username,String password);
+	Optional<Usuario> findByEmail(String email);
 	
 	boolean existsByUsernameAndPassword(String username, String password);
-
+	boolean existsByEmail(String email);
 }

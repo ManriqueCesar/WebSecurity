@@ -43,7 +43,21 @@ public class UserServiceImpl implements IUsuarioService{
 		
 		return usuarioRepositorio.findById(id) ;
 	}
+	@Override
+	public boolean existeUsuarioById(Integer id) {
 	
-
+		return usuarioRepositorio.existsById(id) ;
+	}
+	@Override
+	public boolean existeUsuarioByEmail(String email) {
+		boolean respuesta = usuarioRepositorio.existsByEmail(email);
+		return respuesta;
+	}
+	
+	@Override
+	public Optional<Usuario> buscarPorEmail(String email) {
+		Optional<Usuario> us = usuarioRepositorio.findByEmail(email);
+		return us;
+	}
 
 }

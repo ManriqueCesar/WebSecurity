@@ -1,13 +1,11 @@
-
-
 const video = document.getElementById('video')
 
 Promise.all([
-  faceapi.nets.tinyFaceDetector.loadFromUri('../web/dist/js/models'),
-  faceapi.nets.faceLandmark68Net.loadFromUri('../web/dist/js/models'),
-  faceapi.nets.faceRecognitionNet.loadFromUri('../web/dist/js/models'),
-  faceapi.nets.faceExpressionNet.loadFromUri('../web/dist/js/models'),
-  faceapi.nets.ssdMobilenetv1.loadFromUri('../web/dist/js/models')
+  faceapi.nets.tinyFaceDetector.loadFromUri('models'),
+  faceapi.nets.faceLandmark68Net.loadFromUri('models'),
+  faceapi.nets.faceRecognitionNet.loadFromUri('models'),
+  faceapi.nets.faceExpressionNet.loadFromUri('models'),
+  faceapi.nets.ssdMobilenetv1.loadFromUri('models')
 
 ]).then(iniciarVideo)
 
@@ -35,26 +33,20 @@ video.addEventListener('play', async () => {
     const results = resizedDetections.map(d => faceMatcher.findBestMatch(d.descriptor))
     console.log(results.toString());
 
-    $("#alumnos").text(results.toString());
-    var alumno = results.toString().includes("Cesar Manrique");
+    var alumno = results.toString().includes("CesarManrique");
     if(alumno == true){
-
-      console.log("bienvenido Cesar Manrique");
-      setTimeout(function() {
-        document.location.href ="newTest.html";
-        // rest of code here
- }, 5000);
+      console.log("bienvenido Cesar");
     }
   }, 500)
 })
 
 function loadLabeledImages() {
-  const labels = ['Cesar Manrique','Black Widow', 'Captain America','Fernando Fuentes']
+  const labels = ['CesarManrique','Black Widow', 'Captain America', 'Hawkeye','Jim Rhodes']
   return Promise.all(
     labels.map(async label => {
       const descriptions = []
       for (let i = 1; i <= 2; i++) {
-        const img = await faceapi.fetchImage(`../web/dist/js/labeled_images/${label}/${i}.jpg`)
+        const img = await faceapi.fetchImage(`labeled_images/${label}/${i}.jpg`)
         const detections = await faceapi.detectSingleFace(img).withFaceLandmarks().withFaceDescriptor()
         descriptions.push(detections.descriptor)
       }

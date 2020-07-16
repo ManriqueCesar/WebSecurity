@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>WebSecurity | Log in</title>
   <!-- Tell the browser to be responsive to screen width -->
@@ -23,7 +24,7 @@
 </head>
 
 <body class="hold-transition login-page">
-  <div class="container">
+  <div id="frm-login" class="container">
     <div id="loginBox" class="login-box col-sm-6">
 
       <div class="login-logo">
@@ -35,14 +36,14 @@
 
         <form action="newTest.html" method="get">
           <div class="form-group has-feedback">
-            <input type="email" class="form-control" placeholder="Email">
+            <input id="txt-email" type="email" class="form-control" placeholder="Email">
             <div class="input-group-addon">
 
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
           </div>
           </div>
           <div class="form-group has-feedback">
-            <input type="password" class="form-control" placeholder="Password">
+            <input id="txt-password" type="password" class="form-control" placeholder="Password">
           </div>
           <div class="row">
             <div class="col-xs-8">
@@ -50,18 +51,37 @@
             </div>
             <!-- /.col -->
             <div class="col-sm-12">
-              <button href="test.html" type="submit" class="btn btn-primary btn-block btn-flat">Ingresar</button>
+              <button id="btn-ingresar" href="test.html" type="submit" class="btn btn-primary btn-block btn-flat">Ingresar</button>
+       
             </div>
-
+           
             <!-- /.col -->
           </div>
 
         </form>
-        <button id="btn-video" class="btn btn-primary btn-block btn-flat">Habilitar webCam</button>
+        <button href="#" class="btn btn-primary btn-block btn-flat" data-toggle="modal" data-target="#modal-default">DemoFaceDetecion</button>
         <!-- /.social-auth-links -->
       </div>
     </div><!-- /.login-box-body -->
-    <video id="video" width="720" height="560" autoplay muted></video>
+
+    <div class="modal fade" id="modal-default">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="text-center">
+            <h3 class="modal-title">Demo Reconocimiento facial | Login Alumno</h3>
+            <label id="alumnos"></label>
+            <hr>
+          </div>
+
+          <div class="box-body with-border">
+            <video id="video" height="400" width="450"  autoplay muted></video>
+          </div>
+
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
   </div>
 
 
@@ -101,13 +121,83 @@
         increaseArea: '20%' /* optional */
       });
     });
-    $(document).on('click', '#btn-video', function (event) {
-      document.getElementById("loginBox").style.display = "none";
-      console.log('video habilitado');
-    });
+
   </script>
-  <script defer src="../../Api Reconocimiento Facial/face-api.min.js"></script>
-  <script defer src="../../Api Reconocimiento Facial/script.js"></script>
+  <script defer src="script/face-api.min.js"></script>
+  <script defer src="script/script.js"></script>
+  <script defer src="script/cookies.js"></script>
+
+  <script>
+    $(function () {
+ 
+  // iNICIO FUNCION BOTON INGRESAR
+  
+  $(document).ready(function() {
+    var ruta = 'https://api-pwcev.herokuapp.com';
+
+    $('#frm-login').on('submit', function(e){
+      e.preventDefault();
+     // $('#btn-ingresar').attr('disabled',true);
+     var $btn = $('#btn-ingresar');
+   
+      $btn.button('loading');
+     // $('#btn-ingresar').append('<i class="  fa fa-circle-o-notch fa-spin"></i> Guardando...');
+      var request={};
+      var auditoria={};
+      auditoria.fecha='';
+      auditoria.origen='WEB';
+      auditoria.usuario='admin';
+  
+      var email=$('#txt-email').val();
+      var password=$('#txt-password').val();
+  
+      request.auditoria=auditoria;
+      request.usuario=email;
+      request.clave=password;
+      /*request.username=$('#txt-email').val();
+      request.password=$('#txt-password').val();*/
+     /* $('#formulario').append('<div class="overlay"><i class="fa fa-refresh fa-spin fa-5x"></i></div>');*/
+      /*$.ajax({
+        url:ruta+'/',
+        type:'POST',
+        dataType:'json',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        data: JSON.stringify(request)
+      }).done(function(data) {*/
+        $btn.button('reset');
+        /*$('#btn-ingresar').removeAttr('disabled');*/
+        //setCookie('usuario', data.name);
+        //setCookie('nombre', data.name);
+        //setCookie('cargo', data.roles[0]);
+        //setCookie('X-Auth-Token', data.token);
+        //sessionStorage.setItem('usuario',data.usuario[0].usuario);
+        //sessionStorage.setItem('nombre',data.usuario[0].nombre +' '+data.usuario[0].apellidoPaterno);
+        //sessionStorage.setItem('cargo',data.usuario[0].cargo);
+        document.location.href ="newCourse.html";
+     /* }).fail(function(jqXHR, textStatus, errorThrown ) {
+        */$btn.button('reset');
+      /*  $('#btn-ingresar').removeAttr('disabled');
+        $(".overlay").remove();
+        $.notify("Usuario o contraseña incorrectos","warn");
+
+        alert(jqXHR.responseJSON.resultado.mensajeRespuesta);  */
+      })
+    
+  }
+  
+  )}
+    )
+  
+    //Fin de funcion
+  
+  </script>
+
+
+
+
 </body>
 
 </html>
