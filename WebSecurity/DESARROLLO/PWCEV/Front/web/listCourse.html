@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>WebSecurity | Lista Exámenes</title>
+  <title>WebSecurity | Lista de Cursos</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet"
@@ -37,7 +37,7 @@
           <a href="list.html" class="nav-link">Ver Resultados</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="listCourse.html" class="nav-link">Ver Cursos</a>
+          <a href="listCourse" class="nav-link">Ver Cursos</a>
         </li>
       </ul>
 
@@ -79,12 +79,12 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1>Ver Resultados</h1>
+              <h1>Ver Cursos</h1>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Ver Resultados</li>
+                <li class="breadcrumb-item active">Ver Cursos</li>
               </ol>
             </div>
           </div>
@@ -105,33 +105,39 @@
                     <h3 class="card-title">DataTable</h3>
                   </div>
                   <!-- /.card-header -->
+                  <div class="card-body">
                   <div class="box-body table-responsive">
-                    <table id="tbl-resultado" class="table table-bordered table-striped" cellspacing="0" width="100%">
-                      <thead>
+                      <table id="tbl-resultado" class="table table-bordered table-striped">
+                        <thead>
                         <tr>
-                          <th>TITULO</th>
-                          <th>CURSO</th>
-                          <th>ALUMNO</th>
-                          <th>NOTA</th>
-                          <th>TIME OUT</th>
-                          <th>ACCION</th>
+                          <th>alumnoEmail</th>
+                          <th>Institución</th>
+                          <th>Curso</th>
+                          <th>Escuela</th>
+                          <th>idExamen</th>
+                          <th>periodo</th>
+                          <th>Accion</th>
                         </tr>
-                        <tr>
-                          <th>TITULO</th>
-                          <th>CURSO</th>
-                          <th>ALUMNO</th>
-                          <th>NOTA</th>
-                          <th>TIME OUT</th>
-                          <th>ACCION</th>
-                        </tr>
-                      </thead>
+                        </thead>
 
-                    </table>
+                        <tfoot>
+                        <tr>
+                          <th>alumnoEmail</th>
+                          <th>Institución</th>
+                          <th>Curso</th>
+                          <th>Escuela</th>
+                          <th>idExamen</th>
+                          <th>periodo</th>
+                          <th>Accion</th>
+                        </tr>
+                        </tfoot>
+                      </table>
 
 
 
 
                   </div>
+                </div>
                   <!-- /.card-body -->
                 </div>
                 <!-- /.card -->
@@ -176,22 +182,16 @@
   <!-- Select2 -->
 <script src="bower_components/select2/dist/js/select2.full.min.js"></script>
   <!-- page script -->
-  <script src="script/list.js"></script>
+  <script src="script/listCourse.js"></script>
   <script>
     $(function () {
-      $("#example1").DataTable({
+      $("#tbl-resultado").DataTable({
         "responsive": true,
         "autoWidth": false,
-      });
-      $('#example2').DataTable({
-        "paging": true,
-        "lengthChange": false,
-        "searching": false,
-        "ordering": true,
         "info": true,
-        "autoWidth": false,
-        "responsive": true,
+        "ordering": true
       });
+      
     });
   </script>
 </body>

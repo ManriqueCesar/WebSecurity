@@ -110,18 +110,30 @@ function duplicarAlternativas(unique) {
   contador++;
 }
 
-function duplicar(uniqueId,unique) {
-
+function duplicar(uniqueId) {
+  // Clone
   var copy = $("#original").clone(true);
-  var formId = 'NewForm' + uniqueId;
-  copy.attr('id', formId);
-  $('#campaign').append(copy);
 
-  $('#' + formId).find('input,select').each(function () {
-    $(this).attr('id', $(this).attr('id') + uniqueId);
+   // Set form id
+  copy.attr('id', 'NewForm' + uniqueId);
+
+  // Set inputs'id
+  copy.find('input, select').each(function (index) {
+
+    $(this).attr('id', $(this).attr('id') + uniqueId + '-' + index); 
+    $(this).attr('name', $(this).attr('name') + uniqueId); 
+    $(this).attr('value', $(this).attr('value') + uniqueId + '-' + index);
+  });
+
+  copy.find('label, select').each(function (index) {
+    $(this).attr('for', $(this).attr('for') + uniqueId + '-' + index); 
 
   });
 
+
+ 
+  // Insert new form
+  $('#campaign').append(copy);
 }
 
 

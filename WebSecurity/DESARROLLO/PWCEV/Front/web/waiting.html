@@ -298,6 +298,13 @@
       <!-- /.modal-dialog -->
     </div>
 
+    <form> 
+      <textarea > 
+   
+      </textarea> 
+  </form> 
+
+
     <footer class="main-footer">
       <div class="float-right d-none d-sm-block">
         <b>Version</b> 1.0.0-pre
@@ -313,6 +320,7 @@
     </aside>
     <!-- /.control-sidebar -->
   </div>
+
   <!-- ./wrapper -->
 
   <!-- jQuery -->
@@ -332,8 +340,14 @@
   </script>
   <!-- AdminLTE App -->
   <script src="bower_components/AdminLTE/dist/js/adminlte.min.js"></script>
-  <script src="script/newTest.js"></script>
-
+  <script src="script/waiting.js"></script>
+  
+  <script type="text/javascript"> 
+    window.addEventListener('beforeunload', function (e) { 
+        e.preventDefault(); 
+        e.returnValue = ''; 
+    }); 
+</script> 
 </body>
 
 </html>
