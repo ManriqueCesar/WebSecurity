@@ -39,12 +39,21 @@
         <li class="nav-item d-none d-sm-inline-block">
           <a href="listCourse" class="nav-link">Ver Cursos</a>
         </li>
+        
       </ul>
 
 
 
       <!-- Right navbar links -->
+      <ul class="navbar-nav ml-auto">
+        <!-- Messages Dropdown Menu -->
 
+        <!-- Notifications Dropdown Menu -->
+        <li class="nav-item d-none d-sm-inline-block">
+          <a href="index.html nav-link">Cerrar sesión</a>
+        </li>
+
+      </ul>
     </nav>
     <!-- /.navbar -->
 
@@ -182,7 +191,11 @@
   <!-- Select2 -->
 <script src="bower_components/select2/dist/js/select2.full.min.js"></script>
   <!-- page script -->
+  <!-- cookie plugin -->
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
   <script src="script/listCourse.js"></script>
+  
+
   <script>
     $(function () {
       $("#tbl-resultado").DataTable({
@@ -191,9 +204,14 @@
         "info": true,
         "ordering": true
       });
-      
+    
+    
     });
   </script>
+
+
+
+
 </body>
 
 </html>
