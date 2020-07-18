@@ -1,5 +1,23 @@
+
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ')
+            c = c.substring(1);
+        if (c.indexOf(name) == 0)
+            return c.substring(name.length, c.length);
+    }
+    return "";
+}
+
+
 $(document).ready(function () {
   ruta = 'https://api-pwcev.herokuapp.com';
+  var token = getCookie('X-Auth-Token');
+  console.log(token);  
 
   var x=0;
   $('#tbl-resultado').DataTable({
@@ -30,26 +48,34 @@ $(document).ready(function () {
      
 },
  
-
   ajax:{
         url: ruta+'/cursos',
-        //dataSrc: 'cursos',
-        //beforeSend: function (request) {
-       //   request.setRequestHeader("X-Auth-Token",token);
-        //},
+        async:false,
+        cache:true, 
+        dataSrc: '',
+       beforeSend: function (request) {
+       request.setRequestHeader("X-Auth-Token",token);
+        },
         error: function(jqXHR, textStatus, errorThrown){
           $('#tbl-resultado').DataTable().clear().draw();
         }
      },
   columns: [
-      { data: 'alumnoEmail' },
+      { data: 'alumnosEmail' },
       { data: 'centroEstudios' },
       { data: 'curso'},
       { data: 'eap'},
-      { data: 'idExamen'},
+      { data: 'idCurso'},
       { data: 'periodo'},
       { data: null,
-        }]
+        render: function (data, type, row) {
+          
+              return '<button title="MODIFICAR" class="fa fa-edit" id="btn-modificar"  type="button"data-toggle="modal" data-target="#modal-default"></button>'+
+                 
+                  '<button  id="btn-eliminar" title="ELIMINAR" class="fa fa-trash"  type="button"></button>';
+          
+        }
+      }]
 });
 
 
