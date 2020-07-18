@@ -48,34 +48,34 @@ $(document).ready(function () {
      
 },
  
-
   ajax:{
         url: ruta+'/cursos',
         async:false,
         cache:true, 
-        //dataSrc: 'cursos',
+        dataSrc: '',
        beforeSend: function (request) {
        request.setRequestHeader("X-Auth-Token",token);
-        },
-
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin':'https://localhost'
         },
         error: function(jqXHR, textStatus, errorThrown){
           $('#tbl-resultado').DataTable().clear().draw();
         }
      },
   columns: [
-      { data: 'alumnoEmail' },
+      { data: 'alumnosEmail' },
       { data: 'centroEstudios' },
       { data: 'curso'},
       { data: 'eap'},
-      { data: 'idExamen'},
+      { data: 'idCurso'},
       { data: 'periodo'},
       { data: null,
-        }]
+        render: function (data, type, row) {
+          
+              return '<button title="MODIFICAR" class="fa fa-edit" id="btn-modificar"  type="button"data-toggle="modal" data-target="#modal-default"></button>'+
+                 
+                  '<button  id="btn-eliminar" title="ELIMINAR" class="fa fa-trash"  type="button"></button>';
+          
+        }
+      }]
 });
 
 
