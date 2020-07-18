@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
   <meta charset="utf-8">
@@ -9,16 +9,21 @@
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="bower_components/AdminLTE/plugins/fontawesome-free/css/all.min.css">
-  <!-- DataTables -->
-  <link rel="stylesheet" href="bower_components/AdminLTE/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-  <link rel="stylesheet"
-    href="bower_components/AdminLTE/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="bower_components/AdminLTE/dist/css/adminlte.min.css">
   <!-- Select2 -->
   <link rel="stylesheet" href="bower_components/select2/dist/css/select2.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="bower_components/AdminLTE/plugins/fontawesome-free/css/all.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="bower_components/AdminLTE/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet"
+    href="bower_components/AdminLTE/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+
+
+
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -39,10 +44,8 @@
         <li class="nav-item d-none d-sm-inline-block">
           <a href="listCourse" class="nav-link">Ver Cursos</a>
         </li>
-        
+
       </ul>
-
-
 
       <!-- Right navbar links -->
       <ul class="navbar-nav ml-auto">
@@ -74,8 +77,6 @@
             <img src="dist/img/security.png" class="img-circle elevation-2" alt="User Image">
             <span class="brand-text font-weight-light" style="color:darkgrey">Cesar Manrique</span>
           </div>
-
-
         </div>
 
         <!-- /.sidebar -->
@@ -106,56 +107,44 @@
           <div class="row">
             <div class="col-12">
               <div class="card">
-
-
-
-                <div class="card">
-                  <div class="card-header">
-                    <h3 class="card-title">DataTable</h3>
-                  </div>
-                  <!-- /.card-header -->
-                  <div class="card-body">
-                  <div class="box-body table-responsive">
-                      <table id="tbl-resultado" class="table table-bordered table-striped">
-                        <thead>
-                        <tr>
-                          <th>alumnoEmail</th>
-                          <th>Institución</th>
-                          <th>Curso</th>
-                          <th>Escuela</th>
-                          <th>idExamen</th>
-                          <th>periodo</th>
-                          <th>Accion</th>
-                        </tr>
-                        </thead>
-
-                        <tfoot>
-                        <tr>
-                          <th>alumnoEmail</th>
-                          <th>Institución</th>
-                          <th>Curso</th>
-                          <th>Escuela</th>
-                          <th>idExamen</th>
-                          <th>periodo</th>
-                          <th>Accion</th>
-                        </tr>
-                        </tfoot>
-                      </table>
-
-
-
-
-                  </div>
+                <div class="card-header">
+                  <h3 class="card-title">Mis Cursos</h3>
                 </div>
-                  <!-- /.card-body -->
+                <!-- /.card-header -->
+                <div class="card-body table-responsive">
+                  <table id="tbl-resultado" class="table table-bordered table-striped">
+                    <thead>
+                      <tr>
+                        <th>alumnoEmail</th>
+                        <th>Institución</th>
+                        <th>Curso</th>
+                        <th>Escuela</th>
+                        <th>idCurso</th>
+                        <th>periodo</th>
+                        <th>Accion</th>
+                      </tr>
+                      <tr>
+                        <th>alumnoEmail</th>
+                        <th>Institución</th>
+                        <th>Curso</th>
+                        <th>Escuela</th>
+                        <th>idCurso</th>
+                        <th>periodo</th>
+                        <th>Accion</th>
+                      </tr>
+                    </thead>
+                  </table>
+
                 </div>
-                <!-- /.card -->
+                <!-- /.card-body -->
               </div>
-              <!-- /.col -->
+              <!-- /.card -->
+
             </div>
             <!-- /.row -->
           </div>
-          <!-- /.container-fluid -->
+        </div>
+        <!-- /.container-fluid -->
       </section>
       <!-- /.content -->
     </div>
@@ -189,12 +178,12 @@
   <!-- AdminLTE for demo purposes -->
   <script src="bower_components/AdminLTE/dist/js/demo.js"></script>
   <!-- Select2 -->
-<script src="bower_components/select2/dist/js/select2.full.min.js"></script>
+  <script src="bower_components/select2/dist/js/select2.full.min.js"></script>
   <!-- page script -->
   <!-- cookie plugin -->
   <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
   <script src="script/listCourse.js"></script>
-  
+
 
   <script>
     $(function () {
@@ -203,9 +192,10 @@
         "autoWidth": false,
         "info": true,
         "ordering": true
+
       });
-    
-    
+
+
     });
   </script>
 
