@@ -1,0 +1,136 @@
+[
+    {
+        "descripcion": "Ingeniería de Software",
+        "value": "SOFTWARE"
+    },
+
+    {
+        "descripcion": "Ingeniería de Sistemas e Informática",
+        "value": "SISTEMAS"
+    },
+
+    {
+        "descripcion": "Obstetricia",
+        "value": "OBS"
+    },
+
+    {
+        "descripcion": "Enfermería",
+        "value": "ENF"
+    },
+
+    {
+        "descripcion": "Tecnología Medica",
+        "value": "TECMED"
+    },
+
+    {
+        "descripcion": "Antropología",
+        "value": "ANTR"
+    },
+
+    {
+        "descripcion": "Genética y Biotecnología",
+        "value": "GENYBIO"
+    },
+
+    {
+        "descripcion": "Ingeniería Agroindustrial",
+        "value": "IAGR"
+    },
+
+    {
+        "descripcion": "Medicina Veterinaria",
+        "value": "MEDVET"
+    },
+
+    {
+        "descripcion": "Ingeniería Mecánica de Fluidos",
+        "value": "IMF"
+    },
+
+    {
+        "descripcion": "Arqueología",
+        "value": "ARQ"
+    },
+
+    {
+        "descripcion": "Ingeniería Ambiental",
+        "value": "IAMB"
+    },
+
+    {
+        "descripcion": "Ingeniería Química",
+        "value": "IQUIM"
+    },
+
+    {
+        "descripcion": "Administración",
+        "value": "ADM"
+    },
+
+    {
+        "descripcion": "Literatura",
+        "value": "LIT"
+    },
+
+    {
+        "descripcion": "Ingeniería Metalúrgica",
+        "value": "IMET"
+    },
+
+    {
+        "descripcion": "Ingeniería de Seguridad y Salud en el Trabajo",
+        "value": "ISST"
+    },
+
+    {
+        "descripcion": "Derecho",
+        "value": "DER"
+    },
+
+    {
+        "descripcion": "Educación",
+        "value": "EDU"
+    },
+
+    {
+        "descripcion": "Arte",
+        "value": "ART"
+    },
+
+    {
+        "descripcion": "Ingeniería Eléctrica",
+        "value": "IELEC"
+    },
+
+    {
+        "descripcion": "Nutrición",
+        "value": "NUT"
+    },
+
+    {
+        "descripcion": "Microbiología y Parasitología",
+        "value": "MICPAR"
+    },
+
+    {
+        "descripcion": "Ingeniería de Telecomunicaciones",
+        "value": "ITELEC"
+    },
+
+    {
+        "descripcion": "Ciencia Política",
+        "value": "CPOL"
+    },
+
+    {
+        "descripcion": "Lingüística",
+        "value": "LING"
+    },
+
+    {
+        "descripcion": "Economía",
+        "value": "ECON"
+    }       
+]

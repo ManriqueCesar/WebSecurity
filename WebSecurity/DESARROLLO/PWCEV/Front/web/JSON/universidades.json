@@ -1,0 +1,61 @@
+[
+    {
+        "descripcion": "Universidad Nacional Mayor de San Marcos",
+        "value": "UNMSM"
+    },
+    
+    {
+        "descripcion": "Universidad Nacional Federico Villarreal",
+        "value": "UNFV"
+    },
+
+    {
+        "descripcion": "Universidad Nacional de Educación Enrique Guzmán y Valle",
+        "value": "UNEEGV"
+    },
+
+    {
+        "descripcion": "Universidad Peruana Cayetano Heredia",
+        "value": "UPCH"
+    },
+
+    {
+        "descripcion": "Universidad Nacional de Ingeniería",
+        "value": "UNI"
+    },
+
+    {
+        "descripcion": "Universidad Nacional Agraria La Molina",
+        "value": "UNALM"
+    },
+
+    {
+        "descripcion": "Universidad Nacional de Piura",
+        "value": "UNP"
+    },
+
+    {
+        "descripcion": "Universidad Nacional del Callao",
+        "value": "UNAC"
+    },
+
+    {
+        "descripcion": "Universidad de Lima",
+        "value": "UL"
+    },
+
+    {
+        "descripcion": "Universidad ESAN",
+        "value": "UESAN"
+    },
+
+    {
+        "descripcion": "Universidad de Ciencias y Humanidades",
+        "value": "UCH"
+    },
+
+    {
+        "descripcion": "Pontificia Universidad Católica del Perú",
+        "value": "PUCP"
+    }
+]
