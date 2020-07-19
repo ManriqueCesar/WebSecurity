@@ -4,7 +4,6 @@
 function cargarFecha() {
   //Initialize Select2 Elements
   //Initialize Select2 Elements
-  console.log("asdasd");
   //Datemask dd/mm/yyyy
   $('#datemask').inputmask('dd/mm/yyyy', {
     'placeholder': 'dd/mm/yyyy'
@@ -138,6 +137,7 @@ function duplicar(uniqueId) {
 
 
 $(document).ready(function () {
+  var ruta = 'https://api-pwcev.herokuapp.com';
   $('.addRow').prop('disabled', true);
   cargarFecha();
   editarTitulo();
@@ -196,14 +196,34 @@ $(document).ready(function () {
   });
 
 
-  $('#btn-crear').click(function ()
-   {
-    var texto =  $("#exampleFormControlTextarea1").val();
-    console.log(texto);
-    
-  });
 
 
+  $(document).on('click', '#btn-crear', function (event) {
+    var request = {};
+
+    request.alumnosEmail = $('#txt-alumnos').val();
+		request.centroEstudios = $('#cbo-centro').val();
+    request.curso = $('#txt-curso').val();
+    request.eap = $('#cbo-eap').val();
+		request.periodo = $('#cbo-periodo').val();
+    request.idCurso = 100;
+
+		$.ajax({
+			url: ruta + '/crear',
+			type: 'POST',
+			dataType: 'json',
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json'//,
+			//	'X-Auth-Token': token
+			},
+			data: JSON.stringify(request)
+		}).done(function (data) {
+			$('#exampleModalCenter').modal('toggle');
+		}).fail(function (jqXHR, textStatus, errorThrown) {
+      console.log("error")
+		})
+});
 
 
 
