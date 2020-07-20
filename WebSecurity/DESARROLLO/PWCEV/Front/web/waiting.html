@@ -27,6 +27,7 @@
 </head>
 
 <body class="hold-transition sidebar-mini">
+  
   <div class="wrapper">
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -49,7 +50,7 @@
 
         <!-- Notifications Dropdown Menu -->
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="index.html nav-link">Cerrar sesión</a>
+          <a href="index.html">Cerrar sesión</a>
         </li>
 
       </ul>
@@ -73,7 +74,7 @@
             <img src="dist/img/security.png" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
-            <a href="#" class="d-block">Cesar Manrique</a>
+            <a href="#" class="d-block">Fernando Fuentes</a>
           </div>
         </div>
 
@@ -165,6 +166,9 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
+                  <h1>
+                    <span id="timeInSeconds">0</span> <span>seconds</span>
+                  </h1>
                   <div class="tab-content">
                     <div class="active tab-pane" id="activity">
                       <!-- Post -->
@@ -349,13 +353,12 @@
   <!-- AdminLTE App -->
   <script src="bower_components/AdminLTE/dist/js/adminlte.min.js"></script>
   <script src="script/waiting.js"></script>
+  <script src="plugins/TimeMejs/timeme.min.js"></script>
+  <script type="text/javascript">
+ 
+</script>
   
-  <script type="text/javascript"> 
-    window.addEventListener('beforeunload', function (e) { 
-        e.preventDefault(); 
-        e.returnValue = ''; 
-    }); 
-</script> 
+
 </body>
 
 </html>
