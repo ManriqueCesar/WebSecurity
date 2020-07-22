@@ -42,6 +42,27 @@ function Cargar_curso(cboid, idUsuario) {
    });
  }
 
+ function cbo_escuela(cboid, opcionxdefecto) {
+  $.getJSON('json/eaps.json', function (data) {
+    for (var x = 0; x < data.length; x++) {
+      $("#" + cboid).append('<option value="' + data[x].value + '">' + data[x].descripcion + '</option>');
+    }
+    if (opcionxdefecto != null) $('#' + cboid).val(opcionxdefecto).trigger('change');
+
+  })
+ }
+
+ function cbo_universidad(cboid, opcionxdefecto) {
+  $.getJSON('json/universidades.json', function (data) {
+    for (var x = 0; x < data.length; x++) {
+      $("#" + cboid).append('<option value="' + data[x].value + '">' + data[x].descripcion + '</option>');
+    }
+    if (opcionxdefecto != null) $('#' + cboid).val(opcionxdefecto).trigger('change');
+
+  })
+ }
+
+
 
 function cargarFecha() {
   //Initialize Select2 Elements
@@ -181,6 +202,8 @@ function duplicar(uniqueId) {
 $(document).ready(function () {
   var ruta = 'https://api-pwcev.herokuapp.com';
   $('.addRow').prop('disabled', true);
+  cbo_escuela('cbo-eap','SOFTWARE');
+  cbo_universidad('cbo-centro','unmsm');
   cargarFecha();
   editarTitulo();
   editarDescripcion();
@@ -248,12 +271,7 @@ $(document).ready(function () {
 
   $(document).on('click', '#btn-crear', function (event) {
     var request = {};
-
-    console.log($('#txt-alumnos').val());
-    console.log($('#cbo-centro').val());
-    console.log($('#txt-curso').val());
-    console.log($('#cbo-eap').val());
-    console.log($('#cbo-periodo').val());
+  
 
     request.alumnosEmail = $('#txt-alumnos').val();
 		request.centroEstudios = $('#cbo-centro').val().toUpperCase();
