@@ -1,4 +1,46 @@
+function Cargar_curso_id(cboid, idUsuario) {
+ // var token = getCookie('X-Auth-Token');
+  $('#' + cboid).empty();
+  $.ajax({
+    async: false,
+    cache: true,
+    url: ipgeneral + '/detallecursos/usuario/1',
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+  //    'X-Auth-Token': token
+    }
+  }).done(function (data) {
+    $('#' + cboid).append('<option></option>');
+    for (var x = 0; x < data.clase.length; x++) {
+        $('#' + cboid).append('<option value="' + data.curso[x].id + '">' + data.curso[x].curso + '</option>');
+    }
+    if (idUsuario != null) $('#' + cboid).val(idUsuario);
+  });
+}
 
+function Cargar_curso(cboid, idUsuario) {
+  // var token = getCookie('X-Auth-Token');
+   $('#' + cboid).empty();
+   $.ajax({
+     async: false,
+     cache: true,
+     url: ipgeneral + '/cursos',
+     method: 'GET',
+     headers: {
+       'Accept': 'application/json',
+       'Content-Type': 'application/json',
+   //    'X-Auth-Token': token
+     }
+   }).done(function (data) {
+     $('#' + cboid).append('<option></option>');
+     for (var x = 0; x < data.clase.length; x++) {
+         $('#' + cboid).append('<option value="' + data.curso[x].id + '">' + data.curso[x].curso + '</option>');
+     }
+     if (idUsuario != null) $('#' + cboid).val(idUsuario);
+   });
+ }
 
 
 function cargarFecha() {
@@ -142,6 +184,7 @@ $(document).ready(function () {
   cargarFecha();
   editarTitulo();
   editarDescripcion();
+ // Cargar_curso('cbocurso',1);
   var uniqueId = 1;
   var unique = 7;
   var contador = 0;
@@ -195,21 +238,32 @@ $(document).ready(function () {
     $('.addRow').prop('disabled', false);
   });
 
+  $('#btn-close').click(function () {
+    deleteCookie();
+    
+  });
+
 
 
 
   $(document).on('click', '#btn-crear', function (event) {
     var request = {};
 
+    console.log($('#txt-alumnos').val());
+    console.log($('#cbo-centro').val());
+    console.log($('#txt-curso').val());
+    console.log($('#cbo-eap').val());
+    console.log($('#cbo-periodo').val());
+
     request.alumnosEmail = $('#txt-alumnos').val();
-		request.centroEstudios = $('#cbo-centro').val();
+		request.centroEstudios = $('#cbo-centro').val().toUpperCase();
     request.curso = $('#txt-curso').val();
-    request.eap = $('#cbo-eap').val();
+    request.eap = $('#cbo-eap').text();
 		request.periodo = $('#cbo-periodo').val();
-    request.idCurso = 100;
+    request.idCurso = null;
 
 		$.ajax({
-			url: ruta + '/crear',
+			url: ruta + '/cursos',
 			type: 'POST',
 			dataType: 'json',
 			headers: {
