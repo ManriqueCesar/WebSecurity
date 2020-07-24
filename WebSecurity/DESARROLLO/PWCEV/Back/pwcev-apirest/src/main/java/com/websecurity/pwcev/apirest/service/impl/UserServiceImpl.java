@@ -1,5 +1,6 @@
 package com.websecurity.pwcev.apirest.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -59,5 +60,19 @@ public class UserServiceImpl implements IUsuarioService{
 		Optional<Usuario> us = usuarioRepositorio.findByEmail(email);
 		return us;
 	}
+	
+	@Override
+	public boolean validarRol(Usuario usuario, int idRol) {
+		boolean resp = false;
+		int Id = usuario.getIdUsuario();
+		Optional<Usuario> us = buscarPorId(Id);
+		List<Rol> roles = new ArrayList<>();
+		roles = us.get().getRoles();
+		for (int i = 0; i < roles.size(); i++) {
+			if (roles.get(i).getIdRol() == idRol)
+				resp = true;
+		}
 
+		return resp;
+	}
 }
