@@ -1,5 +1,6 @@
 package com.websecurity.pwcev.apirest.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,10 +58,23 @@ public class DetalleCursoServiceImpl implements IDetalleCursoService {
 	}
 
 	@Override
-	public List<DetalleCurso> listarCursosPorIdUsuario(Integer idUsuario) {
+	public List<Curso> listarCursosPorIdUsuario(Integer idUsuario) {
 		List<DetalleCurso> detalleCursos = repo.findByUsuarioIdUsuario(idUsuario);
-
-		return detalleCursos;
+		List<Curso> cursos = new ArrayList<Curso>();
+		if(detalleCursos.size()>0) {
+			for(int i=0	;i<detalleCursos.size();i++) {
+				Curso curso = new Curso();
+				curso.setIdCurso(detalleCursos.get(i).getCurso().getIdCurso());
+				curso.setCentroEstudios(detalleCursos.get(i).getCurso().getCentroEstudios());
+				curso.setCurso(detalleCursos.get(i).getCurso().getCurso());
+				curso.setEAP(detalleCursos.get(i).getCurso().getEAP());
+				curso.setPeriodo(detalleCursos.get(i).getCurso().getPeriodo());
+				cursos.add(curso);
+			}
+		}
+		
+		return cursos;
+		
 	}
 
 }

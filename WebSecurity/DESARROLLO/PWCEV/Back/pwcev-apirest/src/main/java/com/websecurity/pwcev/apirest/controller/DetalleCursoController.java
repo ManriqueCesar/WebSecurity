@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.websecurity.pwcev.apirest.model.Curso;
 import com.websecurity.pwcev.apirest.model.DetalleCurso;
 import com.websecurity.pwcev.apirest.service.IDetalleCursoService;
 import com.websecurity.pwcev.apirest.service.IUsuarioService;
@@ -31,7 +32,7 @@ public class DetalleCursoController {
 	@GetMapping("/usuario/{idusuario}")
 	public ResponseEntity<?> listarPorUserAndPass(@PathVariable("idusuario") Integer idUsuario) {
 		
-		List<DetalleCurso> cursos = null;
+		List<Curso> cursos = null;
 		Map<String, Object> response = new HashMap<>();
 		
 		try {
@@ -46,7 +47,7 @@ public class DetalleCursoController {
 			response.put("mensaje", "El usuario no existe con esas credenciales");
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
 		}
-		return new ResponseEntity<List<DetalleCurso>>(cursos,HttpStatus.OK);
+		return new ResponseEntity<List<Curso>>(cursos,HttpStatus.OK);
 				
 	}
 	
