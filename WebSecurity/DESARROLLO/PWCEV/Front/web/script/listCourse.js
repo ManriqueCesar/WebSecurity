@@ -51,7 +51,7 @@ $(document).ready(function () {
 },
  
   ajax:{
-        url: ruta+'/cursos',
+        url: ruta+'/detallecursos/usuario/1',
         async:false,
         cache:true, 
         dataSrc: '',

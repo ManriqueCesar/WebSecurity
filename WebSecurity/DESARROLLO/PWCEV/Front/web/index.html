@@ -30,13 +30,13 @@
       <div class="login-logo">
         <img src="dist/img/security.png" class="user-image" alt="WebSecurity" style="width:300px; height:180px;">
       </div>
-      <!-- /.login-logo -->
+      <!-- /.login -->
       <div class="login-box-body">
         <p class="login-box-msg">Logueate para iniciar session</p>
 
-        <form>
+        <form method="POST">
           <div class="form-group has-feedback">
-            <input id="txt-email" type="email" class="form-control" placeholder="Email" required>
+            <input id="txt-email" type="email" class="form-control" placeholder="Email" autofocus required >
             <div class="input-group-addon">
               <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
             </div>
@@ -54,11 +54,8 @@
             </div>
           </div>
         </form>
-
-        <button class="btn btn-primary btn-block btn-flat" data-toggle="modal"
-          data-target="#modal-default">DemoFaceDetecion</button>
-        <!-- /.social-auth-links -->
       </div>
+      <!-- fin login -->
     </div>
     <!-- /.login-box-body -->
 
@@ -115,7 +112,7 @@
   <script defer src="script/script.js"></script>
 <script>
 Cookies.set('X-Auth-Token','true',{expires:2});
-
+Cookies.set('usuario','Abraham Manrique',{expires:2});
 </script>
 
 
