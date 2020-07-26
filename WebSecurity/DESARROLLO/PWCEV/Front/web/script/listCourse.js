@@ -14,6 +14,8 @@ function getCookie(cname) {
 }
 
 
+
+
 $(document).ready(function () {
   ruta = 'https://api-pwcev.herokuapp.com';
   var token = getCookie('X-Auth-Token');
@@ -61,17 +63,14 @@ $(document).ready(function () {
         }
      },
   columns: [
-      { data: 'alumnosEmail' },
-      { data: 'centroEstudios' },
-      { data: 'curso'},
-      { data: 'eap'},
-      { data: 'idCurso'},
-      { data: 'periodo'},
-      { data: null,
+    { data: 'periodo'},
+    { data: 'centroEstudios' },
+    { data: 'eap'},
+    { data: 'curso'},
+    { data: 'alumnosEmail' },
+    { data: null,
         render: function (data, type, row) {
-          
               return '<button title="MODIFICAR" class="fa fa-edit" id="btn-modificar"  type="button"data-toggle="modal" data-target="#modal-default"></button>'+
-                 
                   '<button  id="btn-eliminar" title="ELIMINAR" class="fa fa-trash"  type="button"></button>';
           
         }
@@ -80,4 +79,9 @@ $(document).ready(function () {
 
 
 
-});
+}); 
+
+$('#btn-close').click(function () {
+    deleteCookie();
+    
+  });

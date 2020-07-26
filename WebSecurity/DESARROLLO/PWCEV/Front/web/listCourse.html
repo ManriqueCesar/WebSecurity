@@ -53,7 +53,7 @@
 
         <!-- Notifications Dropdown Menu -->
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="index.html nav-link">Cerrar sesión</a>
+          <a href="index.html" id="btn-close">Cerrar sesión</a>
         </li>
 
       </ul>
@@ -115,22 +115,20 @@
                   <table id="tbl-resultado" class="table table-bordered table-striped">
                     <thead>
                       <tr>
-                        <th>alumnoEmail</th>
-                        <th>Institución</th>
-                        <th>Curso</th>
-                        <th>Escuela</th>
-                        <th>idCurso</th>
-                        <th>periodo</th>
-                        <th>Accion</th>
+                        <th>PERIODO</th>
+                        <th>INSTITUCION</th>
+                        <th>ESCUELA</th>
+                        <th>CURSO</th>
+                        <th>ALUMNOS</th>
+                        <th>ACCION</th>
                       </tr>
                       <tr>
-                        <th>alumnoEmail</th>
-                        <th>Institución</th>
-                        <th>Curso</th>
-                        <th>Escuela</th>
-                        <th>idCurso</th>
-                        <th>periodo</th>
-                        <th>Accion</th>
+                        <th>PERIODO</th>
+                        <th>INSTITUCION</th>
+                        <th>ESCUELA</th>
+                        <th>CURSO</th>
+                        <th>ALUMNOS</th>
+                        <th>ACCION</th>
                       </tr>
                     </thead>
                   </table>
@@ -183,7 +181,7 @@
   <!-- cookie plugin -->
   <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
   <script src="script/listCourse.js"></script>
-
+  <script src="script/cookies.js"></script>
 
   <script>
     $(function () {
@@ -191,8 +189,8 @@
         "responsive": true,
         "autoWidth": false,
         "info": true,
-        "ordering": true
-
+        "ordering": true,
+        "searching": false
       });
 
 

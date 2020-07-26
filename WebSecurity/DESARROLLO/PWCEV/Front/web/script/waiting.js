@@ -40,31 +40,39 @@ function cargarFecha() {
 
 
 
+window.onload = function(){
+  TimeMe.trackTimeOnElement('area-of-interest-1');
+  TimeMe.trackTimeOnElement('area-of-interest-2');
+  setInterval(function(){
+    var timeSpentOnPage = TimeMe.getTimeOnCurrentPageInSeconds();
+    document.getElementById('timeInSeconds').textContent = timeSpentOnPage.toFixed(2);
+
+    var timeSpentOnElement = TimeMe.getTimeOnElementInSeconds('area-of-interest-1');
+    document.getElementById('area-of-interest-time-1').textContent = timeSpentOnElement.toFixed(2);
+
+    var timeSpentOnElement = TimeMe.getTimeOnElementInSeconds('area-of-interest-2');
+    document.getElementById('area-of-interest-time-2').textContent = timeSpentOnElement.toFixed(2);
+  }, 25);
+}
 
 
 $(document).ready(function () {
+   // Initialize library and start tracking time
+   type="text/javascript">
+    // Initialize library and start tracking time
+    TimeMe.initialize({
+	currentPageName: "my-home-page", // current page
+	idleTimeoutInSeconds: 30 // seconds
+    });
 
+    // ... Some time later ...
+
+    // Retrieve time spent on current page
+    var timeSpentOnPage = TimeMe.getTimeOnCurrentPageInSeconds();
 
 });
 
-  $('.addRow').prop('disabled', true);
-  cargarFecha();
 
-  //funcion para duplicar preguntas
-
-  $('.addRow').click(function () {
-   // duplicarAlternativas(unique);
-    duplicar(uniqueId);
-
-    uniqueId++;
-    //unique++;
-
-    contador++;
-    if (contador > 8) {
-      console.log('maximo')
-      $('.addRow').prop('disabled', true);
-    }
-  });
 
 
 

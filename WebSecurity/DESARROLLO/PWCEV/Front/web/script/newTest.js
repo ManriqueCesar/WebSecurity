@@ -1,10 +1,72 @@
+function Cargar_curso_id(cboid, idUsuario) {
+ // var token = getCookie('X-Auth-Token');
+  $('#' + cboid).empty();
+  $.ajax({
+    async: false,
+    cache: true,
+    url: ipgeneral + '/detallecursos/usuario/1',
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+  //    'X-Auth-Token': token
+    }
+  }).done(function (data) {
+    $('#' + cboid).append('<option></option>');
+    for (var x = 0; x < data.clase.length; x++) {
+        $('#' + cboid).append('<option value="' + data.curso[x].id + '">' + data.curso[x].curso + '</option>');
+    }
+    if (idUsuario != null) $('#' + cboid).val(idUsuario);
+  });
+}
+
+function Cargar_curso(cboid, idUsuario) {
+  // var token = getCookie('X-Auth-Token');
+   $('#' + cboid).empty();
+   $.ajax({
+     async: false,
+     cache: true,
+     url: ipgeneral + '/cursos',
+     method: 'GET',
+     headers: {
+       'Accept': 'application/json',
+       'Content-Type': 'application/json',
+   //    'X-Auth-Token': token
+     }
+   }).done(function (data) {
+     $('#' + cboid).append('<option></option>');
+     for (var x = 0; x < data.clase.length; x++) {
+         $('#' + cboid).append('<option value="' + data.curso[x].id + '">' + data.curso[x].curso + '</option>');
+     }
+     if (idUsuario != null) $('#' + cboid).val(idUsuario);
+   });
+ }
+
+ function cbo_escuela(cboid, opcionxdefecto) {
+  $.getJSON('json/eaps.json', function (data) {
+    for (var x = 0; x < data.length; x++) {
+      $("#" + cboid).append('<option value="' + data[x].value + '">' + data[x].descripcion + '</option>');
+    }
+    if (opcionxdefecto != null) $('#' + cboid).val(opcionxdefecto).trigger('change');
+
+  })
+ }
+
+ function cbo_universidad(cboid, opcionxdefecto) {
+  $.getJSON('json/universidades.json', function (data) {
+    for (var x = 0; x < data.length; x++) {
+      $("#" + cboid).append('<option value="' + data[x].value + '">' + data[x].descripcion + '</option>');
+    }
+    if (opcionxdefecto != null) $('#' + cboid).val(opcionxdefecto).trigger('change');
+
+  })
+ }
 
 
 
 function cargarFecha() {
   //Initialize Select2 Elements
   //Initialize Select2 Elements
-  console.log("asdasd");
   //Datemask dd/mm/yyyy
   $('#datemask').inputmask('dd/mm/yyyy', {
     'placeholder': 'dd/mm/yyyy'
@@ -138,10 +200,14 @@ function duplicar(uniqueId) {
 
 
 $(document).ready(function () {
+  var ruta = 'https://api-pwcev.herokuapp.com';
   $('.addRow').prop('disabled', true);
+  cbo_escuela('cbo-eap','SOFTWARE');
+  cbo_universidad('cbo-centro','unmsm');
   cargarFecha();
   editarTitulo();
   editarDescripcion();
+ // Cargar_curso('cbocurso',1);
   var uniqueId = 1;
   var unique = 7;
   var contador = 0;
@@ -195,15 +261,41 @@ $(document).ready(function () {
     $('.addRow').prop('disabled', false);
   });
 
-
-  $('#btn-crear').click(function ()
-   {
-    var texto =  $("#exampleFormControlTextarea1").val();
-    console.log(texto);
+  $('#btn-close').click(function () {
+    deleteCookie();
     
   });
 
 
+
+
+  $(document).on('click', '#btn-crear', function (event) {
+    var request = {};
+  
+
+    request.alumnosEmail = $('#txt-alumnos').val();
+		request.centroEstudios = $('#cbo-centro').val().toUpperCase();
+    request.curso = $('#txt-curso').val();
+    request.eap = $('#cbo-eap').text();
+		request.periodo = $('#cbo-periodo').val();
+    request.idCurso = null;
+
+		$.ajax({
+			url: ruta + '/cursos',
+			type: 'POST',
+			dataType: 'json',
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json'//,
+			//	'X-Auth-Token': token
+			},
+			data: JSON.stringify(request)
+		}).done(function (data) {
+			$('#exampleModalCenter').modal('toggle');
+		}).fail(function (jqXHR, textStatus, errorThrown) {
+      console.log("error")
+		})
+});
 
 
 
