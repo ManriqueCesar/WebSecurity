@@ -1,5 +1,6 @@
 package com.websecurity.pwcev.apirest.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -15,6 +16,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.websecurity.pwcev.apirest.model.Rol;
 import com.websecurity.pwcev.apirest.model.Usuario;
 import com.websecurity.pwcev.apirest.repository.IUsuarioRepo;
 import com.websecurity.pwcev.apirest.service.IUsuarioService;
@@ -88,4 +90,17 @@ public class UserServiceImpl implements IUsuarioService, UserDetailsService{
 		return new User(usuario.getUsername(), usuario.getPassword(), usuario.isEnabled(), true, true, true, authorities);
 	}
 
+	public boolean validarRol(Usuario usuario, int idRol) {
+		boolean resp = false;
+		int Id = usuario.getIdUsuario();
+		Optional<Usuario> us = buscarPorId(Id);
+		List<Rol> roles = new ArrayList<>();
+		roles = us.get().getRoles();
+		for (int i = 0; i < roles.size(); i++) {
+			if (roles.get(i).getIdRol() == idRol)
+				resp = true;
+		}
+
+		return resp;
+	}
 }

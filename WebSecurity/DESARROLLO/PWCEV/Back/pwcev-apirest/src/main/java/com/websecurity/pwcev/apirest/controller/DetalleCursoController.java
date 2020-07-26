@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -48,5 +50,38 @@ public class DetalleCursoController {
 				
 	}
 	
+	@PostMapping
+	public ResponseEntity<?> registrar(@RequestBody DetalleCurso ex) {
+		DetalleCurso detalleCursos = null;
+		Map<String, Object> response = new HashMap<>();
+
+		try {
+			detalleCursos = service.registrar(ex);
+		} catch (DataAccessException e) {
+
+			response.put("mensaje", "No se pudo asignar un profesor.");
+			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+
+		}
+		// Validar si existe el usuario
+		if (!usuarioService.existeUsuarioById(ex.getUsuario().getIdUsuario())) {
+			response.put("mensaje", "No se pudo asignar un profesor, el usuario no existe");
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
+		} else {
+			// Rol de profesor es 2
+			if (!usuarioService.validarRol(ex.getUsuario(), 2)) {
+				response.put("mensaje", "No se pudo asignar un profesor, el usuario no cuenta con el rol de profesor");
+				return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
+			}else {
+				response.put("mensaje", "Se asigno el profesor al curso con exito !");
+			}
+
+		}
+
+		response.put("curso", detalleCursos);
+		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
+	}
+
 	
 }

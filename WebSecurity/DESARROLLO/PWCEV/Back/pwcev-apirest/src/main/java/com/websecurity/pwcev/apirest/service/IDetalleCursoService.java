@@ -7,7 +7,7 @@ import com.websecurity.pwcev.apirest.model.DetalleCurso;
 
 public interface IDetalleCursoService {
 
-	DetalleCurso registrar(DetalleCurso t);
+	DetalleCurso registrar(DetalleCurso resgistro);
 	DetalleCurso modificar(DetalleCurso t);
 	List<DetalleCurso> listar();
 	void eliminar(Integer id);
