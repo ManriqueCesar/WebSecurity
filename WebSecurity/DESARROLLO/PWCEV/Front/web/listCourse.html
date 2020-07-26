@@ -111,7 +111,9 @@
                   <h3 class="card-title">Mis Cursos</h3>
                 </div>
                 <!-- /.card-header -->
-                <div class="card-body table-responsive">
+                <div class="card-body">
+
+               <div class="table table-responsive">
                   <table id="tbl-resultado" class="table table-bordered table-striped">
                     <thead>
                       <tr>
@@ -137,7 +139,7 @@
                 <!-- /.card-body -->
               </div>
               <!-- /.card -->
-
+              </div>
             </div>
             <!-- /.row -->
           </div>
@@ -187,10 +189,7 @@
     $(function () {
       $("#tbl-resultado").DataTable({
         "responsive": true,
-        "autoWidth": false,
-        "info": true,
-        "ordering": true,
-        "searching": false
+      "autoWidth": false,
       });
 
 

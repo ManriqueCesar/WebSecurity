@@ -276,7 +276,7 @@ $(document).ready(function () {
     request.alumnosEmail = $('#txt-alumnos').val();
 		request.centroEstudios = $('#cbo-centro').val().toUpperCase();
     request.curso = $('#txt-curso').val();
-    request.eap = $('#cbo-eap').text();
+    request.eap = $('#cbo-eap').val().toUpperCase();
 		request.periodo = $('#cbo-periodo').val();
     request.idCurso = null;
 
