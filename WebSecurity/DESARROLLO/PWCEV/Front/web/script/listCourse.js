@@ -46,12 +46,12 @@ $(document).ready(function () {
       });
 
       $(".cboselect").select2({closeOnSelect:false});
-
-     
+      $('#columna1').val('2020-I').trigger('change');
+      $('#columna2').val('UNMSM').trigger('change');
 },
  
   ajax:{
-        url: ruta+'/cursos',
+        url: ruta+'/detallecursos/usuario/1',
         async:false,
         cache:true, 
         dataSrc: '',

@@ -1,3 +1,5 @@
+const Cookies = require("cookies");
+
 function refrescar() {
     location.reload(true);
 }
@@ -57,3 +59,8 @@ function updateUsuario() {
     }
 }
 
+function setNombre() {
+  nombre = getCookie('usuario');
+  $('#nombreUser').val(nombre);
+
+}

@@ -4,7 +4,7 @@ function Cargar_curso_id(cboid, idUsuario) {
   $.ajax({
     async: false,
     cache: true,
-    url: ipgeneral + '/detallecursos/usuario/1',
+    url: ruta + '/detallecursos/usuario/'+idUsuario,
     method: 'GET',
     headers: {
       'Accept': 'application/json',
@@ -20,27 +20,7 @@ function Cargar_curso_id(cboid, idUsuario) {
   });
 }
 
-function Cargar_curso(cboid, idUsuario) {
-  // var token = getCookie('X-Auth-Token');
-   $('#' + cboid).empty();
-   $.ajax({
-     async: false,
-     cache: true,
-     url: ipgeneral + '/cursos',
-     method: 'GET',
-     headers: {
-       'Accept': 'application/json',
-       'Content-Type': 'application/json',
-   //    'X-Auth-Token': token
-     }
-   }).done(function (data) {
-     $('#' + cboid).append('<option></option>');
-     for (var x = 0; x < data.clase.length; x++) {
-         $('#' + cboid).append('<option value="' + data.curso[x].id + '">' + data.curso[x].curso + '</option>');
-     }
-     if (idUsuario != null) $('#' + cboid).val(idUsuario);
-   });
- }
+
 
  function cbo_escuela(cboid, opcionxdefecto) {
   $.getJSON('json/eaps.json', function (data) {
@@ -61,8 +41,6 @@ function Cargar_curso(cboid, idUsuario) {
 
   })
  }
-
-
 
 function cargarFecha() {
   //Initialize Select2 Elements
@@ -198,8 +176,17 @@ function duplicar(uniqueId) {
   $('#campaign').append(copy);
 }
 
+function setNombre() {
+  nombre = getCookie('usuario');
+  console.log(nombre);
+  console.log('1');
 
+  $('#nombreUser').val(nombre);
+
+}
 $(document).ready(function () {
+  setNombre();
+  console.log('a')
   var ruta = 'https://api-pwcev.herokuapp.com';
   $('.addRow').prop('disabled', true);
   cbo_escuela('cbo-eap','SOFTWARE');
@@ -207,7 +194,7 @@ $(document).ready(function () {
   cargarFecha();
   editarTitulo();
   editarDescripcion();
- // Cargar_curso('cbocurso',1);
+  Cargar_curso_id('cbocurso',1);
   var uniqueId = 1;
   var unique = 7;
   var contador = 0;
@@ -270,18 +257,23 @@ $(document).ready(function () {
 
 
   $(document).on('click', '#btn-crear', function (event) {
+    var curso = {};
+    var usuario = {};
     var request = {};
-  
 
-    request.alumnosEmail = $('#txt-alumnos').val();
-		request.centroEstudios = $('#cbo-centro').val().toUpperCase();
-    request.curso = $('#txt-curso').val();
-    request.eap = $('#cbo-eap').text();
-		request.periodo = $('#cbo-periodo').val();
-    request.idCurso = null;
+    curso.alumnosEmail = $('#txt-alumnos').val();
+		curso.centroEstudios = $('#cbo-centro').val().toUpperCase();
+    curso.curso = $('#txt-curso').val();
+    curso.eap = $('#cbo-eap').val().toUpperCase();
+    curso.periodo = $('#cbo-periodo').val();
+    usuario.idUsuario = 3; //por definir
+
+    //request.idCurso = null;
+
+    request.curso = curso;
 
 		$.ajax({
-			url: ruta + '/cursos',
+			url: ruta + '/detalle-curso-controller',
 			type: 'POST',
 			dataType: 'json',
 			headers: {
