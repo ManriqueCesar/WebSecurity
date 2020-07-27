@@ -16,4 +16,6 @@ public interface IUsuarioService {
 	boolean existeUsuarioByUserPass(String username,String password);
 	boolean existeUsuarioByEmail(String email);
 	boolean existeUsuarioById(Integer id);
+	
+	boolean validarRol(Usuario usuario, int idRol);
 }
