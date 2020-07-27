@@ -22,74 +22,37 @@ import com.websecurity.pwcev.apirest.repository.IUsuarioRepo;
 import com.websecurity.pwcev.apirest.service.IUsuarioService;
 
 @Service
-public class UserServiceImpl implements IUsuarioService, UserDetailsService{
+public class UserServiceImpl implements IUsuarioService, UserDetailsService {
 	@Autowired
 	private IUsuarioRepo usuarioRepositorio;
 
 	private Logger logger = org.slf4j.LoggerFactory.getLogger(UserServiceImpl.class);
-			
-	public boolean existeUsuarioByUserPass(String username, String password) {
-		
-		boolean respuesta = usuarioRepositorio.existsByUsernameAndPassword(username, password);
-		return respuesta;
-	}
-	@Override
-	public Optional<Usuario> buscarPorUsurnamePassword(String username, String password) {
-			
-		
-		Optional<Usuario> us = usuarioRepositorio.findByUsernameAndPassword(username,password);
-	
-	
-	return us;
-	}
+
+
 	@Override
 	public List<Usuario> listar() {
 		List<Usuario> users = usuarioRepositorio.findAll();
 		return users;
 	}
+
 	@Override
 	public Optional<Usuario> buscarPorId(int id) {
-		
-		return usuarioRepositorio.findById(id) ;
+
+		return usuarioRepositorio.findById(id);
 	}
+
 	@Override
 	public boolean existeUsuarioById(Integer id) {
-	
-		return usuarioRepositorio.existsById(id) ;
+
+		return usuarioRepositorio.existsById(id);
 	}
+
 	@Override
 	public boolean existeUsuarioByEmail(String email) {
 		boolean respuesta = usuarioRepositorio.existsByEmail(email);
 		return respuesta;
 	}
 	
-	@Override
-	public Optional<Usuario> buscarPorEmail(String email) {
-		Optional<Usuario> us = usuarioRepositorio.findByEmail(email);
-		return us;
-	}
-	
-	@Override
-	@Transactional(readOnly=true)
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-
-		Usuario usuario = usuarioRepositorio.findOneByUsername(username);
-		
-		
-		if (usuario == null) {
-			logger.error("Error en el login: no existe el susuario '"+ username+ "' en el sistema!");
-			throw new UsernameNotFoundException("Error en el login: no existe el susuario '"+ username+ "' en el sistema!");
-		}
-		
-		List<GrantedAuthority> authorities = usuario.getRoles()
-				.stream()
-				.map(role -> new SimpleGrantedAuthority(role.getNombre()))
-				.peek(AuthorityGranter -> logger.info("Role: " + AuthorityGranter.getAuthority()))
-				.collect(Collectors.toList());
-		
-		return new User(usuario.getUsername(), usuario.getPassword(), usuario.isEnabled(), true, true, true, authorities);
-	}
-
 	public boolean validarRol(Usuario usuario, int idRol) {
 		boolean resp = false;
 		int Id = usuario.getIdUsuario();
@@ -103,4 +66,33 @@ public class UserServiceImpl implements IUsuarioService, UserDetailsService{
 
 		return resp;
 	}
+
+
+	@Override
+	@Transactional(readOnly = true)
+	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+
+		Usuario usuario = usuarioRepositorio.findByEmail(email);
+
+		if (usuario == null) {
+			logger.error("Error en el login: no existe el correo '" + email + "' en el sistema!");
+			throw new UsernameNotFoundException(
+					"Error en el login: no existe el correo '" + email + "' en el sistema!");
+		}
+
+		List<GrantedAuthority> authorities = usuario.getRoles().stream()
+				.map(role -> new SimpleGrantedAuthority(role.getNombre()))
+				.peek(AuthorityGranter -> logger.info("Role: " + AuthorityGranter.getAuthority()))
+				.collect(Collectors.toList());
+
+		return new User(usuario.getEmail(), usuario.getPassword(), usuario.isEnabled(), true, true, true, authorities);
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public Usuario findByEmail(String email) {
+		Usuario us = usuarioRepositorio.findByEmail(email);
+		return us;
+	}
+	
 }
