@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.websecurity.pwcev.apirest.model.Examen;
+
 import com.websecurity.pwcev.apirest.model.Usuario;
 import com.websecurity.pwcev.apirest.service.IUsuarioService;
 
@@ -35,7 +35,7 @@ public class UsuarioController {
 			return service.listar();
 	}
 	
-	@GetMapping("/{username}/{password}")
+	/*@GetMapping("/{username}/{password}")
 	public ResponseEntity<?> buscarPorUserAndPass(@PathVariable("username") String username,@PathVariable("password") String password) {
 		
 		Optional<Usuario> us = null;
@@ -55,7 +55,7 @@ public class UsuarioController {
 		}
 		return new ResponseEntity<Optional<Usuario>>(us,HttpStatus.OK);
 				
-	}
+	}*/
 	
 	@GetMapping("/{id}")
 	public Optional<Usuario> usuarioId(@PathVariable("id") int id) {
@@ -65,11 +65,11 @@ public class UsuarioController {
 	@GetMapping("/email/{email}")
 	public ResponseEntity<?> bucarUsuarioPorEmail(@PathVariable("email") String email) {
 		
-		Optional<Usuario> us = null;
+		Usuario us = null;
 		Map<String, Object> response = new HashMap<>();
 		
 		try {
-			us = service.buscarPorEmail(email);
+			us = service.findOneByEmail(email);
 		} catch (DataAccessException e) {
 			response.put("mensaje", "Error al realizar la consulta en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
@@ -80,7 +80,7 @@ public class UsuarioController {
 			response.put("mensaje", "El usuario no existe con esas credenciales");
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
 		}
-		return new ResponseEntity<Optional<Usuario>>(us,HttpStatus.OK);
+		return new ResponseEntity<Usuario>(us,HttpStatus.OK);
 				
 	}
 
