@@ -14,7 +14,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
-	
+	/*
 	@Autowired
 	private UserDetailsService usuarioService;
 	
@@ -50,5 +50,5 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
 		web.ignoring().antMatchers("/v2/api-docs", "/configuration/ui", "/swagger-resources/**",
 									"/configuration/**", "/swagger-ui.html", "/webjars/**"); 
 	}
-
+*/
 }

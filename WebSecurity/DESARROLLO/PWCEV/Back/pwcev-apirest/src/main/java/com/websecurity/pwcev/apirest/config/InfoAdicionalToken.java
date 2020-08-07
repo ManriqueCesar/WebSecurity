@@ -17,6 +17,12 @@ import com.websecurity.pwcev.apirest.service.IUsuarioService;
 @Component
 public class InfoAdicionalToken implements TokenEnhancer{
 
+	@Override
+	public OAuth2AccessToken enhance(OAuth2AccessToken accessToken, OAuth2Authentication authentication) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+/*
 	@Autowired
 	private IUsuarioService usuarioService;
 	
@@ -36,5 +42,5 @@ public class InfoAdicionalToken implements TokenEnhancer{
 		
 		return accessToken;
 	}
-
+*/
 }
