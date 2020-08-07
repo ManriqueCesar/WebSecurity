@@ -96,5 +96,17 @@ public class UserServiceImpl implements IUsuarioService {
 		Usuario us = usuarioRepositorio.findByEmail(email);
 		return us;
 	}
+
+	@Override
+	public Usuario findByEmailAndPassword(String email, String password) {
+		Usuario us = usuarioRepositorio.findByEmailAndPassword(email, password);
+		
+		Usuario usuario = new Usuario();
+		usuario.setRoles(us.getRoles());
+		usuario.setNombre(us.getNombre());
+		usuario.setApellido(us.getApellido());
+		
+		return usuario;
+	}
 	
 }

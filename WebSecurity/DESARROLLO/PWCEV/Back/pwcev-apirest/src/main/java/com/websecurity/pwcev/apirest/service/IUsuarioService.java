@@ -13,6 +13,7 @@ public interface IUsuarioService {
 	
 	public Usuario findByEmail(String username);
 	
+	public Usuario findByEmailAndPassword(String email,String password);
 
 	public boolean existeUsuarioByEmail(String email);
 	public boolean existeUsuarioById(Integer id);
