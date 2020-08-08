@@ -52,12 +52,12 @@ public class DetalleCursoController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<?> registrar(@RequestBody DetalleCurso ex) {
+	public ResponseEntity<?> registrar(@RequestBody DetalleCurso cursoUsuarios) {
 		DetalleCurso detalleCursos = null;
 		Map<String, Object> response = new HashMap<>();
 
 		try {
-			detalleCursos = service.registrar(ex);
+			detalleCursos = service.registrar(cursoUsuarios);
 		} catch (DataAccessException e) {
 
 			response.put("mensaje", "No se pudo asignar un profesor.");
@@ -66,12 +66,12 @@ public class DetalleCursoController {
 
 		}
 		// Validar si existe el usuario
-		if (!usuarioService.existeUsuarioById(ex.getUsuario().getIdUsuario())) {
+		if (!usuarioService.existeUsuarioById(cursoUsuarios.getUsuario().getIdUsuario())) {
 			response.put("mensaje", "No se pudo asignar un profesor, el usuario no existe");
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
 		} else {
 			// Rol de profesor es 2
-			if (!usuarioService.validarRol(ex.getUsuario(), 2)) {
+			if (!usuarioService.validarRol(cursoUsuarios.getUsuario(), 2)) {
 				response.put("mensaje", "No se pudo asignar un profesor, el usuario no cuenta con el rol de profesor");
 				return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
 			}else {
