@@ -1,10 +1,10 @@
-const Cookies = require("cookies");
 
 function refrescar() {
     location.reload(true);
 }
 
 function deleteCookie() {
+    Cookies.remove('id');
     Cookies.remove('rol');
     Cookies.remove('nombre');
     Cookies.remove('usuario');

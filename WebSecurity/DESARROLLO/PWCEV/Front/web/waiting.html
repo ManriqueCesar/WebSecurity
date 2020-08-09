@@ -2,6 +2,8 @@
 <html lang="en">
 
 <head>
+
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Alumno | Perfil</title>
@@ -71,10 +73,10 @@
         <!-- Sidebar user (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           <div class="image">
-            <img src="dist/img/security.png" class="img-circle elevation-2" alt="User Image">
+            <img  id = "imgUser" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
-            <a href="#" class="d-block">Fernando Fuentes</a>
+            <a href="#" class="d-block" id="nombreUser"></a>
           </div>
         </div>
 
@@ -352,8 +354,21 @@
   </script>
   <!-- AdminLTE App -->
   <script src="bower_components/AdminLTE/dist/js/adminlte.min.js"></script>
-  <script src="script/waiting.js"></script>
   <script src="plugins/TimeMejs/timeme.min.js"></script>
+   <!-- Cookies js -->
+   <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>  
+   <script type="text/javascript">
+    function preloadFunc()
+    {
+      if (Cookies.get('rol')!='ROLE_ALUM'){
+      document.location.href = "index.html";
+      }
+    }
+    window.onpaint = preloadFunc();
+  </script>
+   <script src="script/cookies.js"></script>
+   <script src="script/waiting.js"></script>
+
   <script type="text/javascript">
  
 </script>

@@ -179,7 +179,7 @@ function duplicar(uniqueId) {
 }
 
 function setNombre() {
-  var user = Cookies.get('apellido');
+  var user = Cookies.get('usuario');
   $('#nombreUser').text(user);
 
 }

@@ -1,13 +1,5 @@
-const video = document.getElementById('video')
 
-Promise.all([
-  faceapi.nets.tinyFaceDetector.loadFromUri('../web/dist/js/models'),
-  faceapi.nets.faceLandmark68Net.loadFromUri('../web/dist/js/models'),
-  faceapi.nets.faceRecognitionNet.loadFromUri('../web/dist/js/models'),
-  faceapi.nets.faceExpressionNet.loadFromUri('../web/dist/js/models'),
-  faceapi.nets.ssdMobilenetv1.loadFromUri('../web/dist/js/models')
 
-]).then(iniciarVideo)
 
 function iniciarVideo() {
   navigator.getUserMedia({
@@ -17,6 +9,32 @@ function iniciarVideo() {
     err => console.error(err)
   )
 }
+
+
+function loadLabeledImages() {
+  const labels = ['Manrique Mayanga', 'Fuentes Ajra', 'Laurel Quinto']
+  return Promise.all(
+    labels.map(async label => {
+      const descriptions = []
+      for (let i = 1; i <= 2; i++) {
+        const img = await faceapi.fetchImage(`../web/dist/js/labeled_images/${label}/${i}.jpg`)
+        const detections = await faceapi.detectSingleFace(img).withFaceLandmarks().withFaceDescriptor()
+        descriptions.push(detections.descriptor)
+      }
+      return new faceapi.LabeledFaceDescriptors(label, descriptions)
+    })
+  )
+}
+
+
+
+$(document).ready(function () {
+  $('#txt-email').val('cmanrique@gmail.com');
+  $('#txt-password').val('1234');
+
+  const video = document.getElementById('video')
+
+
 
 video.addEventListener('play', async () => {
   const labeledFaceDescriptors = await loadLabeledImages()
@@ -37,49 +55,32 @@ video.addEventListener('play', async () => {
     console.log(results.toString());
 
     $("#alumnos").text(results.toString());
-    apellido= Cookies.get('apellido');
+    console.log(Cookies.get('apellido'));
+    var apellido= Cookies.get('apellido');
     console.log('miApellido es '+ apellido);
-    const alumno = results.toString().includes(apellido);
-    Cookies.remove('apellido');
+    var alumno = results.toString().includes(apellido);
     if (alumno == true) {
-      $("#loading").text("Identidad confirmada, redireccionando...")
+      $("#loading").text("Identidad confirmada, redireccionando...");
       console.log("bienvenido " + apellido);
       setTimeout(function () {
         document.location.href = "waiting.html";
-        // rest of code here
       }, 5000);
     }
   }, 500)
 })
 
-function loadLabeledImages() {
-  const labels = ['Manrique Mayanga', 'Fuentes Ajra']
-  return Promise.all(
-    labels.map(async label => {
-      const descriptions = []
-      for (let i = 1; i <= 2; i++) {
-        const img = await faceapi.fetchImage(`../web/dist/js/labeled_images/${label}/${i}.jpg`)
-        const detections = await faceapi.detectSingleFace(img).withFaceLandmarks().withFaceDescriptor()
-        descriptions.push(detections.descriptor)
-      }
-      return new faceapi.LabeledFaceDescriptors(label, descriptions)
-    })
-  )
-}
-
-
-
-$(document).ready(function () {
-  $('#txt-email').val('cmanrique@gmail.com');
-  $('#txt-password').val('1234');
 });
 
 $('#btn-ingresar').click(function () {
-  // iniciarSesion();
   $("#btn-ingresar").attr('disabled', 'disabled');
   sCorreo = document.querySelector('#txt-email').value;
   sContrasena = document.querySelector('#txt-password').value;
   validar_credenciales(sCorreo, sContrasena);
+});
+
+$('#btn-camara').click(function () {
+
+
 });
 
 
@@ -109,15 +110,25 @@ function validar_credenciales(sCorreo, sContrasena) {
     console.log(data.nombre);
     console.log(data.apellido);
     console.log(data.roles[0].nombre);
-
+    console.log(data);
     Cookies.set('apellido', data.apellido, {
       expires: 2
     });
 
     if (data.roles[0].nombre == 'ROLE_ALUM') {
-      $('#modal-default').modal('toggle');
+      $('#modal-default').modal({backdrop: 'static', keyboard: false}) 
+      Promise.all([
+        faceapi.nets.tinyFaceDetector.loadFromUri('../web/dist/js/models'),
+        faceapi.nets.faceLandmark68Net.loadFromUri('../web/dist/js/models'),
+        faceapi.nets.faceRecognitionNet.loadFromUri('../web/dist/js/models'),
+        faceapi.nets.faceExpressionNet.loadFromUri('../web/dist/js/models'),
+        faceapi.nets.ssdMobilenetv1.loadFromUri('../web/dist/js/models')
+      
+      ]).then(iniciarVideo)
       iniciarVideo();
-      Cookies.set('rol', data.roles[0].nombre, {
+ 
+      
+      Cookies.set('apellido', data.apellido, {
         expires: 200
       });
       Cookies.set('usuario', data.nombre + ' ' + data.apellido, {
@@ -127,6 +138,9 @@ function validar_credenciales(sCorreo, sContrasena) {
         expires: 200
       });
       Cookies.set('id', data.idUsuario, {
+        expires: 200
+      });
+      Cookies.set('rol', data.roles[0].nombre, {
         expires: 200
       });
     } else if (data.roles[0].nombre == 'ROLE_PROF') {
@@ -163,4 +177,8 @@ function validar_credenciales(sCorreo, sContrasena) {
     //alert(jqXHR.responseJSON.resultado.mensajeRespuesta);
   })
 
+  $('#loading').on('change', function (e) {
+
+  });
 }
+
