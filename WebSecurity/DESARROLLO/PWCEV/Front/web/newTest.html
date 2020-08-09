@@ -189,7 +189,7 @@
 
                           <div class="box-heager" id="examen-editable-holder">
                             <div>
-                              <label id="txtTitulo" style="color:blue;">Ingresar el título del examen</label>
+                              <label id="txtTitulo" style="color:blue;">INGRESAR TÍTULO DEL EXAMEN</label>
                               <input class="clickedit" type="text" />
                               <div class="clearfix"></div>
                             </div>
@@ -205,34 +205,23 @@
                             <form id="base">
                               <a href="#" class="float-right btn-tool" id="close"><i class="fas fa-times"></i></a>
                           </div>
-                          <label>Editar la descripción</label>
-                          <input class="clickedit2" type="text" />
-                          <div class="clearfix"></div>
-                          <div>
-                            <div>
-                              <input type="radio" id="alternativa1" name="pregunta" value="alternativa1">
-                              <label class="font-weight-normal" for="alternativa1">Pregunta</label>
+                          <div class="container">
+                            <div class="pull-left"> 
+                              <label id="descripcionI" value="descripcion" name="descripcion1" value="descripcion">
+                                Editar la descripción
+                              </label>
                             </div>
-                            <div>
-                              <input type="radio" id="alternativa2" name="pregunta" value="alternativa2">
-                              <label class="font-weight-normal" for="alternativa2">Pregunta</label>
+                            <input class="clickedit2" type="text" />
+                            <div class="pull-right"> 
+                              <a  id="btn-pregunta" class="btn btn-success pull-right" style="color:blanchedalmond">
+                                Alternativas
+                              </a>
                             </div>
-                            <div>
-                              <input type="radio" id="alternativa3" name="pregunta" value="alternativa3">
-                              <label class="font-weight-normal" for="alternativa3">Pregunta</label>
-                            </div>
-                            <div>
-                              <input type="radio" id="alternativa4" name="pregunta" value="alternativa4">
-                              <label class="font-weight-normal" for="alternativa4">Pregunta</label>
-                            </div>
-                            <div>
-                              <input type="radio" id="alternativa5" name="pregunta" value="alternativa5">
-                              <label class="font-weight-normal" for="alternativa5">Pregunta</label>
-                            </div>
-                            <hr>
                           </div>
+                          <div class="clearfix"></div>
                           </form>
                           <span id="campaigntext"></span>
+                          <hr>
                         </div>
 
                         <!-- /.Contenido base -->
@@ -243,42 +232,31 @@
                           <div id="campaign">
                             <form id="original">
                               <a href="#" class="float-right btn-tool" id="close"><i class="fas fa-times"></i></a>
-                              <label>Editar la descripción</label>
-                              <input class="clickedit2" type="text" id="description"/>
-                              <div class="clearfix"></div>
-                              <div id="campaign">
-                                <form id="bloque">
-                                  <div>
-                                    <input type="radio" id="alternativa" name="pregunta1" value="alternativa">
-                                    <label class="font-weight-normal" for="alternativa">Pregunta</label>
-                                  </div>
-                                  <div>
-                                    <input type="radio" id="alternativa" name="pregunta2" value="alternativa">
-                                    <label class="font-weight-normal" for="alternativa">Pregunta</label>
-                                  </div>
-                                  <div>
-                                    <input type="radio" id="alternativa" name="pregunta3" value="alternativa">
-                                    <label class="font-weight-normal" for="alternativa">Pregunta</label>
-                                  </div>
-                                  <div>
-                                    <input type="radio" id="alternativa" name="pregunta4" value="alternativa">
-                                    <label class="font-weight-normal" for="alternativa">Pregunta</label>
-                                  </div>
-                                  <div>
-                                    <input type="radio" id="alternativa" name="pregunta5" value="alternativa">
-                                    <label class="font-weight-normal" for="alternativa">Pregunta</label>
-                                  </div>
-
-                                </form>
-                                <hr>
+                              <div class="container">
+      
+                                <div class="pull-left"> 
+                                  <label id="descripcion"  name="descripcion1" >
+                                    Editar la descripción
+                                  </label>
+                                </div>
+                                <input class="clickedit2" type="text" />
+                                <div class="pull-right"> 
+                                  <a  id="btn-pregunta" class="btn btn-success pull-right" style="color:blanchedalmond">
+                                    Alternativas
+                                  </a>
+                                </div>
                               </div>
+                           
+                              <hr>
+                              <div class="clearfix"></div>
+                    
                             </form>
+
                             <span id="campaigntext"></span>
                           </div>
-
                           <!-- /Contenido para duplicar -->
-
                         </div>
+
                       </div>
 
                     </div>
@@ -305,8 +283,8 @@
                         <div class="form-group row">
                           <label for="inputName" class="col-sm-2 col-form-label">Curso</label>
                           <div class="col-sm-10">
-                            <select class="form-control select2" style="width: 100%;"  id="cbocurso" name="curso">
-													</select>
+                            <select class="form-control select2" style="width: 100%;" id="cbocurso" name="curso">
+                            </select>
                           </div>
                         </div>
 
@@ -334,12 +312,12 @@
                         <div class="form-group row">
                           <label for="inputName" class="col-sm-2 col-form-label">Escuela</label>
                           <div class="col-sm-10">
-                            <select class="form-control select2" style="width: 100%;"  id="cbo-eap" name="escuela">
+                            <select class="form-control select2" style="width: 100%;" id="cbo-eap" name="escuela">
                             </select>
                           </div>
                         </div>
 
-                        
+
 
                         <div class="form-group row">
                           <label for="inputName" class="col-sm-2 col-form-label">Curso</label>
@@ -365,8 +343,8 @@
                         <div class="form-group row">
                           <label for="inputName2" class="col-sm-2 col-form-label">Alumnos</label>
                           <div class="col-sm-10">
-                            <textarea class="form-control" placeholder="ejemplo@unmsm.edu.pe"
-                              id="txt-alumnos" rows="4"></textarea>
+                            <textarea class="form-control" placeholder="ejemplo@unmsm.edu.pe" id="txt-alumnos"
+                              rows="4"></textarea>
                           </div>
                         </div>
 
@@ -452,16 +430,18 @@
     </div>
 
 
-    
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+
+    <!-- Modal Curso creado-->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+      aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header" style="text-align: center;">
-            <h5 class="modal-title" id="exampleModalLongTitle">    ¡Curso creado!</h5>
+            <h5 class="modal-title" id="exampleModalLongTitle"> ¡Curso creado!</h5>
           </div>
           <div class="col-xs">
-            <img src="dist/img/Icons/success.png" height="180px" width="420px" style="vertical-align:middle;margin:0px 50px" ></img>
+            <img src="dist/img/Icons/success.png" height="180px" width="420px"
+              style="vertical-align:middle;margin:0px 50px"></img>
             <div class="modal-body">
               Podrás visualizarlo en 'Examen' y en 'Ver Cursos'
             </div>
@@ -472,6 +452,64 @@
         </div>
       </div>
     </div>
+    <!-- fin Modal -->
+
+
+    <!-- Modal Preguntas-->
+    <div class="modal fade" id="modalPregunta" tabindex="-1" role="dialog"
+      aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header" style="text-align: center;">
+            <h5 class="modal-title" id="exampleModalLongTitle">d</h5>
+          </div>
+          <div class="box-body">
+            <form class="form-horizontal" id="">
+
+
+
+              <div id="alternativa1" class="form-group row">
+                <label for="inputName" class="col-sm-2 col-form-label">1.</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="">
+                </div>
+              </div>
+              <div id="alternativa2" class="form-group row">
+                <label for="inputName" class="col-sm-2 col-form-label">2.</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="">
+                </div>
+              </div>
+              <div id="alternativa3" class="form-group row">
+                <label for="inputName" class="col-sm-2 col-form-label">3.</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="">
+                </div>
+              </div>
+              <div id="alternativa4" class="form-group row">
+                <label for="inputName" class="col-sm-2 col-form-label">4.</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="">
+                </div>
+              </div>
+              <div id="alternativa5" class="form-group row">
+                <label for="inputName" class="col-sm-2 col-form-label">5.</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="">
+                </div>
+              </div>
+
+            </form>
+       </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-success" data-dismiss="modal">¡Entendido!</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    <!-- fin Modal -->
+
 
     <footer class="main-footer">
       <div class="float-right d-none d-sm-block">
@@ -510,6 +548,7 @@
   <!-- AdminLTE App -->
   <script src="bower_components/AdminLTE/dist/js/adminlte.min.js"></script>
   <script src="script/newTest.js"></script>
+
 </body>
 
 </html>
