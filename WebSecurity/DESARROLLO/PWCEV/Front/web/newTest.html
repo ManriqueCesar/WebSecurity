@@ -27,6 +27,9 @@
   <link rel="stylesheet" href="bower_components/AdminLTE/dist/css/adminlte.min.css">
   <!-- Plugin css BootsTrap -->
   <link rel="stylesheet" href="dist/css/style.css">
+
+
+
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -545,10 +548,21 @@
   <!-- Tempusdominus Bootstrap 4 -->
   <script src="bower_components/AdminLTE/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js">
   </script>
+ <!-- Cookies js -->
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
   <!-- AdminLTE App -->
   <script src="bower_components/AdminLTE/dist/js/adminlte.min.js"></script>
+  
   <script src="script/newTest.js"></script>
-
+  <script type="text/javascript">
+    function preloadFunc()
+    {
+      if (Cookies.get('rol')!='ROLE_PROF"'){
+      document.location.href = "index.html";
+      }
+    }
+    window.onpaint = preloadFunc();
+  </script>
 </body>
 
 </html>

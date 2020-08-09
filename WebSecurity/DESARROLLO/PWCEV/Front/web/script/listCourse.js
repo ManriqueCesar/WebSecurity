@@ -13,14 +13,17 @@ function getCookie(cname) {
     return "";
 }
 
+function setNombre() {
+  var user = Cookies.get('apellido');
+  $('#nombreUser').text(user);
 
+}
 
 
 $(document).ready(function () {
+  setNombre();
+  var idUser = Cookies.get('id');
   ruta = 'https://api-pwcev.herokuapp.com';
-  var token = getCookie('X-Auth-Token');
-  console.log(token);  
-
   var x=0;
   $('#tbl-resultado').DataTable({
       initComplete: function() {
@@ -51,13 +54,9 @@ $(document).ready(function () {
 },
  
   ajax:{
-        url: ruta+'/detallecursos/usuario/1',
+        url: ruta+'/detallecursos/usuario/'+idUser,
         async:false,
         cache:true, 
-        dataSrc: '',
-       beforeSend: function (request) {
-       request.setRequestHeader("X-Auth-Token",token);
-        },
         error: function(jqXHR, textStatus, errorThrown){
           $('#tbl-resultado').DataTable().clear().draw();
         }

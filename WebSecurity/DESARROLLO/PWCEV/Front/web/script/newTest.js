@@ -179,12 +179,15 @@ function duplicar(uniqueId) {
 }
 
 function setNombre() {
-  var user = sessionStorage.getItem('usuarioActivo');
+  var user = Cookies.get('apellido');
   $('#nombreUser').text(user);
 
 }
 
 $(document).ready(function () {
+
+
+
   setNombre();
   console.log('a')
   var ruta = 'https://api-pwcev.herokuapp.com';
@@ -294,6 +297,7 @@ $(document).ready(function () {
       console.log("error")
     })
   });
+
 
 
 
