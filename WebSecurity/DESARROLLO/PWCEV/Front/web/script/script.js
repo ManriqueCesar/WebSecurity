@@ -19,7 +19,7 @@ function iniciarVideo() {
   )
 }
 
-video.addEventListener('play', async () => {
+  video.addEventListener('play', async () => {
   const labeledFaceDescriptors = await loadLabeledImages()
   const faceMatcher = new faceapi.FaceMatcher(labeledFaceDescriptors, 0.6)
   console.log(faceMatcher._labeledDescriptors)
@@ -40,7 +40,7 @@ video.addEventListener('play', async () => {
     $("#alumnos").text(results.toString());
     var alumno = results.toString().includes("Cesar Manrique");
     if (alumno == true) {
-
+      $("#loading").text("Identidad confirmada, redireccionando...")
       console.log("bienvenido Cesar Manrique");
       setTimeout(function () {
         document.location.href = "newTest.html";
@@ -51,7 +51,7 @@ video.addEventListener('play', async () => {
 })
 
 function loadLabeledImages() {
-  const labels = ['Cesar Manrique', 'Bryan Flores', 'Laurel Gabriela', 'Fernando Fuentes']
+  const labels = ['Cesar Manrique', 'Fernando Fuentes']
   return Promise.all(
     labels.map(async label => {
       const descriptions = []
@@ -65,137 +65,135 @@ function loadLabeledImages() {
   )
 }
 
-iniciarVideo();
+function obtenerListaUsuarios() {
+  var listaUsuarios = JSON.parse(localStorage.getItem('listaUsuariosLs'));
 
+  if (listaUsuarios == null) {
+    listaUsuarios = [
+      //1:docente, 2:alumno
+      //id,nombre,apellido,correo,contraseña,fnac,rol
+      ['1', 'Cesar', 'Manrique', 'cmanrique@gmail.com', '12345', '1994-07-17', '4'],
+      ['2', 'Fernando', 'Fuentes', 'ffuentesa@gmail.com', '12345', '2000-05-05', '5']
+    ]
+  }
+  return listaUsuarios;
 
+}
 
+function validarCredenciales(pCorreo, pContrasena) {
+  var listaUsuarios = obtenerListaUsuarios();
+  var bAcceso = false;
 
+  for (var i = 0; i < listaUsuarios.length; i++) {
+    if (pCorreo == listaUsuarios[i][3] && pContrasena == listaUsuarios[i][4]) {
+      bAcceso = true;
+      sessionStorage.setItem('usuarioActivo', listaUsuarios[i][1] + ' ' + listaUsuarios[i][2]);
+      sessionStorage.setItem('rolUsuarioActivo', listaUsuarios[i][6]);
 
-// function obtenerListaUsuarios() {
-//   var listaUsuarios = JSON.parse(localStorage.getItem('listaUsuariosLs'));
+    }
+  }
+  return bAcceso;
+}
 
-//   if (listaUsuarios == null) {
-//     listaUsuarios = [
-//       //1:docente, 2:alumno
-//       //id,nombre,apellido,correo,contraseña,fnac,rol
-//       ['1', 'Cesar', 'Manrique', 'cesar.manrique4@unmsm.edu.pe', 'cesar@123', '1994-07-17', '1'],
-//       ['2', 'Fernando', 'Fuentes', 'fernando.alumno@unmsm.edu.pe', 'fernando@123', '2000-05-05', '2']
-//     ]
-//   }
-//   return listaUsuarios;
+function iniciarSesion() {
+  var sCorreo = '';
+  var sContrasena = '';
+  var bAcceso = false;
 
-// }
-
-// function validarCredenciales(pCorreo, pContrasena) {
-//   var listaUsuarios = obtenerListaUsuarios();
-//   var bAcceso = false;
-
-//   for (var i = 0; i < listaUsuarios.length; i++) {
-//     if (pCorreo == listaUsuarios[i][3] && pContrasena == listaUsuarios[i][4]) {
-//       bAcceso=true;
-//       sessionStorage.setItem('usuarioActivo', listaUsuarios[i][1] + ' ' + listaUsuarios[i][2]);
-//       sessionStorage.setItem('rolUsuarioActivo', listaUsuarios[i][6]);
-
-//     }
-//   }
-//   return bAcceso;
-// }
-
-// function iniciarSesion() {
-//   var sCorreo = '';
-//   var sContrasena = '';
-//   var bAcceso = false;
-
-
-//   sCorreo = document.querySelector('#txt-email').value;
-//   sContrasena = document.querySelector('#txt-password').value;
-//   bAcceso = validarCredenciales(sCorreo, sContrasena);
-//   console.log(bAcceso);
-
-//   if (bAcceso == true) {
-//     ingresar();
-//   }
-
-
-// }
-
-// function ingresar() {
-//   var rol = sessionStorage.getItem('rolUsuarioActivo');
-//   console.log(rol);
-//   switch (rol) {
-//     case '1':
-//       window.location.href='newTest.html';
-//    //   document.location.href = "newTest.html";
-//       break;
-//     case '2':
-//       window.location.href='waiting.html';
-//       break;
-//     default:
-//       window.location.href='index.html';
-
-//     break;
-//   }
-// }
-
-
-
-
-
-
-
-$('#btn-ingresar').click(function () {
-  // iniciarSesion();
 
   sCorreo = document.querySelector('#txt-email').value;
   sContrasena = document.querySelector('#txt-password').value;
+  bAcceso = validarCredenciales(sCorreo, sContrasena);
+  console.log(bAcceso);
+
+  if (bAcceso == true) {
+    ingresar();
+  }
 
 
+}
 
+function ingresar() {
+  var rol = sessionStorage.getItem('rolUsuarioActivo');
+  console.log(rol);
+  switch (rol) {
+    case '4':
+      iniciarVideo();
+      $('#modal-default').modal('toggle');
+    usuario= sessionStorage.getItem('usuarioActivo');
+    Cookies.set('X-Auth-Token','true',{expires:2});
+    Cookies.set('usuario',usuario,{expires:2});
+   
+      //   window.location.href='newTest.html';
+      //   document.location.href = "newTest.html";
+      break;
+    case '5':
+      usuario= sessionStorage.getItem('usuarioActivo');
+      Cookies.set('X-Auth-Token','true',{expires:2});
+      Cookies.set('usuario',usuario,{expires:2});
+      window.location.href = 'waiting.html';
+      break;
+    default:
+      window.location.href = 'index.html';
 
+      break;
+  }
+}
 
-
+$(document).ready(function () {
+  $('#txt-email').val('cmanrique@gmail.com');
+  $('#txt-password').val('12345');
 });
 
+$('#btn-ingresar').click(function () {
+  iniciarSesion();
 
+  // sCorreo = document.querySelector('#txt-email').value;
+  // sContrasena = document.querySelector('#txt-password').value;
+  //validar_credenciales(sCorreo,sContrasena);
+});
 
+/*
 
 function validar_credenciales(scorreo, sContrasena) {
-  var ruta = 'https://api-pwcev.herokuapp.com';
-  var user = 'front';
-  var password = '12345';
-  var username = scorreo;
-  var password = sContrasena;
-
-  var request={};
-  request.user=user;
-  request.password=password;
-  
-  request.username=username;
-  request.password=password;
-
+  var ruta1 = 'https://api-pwcev.herokuapp.com';
+  var ruta = 'http://localhost:9090';
 
   $.ajax({
-    url: ruta+'oauth/token',
-    type: 'POST',
-    dataType: 'json',
+    url: ruta+'/oauth/token',
+    beforeSend: function (xhr) {
+      xhr.setRequestHeader ("Authorization", "Basic " + btoa('front' + ":" + '12345'));
+  },
+    processData: false,
+   data:{  
+    grant_type: 'password',
+    username: scorreo,
+    password: sContrasena
+  },
+    type: 'POST',  
+    dataType: 'jsonp',
+    
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
-      'X-Auth-Token': token
+      'Access-Control-Allow-Origin': '*', 
     },
-    data: JSON.stringify(request)
+
   }).done(function (data) {
-    if(data.)
-    if ( == 'ROLE_ALUM'){
-      window.location.href='waiting.html';
-    } else if( == 'ROLE_PROFESOR'){
-      window.location.href='newTest.html';
-    }
-    Cookies.set('correo',username,{expires:2});
-    Cookies.set('usuario','',{expires:2});
-    Cookies.set('cargo','',{expires:2});
+    console.log('exito');
+    // if(data.)
+    // if ( == 'ROLE_ALUM'){
+    //   window.location.href='waiting.html';
+    // } else if( == 'ROLE_PROFESOR'){
+    //   window.location.href='newTest.html';
+    // }
+    // Cookies.set('correo',username,{expires:2});
+    // Cookies.set('usuario','',{expires:2});
+    // Cookies.set('cargo','',{expires:2});
   }).fail(function (jqXHR, textStatus, errorThrown) {
+    console.log('falla');
     alert(jqXHR.responseJSON.resultado.mensajeRespuesta);
   })
 
 }
+*/
