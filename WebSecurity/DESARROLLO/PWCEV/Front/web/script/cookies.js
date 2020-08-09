@@ -5,9 +5,10 @@ function refrescar() {
 }
 
 function deleteCookie() {
-    document.cookie = "nombre=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
-    document.cookie = "usuario=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
-    document.cookie = "cargo=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+    Cookies.remove('rol');
+    Cookies.remove('nombre');
+    Cookies.remove('usuario');
+    Cookies.remove('apellido');
 }
 
 function setCookie(cname, cvalue) {
@@ -59,8 +60,3 @@ function updateUsuario() {
     }
 }
 
-function setNombre() {
-  nombre = getCookie('usuario');
-  $('#nombreUser').val(nombre);
-
-}
