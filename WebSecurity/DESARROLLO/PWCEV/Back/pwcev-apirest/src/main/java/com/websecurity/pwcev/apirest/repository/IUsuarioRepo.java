@@ -10,7 +10,7 @@ import com.websecurity.pwcev.apirest.model.Usuario;
 @Repository
 public interface IUsuarioRepo extends JpaRepository<Usuario, Integer>{
 
-	public Usuario findByUsername(String username);
+
 	public Usuario findByEmail(String email);
 	
 	public boolean existsByEmail(String email);

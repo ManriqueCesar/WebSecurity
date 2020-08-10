@@ -23,9 +23,6 @@ public class Usuario {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int idUsuario;
 
-	@Column(name = "username", nullable = false, unique = true)
-	private String username;
-
 	@Column(name = "password", nullable = false)
 	private String password;
 	
@@ -41,8 +38,6 @@ public class Usuario {
 	@Column(name = "estado", nullable = false)
 	private boolean enabled;
 	
-	@Column(name = "face_url", nullable = false)
-	private String faceUrl;
 
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "usuario_rol", joinColumns = @JoinColumn(name = "id_usuario", referencedColumnName = "idUsuario"),inverseJoinColumns = @JoinColumn(name = "id_rol", referencedColumnName = "idRol"))
@@ -56,14 +51,6 @@ public class Usuario {
 
 	public void setIdUsuario(int idUsuario) {
 		this.idUsuario = idUsuario;
-	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
 	}
 
 	public String getPassword() {
@@ -104,14 +91,6 @@ public class Usuario {
 
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
-	}
-
-	public String getFaceUrl() {
-		return faceUrl;
-	}
-
-	public void setFaceUrl(String faceUrl) {
-		this.faceUrl = faceUrl;
 	}
 
 	public List<Rol> getRoles() {
