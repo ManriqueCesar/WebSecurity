@@ -106,7 +106,7 @@
           <video id="video" height="400" width="450" autoplay muted></video>
         </div>
         <div class="modal-footer justify-content-between">
-          <button type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button>
+          <button id="btn-close" type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
@@ -129,14 +129,15 @@
   <!-- iCheck -->
   <script src="plugins/iCheck/icheck.min.js"></script>
   <script defer src="script/face-api.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+ <!-- Cookies js -->
+ <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
   <!-- SweetAlert2 -->
   <script src="bower_components/AdminLTE/plugins/sweetalert2/sweetalert2.min.js"></script>
   <!-- Toastr -->
   <script src="bower_components/AdminLTE/plugins/toastr/toastr.min.js"></script>
 
   <script defer src="script/script.js"></script>
-
+  <script defer src="script/cookies.js"></script>
 
   <script>
     $('.js-tilt').tilt({

@@ -185,11 +185,7 @@ function setNombre() {
 }
 
 $(document).ready(function () {
-
-
-
   setNombre();
-  console.log('a')
   var ruta = 'https://api-pwcev.herokuapp.com';
   $('.addRow').prop('disabled', true);
   cbo_escuela('cbo-eap', 'SOFTWARE');
@@ -228,78 +224,68 @@ $(document).ready(function () {
     var id = $(this).closest("form")
     console.log(id)
     $(".NewForm").remove();
-    console.log("asd2");
   });
 
 
-  $('#tabCurso').click(function () {
-    console.log("curso");
-    $('.addRow').prop('disabled', true);
-  });
+});
 
 
-  $('#tabParam').click(function () {
-    var titulo = $("#txtTitulo").text();
-    console.log("aca");
-    console.log(titulo);
-    $('#inputTitulo').val(titulo);
-    $('.addRow').prop('disabled', true);
-  });
+$(document).on('click', '#btn-crear', function (event) {
+  console.log('1');
+  var curso = {};
+  var usuario = {};
+  var request = {};
 
-  $('#tabExamen').click(function () {
-    console.log("examen");
-    $('.addRow').prop('disabled', false);
-  });
+  curso.alumnosEmail = $('#txt-alumnos').val();
+  curso.centroEstudios = $('#cbo-centro').val().toUpperCase();
+  curso.curso = $('#txt-curso').val();
+  curso.eap = $('#cbo-eap').val().toUpperCase();
+  curso.periodo = $('#cbo-periodo').val();
+  curso.idCurso= null;
+  curso.idDetalleCurso= null;
+  usuario.idUsuario = 3; //por definir
+  request.curso = curso;
+  request.usuario = usuario;
 
-  $('#btn-close').click(function () {
-    deleteCookie();
-
-  });
-
-  $(document).on('click', '#btn-pregunta', function (event) {
-    console.log('holaaaa');
-    $('#inputTituloModal').val($("#txtTitulo").text());
-    $('#modalPregunta').modal('toggle');
-  });
-
-
-
-  $(document).on('click', '#btn-crear', function (event) {
-    console.log('1');
-    var curso = {};
-    var usuario = {};
-    var request = {};
-
-    curso.alumnosEmail = $('#txt-alumnos').val();
-    curso.centroEstudios = $('#cbo-centro').val().toUpperCase();
-    curso.curso = $('#txt-curso').val();
-    curso.eap = $('#cbo-eap').val().toUpperCase();
-    curso.periodo = $('#cbo-periodo').val();
-    curso.idCurso= null;
-    curso.idDetalleCurso= null;
-    usuario.idUsuario = 3; //por definir
-    request.curso = curso;
-    request.usuario = usuario;
-
-    $.ajax({
-      url: ruta + '/detallecurso',
-      type: 'POST',
-      dataType: 'json',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json' //,
-        //	'X-Auth-Token': token
-      },
-      data: JSON.stringify(request)
-    }).done(function () {
-      $('#exampleModalCenter').modal('toggle');
-    }).fail(function (jqXHR, textStatus, errorThrown) {
-      console.log("error")
-    })
-  });
+  $.ajax({
+    url: ruta + '/detallecurso',
+    type: 'POST',
+    dataType: 'json',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json' //,
+      //	'X-Auth-Token': token
+    },
+    data: JSON.stringify(request)
+  }).done(function () {
+    $('#exampleModalCenter').modal('toggle');
+  }).fail(function (jqXHR, textStatus, errorThrown) {
+    console.log("error")
+  })
+});
 
 
+$('#btn-close').click(function () {
+  deleteCookie();
+
+});
+
+$('#tabCurso').click(function () {
+  $('.addRow').prop('disabled', true);
+});
 
 
+$('#tabParam').click(function () {
+  var titulo = $("#txtTitulo").text();
+  $('#inputTitulo').val(titulo);
+  $('.addRow').prop('disabled', true);
+});
 
+$('#tabExamen').click(function () {
+  $('.addRow').prop('disabled', false);
+});
+
+$(document).on('click', '#btn-pregunta', function (event) {
+  $('#inputTituloModal').val($("#txtTitulo").text());
+  $('#modalPregunta').modal('toggle');
 });

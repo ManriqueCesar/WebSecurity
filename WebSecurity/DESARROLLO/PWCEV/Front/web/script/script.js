@@ -11,8 +11,8 @@ function iniciarVideo() {
 }
 
 
-function loadLabeledImages() {
-  const labels = ['Manrique Mayanga', 'Fuentes Ajra', 'Laurel Quinto']
+function loadLabeledImages(apellido) {
+  const labels = [apellido]; 
   return Promise.all(
     labels.map(async label => {
       const descriptions = []
@@ -37,7 +37,8 @@ $(document).ready(function () {
 
 
 video.addEventListener('play', async () => {
-  const labeledFaceDescriptors = await loadLabeledImages()
+  var apellido= Cookies.get('apellido');
+  const labeledFaceDescriptors = await loadLabeledImages(apellido)
   const faceMatcher = new faceapi.FaceMatcher(labeledFaceDescriptors, 0.6)
   console.log(faceMatcher._labeledDescriptors)
   const canvas = faceapi.createCanvasFromMedia(video)
@@ -56,7 +57,7 @@ video.addEventListener('play', async () => {
 
     $("#alumnos").text(results.toString());
     console.log(Cookies.get('apellido'));
-    var apellido= Cookies.get('apellido');
+
     console.log('miApellido es '+ apellido);
     var alumno = results.toString().includes(apellido);
     if (alumno == true) {
@@ -176,9 +177,9 @@ function validar_credenciales(sCorreo, sContrasena) {
     }
     //alert(jqXHR.responseJSON.resultado.mensajeRespuesta);
   })
-
-  $('#loading').on('change', function (e) {
-
-  });
 }
 
+$('#btn-close').click(function () {
+  deleteCookie();
+  
+});
