@@ -31,6 +31,15 @@
 
 
 </head>
+<script type="text/javascript">
+  function preloadFunc()
+  {
+    if (Cookies.get('rol')!='ROLE_PROF'){
+    document.location.href = "index.html";
+    }
+  }
+  window.onpaint = preloadFunc();
+</script>
 
 <body class="hold-transition sidebar-mini">
   <div class="wrapper">
@@ -56,7 +65,7 @@
 
         <!-- Notifications Dropdown Menu -->
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="index.html" id="btn-close">Cerrar sesión</a>
+          <a id="btn-close" href="index.html">Cerrar sesión</a>
         </li>
 
       </ul>
@@ -75,10 +84,11 @@
 
       <!-- Sidebar -->
       <div class="sidebar">
-        <!-- Sidebar user (optional) -->
+
+        <!-- Nombre de usuario y foto -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           <div class="image">
-            <img src="dist/img/security.png" class="img-circle elevation-2" alt="User Image">
+            <img src="dist/img/unmsm.png" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
             <a href="#" class="d-block" id="nombreUser"></a>
@@ -552,17 +562,11 @@
   <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
   <!-- AdminLTE App -->
   <script src="bower_components/AdminLTE/dist/js/adminlte.min.js"></script>
-  
+
   <script src="script/newTest.js"></script>
-  <script type="text/javascript">
-    function preloadFunc()
-    {
-      if (Cookies.get('rol')!='ROLE_PROF"'){
-      document.location.href = "index.html";
-      }
-    }
-    window.onpaint = preloadFunc();
-  </script>
+  <script src="script/cookies.js"></script>
+  
+
 </body>
 
 </html>

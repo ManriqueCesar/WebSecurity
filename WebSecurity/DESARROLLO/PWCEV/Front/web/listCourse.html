@@ -53,7 +53,7 @@
 
         <!-- Notifications Dropdown Menu -->
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="index.html" id="btn-close">Cerrar sesión</a>
+          <a id="btn-close" href="index.html">Cerrar sesión</a>
         </li>
 
       </ul>
@@ -71,11 +71,13 @@
 
       <!-- Sidebar -->
       <div class="sidebar">
-        <!-- Sidebar user (optional) -->
+        <!-- Nombre de usuario y foto -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           <div class="image">
-            <img src="dist/img/security.png" class="img-circle elevation-2" alt="User Image">
-            <span class="brand-text font-weight-light" style="color:darkgrey">Cesar Manrique</span>
+            <img src="dist/img/unmsm.png" class="img-circle elevation-2" alt="User Image">
+          </div>
+          <div class="info">
+            <a href="#" class="d-block" id="nombreUser"></a>
           </div>
         </div>
 
@@ -179,8 +181,7 @@
   <script src="bower_components/AdminLTE/dist/js/demo.js"></script>
   <!-- Select2 -->
   <script src="bower_components/select2/dist/js/select2.full.min.js"></script>
-  <!-- page script -->
-  <!-- cookie plugin -->
+  <!-- Cookies js -->
   <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
   <script src="script/listCourse.js"></script>
   <script src="script/cookies.js"></script>

@@ -1,13 +1,5 @@
-const video = document.getElementById('video')
 
-Promise.all([
-  faceapi.nets.tinyFaceDetector.loadFromUri('../web/dist/js/models'),
-  faceapi.nets.faceLandmark68Net.loadFromUri('../web/dist/js/models'),
-  faceapi.nets.faceRecognitionNet.loadFromUri('../web/dist/js/models'),
-  faceapi.nets.faceExpressionNet.loadFromUri('../web/dist/js/models'),
-  faceapi.nets.ssdMobilenetv1.loadFromUri('../web/dist/js/models')
 
-]).then(iniciarVideo)
 
 function iniciarVideo() {
   navigator.getUserMedia({
@@ -18,42 +10,9 @@ function iniciarVideo() {
   )
 }
 
-video.addEventListener('play', async () => {
-  const labeledFaceDescriptors = await loadLabeledImages()
-  const faceMatcher = new faceapi.FaceMatcher(labeledFaceDescriptors, 0.6)
-  console.log(faceMatcher._labeledDescriptors)
-  const canvas = faceapi.createCanvasFromMedia(video)
-  document.body.append(canvas)
-  const displaySize = {
-    width: video.width,
-    height: video.height
-  }
-  faceapi.matchDimensions(canvas, displaySize)
 
-  setInterval(async () => {
-    const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceDescriptors()
-    const resizedDetections = faceapi.resizeResults(detections, displaySize)
-    const results = resizedDetections.map(d => faceMatcher.findBestMatch(d.descriptor))
-    console.log(results.toString());
-
-    $("#alumnos").text(results.toString());
-    apellido= Cookies.get('apellido');
-    console.log('miApellido es '+ apellido);
-    const alumno = results.toString().includes(apellido);
-    Cookies.remove('apellido');
-    if (alumno == true) {
-      $("#loading").text("Identidad confirmada, redireccionando...")
-      console.log("bienvenido " + apellido);
-      setTimeout(function () {
-        document.location.href = "waiting.html";
-        // rest of code here
-      }, 5000);
-    }
-  }, 500)
-})
-
-function loadLabeledImages() {
-  const labels = ['Manrique Mayanga', 'Fuentes Ajra']
+function loadLabeledImages(apellido) {
+  const labels = [apellido]; 
   return Promise.all(
     labels.map(async label => {
       const descriptions = []
@@ -72,14 +31,57 @@ function loadLabeledImages() {
 $(document).ready(function () {
   $('#txt-email').val('cmanrique@gmail.com');
   $('#txt-password').val('1234');
+
+  const video = document.getElementById('video')
+
+
+
+video.addEventListener('play', async () => {
+  var apellido= Cookies.get('apellido');
+  const labeledFaceDescriptors = await loadLabeledImages(apellido)
+  const faceMatcher = new faceapi.FaceMatcher(labeledFaceDescriptors, 0.6)
+  console.log(faceMatcher._labeledDescriptors)
+  const canvas = faceapi.createCanvasFromMedia(video)
+  document.body.append(canvas)
+  const displaySize = {
+    width: video.width,
+    height: video.height
+  }
+  faceapi.matchDimensions(canvas, displaySize)
+
+  setInterval(async () => {
+    const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceDescriptors()
+    const resizedDetections = faceapi.resizeResults(detections, displaySize)
+    const results = resizedDetections.map(d => faceMatcher.findBestMatch(d.descriptor))
+    console.log(results.toString());
+
+    $("#alumnos").text(results.toString());
+    console.log(Cookies.get('apellido'));
+
+    console.log('miApellido es '+ apellido);
+    var alumno = results.toString().includes(apellido);
+    if (alumno == true) {
+      $("#loading").text("Identidad confirmada, redireccionando...");
+      console.log("bienvenido " + apellido);
+      setTimeout(function () {
+        document.location.href = "waiting.html";
+      }, 5000);
+    }
+  }, 500)
+})
+
 });
 
 $('#btn-ingresar').click(function () {
-  // iniciarSesion();
   $("#btn-ingresar").attr('disabled', 'disabled');
   sCorreo = document.querySelector('#txt-email').value;
   sContrasena = document.querySelector('#txt-password').value;
   validar_credenciales(sCorreo, sContrasena);
+});
+
+$('#btn-camara').click(function () {
+
+
 });
 
 
@@ -109,15 +111,25 @@ function validar_credenciales(sCorreo, sContrasena) {
     console.log(data.nombre);
     console.log(data.apellido);
     console.log(data.roles[0].nombre);
-
+    console.log(data);
     Cookies.set('apellido', data.apellido, {
       expires: 2
     });
 
     if (data.roles[0].nombre == 'ROLE_ALUM') {
-      $('#modal-default').modal('toggle');
+      $('#modal-default').modal({backdrop: 'static', keyboard: false}) 
+      Promise.all([
+        faceapi.nets.tinyFaceDetector.loadFromUri('../web/dist/js/models'),
+        faceapi.nets.faceLandmark68Net.loadFromUri('../web/dist/js/models'),
+        faceapi.nets.faceRecognitionNet.loadFromUri('../web/dist/js/models'),
+        faceapi.nets.faceExpressionNet.loadFromUri('../web/dist/js/models'),
+        faceapi.nets.ssdMobilenetv1.loadFromUri('../web/dist/js/models')
+      
+      ]).then(iniciarVideo)
       iniciarVideo();
-      Cookies.set('rol', data.roles[0].nombre, {
+ 
+      
+      Cookies.set('apellido', data.apellido, {
         expires: 200
       });
       Cookies.set('usuario', data.nombre + ' ' + data.apellido, {
@@ -127,6 +139,9 @@ function validar_credenciales(sCorreo, sContrasena) {
         expires: 200
       });
       Cookies.set('id', data.idUsuario, {
+        expires: 200
+      });
+      Cookies.set('rol', data.roles[0].nombre, {
         expires: 200
       });
     } else if (data.roles[0].nombre == 'ROLE_PROF') {
@@ -162,5 +177,9 @@ function validar_credenciales(sCorreo, sContrasena) {
     }
     //alert(jqXHR.responseJSON.resultado.mensajeRespuesta);
   })
-
 }
+
+$('#btn-close').click(function () {
+  deleteCookie();
+  
+});

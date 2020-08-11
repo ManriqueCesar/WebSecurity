@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,97 +25,125 @@
   <!-- Google Font -->
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+
+  <link rel="icon" type="image/png" href="dist/img/icons/favicon.ico" />
+
+  <link rel="stylesheet" type="text/css" href="dist/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet" type="text/css" href="dist/vendor/animate/animate.css">
+
+  <link rel="stylesheet" type="text/css" href="dist/vendor/css-hamburgers/hamburgers.min.css">
+
+  <link rel="stylesheet" type="text/css" href="bower_components/select2/dist/css/select2.min.css">
+
+  <link rel="stylesheet" type="text/css" href="dist/css/util.css">
+  <link rel="stylesheet" type="text/css" href="dist/css/main.css">
+
+
+
 </head>
 
-<body class="hold-transition login-page">
-  <div id="frm-login" class="container">
-    <div id="loginBox" class="login-box col-sm-6">
+<body>
 
-      <div class="login-logo">
-        <img src="dist/img/security.png" class="user-image" alt="WebSecurity" style="width:300px; height:180px;">
-      </div>
-      <!-- /.login -->
-      <div class="login-box-body">
-        <p class="login-box-msg">Logueate para iniciar session</p>
+  <div class="limiter">
+    <div class="container-login100">
+      <div class="wrap-login100">
+        <div class="login100-pic js-tilt" data-tilt>
+          <img src="dist/img/unmsm.png" alt="Imagen Logo">
+        </div>
 
-        <form method="POST">
-          <div class="form-group has-feedback">
-            <input id="txt-email" type="email" class="form-control" placeholder="Email" autofocus required>
-            <div class="input-group-addon">
-              <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-            </div>
+        <form method="POST" class="login100-form validate-form">
+          <span class="login100-form-title">
+            Plataforma Web de Control de Exámenes Virtuales
+          </span>
+
+          <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+            <input id="txt-email" class="input100" type="text" name="email" placeholder="Email" required>
+            <span class="focus-input100"></span>
+            <span class="symbol-input100">
+              <i class="fa fa-envelope" aria-hidden="true"></i>
+            </span>
           </div>
 
-          <div class="form-group has-feedback">
-            <input id="txt-password" type="password" class="form-control" placeholder="Password" required>
+          <div class="wrap-input100 validate-input" data-validate="Password is required">
+            <input id="txt-password" class="input100" type="password" name="pass" placeholder="Password" required>
+            <span class="focus-input100"></span>
+            <span class="symbol-input100">
+              <i class="fa fa-lock" aria-hidden="true"></i>
+            </span>
           </div>
 
-          <div class="row">
-            <div class="col-xs-8">
-            </div>
-            <div class="col-sm-12">
-              <input type="button" id="btn-ingresar" class="btn btn-primary btn-block btn-flat" value="Ingresar">
-            </div>
+          <div class="container-login100-form-btn">
+            <button id="btn-ingresar" class="login100-form-btn">
+              Login
+            </button>
+          </div>
+
+
+
+          <div class="text-center p-t-136" id="btn-camara">
+            <a class="txt2" href="#">
+              Si eres Alumno, recuerda activar tu cámara
+              <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+            </a>
           </div>
         </form>
-      </div>
-      <!-- fin login -->
-    </div>
-    <!-- /.login-box-body -->
-
-    <div class="modal fade" id="modal-default">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="text-center">
-            <h3 class="modal-title">Reconocimiento facial | Login Alumno</h3>
-            <h5 id="loading">Confirmando identidad ...</h5>
-            <label id="alumnos"></label>
-            <hr>
-          </div>
-          <div class="box-body with-border">
-            <video id="video" height="400" width="450" autoplay muted></video>
-          </div>
-        </div>
       </div>
     </div>
   </div>
 
-  <!-- /.login-box -->
+  <div class="modal fade" id="modal-default">
+    <div class="modal-dialog">
+      <div class="modal-content bg-secondary">
+        <div class="text-center">
+          <h3 style="color:white;" class="modal-title">Reconocimiento facial | Login Alumno</h3>
+          <h5 style="color: white;" id="loading">Confirmando identidad ...</h5>
+          <label style="color: white;" id="alumnos"></label>
+          <hr style="color:white;">
+        </div>
+        <div class="box-body with-border">
+          <video id="video" height="400" width="450" autoplay muted></video>
+        </div>
+        <div class="modal-footer justify-content-between">
+          <button id="btn-close" type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
 
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      width: 100vw;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    canvas {
-      position: absolute;
-    }
-  </style>
 
 
   <!-- jQuery 3 -->
   <script src="bower_components/jquery/node_modules/jquery/dist/jquery.min.js"></script>
   <!-- Bootstrap -->
   <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <!--===============================================================================================-->
+
+  <!-- Select2 -->
+  <script src="bower_components/select2/dist/js/select2.min.js"></script>
+  <!--===============================================================================================-->
+  <script src="dist/vendor/tilt/tilt.jquery.min.js"></script>
+
   <!-- iCheck -->
   <script src="plugins/iCheck/icheck.min.js"></script>
   <script defer src="script/face-api.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+ <!-- Cookies js -->
+ <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
   <!-- SweetAlert2 -->
   <script src="bower_components/AdminLTE/plugins/sweetalert2/sweetalert2.min.js"></script>
   <!-- Toastr -->
   <script src="bower_components/AdminLTE/plugins/toastr/toastr.min.js"></script>
 
   <script defer src="script/script.js"></script>
+  <script defer src="script/cookies.js"></script>
 
-
-
+  <script>
+    $('.js-tilt').tilt({
+      scale: 1.1
+    })
+  </script>
 
 
 </body>

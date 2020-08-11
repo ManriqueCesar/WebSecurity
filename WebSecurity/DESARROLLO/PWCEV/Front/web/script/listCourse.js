@@ -14,10 +14,10 @@ function getCookie(cname) {
 }
 
 function setNombre() {
-  var user = Cookies.get('apellido');
-  $('#nombreUser').text(user);
-
-}
+    var user = Cookies.get('usuario');
+    $('#nombreUser').text(user);
+  
+  }
 
 
 $(document).ready(function () {
@@ -54,7 +54,8 @@ $(document).ready(function () {
 },
  
   ajax:{
-        url: ruta+'/detallecursos/usuario/'+idUser,
+        url: ruta+'/detallecurso/usuario/'+idUser,
+        dataSrc: '',
         async:false,
         cache:true, 
         error: function(jqXHR, textStatus, errorThrown){
