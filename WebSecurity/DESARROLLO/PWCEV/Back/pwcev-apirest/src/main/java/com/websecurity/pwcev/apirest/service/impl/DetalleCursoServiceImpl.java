@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.websecurity.pwcev.apirest.model.Curso;
 import com.websecurity.pwcev.apirest.model.DetalleCurso;
+import com.websecurity.pwcev.apirest.model.Usuario;
 import com.websecurity.pwcev.apirest.repository.IDetalleCursoRepo;
 import com.websecurity.pwcev.apirest.service.ICursoService;
 import com.websecurity.pwcev.apirest.service.IDetalleCursoService;
@@ -36,10 +37,27 @@ public class DetalleCursoServiceImpl implements IDetalleCursoService {
 			if (esprofe) {
 				curso=cursoService.registrar(registro.getCurso());
 				registro.setCurso(curso);
-				return repo.save(registro);
+				DetalleCurso detalle=repo.save(registro);
+				registrarAlumnos(curso);
+				return detalle;					
 			}
 		}
 		return null;
+	}
+	
+	public void registrarAlumnos(Curso registro) {
+		
+		String email = registro.getAlumnosEmail();
+		if(usuarioService.existeUsuarioByEmail(email)) {
+			Usuario alumno=usuarioService.findByEmail(email);
+			DetalleCurso detalle = new DetalleCurso();
+			detalle.setCurso(registro);
+			detalle.setUsuario(alumno);
+			
+			repo.save(detalle);
+			}
+		
+		
 	}
 
 	@Override
