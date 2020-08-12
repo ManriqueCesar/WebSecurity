@@ -29,7 +29,7 @@ function loadLabeledImages(apellido) {
 
 
 $(document).ready(function () {
-  $('#txt-email').val('cmanrique@gmail.com');
+  $('#txt-email').val('cmanrique@unmsm.edu.pe');
   $('#txt-password').val('1234');
 
   const video = document.getElementById('video')
@@ -90,7 +90,6 @@ function validar_credenciales(sCorreo, sContrasena) {
   var ruta = 'https://api-pwcev.herokuapp.com';
   //var ruta = 'http://localhost:9090';
   request = {};
-
   request.email = sCorreo;
   request.password = sContrasena;
 
@@ -99,7 +98,6 @@ function validar_credenciales(sCorreo, sContrasena) {
     processData: false,
     type: 'POST',
     dataType: 'json',
-
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json',
@@ -163,16 +161,22 @@ function validar_credenciales(sCorreo, sContrasena) {
   }).fail(function (jqXHR, textStatus, errorThrown) {
     $("#btn-ingresar").removeAttr('disabled');
     console.log(jqXHR)
+    var Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000
+    });
     if (jqXHR.responseJSON.status == 500) {
-      var Toast = Swal.mixin({
-        toast: true,
-        position: 'top-end',
-        showConfirmButton: false,
-        timer: 3000
-      });
       Toast.fire({
         icon: 'error',
         title: 'Correo o contraseña incorrectos'
+      })
+    }
+    else{
+      Toast.fire({
+        icon: 'error',
+        title: 'Error. Por favor intente nuevamente'
       })
     }
     //alert(jqXHR.responseJSON.resultado.mensajeRespuesta);

@@ -1,150 +1,154 @@
-  function Cargar_curso_id(cboid, idUsuario) {
-    var ruta = 'https://api-pwcev.herokuapp.com';
-    // var token = getCookie('X-Auth-Token');
-    $('#' + cboid).empty();
-    $.ajax({
-      async: false,
-      cache: true,
-      url: ruta + '/detallecursos/usuario/' + idUsuario,
-      method: 'GET',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        //    'X-Auth-Token': token
-      }
-    }).done(function (data) {
-      $('#' + cboid).append('<option></option>');
-      for (var x = 0; x < data.clase.length; x++) {
-        $('#' + cboid).append('<option value="' + data.curso[x].id + '">' + data.curso[x].curso + '</option>');
-      }
-      if (idUsuario != null) $('#' + cboid).val(idUsuario);
-    });
-  }
-
-
-
-  function cbo_escuela(cboid, opcionxdefecto) {
-    $.getJSON('json/eaps.json', function (data) {
-      for (var x = 0; x < data.length; x++) {
-        $("#" + cboid).append('<option value="' + data[x].value + '">' + data[x].descripcion + '</option>');
-      }
-      if (opcionxdefecto != null) $('#' + cboid).val(opcionxdefecto).trigger('change');
-
-    })
-  }
-
-  function cbo_universidad(cboid, opcionxdefecto) {
-    $.getJSON('json/universidades.json', function (data) {
-      for (var x = 0; x < data.length; x++) {
-        $("#" + cboid).append('<option value="' + data[x].value + '">' + data[x].descripcion + '</option>');
-      }
-      if (opcionxdefecto != null) $('#' + cboid).val(opcionxdefecto).trigger('change');
-
-    })
-  }
-
-  function cargarFecha() {
-    //Initialize Select2 Elements
-    //Initialize Select2 Elements
-    //Datemask dd/mm/yyyy
-    $('#datemask').inputmask('dd/mm/yyyy', {
-      'placeholder': 'dd/mm/yyyy'
-    })
-    //Datemask2 mm/dd/yyyy
-    $('#datemask2').inputmask('mm/dd/yyyy', {
-      'placeholder': 'mm/dd/yyyy'
-    })
-    //Money Euro
-    $('[data-mask]').inputmask()
-
-    //Date range picker
-    $('#reservationdate').datetimepicker({
-      format: 'L'
-    });
-    //Date range picker
-    $('#reservation').daterangepicker()
-    //Date range picker with time picker
-    $('#reservationtime').daterangepicker({
-      timePicker: true,
-      timePickerIncrement: 30,
-      locale: {
-        format: 'MM/DD/YYYY hh:mm A'
-      }
-    })
-    //Timepicker
-    $('#timepicker').datetimepicker({
-      format: 'LT'
-    })
-
-  }
-
-  function editarTitulo() {
-    var defaultTítulo = 'Ingresar el título del examen';
-
-    function endEdit(e) {
-      var input = $(e.target),
-        label = input && input.prev();
-
-      label.text(input.val() === '' ? defaultTítulo : input.val());
-      input.hide();
-      label.show();
+function Cargar_curso_id(cboid, opcionxdefecto) {
+  var idUsuario = Cookies.get('id');
+  var ruta = 'https://api-pwcev.herokuapp.com';
+  $('#' + cboid).empty();
+  $.ajax({
+    async: false,
+    cache: true,
+    url: ruta + '/detallecurso/usuario/' + idUsuario,
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      //    'X-Auth-Token': token
     }
+  }).done(function (data) {
+    $('#' + cboid).append('<option></option>');
+    for (var x = 0; x < data.length; x++) {
+      $('#' + cboid).append('<option value="' + data[x].idCurso + '">' + data[x].curso + '</option>');
+    }
+    if (opcionxdefecto != null) $('#' + cboid).val(opcionxdefecto);
+  });
+}
 
-    $('.clickedit').hide()
-      .focusout(endEdit)
-      .keyup(function (e) {
-        if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
-          endEdit(e);
-          return false;
-        } else {
-          return true;
-        }
-      })
-      .prev().click(function () {
-        $(this).hide();
-        $(this).next().show().focus();
-      });
+
+
+function cbo_escuela(cboid, opcionxdefecto) {
+  $.getJSON('json/eaps.json', function (data) {
+    for (var x = 0; x < data.length; x++) {
+      $("#" + cboid).append('<option value="' + data[x].value + '">' + data[x].descripcion + '</option>');
+    }
+    if (opcionxdefecto != null) $('#' + cboid).val(opcionxdefecto).trigger('change');
+
+  })
+}
+
+function cbo_universidad(cboid, opcionxdefecto) {
+  $.getJSON('json/universidades.json', function (data) {
+    for (var x = 0; x < data.length; x++) {
+      $("#" + cboid).append('<option value="' + data[x].value + '">' + data[x].descripcion + '</option>');
+    }
+    if (opcionxdefecto != null) $('#' + cboid).val(opcionxdefecto).trigger('change');
+
+  })
+}
+
+function fnExcelReport() {
+  var tab_text = "<table border='2px'><tr bgcolor='#87AFC6'>";
+  var textRange;
+  var j = 0;
+  tab = document.getElementById('headerTable'); // id of table
+
+  for (j = 0; j < tab.rows.length; j++) {
+    tab_text = tab_text + tab.rows[j].innerHTML + "</tr>";
+    //tab_text=tab_text+"</tr>";
   }
 
-  function editarDescripcion() {
-    var defaultDescripción = 'Ingresar la descripción';
+  tab_text = tab_text + "</table>";
+  tab_text = tab_text.replace(/<A[^>]*>|<\/A>/g, ""); //remove if u want links in your table
+  tab_text = tab_text.replace(/<img[^>]*>/gi, ""); // remove if u want images in your table
+  tab_text = tab_text.replace(/<input[^>]*>|<\/input>/gi, ""); // reomves input params
 
-    function endEdit2(e) {
-      var input = $(e.target),
-        label = input && input.prev();
+  var ua = window.navigator.userAgent;
+  var msie = ua.indexOf("MSIE ");
 
-      label.text(input.val() === '' ? defaultDescripción : input.val());
-      input.hide();
-      label.show();
-    }
+  if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)) // If Internet Explorer
+  {
+    txtArea1.document.open("txt/html", "replace");
+    txtArea1.document.write(tab_text);
+    txtArea1.document.close();
+    txtArea1.focus();
+    sa = txtArea1.document.execCommand("SaveAs", true, "Say Thanks to Sumit.xls");
+  } else //other browser not tested on IE 11
+    sa = window.open('data:application/vnd.ms-excel,' + encodeURIComponent(tab_text));
 
-    $('.clickedit2').hide()
-      .focusout(endEdit2)
-      .keyup(function (e) {
-        if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
-          endEdit(e);
-          return false;
-        } else {
-          return true;
-        }
-      })
-      .prev().click(function () {
-        $(this).hide();
-        $(this).next().show().focus();
-      });
+  return (sa);
+}
+
+
+function cargarFecha() {
+  //Datemask dd/mm/yyyy
+  $('.miFecha').datepicker({
+    format: "dd/mm/yyyy",
+    language: "es"
+});
+}
+
+function editarTitulo() {
+  var defaultTítulo = 'Ingresar el título del examen';
+
+  function endEdit(e) {
+    var input = $(e.target),
+      label = input && input.prev();
+
+    label.text(input.val() === '' ? defaultTítulo : input.val());
+    input.hide();
+    label.show();
+  }
+
+  $('.clickedit').hide()
+    .focusout(endEdit)
+    .keyup(function (e) {
+      if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
+        endEdit(e);
+        return false;
+      } else {
+        return true;
+      }
+    })
+    .prev().click(function () {
+      $(this).hide();
+      $(this).next().show().focus();
+    });
+}
+
+function editarDescripcion() {
+  var defaultDescripción = 'Ingresar la descripción';
+
+  function endEdit2(e) {
+    var input = $(e.target),
+      label = input && input.prev();
+
+    label.text(input.val() === '' ? defaultDescripción : input.val());
+    input.hide();
+    label.show();
+  }
+
+  $('.clickedit2').hide()
+    .focusout(endEdit2)
+    .keyup(function (e) {
+      if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
+        endEdit(e);
+        return false;
+      } else {
+        return true;
+      }
+    })
+    .prev().click(function () {
+      $(this).hide();
+      $(this).next().show().focus();
+    });
 
 }
 
 function duplicarAlternativas(unique) {
-
-  console.log("duplicandoAlternativas");
   //$("#original").clone().appendTo("#containers");
   contador = 1;
   var copy = $("#descripcion").clone(true);
   var formId = 'opcion' + unique;
   copy.attr('id', formId);
   $('#original').append(copy);
-  $('#' + formId).find("p","label","input").each(function () {
+  $('#' + formId).find("p", "label", "input").each(function () {
     $(this).attr('id', $(this).attr('id') + unique);
     unique++;
   });
@@ -161,19 +165,13 @@ function duplicar(uniqueId) {
   // Set inputs'id
   copy.find('label, select').each(function () {
     $(this).attr('id', $(this).attr('id') + uniqueId);
-
-  //  $(this).attr('id', $(this).attr('id') + uniqueId + '-' + index);
-//    $(this).attr('name', $(this).attr('name') + uniqueId);
-  //  $(this).attr('value', $(this).attr('value') + uniqueId + '-' + index);
+    //  $(this).attr('id', $(this).attr('id') + uniqueId + '-' + index);
+    //    $(this).attr('name', $(this).attr('name') + uniqueId);
+    //  $(this).attr('value', $(this).attr('value') + uniqueId + '-' + index);
   });
-
   copy.find('label, select').each(function (index) {
     $(this).attr('for', $(this).attr('for') + uniqueId + '-' + index);
-
   });
-
-
-
   // Insert new form
   $('#campaign').append(copy);
 }
@@ -186,28 +184,22 @@ function setNombre() {
 
 $(document).ready(function () {
   setNombre();
-  var ruta = 'https://api-pwcev.herokuapp.com';
-  $('.addRow').prop('disabled', true);
   cbo_escuela('cbo-eap', 'SOFTWARE');
-  cbo_universidad('cbo-centro', 'unmsm');
+  cbo_universidad('cbo-centro', 'UNMSM');
+  $('.addRow').prop('disabled', true);
   cargarFecha();
   editarTitulo();
   editarDescripcion();
-  //Cargar_curso_id('cbocurso', 1);
   var uniqueId = 1;
   var unique = 7;
   var contador = 0;
 
-
   //funcion para duplicar preguntas
-
   $('.addRow').click(function () {
     // duplicarAlternativas(unique);
     duplicar(uniqueId);
-
     uniqueId++;
     //unique++;
-
     contador++;
     if (contador > 8) {
       console.log('maximo')
@@ -216,45 +208,47 @@ $(document).ready(function () {
   });
 
   // $(document).on('change', '[type=radio]', function (e) {});
-
-
-
   $('#close').click(function () {
     console.log("asd1");
     var id = $(this).closest("form")
     console.log(id)
     $(".NewForm").remove();
   });
-
-
 });
 
 
 $(document).on('click', '#btn-crear', function (event) {
-  console.log('1');
-  var curso = {};
-  var usuario = {};
-  var request = {};
+  var ruta = 'https://api-pwcev.herokuapp.com';
 
-  curso.alumnosEmail = $('#txt-alumnos').val();
+  //algoritmo para asignar los alumnos en un array
+  var alumnos = $('#txt-alumnos').val();
+  listaAlumnos = alumnos.split('\n');
+  arregloAlumnos = [];
+  arregloAlumnos = arregloAlumnos.concat(listaAlumnos);
+  console.log(arregloAlumnos);
+  //fin algoritmo
+
+  var curso = {};
+  var request = {};
+  var emailAlumnos= [];
+
+  var id = Cookies.get('id');
   curso.centroEstudios = $('#cbo-centro').val().toUpperCase();
   curso.curso = $('#txt-curso').val();
   curso.eap = $('#cbo-eap').val().toUpperCase();
   curso.periodo = $('#cbo-periodo').val();
-  curso.idCurso= null;
-  curso.idDetalleCurso= null;
-  usuario.idUsuario = 3; //por definir
+  curso.idCurso = null;
   request.curso = curso;
-  request.usuario = usuario;
-
+  request.idUsuario = id;
+  request.emailAlumnos = arregloAlumnos;
+  request.idDetalleCurso = null;
   $.ajax({
-    url: ruta + '/detallecurso',
+    url: ruta +'/detallecurso/',
     type: 'POST',
     dataType: 'json',
     headers: {
       'Accept': 'application/json',
-      'Content-Type': 'application/json' //,
-      //	'X-Auth-Token': token
+      'Content-Type': 'application/json'
     },
     data: JSON.stringify(request)
   }).done(function () {
@@ -265,17 +259,17 @@ $(document).on('click', '#btn-crear', function (event) {
 });
 
 
+
 $('#btn-close').click(function () {
   deleteCookie();
-
 });
 
 $('#tabCurso').click(function () {
   $('.addRow').prop('disabled', true);
 });
 
-
 $('#tabParam').click(function () {
+  Cargar_curso_id('cbocurso',1);
   var titulo = $("#txtTitulo").text();
   $('#inputTitulo').val(titulo);
   $('.addRow').prop('disabled', true);

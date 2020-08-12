@@ -10,13 +10,15 @@
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
 
+   <!-- Bootstrap-->
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="bower_components/AdminLTE/plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="bower_components/AdminLTE/dist/css/adminlte.min.css">
-  <!-- daterange picker -->
-  <link rel="stylesheet" href="bower_components/AdminLTE/plugins/daterangepicker/daterangepicker.css">
+  <!-- date picker -->
+  <link rel="stylesheet" href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.css">
   <!-- Tempusdominus Bootstrap 4 -->
   <link rel="stylesheet"
     href="bower_components/AdminLTE/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
@@ -31,15 +33,7 @@
 
 
 </head>
-<script type="text/javascript">
-  function preloadFunc()
-  {
-    if (Cookies.get('rol')!='ROLE_PROF'){
-    document.location.href = "index.html";
-    }
-  }
-  window.onpaint = preloadFunc();
-</script>
+
 
 <body class="hold-transition sidebar-mini">
   <div class="wrapper">
@@ -54,7 +48,7 @@
           <a href="#" class="nav-link">Crear Examen</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="list.html" class="nav-link">Ver Resultados</a>
+          <a href="list.html" class="nav-link">Ver Exámenes</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
           <a href="listCourse.html" class="nav-link">Ver Cursos</a>
@@ -77,7 +71,7 @@
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
       <a href="index.html" class="brand-link">
-        <img src="bower_components/AdminLTE/dist/img/AdminLTELogo.png" alt="AdminLTE Logo"
+        <img src="dist/img/security.png" alt="WebSecurity Logo"
           class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light" style="color:darkgrey">WebSecurity</span>
       </a>
@@ -96,7 +90,56 @@
         </div>
 
         <!-- Sidebar Menu -->
+        <nav class="mt-2">
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <!-- Add icons to the links using the .nav-icon class
+                 with font-awesome or any other icon font library -->
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <p>
+                  Mis Exámenes
+                  <i class="right fas fa-angle-left"></i>
+                  <span class="badge badge-info right">2</span> 
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+         
+                    <p style="color: white;">2 Exámenes pendientes</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <p style="color: white;">7 Exámenes creados</p>
+                  </a>
+                </li>
+              </ul>
 
+              <li class="nav-item has-treeview">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-copy"></i>
+                  <p>
+                    Mis Cursos
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="#l" class="nav-link">
+                      <p>10 cursos creados</p>
+                    </a>
+                  </li>
+ 
+                </ul>
+              </li>
+            </li>
+
+ 
+
+          </ul>
+        </nav>
         <!-- /.sidebar-menu -->
       </div>
       <!-- /.sidebar -->
@@ -169,7 +212,7 @@
 
               <!-- /.card -->
             </div>
-
+       
 
             <!-- /.col -->
             <div class="col-md-9">
@@ -285,18 +328,34 @@
                           </div>
                         </div>
 
+                      <div class="form-group row">
+                        <label for="inputFecha" class="col-sm-2 col-form-label">Fecha Inicio</label>
+                        <div class="col-sm-10 input-group-prepend">
+                          <span class="input-group-text"><i class="far fa-clock"></i></span>
+                          <input type="text" class="form-control float-right miFecha" id="horaInicio">
+                        </div>
+                      </div>
+                      
                         <div class="form-group row">
-                          <label for="inputFecha" class="col-sm-2 col-form-label">Fecha</label>
+                          <label for="inputFecha" class="col-sm-2 col-form-label">Hora Inicio</label>
                           <div class="col-sm-10 input-group-prepend">
                             <span class="input-group-text"><i class="far fa-clock"></i></span>
-                            <input type="text" class="form-control float-right" id="reservationtime">
+                            <input type="text" class="form-control float-right" id="horaInicio">
+                          </div>
+                        </div>
+
+                        <div class="form-group row">
+                          <label for="inputFecha" class="col-sm-2 col-form-label">Duración</label>
+                          <div class="col-sm-10 input-group-prepend">
+                            <span class="input-group-text"><i class="far fa-clock"></i></span>
+                            <input type="text" class="form-control float-right" id="duracion">
                           </div>
                         </div>
 
                         <div class="form-group row">
                           <label for="inputName" class="col-sm-2 col-form-label">Curso</label>
                           <div class="col-sm-10">
-                            <select class="form-control select2" style="width: 100%;" id="cbocurso" name="curso">
+                            <select class="form-control select2" style="width: 80%;" id="cbocurso" name="curso">
                             </select>
                           </div>
                         </div>
@@ -484,31 +543,31 @@
               <div id="alternativa1" class="form-group row">
                 <label for="inputName" class="col-sm-2 col-form-label">1.</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="">
+                  <input type="text" class="form-control">
                 </div>
               </div>
               <div id="alternativa2" class="form-group row">
                 <label for="inputName" class="col-sm-2 col-form-label">2.</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="">
+                  <input type="text" class="form-control">
                 </div>
               </div>
               <div id="alternativa3" class="form-group row">
                 <label for="inputName" class="col-sm-2 col-form-label">3.</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="">
+                  <input type="text" class="form-control">
                 </div>
               </div>
               <div id="alternativa4" class="form-group row">
                 <label for="inputName" class="col-sm-2 col-form-label">4.</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="">
+                  <input type="text" class="form-control">
                 </div>
               </div>
               <div id="alternativa5" class="form-group row">
                 <label for="inputName" class="col-sm-2 col-form-label">5.</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="">
+                  <input type="text" class="form-control">
                 </div>
               </div>
 
@@ -520,9 +579,7 @@
         </div>
       </div>
     </div>
-    </div>
-    <!-- fin Modal -->
-
+  <!-- fin Modal -->
 
     <footer class="main-footer">
       <div class="float-right d-none d-sm-block">
@@ -532,12 +589,14 @@
       rights reserved.
     </footer>
 
-
-    <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">
       <!-- Control sidebar content goes here -->
     </aside>
     <!-- /.control-sidebar -->
+
+
+    <!-- Control Sidebar -->
+ 
 
   </div>
   <!-- ./wrapper -->
@@ -552,21 +611,31 @@
   <!-- InputMask -->
   <script src="bower_components/AdminLTE/plugins/moment/moment.min.js"></script>
   <script src="bower_components/AdminLTE/plugins/inputmask/jquery.inputmask.min.js"></script>
-  <!-- date-range-picker -->
-  <script src="bower_components/AdminLTE/plugins/daterangepicker/daterangepicker.js"></script>
-
+  <!-- date-picker -->
+  <script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
+  <script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
   <!-- Tempusdominus Bootstrap 4 -->
   <script src="bower_components/AdminLTE/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js">
   </script>
  <!-- Cookies js -->
   <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+
+  <script type="text/javascript">
+    function preloadFunc() {
+      if (Cookies.get('rol') != 'ROLE_PROF') {
+        document.location.href = "index.html";
+      }
+    }
+    window.onpaint = preloadFunc();
+  </script>
+
   <!-- AdminLTE App -->
   <script src="bower_components/AdminLTE/dist/js/adminlte.min.js"></script>
 
   <script src="script/newTest.js"></script>
   <script src="script/cookies.js"></script>
-  
 
+  
 </body>
 
 </html>
