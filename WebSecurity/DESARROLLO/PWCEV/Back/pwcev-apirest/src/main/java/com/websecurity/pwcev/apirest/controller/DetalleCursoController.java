@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.websecurity.pwcev.apirest.entidadModelo.DetalleCursoModelo;
 import com.websecurity.pwcev.apirest.model.Curso;
 import com.websecurity.pwcev.apirest.model.DetalleCurso;
 import com.websecurity.pwcev.apirest.service.IDetalleCursoService;
@@ -52,7 +53,7 @@ public class DetalleCursoController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<?> registrar(@RequestBody DetalleCurso cursoUsuarios) {
+	public ResponseEntity<?> registrar(@RequestBody DetalleCursoModelo cursoUsuarios) {
 		DetalleCurso detalleCursos = null;
 		Map<String, Object> response = new HashMap<>();
 
@@ -66,12 +67,12 @@ public class DetalleCursoController {
 
 		}
 		// Validar si existe el usuario
-		if (!usuarioService.existeUsuarioById(cursoUsuarios.getUsuario().getIdUsuario())) {
+		if (!usuarioService.existeUsuarioById(cursoUsuarios.getIdUsuario())) {
 			response.put("mensaje", "No se pudo asignar un profesor, el usuario no existe");
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
 		} else {
 			// Rol de profesor es 2
-			if (!usuarioService.validarRol(cursoUsuarios.getUsuario(), 2)) {
+			if (!usuarioService.validarRol(cursoUsuarios.getIdUsuario(), 2)) {
 				response.put("mensaje", "No se pudo asignar un profesor, el usuario no cuenta con el rol de profesor");
 				return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
 			}else {

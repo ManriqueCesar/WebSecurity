@@ -27,8 +27,6 @@ public class Curso {
 	@Column(name = "periodo", nullable = false, length = 10)
 	private String periodo;
 	
-	@Column(name = "alumnos_email", nullable = false, length = 500)
-	private String alumnosEmail;
 
 	public Integer getIdCurso() {
 		return idCurso;
@@ -70,13 +68,5 @@ public class Curso {
 		this.periodo = periodo;
 	}
 
-	public String getAlumnosEmail() {
-		return alumnosEmail;
-	}
-
-	public void setAlumnosEmail(String alumnosEmail) {
-		this.alumnosEmail = alumnosEmail;
-	}
-	
 	
 }

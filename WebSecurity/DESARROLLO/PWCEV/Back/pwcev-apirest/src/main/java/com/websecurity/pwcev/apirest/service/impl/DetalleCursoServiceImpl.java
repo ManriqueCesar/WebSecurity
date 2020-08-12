@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.websecurity.pwcev.apirest.entidadModelo.DetalleCursoModelo;
 import com.websecurity.pwcev.apirest.model.Curso;
 import com.websecurity.pwcev.apirest.model.DetalleCurso;
 import com.websecurity.pwcev.apirest.model.Usuario;
@@ -27,38 +28,47 @@ public class DetalleCursoServiceImpl implements IDetalleCursoService {
 	
 
 	@Override
-	public DetalleCurso registrar(DetalleCurso registro) {
+	public DetalleCurso registrar(DetalleCursoModelo registro) {
 
-		boolean existeusuario = usuarioService.existeUsuarioById(registro.getUsuario().getIdUsuario());
+		boolean existeusuario = usuarioService.existeUsuarioById(registro.getIdUsuario());
 		Curso curso = new Curso();
-		
+
 		if (existeusuario) {
-			boolean esprofe = usuarioService.validarRol(registro.getUsuario(), 2);
+			boolean esprofe = usuarioService.validarRol(registro.getIdUsuario(), 2);
 			if (esprofe) {
-				curso=cursoService.registrar(registro.getCurso());
-				registro.setCurso(curso);
-				DetalleCurso detalle=repo.save(registro);
-				registrarAlumnos(curso);
-				return detalle;					
+				curso = cursoService.registrar(registro.getCurso());
+				Usuario us = new Usuario();
+				us.setIdUsuario(registro.getIdUsuario());
+				DetalleCurso detalleNuevo = new DetalleCurso();
+				detalleNuevo.setCurso(curso);
+				detalleNuevo.setUsuario(us);
+
+				DetalleCurso detalle = repo.save(detalleNuevo);
+				registrarAlumnos(registro, curso);
+				return detalle;
 			}
 		}
 		return null;
+
 	}
 	
-	public void registrarAlumnos(Curso registro) {
-		
-		String email = registro.getAlumnosEmail();
-		if(usuarioService.existeUsuarioByEmail(email)) {
-			Usuario alumno=usuarioService.findByEmail(email);
-			DetalleCurso detalle = new DetalleCurso();
-			detalle.setCurso(registro);
-			detalle.setUsuario(alumno);
-			
-			repo.save(detalle);
+	public void registrarAlumnos(DetalleCursoModelo registro, Curso curso) {
+
+		ArrayList<String> correos = registro.getEmailAlumnos();
+
+		for (int i = 0; i < correos.size(); i++) {
+			String email = correos.get(i);
+			if (usuarioService.existeUsuarioByEmail(email)) {
+				Usuario alumno = usuarioService.findByEmail(email);
+				DetalleCurso detalle = new DetalleCurso();
+				detalle.setCurso(curso);
+				detalle.setUsuario(alumno);
+
+				repo.save(detalle);
 			}
-		
-		
+		}
 	}
+
 
 	@Override
 	public DetalleCurso modificar(DetalleCurso t) {

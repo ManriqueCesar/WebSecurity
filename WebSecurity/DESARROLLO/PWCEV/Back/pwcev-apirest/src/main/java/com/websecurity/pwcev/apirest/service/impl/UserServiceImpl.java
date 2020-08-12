@@ -55,9 +55,9 @@ public class UserServiceImpl implements IUsuarioService {
 		return respuesta;
 	}
 	
-	public boolean validarRol(Usuario usuario, int idRol) {
+	public boolean validarRol(int idUsuario, int idRol) {
 		boolean resp = false;
-		int Id = usuario.getIdUsuario();
+		int Id = idUsuario;
 		Optional<Usuario> us = buscarPorId(Id);
 		List<Rol> roles = new ArrayList<>();
 		roles = us.get().getRoles();
