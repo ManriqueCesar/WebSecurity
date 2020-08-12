@@ -102,6 +102,7 @@ public class UserServiceImpl implements IUsuarioService {
 		Usuario us = usuarioRepositorio.findByEmailAndPassword(email, password);
 		
 		Usuario usuario = new Usuario();
+		usuario.setIdUsuario(us.getIdUsuario());
 		usuario.setRoles(us.getRoles());
 		usuario.setNombre(us.getNombre());
 		usuario.setApellido(us.getApellido());
