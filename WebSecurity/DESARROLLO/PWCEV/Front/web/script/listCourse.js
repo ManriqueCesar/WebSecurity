@@ -67,7 +67,11 @@ $(document).ready(function () {
     { data: 'centroEstudios' },
     { data: 'eap'},
     { data: 'curso'},
-    { data: 'alumnosEmail' },
+    { data: null,
+        render: function (data, type, row) {
+              return '<button title="LISTA" class="fa fa-edit" id="btn-modificar"  type="button"data-toggle="modal" data-target="#modal-default"></button>';
+        }
+      },
     { data: null,
         render: function (data, type, row) {
               return '<button title="MODIFICAR" class="fa fa-edit" id="btn-modificar"  type="button"data-toggle="modal" data-target="#modal-default"></button>'+
@@ -76,7 +80,6 @@ $(document).ready(function () {
         }
       }]
 });
-
 
 
 }); 

@@ -39,7 +39,7 @@
           <a href="newTest.html" class="nav-link">Crear Examen</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="list.html" class="nav-link">Ver Resultados</a>
+          <a href="list.html" class="nav-link">Ver Exámenes</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
           <a href="#" class="nav-link">Ver Cursos</a>
@@ -64,7 +64,7 @@
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
       <a href="index.html" class="brand-link">
-        <img src="bower_components/AdminLTE/dist/img/AdminLTELogo.png" alt="AdminLTE Logo"
+        <img src="dist/img/security.png" alt="WebSecurity Logo"
           class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light">Web Security</span>
       </a>
@@ -80,7 +80,58 @@
             <a href="#" class="d-block" id="nombreUser"></a>
           </div>
         </div>
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <!-- Add icons to the links using the .nav-icon class
+                 with font-awesome or any other icon font library -->
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <p>
+                  Mis Exámenes
+                  <i class="right fas fa-angle-left"></i>
+                  <span class="badge badge-info right">2</span> 
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+         
+                    <p style="color: white;">2 Exámenes pendientes</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <p style="color: white;">7 Exámenes creados</p>
+                  </a>
+                </li>
+              </ul>
 
+              <li class="nav-item has-treeview">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-copy"></i>
+                  <p>
+                    Mis Cursos
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="#l" class="nav-link">
+                      <p>10 cursos creados</p>
+                    </a>
+                  </li>
+ 
+                </ul>
+              </li>
+            </li>
+
+ 
+
+          </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
         <!-- /.sidebar -->
     </aside>
 
@@ -183,22 +234,16 @@
   <script src="bower_components/select2/dist/js/select2.full.min.js"></script>
   <!-- Cookies js -->
   <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+  <script type="text/javascript">
+    function preloadFunc() {
+      if (Cookies.get('rol') != 'ROLE_PROF') {
+        document.location.href = "index.html";
+      }
+    }
+    window.onpaint = preloadFunc();
+  </script>
   <script src="script/listCourse.js"></script>
   <script src="script/cookies.js"></script>
-
-  <script>
-    $(function () {
-      $("#tbl-resultado").DataTable({
-        "responsive": true,
-      "autoWidth": false,
-      });
-
-
-    });
-  </script>
-
-
-
 
 </body>
 
