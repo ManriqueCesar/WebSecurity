@@ -5,6 +5,7 @@ import java.util.List;
 import com.websecurity.pwcev.apirest.entidadModelo.DetalleCursoModelo;
 import com.websecurity.pwcev.apirest.model.Curso;
 import com.websecurity.pwcev.apirest.model.DetalleCurso;
+import com.websecurity.pwcev.apirest.model.Usuario;
 
 public interface IDetalleCursoService {
 
@@ -13,4 +14,5 @@ public interface IDetalleCursoService {
 	List<DetalleCurso> listar();
 	void eliminar(Integer id);
 	List<Curso> listarCursosPorIdUsuario(Integer idUsuario);
+	List<Usuario> listarAlumnosPorCurso(Integer idCurso);
 }

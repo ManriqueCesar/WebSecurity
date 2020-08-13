@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.websecurity.pwcev.apirest.entidadModelo.DetalleCursoModelo;
 import com.websecurity.pwcev.apirest.model.Curso;
 import com.websecurity.pwcev.apirest.model.DetalleCurso;
+import com.websecurity.pwcev.apirest.model.Usuario;
+import com.websecurity.pwcev.apirest.service.ICursoService;
 import com.websecurity.pwcev.apirest.service.IDetalleCursoService;
 import com.websecurity.pwcev.apirest.service.IUsuarioService;
 
@@ -29,9 +31,11 @@ public class DetalleCursoController {
 	private IDetalleCursoService service;
 	@Autowired
 	private IUsuarioService usuarioService;
+	@Autowired
+	private ICursoService cursoService;
 	
 	@GetMapping("/usuario/{idusuario}")
-	public ResponseEntity<?> listarPorUserAndPass(@PathVariable("idusuario") Integer idUsuario) {
+	public ResponseEntity<?> listarCursosPorUsuarios(@PathVariable("idusuario") Integer idUsuario) {
 		
 		List<Curso> cursos = null;
 		Map<String, Object> response = new HashMap<>();
@@ -49,6 +53,28 @@ public class DetalleCursoController {
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
 		}
 		return new ResponseEntity<List<Curso>>(cursos,HttpStatus.OK);
+				
+	}
+	
+	@GetMapping("/curso/alumnos/{idcurso}")
+	public ResponseEntity<?> listarUsuariosPorCurso(@PathVariable("idcurso") Integer idCurso) {
+		
+		List<Usuario> usuarios = null;
+		Map<String, Object> response = new HashMap<>();
+		
+		try {
+			usuarios = service.listarAlumnosPorCurso(idCurso);
+		} catch (DataAccessException e) {
+			response.put("mensaje", "Error al realizar la consulta en la base de datos");
+			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		
+		if (!cursoService.existeCurso(idCurso)) {
+			response.put("mensaje", "El curso no se encuentra registrado");
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<List<Usuario>>(usuarios,HttpStatus.OK);
 				
 	}
 	
@@ -71,8 +97,8 @@ public class DetalleCursoController {
 			response.put("mensaje", "No se pudo asignar un profesor, el usuario no existe");
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
 		} else {
-			// Rol de profesor es 2
-			if (!usuarioService.validarRol(cursoUsuarios.getIdUsuario(), 2)) {
+			// Rol de profesor 
+			if (!usuarioService.validarRol(cursoUsuarios.getIdUsuario(), "ROLE_PROF")) {
 				response.put("mensaje", "No se pudo asignar un profesor, el usuario no cuenta con el rol de profesor");
 				return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
 			}else {

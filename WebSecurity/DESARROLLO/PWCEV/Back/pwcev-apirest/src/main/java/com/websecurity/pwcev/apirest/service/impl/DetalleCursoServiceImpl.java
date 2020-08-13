@@ -23,9 +23,7 @@ public class DetalleCursoServiceImpl implements IDetalleCursoService {
 	@Autowired
 	private IUsuarioService usuarioService;
 	@Autowired
-	private ICursoService cursoService ;
-	
-	
+	private ICursoService cursoService;
 
 	@Override
 	public DetalleCurso registrar(DetalleCursoModelo registro) {
@@ -34,7 +32,7 @@ public class DetalleCursoServiceImpl implements IDetalleCursoService {
 		Curso curso = new Curso();
 
 		if (existeusuario) {
-			boolean esprofe = usuarioService.validarRol(registro.getIdUsuario(), 2);
+			boolean esprofe = usuarioService.validarRol(registro.getIdUsuario(), "ROLE_PROF");
 			if (esprofe) {
 				curso = cursoService.registrar(registro.getCurso());
 				Usuario us = new Usuario();
@@ -51,7 +49,7 @@ public class DetalleCursoServiceImpl implements IDetalleCursoService {
 		return null;
 
 	}
-	
+
 	public void registrarAlumnos(DetalleCursoModelo registro, Curso curso) {
 
 		ArrayList<String> correos = registro.getEmailAlumnos();
@@ -68,7 +66,6 @@ public class DetalleCursoServiceImpl implements IDetalleCursoService {
 			}
 		}
 	}
-
 
 	@Override
 	public DetalleCurso modificar(DetalleCurso t) {
@@ -89,8 +86,8 @@ public class DetalleCursoServiceImpl implements IDetalleCursoService {
 	public List<Curso> listarCursosPorIdUsuario(Integer idUsuario) {
 		List<DetalleCurso> detalleCursos = repo.findByUsuarioIdUsuario(idUsuario);
 		List<Curso> cursos = new ArrayList<Curso>();
-		if(detalleCursos.size()>0) {
-			for(int i=0	;i<detalleCursos.size();i++) {
+		if (detalleCursos.size() > 0) {
+			for (int i = 0; i < detalleCursos.size(); i++) {
 				Curso curso = new Curso();
 				curso.setIdCurso(detalleCursos.get(i).getCurso().getIdCurso());
 				curso.setCentroEstudios(detalleCursos.get(i).getCurso().getCentroEstudios());
@@ -100,9 +97,35 @@ public class DetalleCursoServiceImpl implements IDetalleCursoService {
 				cursos.add(curso);
 			}
 		}
-		
+
 		return cursos;
-		
+
+	}
+
+	@Override
+	public List<Usuario> listarAlumnosPorCurso(Integer idCurso) {
+		List<DetalleCurso> registro = repo.findByCursoIdCurso(idCurso);
+		List<Usuario> usuarios = new ArrayList<Usuario>();
+		boolean existe = cursoService.existeCurso(idCurso);
+		if (existe) {
+			if (registro.size() > 0) {
+				for (int i = 0; i < registro.size(); i++) {
+					boolean esAlumno = usuarioService.validarRol(registro.get(i).getUsuario().getIdUsuario(), "ROLE_ALUM");
+					if (esAlumno) {
+						Usuario usuario = new Usuario();
+						usuario.setApellido(registro.get(i).getUsuario().getApellido());
+						usuario.setEmail(registro.get(i).getUsuario().getEmail());
+						usuario.setNombre(registro.get(i).getUsuario().getNombre());
+						usuario.setRoles(registro.get(i).getUsuario().getRoles());
+
+						usuarios.add(usuario);
+					}
+
+				}
+			}
+		}
+
+		return usuarios;
 	}
 
 }
