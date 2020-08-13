@@ -26,11 +26,15 @@ $(document).ready(function () {
   ruta = 'https://api-pwcev.herokuapp.com';
   var x=0;
   $('#tbl-resultado').DataTable({
+    "responsive": true,
+    "ordering": true,
+    "info": true,
+    "autoWidth": false,
       initComplete: function() {
           this.api().columns().every(function() {
           var column = this;
           x++;
-          var select = $('<select class="cboselect" id="columna'+x+'" multiple="multiple" style="width: 100%;"><option value=""></option></select>')
+          var select = $('<select class="cboselect" id="columna'+x+'" multiple="multiple" style="width: 100%; color:blue;"><option value=""></option></select>')
               .appendTo($(column.header()).empty())
               //.appendTo($(column.footer()).empty())
               .on('change', function() {
@@ -44,11 +48,14 @@ $(document).ready(function () {
           });
 
       column.data().unique().sort().each(function(d, j) {
-          select.append('<option value="' + d + '">' + d + '</option>')
+          select.append('<option value="' + d + '">' + d + '</option>') 
       });
       });
 
-      $(".cboselect").select2({closeOnSelect:false});
+      $(".cboselect").select2({
+        closeOnSelect:false,
+        theme: "classic"
+      });
       $('#columna1').val('2020-I').trigger('change');
       $('#columna2').val('UNMSM').trigger('change');
 },
@@ -69,7 +76,7 @@ $(document).ready(function () {
     { data: 'curso'},
     { data: null,
         render: function (data, type, row) {
-              return '<button title="LISTA" class="fa fa-edit" id="btn-modificar"  type="button"data-toggle="modal" data-target="#modal-default"></button>';
+              return '<button title="LISTA" class="fa fa-edit" id="btn-listar"></button>';
         }
       },
     { data: null,
@@ -83,6 +90,49 @@ $(document).ready(function () {
 
 
 }); 
+
+$(document).on('click', '#btn-listar', function (event) {
+  $('#modal-alumnos').modal('toggle');
+	var currentRow = $(this).closest("tr");
+	var data = $('#tbl-resultado').DataTable().row(currentRow).data();
+  var id = data.idCurso;
+  console.log(id)
+  ruta = 'https://api-pwcev.herokuapp.com';
+  var x=0;
+  $('#tbl-listado').DataTable({
+         "destroy": true,
+        "lengthChange": false,
+        "searching": false,
+        "autoWidth": false,
+        "responsive": true,
+      initComplete: function() {
+          this.api().columns().every(function() {
+          var column = this;
+                    
+      });
+
+      $(".cboselect").select2({closeOnSelect:false});
+},
+ 
+  ajax:{
+        url: ruta+'/detallecurso/curso/alumnos/'+id,
+        dataSrc: '',
+        async:false,
+        cache:false , 
+        error: function(jqXHR, textStatus, errorThrown){
+          $('#tbl-resultado').DataTable().clear().draw();
+        }
+     },
+  columns: [
+    { data: null,
+      render: function ( data, type, row ) {
+        return data.apellido + ' ' + data.nombre}
+      },
+    { data: 'email'
+      }]
+});
+
+});
 
 $('#btn-close').click(function () {
     deleteCookie();
