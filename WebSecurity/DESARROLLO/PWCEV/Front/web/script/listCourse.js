@@ -76,7 +76,7 @@ $(document).ready(function () {
     { data: 'curso'},
     { data: null,
         render: function (data, type, row) {
-              return '<button title="LISTA" class="fa fa-edit" id="btn-listar"></button>';
+              return '<button title="LISTA" class="btn btn-primary" id="btn-listar">LISTA</button>';
         }
       },
     { data: null,

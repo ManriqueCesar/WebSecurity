@@ -7,6 +7,7 @@ function setNombre() {
 $(document).ready(function () {
   setNombre();
   var x = 0;
+  var ruta= 'pwcev-apirest.herokuapp.com';
   $('#tbl-resultado').DataTable({
     initComplete: function () {
       this.api().columns().every(function () {
@@ -38,7 +39,7 @@ $(document).ready(function () {
     },
 
     ajax: {
-      url: pwcev - apirest.herokuapp.com + '/pregunta-controller',
+      url: ruta + '/pregunta-controller',
       //dataSrc: 'clase',
       beforeSend: function (request) {
         request.setRequestHeader("X-Auth-Token", token);
