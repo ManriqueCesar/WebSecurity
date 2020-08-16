@@ -102,7 +102,12 @@ public class DetalleCursoController {
 				response.put("mensaje", "No se pudo asignar un profesor, el usuario no cuenta con el rol de profesor");
 				return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
 			}else {
+				if(service.validarAlumnos(cursoUsuarios)==null) {
+					response.put("mensaje", "No se pudo crear el curso por que no cuenta con alumnos o alumnos no validos");
+					return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
+				}else {
 				response.put("mensaje", "Se asigno el profesor al curso con exito !");
+				}
 			}
 
 		}
