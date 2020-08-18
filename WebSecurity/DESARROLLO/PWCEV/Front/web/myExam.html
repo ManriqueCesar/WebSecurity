@@ -63,8 +63,8 @@
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
       <a href="#" class="brand-link">
-        <img src="dist/img/security.png" alt="WebSecurity Logo"
-          class="brand-image img-circle elevation-3" style="opacity: .8">
+        <img src="dist/img/security.png" alt="WebSecurity Logo" class="brand-image img-circle elevation-3"
+          style="opacity: .8">
         <span class="brand-text font-weight-light" style="color:darkgrey">WebSecurity</span>
       </a>
 
@@ -90,13 +90,13 @@
                 <p>
                   Mis Exámenes
                   <i class="right fas fa-angle-left"></i>
-                  <span class="badge badge-info right">2</span> 
+                  <span class="badge badge-info right">2</span>
                 </p>
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <a href="#" class="nav-link">
-         
+
                     <p style="color: white;">2 Exámenes pendientes</p>
                   </a>
                 </li>
@@ -107,27 +107,27 @@
                 </li>
               </ul>
 
-              <li class="nav-item has-treeview">
-                <a href="#" class="nav-link">
-                  <i class="nav-icon fas fa-copy"></i>
-                  <p>
-                    Mis Cursos
-                    <i class="fas fa-angle-left right"></i>
-                    <span class="badge badge-info right">3</span> 
-                  </p>
-                </a>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a href="#l" class="nav-link">
-                      <p>Matriculado en 3 cursos</p>
-                    </a>
-                  </li>
- 
-                </ul>
-              </li>
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-copy"></i>
+                <p>
+                  Mis Cursos
+                  <i class="fas fa-angle-left right"></i>
+                  <span class="badge badge-info right">3</span>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="#l" class="nav-link">
+                    <p>Matriculado en 3 cursos</p>
+                  </a>
+                </li>
+
+              </ul>
+            </li>
             </li>
 
- 
+
 
           </ul>
         </nav>
@@ -142,12 +142,12 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1>Rendir Examen</h1>
+              <h1>Ver Cursos</h1>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Rendir Examen</li>
+                <li class="breadcrumb-item active">Ver Cursos</li>
               </ol>
             </div>
           </div>
@@ -158,146 +158,94 @@
       <section class="content">
         <div class="container-fluid">
           <div class="row">
-            <div class="col-md-3">
-
-              <!-- Profile Image -->
-              <div class="card card-primary card-outline">
-                <div class="card-body box-profile">
-
-
-                  <div class="position-relative p-3 bg-gray" style="height: 35%">
-                    <div class="ribbon-wrapper">
-                      <div class="ribbon bg-success">
-                        NOTA
-                      </div>
-                    </div>
-                    ¿Cómo rendir el examen?<br>
-                    <div class="text-left">
-                      <li>
-                        <small>Tu profesor debe asignarte a un curso</small>
-                      </li>
-                      <li>
-                        <small>Conéctate unos minutos antes del examen</small>
-                      </li>
-                      <li>
-                        <small>El examen empezará automaticamente según la hora indicada por el docente</small>
-                      </li>
-                    </div>
-                    <div class="text-center">
-                      <a href="#" style="color:skyblue" data-toggle="modal" data-target="#modal-default">Ver más...</a>
-
-
-                    </div>
-                  </div>
-
-                </div>
-
-                <!-- /.card-body -->
-              </div>
-              <!-- /.card -->
-            </div>
-
-            <!-- /.col -->
-            <div class="col-md-9">
+            <div class="col-12">
               <div class="card">
-                <div class="card-header p-2">
-                  <ul class="nav nav-pills">
-                    <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Rendir Examen</a></li>
-
-                  </ul>
+                <div class="card-header">
+                  <h3 class="card-title">Mis Cursos</h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
-                  <h1>
-                    <span id="timeInSeconds">0</span> <span>seconds</span>
-                  </h1>
-                  <div class="tab-content">
-                    <div class="active tab-pane" id="activity">
-                      <!-- Post -->
-                      <div class="post">
-                        <div class="user-block">
-                          <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>
-                          </span>
-                        </div>
-                        <!-- /.user-block -->
 
-                        <div class="container">
-                        </div>
-                        <div class="tab-pane" id="activity">
-                          <form class="form-horizontal">
-                        </div>
-                        </form>
-                      </div>
-                    </div>
+                  <div class="table table-responsive">
+                    <table id="tbl-resultado" class="table table-bordered table-striped">
+                      <thead>
+                        <tr>
+                          <th>CURSO</th>
+                          <th>DOCENTE</th>
+                          <th>PERIODO</th>
+                          <th>ALUMNOS</th>
+                        </tr>
+                        <tr>
+                          <th>CURSO</th>
+                          <th>DOCENTE</th>
+                          <th>PERIODO</th>
+                          <th>ALUMNOS</th>
+                        </tr>
+                      </thead>
+                    </table>
+
                   </div>
+                  <!-- /.card-body -->
                 </div>
-                <!-- /.tab-content -->
-              </div><!-- /.card-body -->
-
-
+                <!-- /.card -->
+              </div>
             </div>
-            <!-- /.card -->
+            <!-- /.row -->
           </div>
-          <!-- /.col -->
         </div>
-        <!-- /.row -->
-    </div><!-- /.container-fluid -->
-    </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
+        <!-- /.container-fluid -->
+      </section>
+      <!-- /.content -->
+    </div>
 
-  <div class="modal fade" id="modal-default">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="text-center">
-          <h3 class="modal-title">Instrucciones</h3>
-          <hr>
-        </div>
+    <div class="modal fade" id="modal-default">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="text-center">
+            <h3 class="modal-title">Instrucciones</h3>
+            <hr>
+          </div>
 
-        <div class="box-body with-border">
-          <form class="form-horizontal" id="frm-usos">
-            <ol>
-              <li>Define el Centro de estudios.</li>
-              <li>Selecciona la Escuela Profesional.</li>
-              <li>Ingresa el nombre del Curso.</li>
-              <li>Ingresa el correo de los alumnos que estén matriculados en ese curso.</li>
-              <li>Selecciona el periodo académico</li>
-              <li>Crea el Curso.</li>
-              ¡Ahora podrás crear el examen y seleccionar el curso con los alumnos asignados a éste!
-            </ol>
+          <div class="box-body with-border">
+            <form class="form-horizontal" id="frm-usos">
+              <ol>
+                <li>Define el Centro de estudios.</li>
+                <li>Selecciona la Escuela Profesional.</li>
+                <li>Ingresa el nombre del Curso.</li>
+                <li>Ingresa el correo de los alumnos que estén matriculados en ese curso.</li>
+                <li>Selecciona el periodo académico</li>
+                <li>Crea el Curso.</li>
+                ¡Ahora podrás crear el examen y seleccionar el curso con los alumnos asignados a éste!
+              </ol>
+              <div class="modal-footer center-block">
+                <button type="button" class="btn btn-success" data-dismiss="modal">¡Entendido!</button>
+              </div>
 
-            <div class="modal-footer center-block">
+            </form>
 
-
-              <button type="button" class="btn btn-success" data-dismiss="modal">¡Entendido!</button>
-            </div>
-
-          </form>
+          </div>
 
         </div>
-
+        <!-- /.modal-content -->
       </div>
-      <!-- /.modal-content -->
+      <!-- /.modal-dialog -->
     </div>
-    <!-- /.modal-dialog -->
-  </div>
 
 
-  <footer class="main-footer">
-    <div class="float-right d-none d-sm-block">
-      <b>Version</b> 1.0.0-pre
-    </div>
-    <strong>Copyright &copy; 2020 <a href="https://github.com/ManriqueCesar/WebSecurity">Grupo 3</a>.</strong> All
-    rights reserved.
-  </footer>
+    <footer class="main-footer">
+      <div class="float-right d-none d-sm-block">
+        <b>Version</b> 1.0.0-pre
+      </div>
+      <strong>Copyright &copy; 2020 <a href="https://github.com/ManriqueCesar/WebSecurity">Grupo 3</a>.</strong> All
+      rights reserved.
+    </footer>
 
 
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+      <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
   </div>
 
   <!-- jQuery -->
@@ -329,13 +277,8 @@
     window.onpaint = preloadFunc();
   </script>
   <script src="script/cookies.js"></script>
-  <script src="script/examList.js"></script>
-  <script language="JavaScript">
-    window.onbeforeunload = confirmExit;
-    function confirmExit() {
-        return "You have attempted to leave this page. Are you sure?";
-    }
-</script>
+  <script src="script/myExam.js"></script>
+
 </body>
 
 </html>
