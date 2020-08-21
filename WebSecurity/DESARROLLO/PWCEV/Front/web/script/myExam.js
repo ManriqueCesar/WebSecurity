@@ -1,17 +1,16 @@
-
 function setNombre() {
-    var user = Cookies.get('usuario');
-    $('#nombreUser').text(user);
-  
-  }
-
+  var usuario = Cookies.get('usuario');
+  $('#nombreUser').text(usuario);
+}
 
 $(document).ready(function () {
+  var user = Cookies.get('apellido');
   setNombre();
-  var idUser = Cookies.get('id');
+  document.getElementById('imgUser').src = "../web/dist/js/labeled_images/" + user + "/1.jpg";
+
   ruta = 'https://api-pwcev.herokuapp.com';
   var x=0;
-  $('#tbl-resultado').DataTable({
+  /*$('#tbl-resultado').DataTable({
     "responsive": true,
     "ordering": true,
     "info": true,
@@ -73,53 +72,9 @@ $(document).ready(function () {
         }
       }]
 });
-
-
-}); 
-
-$(document).on('click', '#btn-listar', function (event) {
-  $('#modal-alumnos').modal('toggle');
-	var currentRow = $(this).closest("tr");
-	var data = $('#tbl-resultado').DataTable().row(currentRow).data();
-  var id = data.idCurso;
-  console.log(id)
-  ruta = 'https://api-pwcev.herokuapp.com';
-  var x=0;
-  $('#tbl-listado').DataTable({
-         "destroy": true,
-        "lengthChange": false,
-        "searching": false,
-        "autoWidth": false,
-        "responsive": true,
-      initComplete: function() {
-          this.api().columns().every(function() {
-          var column = this;
-                    
-      });
-
-      $(".cboselect").select2({closeOnSelect:false});
-},
- 
-  ajax:{
-        url: ruta+'/detallecurso/curso/alumnos/'+id,
-        dataSrc: '',
-        async:false,
-        cache:false , 
-        error: function(jqXHR, textStatus, errorThrown){
-          $('#tbl-resultado').DataTable().clear().draw();
-        }
-     },
-  columns: [
-    { data: null,
-      render: function ( data, type, row ) {
-        return data.apellido + ' ' + data.nombre}
-      },
-    { data: 'email'
-      }]
-});
-
+*/
 });
 
 $('#btn-close').click(function () {
-    deleteCookie();
-  });
+  deleteCookie();
+});

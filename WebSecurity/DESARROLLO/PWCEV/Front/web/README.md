@@ -1,5 +1,5 @@
 # WEB SECURITY
-  Description
+  Proyecto de Platafor Web de Control de Exámenes virtuales con Reconocimiento Facial.
 
 ## DEPLOY
   - Download and install the [heroku/cli](https://devcenter.heroku.com/articles/heroku-cli#download-and-install).

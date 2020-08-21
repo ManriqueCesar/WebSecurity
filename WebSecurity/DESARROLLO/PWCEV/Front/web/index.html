@@ -10,8 +10,8 @@
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap -->
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+  <!-- Font Awesome 
+  <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">-->
   <!-- Ionicons -->
   <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
   <!-- Theme style -->
@@ -44,16 +44,16 @@
 
 </head>
 
-<body>
+<body >
 
-  <div class="limiter">
+  <div class=" limiter">
     <div class="container-login100">
       <div class="wrap-login100">
         <div class="login100-pic js-tilt" data-tilt>
           <img src="dist/img/unmsm.png" alt="Imagen Logo">
         </div>
 
-        <form method="POST" class="login100-form validate-form">
+        <form method="POST" class="login100-form validate-form"  >
           <span class="login100-form-title">
             Plataforma Web de Control de Exámenes Virtuales
           </span>
@@ -74,16 +74,14 @@
             </span>
           </div>
 
-          <div class="container-login100-form-btn">
+          <div class="container-login100-form-btn" id="formulario-login">
             <button id="btn-ingresar" class="login100-form-btn">
               Iniciar Sesión
             </button>
           </div>
-
-
-
+          
           <div class="text-center p-t-136" id="btn-camara">
-            <a class="txt2" href="#">
+            <a class="txt2" href="index.html">
               Si eres Alumno, recuerda activar tu cámara
               <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
             </a>
@@ -114,7 +112,8 @@
   </div>
 
 
-
+  <script src="https://kit.fontawesome.com/c9032fc236.js" crossorigin="anonymous"></script>
+  
   <!-- jQuery 3 -->
   <script src="bower_components/jquery/node_modules/jquery/dist/jquery.min.js"></script>
   <!-- Bootstrap -->
@@ -145,7 +144,18 @@
     })
   </script>
 
-
+<style>
+  .overlay{
+      position:fixed;
+      top:50%;
+      left:50%;
+  }
+  .overlay i {
+    font-weight: bold;
+    color: #f39c12;
+    border-color: #e08e0b;
+  }
+  </style>
 </body>
 
 </html>
