@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.websecurity.pwcev.apirest.model.Curso;
 import com.websecurity.pwcev.apirest.model.DetalleRegistroExamen;
 import com.websecurity.pwcev.apirest.model.Examen;
 import com.websecurity.pwcev.apirest.model.Pregunta;
@@ -25,6 +26,7 @@ import com.websecurity.pwcev.apirest.model.Respuesta;
 import com.websecurity.pwcev.apirest.service.IExamenService;
 import com.websecurity.pwcev.apirest.service.IPreguntaService;
 import com.websecurity.pwcev.apirest.service.IRespuestaService;
+import com.websecurity.pwcev.apirest.service.IUsuarioService;
 
 @RestController
 @RequestMapping("/examenes")
@@ -38,6 +40,8 @@ public class ExamenController {
 
 	@Autowired
 	private IRespuestaService res_service;
+	@Autowired
+	private IUsuarioService usuarioService;
 
 	@GetMapping
 	public List<Examen> listar() {
@@ -174,5 +178,27 @@ public class ExamenController {
 
 		response.put("mensaje", "El examen ha sido eliminado con éxito!");
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
+	}
+	
+	@GetMapping("/usuario/{idusuario}")
+	public ResponseEntity<?> listarExamenesporUsuario(@PathVariable("idusuario") Integer idUsuario) {
+		
+		List<Examen> examenes = null;
+		Map<String, Object> response = new HashMap<>();
+		
+		try {
+			examenes = service.listarExamenesPorIdUsuario(idUsuario);
+		} catch (DataAccessException e) {
+			response.put("mensaje", "Error al realizar la consulta en la base de datos");
+			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		
+		if (!usuarioService.existeUsuarioById(idUsuario)) { 
+			response.put("mensaje", "El usuario no existe con esas credenciales");
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<List<Examen>>(examenes,HttpStatus.OK);
+				
 	}
 }
