@@ -39,13 +39,15 @@
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="newTest.html" class="nav-link">Rendir Examen</a>
+          <a href="waiting.html" class="nav-link">Rendir Examen</a>
         </li>
 
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="#" class="nav-link">Mis Cursos</a>
+          <a href="myCourses.html" class="nav-link">Mis Cursos</a>
         </li>
-
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="#" class="nav-link">Mis Exámenes</a>
+          </li>
       </ul>
       <ul class="navbar-nav ml-auto">
         <!-- Messages Dropdown Menu -->
@@ -142,12 +144,12 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1>Ver Cursos</h1>
+              <h1>Ver Exámenes</h1>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Ver Cursos</li>
+                <li class="breadcrumb-item active">Ver Exámenes</li>
               </ol>
             </div>
           </div>
@@ -161,30 +163,30 @@
             <div class="col-12">
               <div class="card">
                 <div class="card-header">
-                  <h3 class="card-title">Mis Cursos</h3>
+                  <h3 class="card-title">Mis Exámenes</h3>
                 </div>
                 <!-- /.card-header -->
-                <div class="card-body">
+                <div class="table table-responsive">
+                  <table id="tbl-misExamenes" class="table table-bordered table-striped">
+                    <thead>
+                      <tr>  
+                        <th>CURSO</th>
+                        <th>TITULO</th>
+                        <th>PERIODO</th>
+                        <th>FECHA</th>
+                        <th>OBSERVACION</th>
+                      </tr>
+                      <tr>
+                        <th>CURSO</th>
+                        <th>TITULO</th>
+                        <th>FECHA</th>
+                        <th>PERIODO</th>
+                        <th>OBSERVACION</th>
+                      </tr>
+                    </thead>
+                  </table>
 
-                  <div class="table table-responsive">
-                    <table id="tbl-resultado" class="table table-bordered table-striped">
-                      <thead>
-                        <tr>
-                          <th>CURSO</th>
-                          <th>DOCENTE</th>
-                          <th>PERIODO</th>
-                          <th>ALUMNOS</th>
-                        </tr>
-                        <tr>
-                          <th>CURSO</th>
-                          <th>DOCENTE</th>
-                          <th>PERIODO</th>
-                          <th>ALUMNOS</th>
-                        </tr>
-                      </thead>
-                    </table>
-
-                  </div>
+                </div>
                   <!-- /.card-body -->
                 </div>
                 <!-- /.card -->
@@ -252,6 +254,11 @@
   <script src="bower_components/AdminLTE/plugins/jquery/jquery.min.js"></script>
   <!-- Bootstrap 4 -->
   <script src="bower_components/AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- DataTables -->
+  <script src="bower_components/AdminLTE/plugins/datatables/jquery.dataTables.min.js"></script>
+  <script src="bower_components/AdminLTE/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+  <script src="bower_components/AdminLTE/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+  <script src="bower_components/AdminLTE/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
   <!-- Select2 -->
   <script src="bower_components/AdminLTE/plugins/select2/js/select2.full.min.js"></script>
   <!-- InputMask -->

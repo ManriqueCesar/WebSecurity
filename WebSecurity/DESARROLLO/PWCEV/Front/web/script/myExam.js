@@ -5,16 +5,17 @@ function setNombre() {
 
 $(document).ready(function () {
   var user = Cookies.get('apellido');
+  var idUser = Cookies.get('id');
   setNombre();
   document.getElementById('imgUser').src = "../web/dist/js/labeled_images/" + user + "/1.jpg";
 
   ruta = 'https://api-pwcev.herokuapp.com';
   var x=0;
-  /*$('#tbl-resultado').DataTable({
+  $('#tbl-misExamenes').DataTable({
     "responsive": true,
-    "ordering": true,
-    "info": true,
-    "autoWidth": false,
+    "info": false,
+    "paging": false,
+    "searching": false,
       initComplete: function() {
           this.api().columns().every(function() {
           var column = this;
@@ -41,38 +42,31 @@ $(document).ready(function () {
         closeOnSelect:false,
         theme: "classic"
       });
-      $('#columna1').val('2020-I').trigger('change');
-      $('#columna2').val('UNMSM').trigger('change');
 },
  
   ajax:{
-        url: ruta+'/detallecurso/usuario/'+idUser,
+        url: ruta+'/examenes/usuario/'+idUser,
         dataSrc: '',
         async:false,
         cache:true, 
         error: function(jqXHR, textStatus, errorThrown){
-          $('#tbl-resultado').DataTable().clear().draw();
+          $('#tbl-misExamenes').DataTable().clear().draw();
         }
      },
   columns: [
-    { data: 'periodo'},
-    { data: 'centroEstudios' },
-    { data: 'eap'},
-    { data: 'curso'},
+    { data: 'curso.curso'},
+    { data: 'titulo'},
+    { data: 'curso.periodo' },
+    { data: 'fechaInicio'},
     { data: null,
-        render: function (data, type, row) {
-              return '<button title="LISTA" class="btn btn-primary" id="btn-listar">LISTA</button>';
-        }
-      },
-    { data: null,
-        render: function (data, type, row) {
-              return '<button title="MODIFICAR" class="fa fa-edit" id="btn-modificar"  type="button"data-toggle="modal" data-target="#modal-default"></button>'+
-                  '<button  id="btn-eliminar" title="ELIMINAR" class="fa fa-trash"  type="button"></button>';
-          
-        }
-      }]
+      render: function (data, type, row) {
+            return '<button title="VER" class="btn btn-primary" id="btn-listar">VER</button>';
+      }
+    },
+    
+  ]
 });
-*/
+
 });
 
 $('#btn-close').click(function () {
