@@ -39,7 +39,7 @@
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="#" class="nav-link">Rendir Examen</a>
+          <a href="waiting.html" class="nav-link">Rendir Examen</a>
         </li>
 
         <li class="nav-item d-none d-sm-inline-block">
@@ -164,29 +164,25 @@
               <!-- /.card-header -->
               <div class="card-body">
 
-             <div class="table table-responsive">
-                <table id="tbl-cursos" class="table table-bordered table-striped">
-                  <thead>
-                    <tr>
-                      <th>CURSO</th>
-                      <th>INSTITUCION</th>
-                      <th>ESCUELA</th>
-                      <th>CURSO</th>
-                      <th>ALUMNOS</th>
-                      <th>ACCION</th>
-                    </tr>
-                    <tr>
-                      <th>CURSO</th>
-                      <th>INSTITUCION</th>
-                      <th>ESCUELA</th>
-                      <th>CURSO</th>
-                      <th>ALUMNOS</th>
-                      <th>ACCION</th>
-                    </tr>
-                  </thead>
-                </table>
+                <div class="table table-responsive">
+                  <table id="tbl-misCursos" class="table table-bordered table-striped">
+                    <thead>
+                      <tr>
+                        <th>PERIODO</th>
+                        <th>CURSO</th>
+                        <th>DOCENTE</th>
+                        <th>ALUMNOS</th>
+                      </tr>
+                      <tr>
+                        <th>PERIODO</th>
+                        <th>CURSO</th>
+                        <th>DOCENTE</th>
+                        <th>ALUMNOS</th>
+                      </tr>
+                    </thead>
+                  </table>
 
-             </div>
+               </div>
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
@@ -226,6 +222,11 @@
   <!-- Bootstrap 4 -->
   <script src="bower_components/AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- DataTables -->
+  <script src="bower_components/AdminLTE/plugins/datatables/jquery.dataTables.min.js"></script>
+  <script src="bower_components/AdminLTE/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+  <script src="bower_components/AdminLTE/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+  <script src="bower_components/AdminLTE/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
   <!-- Select2 -->
   <script src="bower_components/AdminLTE/plugins/select2/js/select2.full.min.js"></script>
   <!-- InputMask -->
@@ -244,12 +245,8 @@
 
   <script src="script/cookies.js"></script>
   <script src="script/myCourses.js"></script>
-  <script language="JavaScript">
-    window.onbeforeunload = confirmExit;
-    function confirmExit() {
-        return "You have attempted to leave this page. Are you sure?";
-    }
-</script>
+
+
 </body>
 
 </html>

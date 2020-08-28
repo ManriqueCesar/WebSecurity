@@ -19,7 +19,7 @@ $(document).ready(function () {
   var idUser = Cookies.get('id');
   ruta = 'https://api-pwcev.herokuapp.com';
   var x=0;
-  $('#tbl-cursos').DataTable({
+  $('#tbl-misCursos').DataTable({
     "responsive": true,
     "ordering": true,
     "info": true,
@@ -55,29 +55,25 @@ $(document).ready(function () {
 },
  
   ajax:{
-        url: ruta+'/examenes/usuario/'+idUser,
+        url: ruta+'/detallecurso/usuario/'+idUser,
         dataSrc: '',
         async:false,
         cache:true, 
         error: function(jqXHR, textStatus, errorThrown){
-          $('#tbl-resultado').DataTable().clear().draw();
+          $('#tbl-misCursos').DataTable().clear().draw();
         }
      },
   columns: [
     { data: 'periodo'},
-    { data: 'centroEstudios' },
-    { data: 'eap'},
     { data: 'curso'},
+    { data: null,
+      render: function (data, type, row) {
+            return 'LENIS WONG PORTILLO'; /////////// CAMBIO
+      }
+    },
     { data: null,
         render: function (data, type, row) {
               return '<button title="LISTA" class="btn btn-primary" id="btn-listar">LISTA</button>';
-        }
-      },
-    { data: null,
-        render: function (data, type, row) {
-              return '<button title="MODIFICAR" class="fa fa-edit" id="btn-modificar"  type="button"data-toggle="modal" data-target="#modal-default"></button>'+
-                  '<button  id="btn-eliminar" title="ELIMINAR" class="fa fa-trash"  type="button"></button>';
-          
         }
       }]
 });
