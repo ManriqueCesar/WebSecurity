@@ -1,3 +1,32 @@
+
+function editarTitulo() {
+  var defaultTítulo = 'Ingresar el título del examen';
+
+  function endEdit(e) {
+    var input = $(e.target),
+      label = input && input.prev();
+
+    label.text(input.val() === '' ? defaultTítulo : input.val());
+    input.hide();
+    label.show();
+  }
+
+  $('.clickedit').hide()
+    .focusout(endEdit)
+    .keyup(function (e) {
+      if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
+        endEdit(e);
+        return false;
+      } else {
+        return true;
+      }
+    })
+    .prev().click(function () {
+      $(this).hide();
+      $(this).next().show().focus();
+    });
+}
+
 function Cargar_curso_id(cboid, opcionxdefecto) {
   var idUsuario = Cookies.get('id');
   var ruta = 'https://api-pwcev.herokuapp.com';
@@ -49,97 +78,8 @@ function cargarFecha() {
   });
 }
 
-function editarTitulo() {
-  var defaultTítulo = 'Ingresar el título del examen';
 
-  function endEdit(e) {
-    var input = $(e.target),
-      label = input && input.prev();
 
-    label.text(input.val() === '' ? defaultTítulo : input.val());
-    input.hide();
-    label.show();
-  }
-
-  $('.clickedit').hide()
-    .focusout(endEdit)
-    .keyup(function (e) {
-      if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
-        endEdit(e);
-        return false;
-      } else {
-        return true;
-      }
-    })
-    .prev().click(function () {
-      $(this).hide();
-      $(this).next().show().focus();
-    });
-}
-
-function editarDescripcion() {
-  var defaultDescripción = 'Editar la descripción';
-
-  function endEdit2(e) {
-    var input = $(e.target),
-      label = input && input.prev();
-
-    label.text(input.val() === '' ? defaultDescripción : input.val());
-    input.hide();
-    label.show();
-  }
-
-  $('.clickedit2').hide()
-    .focusout(endEdit2)
-    .keyup(function (e) {
-      if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
-        endEdit(e);
-        return false;
-      } else {
-        return true;
-      }
-    })
-    .prev().click(function () {
-      $(this).hide();
-      $(this).next().show().focus();
-    });
-
-}
-
-function duplicarAlternativas(unique) {
-  //$("#original").clone().appendTo("#containers");
-  contador = 1;
-  var copy = $("#descripcion").clone(true);
-  var formId = 'opcion' + unique;
-  copy.attr('id', formId);
-  $('#original').append(copy);
-  $('#' + formId).find("p", "label", "input").each(function () {
-    $(this).attr('id', $(this).attr('id') + unique);
-    unique++;
-  });
-  contador++;
-}
-
-function duplicar(uniqueId) {
-  // Clonar
-  var copy = $("#original").clone(true);
-
-  // Setear nuevo id  
-  copy.attr('id', 'NewForm' + uniqueId);
-
-  // Set inputs'id
-  copy.find('label, select').each(function () {
-    $(this).attr('id', $(this).attr('id') + uniqueId);
-    //  $(this).attr('id', $(this).attr('id') + uniqueId + '-' + index);
-    //    $(this).attr('name', $(this).attr('name') + uniqueId);
-    //  $(this).attr('value', $(this).attr('value') + uniqueId + '-' + index);
-  });
-  copy.find('label, select').each(function (index) {
-    $(this).attr('for', $(this).attr('for') + uniqueId + '-' + index);
-  });
-  // Insert new form
-  $('#campaign').append(copy);
-}
 
 function setNombre() {
   var user = Cookies.get('usuario');
@@ -149,12 +89,12 @@ function setNombre() {
 
 $(document).ready(function () {
   setNombre();
+  editarTitulo();
   cbo_escuela('cbo-eap', 'SOFTWARE');
   cbo_universidad('cbo-centro', 'UNMSM');
   $('.addRow').prop('disabled', true);
   cargarFecha();
-  editarTitulo();
-  editarDescripcion();
+
   var uniqueId = 1;
   var contador = 0;
 
@@ -258,6 +198,11 @@ $('#tabExamen').click(function () {
   $('.addRow').prop('disabled', false);
 });
 
+$('#pruebatab').click(function () {
+  $('<div>').append($(html).find('a').unwrap()).html();
+});
+
+
 
 $(document).on('click', '#btn-pregunta', function (event) {
   $('#inputTituloModal').val($("#txtTitulo").text());
@@ -285,9 +230,9 @@ $(document).on('click', '#btn-pregunta', function (event) {
 
 
 
-  //  $(this).attr('id', $(this).attr('id') + uniqueId + '-' + index);
-  //    $(this).attr('name', $(this).attr('name') + uniqueId);
-  //  $(this).attr('value', $(this).attr('value') + uniqueId + '-' + index);
+   $(this).attr('id', $(this).attr('id') + uniqueId + '-' + index);
+   $(this).attr('name', $(this).attr('name') + uniqueId);
+  $(this).attr('value', $(this).attr('value') + uniqueId + '-' + index);
 });
 
 
