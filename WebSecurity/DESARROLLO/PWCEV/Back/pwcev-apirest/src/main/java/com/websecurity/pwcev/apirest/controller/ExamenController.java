@@ -1,5 +1,6 @@
 package com.websecurity.pwcev.apirest.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -94,7 +95,9 @@ public class ExamenController {
 		Examen ex = null;
 		Respuesta[] res = null;
 		Pregunta[] pre = null;
-
+		int cont = 0;
+		int aux = 0;
+		System.out.println("Hola");
 		System.out.println(detalle.getExamen().getCurso().getIdCurso());
 
 		Map<String, Object> response = new HashMap<>();
@@ -103,39 +106,43 @@ public class ExamenController {
 
 			ex = detalle.getExamen();
 			examen = service.registrar(ex);
+			
+			try {
+				pre = detalle.getPreguntas();
 
+				for (Pregunta pregta : pre) {
+					pregta.setExamen(examen);
+					pregunta = pre_service.registrar(pregta);
+					
+					try {
+
+						res = detalle.getRespuestas();
+						
+						for (int i = cont; i < res.length && aux != 4; i++) {
+							Respuesta respta = res[i];
+							respta.setPregunta(pregunta);
+							respuesta = res_service.registrar(respta);
+							aux = aux +1;
+						}
+						aux = 0;
+						cont = cont + 4;
+						
+					} catch (DataAccessException e1) {
+						response.put("mensaje", "Error al insertar respuestas en base de datos.");
+						response.put("error", e1.getMessage().concat(": ").concat(e1.getMostSpecificCause().getMessage()));
+						return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+					}
+				}
+
+			} catch (DataAccessException e2) {
+				response.put("mensaje", "Error al insertar preguntas en base de datos.");
+				response.put("error", e2.getMessage().concat(": ").concat(e2.getMostSpecificCause().getMessage()));
+				return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+			}
+			
 		} catch (DataAccessException e2) {
 			response.put("mensaje", "Error al insertar examen en base de datos.");
 			response.put("error", e2.getMessage().concat(": ").concat(e2.getMostSpecificCause().getMessage()));
-			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
-		}
-		
-		try {
-			pre = detalle.getPreguntas();
-
-			for (Pregunta pregta : pre) {
-				pregta.setExamen(examen);
-				pregunta = pre_service.registrar(pregta);
-			}
-
-		} catch (DataAccessException e2) {
-			response.put("mensaje", "Error al insertar preguntas en base de datos.");
-			response.put("error", e2.getMessage().concat(": ").concat(e2.getMostSpecificCause().getMessage()));
-			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
-		}
-
-		try {
-
-			res = detalle.getRespuestas();
-
-			for (Respuesta respta : res) {
-				respta.setPregunta(pregunta);
-				respuesta = res_service.registrar(respta);
-			}
-
-		} catch (DataAccessException e1) {
-			response.put("mensaje", "Error al insertar respuestas en base de datos.");
-			response.put("error", e1.getMessage().concat(": ").concat(e1.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
