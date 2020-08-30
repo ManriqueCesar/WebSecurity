@@ -52,14 +52,14 @@ public class ResultadoController {
 		return new ResponseEntity<List<Resultado>>(resultados,HttpStatus.OK);
 				
 	}
-	@PutMapping
-	public ResponseEntity<?> cambiodeEstado(@RequestBody Resultado result) {
+	@PutMapping("/{idresultado}")
+	public ResponseEntity<?> cambiodeEstado(@PathVariable("idresultado") Integer idresultado) {
 		
 		Optional<Resultado> resultado = null;
 		Map<String, Object> response = new HashMap<>();
 		
 		try {
-			resultado=service.CambiarEstado(result);
+			resultado=service.CambiarEstado(idresultado);
 		} catch (DataAccessException e) {
 			response.put("mensaje", "Error al realizar la consulta en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
