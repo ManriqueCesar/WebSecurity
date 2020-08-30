@@ -31,7 +31,9 @@ public class Resultado {
 	
 	@Column(name = "tiempo_fuera", nullable = false)
 	private float tiempoFuera;
-
+	
+	private boolean estado;
+	
 	public Integer getIdResultado() {
 		return idResultado;
 	}
@@ -70,6 +72,14 @@ public class Resultado {
 
 	public void setTiempoFuera(float tiempoFuera) {
 		this.tiempoFuera = tiempoFuera;
+	}
+
+	public boolean getEstado() {
+		return estado;
+	}
+
+	public void setEstado(boolean estado) {
+		this.estado = estado;
 	}
 	
 	

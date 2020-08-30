@@ -3,7 +3,7 @@ package com.websecurity.pwcev.apirest.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.websecurity.pwcev.apirest.entidadModelo.DetalleCursoModelo;
+import com.websecurity.pwcev.apirest.entidadmodelo.DetalleCursoModelo;
 import com.websecurity.pwcev.apirest.model.Curso;
 import com.websecurity.pwcev.apirest.model.DetalleCurso;
 import com.websecurity.pwcev.apirest.model.Usuario;
