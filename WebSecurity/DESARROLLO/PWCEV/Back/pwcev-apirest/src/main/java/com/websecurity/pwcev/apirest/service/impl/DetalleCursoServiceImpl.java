@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.websecurity.pwcev.apirest.entidadModelo.DetalleCursoModelo;
+import com.websecurity.pwcev.apirest.entidadmodelo.DetalleCursoModelo;
 import com.websecurity.pwcev.apirest.model.Curso;
 import com.websecurity.pwcev.apirest.model.DetalleCurso;
 import com.websecurity.pwcev.apirest.model.Usuario;
