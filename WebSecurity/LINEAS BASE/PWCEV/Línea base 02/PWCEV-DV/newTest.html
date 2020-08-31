@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Docente | CrearExamen</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Bootstrap-->
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="bower_components/AdminLTE/plugins/fontawesome-free/css/all.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="bower_components/AdminLTE/dist/css/adminlte.min.css">
+  <!-- date picker -->
+  <link rel="stylesheet" href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.css">
+  <!-- Tempusdominus Bootstrap 4 -->
+  <link rel="stylesheet"
+    href="bower_components/AdminLTE/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <!-- Select2 -->
+  <link rel="stylesheet" href="bower_components/AdminLTE/plugins/select2/css/select2.min.css">
+  <link rel="stylesheet" href="bower_components/AdminLTE/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="bower_components/AdminLTE/dist/css/adminlte.min.css">
+  <!-- Plugin css BootsTrap -->
+  <link rel="stylesheet" href="dist/css/style.css">
+
+</head>
+
+<body class="hold-transition sidebar-mini">
+  <div class="wrapper">
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+      <!-- Left navbar links -->
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+          <a href="#" class="nav-link">Crear Examen</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+          <a href="list.html" class="nav-link">Ver Exámenes</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+          <a href="listCourse.html" class="nav-link">Ver Cursos</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <!-- Messages Dropdown Menu -->
+
+        <!-- Cerrar sesión -->
+        <li class="nav-item d-none d-sm-inline-block">
+          <a id="btn-close" href="index.html">Cerrar sesión</a>
+        </li>
+
+      </ul>
+    </nav>
+
+    <!-- /.navbar -->
+
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+      <!-- Brand Logo -->
+      <a href="index.html" class="brand-link">
+        <img src="dist/img/security.png" alt="WebSecurity Logo" class="brand-image img-circle elevation-3"
+          style="opacity: .8">
+        <span class="brand-text font-weight-light" style="color:darkgrey">WebSecurity</span>
+      </a>
+
+      <!-- Sidebar -->
+      <div class="sidebar">
+
+        <!-- Nombre de usuario y foto -->
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+          <div class="image">
+            <img src="dist/img/unmsm.png" class="img-circle elevation-2" alt="User Image">
+          </div>
+          <div class="info">
+            <a href="#" class="d-block" id="nombreUser"></a>
+          </div>
+        </div>
+
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <p>
+                  Mis Exámenes
+                  <i class="right fas fa-angle-left"></i>
+                  <span class="badge badge-info right">2</span>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+
+                    <p style="color: white;">2 Exámenes pendientes</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <p style="color: white;">7 Exámenes creados</p>
+                  </a>
+                </li>
+              </ul>
+
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-copy"></i>
+                <p>
+                  Mis Cursos
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="#l" class="nav-link">
+                    <p>10 cursos creados</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            </li>
+          </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+      </div>
+      <!-- /.sidebar -->
+    </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <section class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1>Crear Examen</h1>
+            </div>
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item active">Crear exámenes</li>
+              </ol>
+            </div>
+          </div>
+        </div><!-- /.container-fluid -->
+      </section>
+
+      <!-- Main content -->
+      <section class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-3">
+              <!-- Profile Image -->
+              <div class="card card-primary card-outline">
+                <div class="card-body box-profile">
+                  <div class="position-relative p-3 bg-gray" style="height: 35%">
+                    <div class="ribbon-wrapper">
+                      <div class="ribbon bg-primary">
+                        NOTA
+                      </div>
+                    </div>
+                    ¿Cómo crear un examen?<br>
+                    <div class="text-left">
+                      <li>
+                        <small>Crea tu curso en Crear Curso</small>
+                      </li>
+                      <li>
+                        <small>Usa el bóton Crear Pregunta para asignar la cantidad de preguntas.</small>
+                      </li>
+                      <li>
+                        <small>Edita los campos </small>
+                      </li>
+                      <li>
+                        <small>Define los Parámetros</small>
+                      </li>
+                      <li>
+                        <small>¡Puedes crear hasta 10 preguntas!</small>
+                      </li>
+                    </div>
+                    <div class="text-center">
+                      <a id="vermas" href="#" style="color:skyblue" data-toggle="modal" data-target="#modal-default">Ver
+                        más...</a>
+                    </div>
+                  </div>
+                </div>
+                <button type="submit" class="addRow btn btn-info">Agregar Pregunta</button>
+                <!-- /.card-body -->
+              </div>
+              <!-- /.card -->
+            </div>
+
+
+            <!-- /.col -->
+            <div class="col-md-9">
+              <div class="card">
+                <div class="card-header p-2">
+                  <ul class="nav nav-pills">
+                    <li class="nav-item">
+                      <a class="nav-link active" href="#crearCurso" data-toggle="tab" id="tabCurso">Crear Curso</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#activity" data-toggle="tab" id="tabExamen">Examen</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#settings" data-toggle="tab" id="tabParam">Parámetros</a>
+                    </li>
+
+                  </ul>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                  <div class="tab-content">
+                    <div class="tab-pane" id="activity">
+                      <!-- Post -->
+                      <div class="post">
+                        <div class="user-block">
+                          <div class="box-heager" id="examen-editable-holder">
+                            <label id="txtTitulo" style="color:blue;">INGRESAR TÍTULO DEL EXAMEN</label>
+                            <input class="clickedit" type="text" />
+                            <div class="clearfix"></div>
+
+                          </div>
+                          </span>
+                        </div>
+                        <!-- /.user-block -->
+
+                        <!-- Contenido base -->
+                        <div id="campaign">
+
+                          <div class="pull-left">
+                            <label id="descripcion0">
+                              Editar la descripción
+                            </label>
+                          </div>
+                          <input class="clickedit2" type="text" />
+                          <div class="pull-right">
+                            <a id="btn-pregunta" class="btn btn-success pull-right" style="color:blanchedalmond">
+                              Alternativas
+                            </a>
+                          </div>
+                          <div class="clearfix"></div>
+                          <!--  </form>-->
+                          <hr>
+                        </div>
+
+                        <!-- Contenido para duplicar -->
+                        <div style="display: none;">
+                          <div id="campaign">
+                            <form id="original">
+                              <!-- <a href="#" class="float-right btn-tool" id="close"><i class="fas fa-times"></i></a> -->
+                              <div class="pull-left">
+                                <label id="descripcion">
+                                  Editar la descripción
+                                </label>
+                              </div>
+                              <input class="clickedit2" type="text" />
+                              <div class="pull-right">
+                                <a id="btn-pregunta" class="btn btn-success pull-right" style="color:blanchedalmond"
+                                  valor>
+                                  Alternativas
+                                </a>
+                              </div>
+                              <hr>
+                              <div class="clearfix"></div>
+                            </form>
+                          </div>
+                        </div>
+                        <!-- /Contenido para duplicar -->
+
+
+                      </div>
+
+                    </div>
+                    <!-- /.tab-pane -->
+
+                    <div class="tab-pane" id="settings">
+                      <form class="form-horizontal">
+                        <div class="form-group row">
+                          <label for="inputName" class="col-sm-2 col-form-label">Titulo</label>
+                          <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputTitulo" disabled>
+                          </div>
+                        </div>
+
+                        <div class="form-group row">
+                          <label for="inputFecha" class="col-sm-2 col-form-label">Fecha Inicio</label>
+                          <div class="col-sm-10 input-group-prepend">
+                            <span class="input-group-text"><i class="far fa-clock"></i></span>
+                            <input type="text" class="form-control float-right miFecha" id="horaInicio">
+                          </div>
+                        </div>
+
+                        <div class="form-group row">
+                          <label for="inputFecha" class="col-sm-2 col-form-label">Hora Inicio</label>
+                          <div class="col-sm-10 input-group-prepend">
+                            <span class="input-group-text"><i class="far fa-clock"></i></span>
+                            <input type="text" id="timepicker-two" name="timepicker-two" class="timepicker" />
+                          </div>
+                        </div>
+
+                        <div class="form-group row">
+                          <label for="inputFecha" class="col-sm-2 col-form-label">Duración</label>
+                          <div class="col-sm-10 input-group-prepend">
+                            <span class="input-group-text"><i class="far fa-clock"></i></span>
+                            <input type="text" class="form-control float-right" id="duracion">
+                          </div>
+                        </div>
+
+                        <div class="form-group row">
+                          <label for="inputName" class="col-sm-2 col-form-label">Curso</label>
+                          <div class="col-sm-10">
+                            <select class="form-control select2" style="width: 80%;" id="cbocurso" name="curso">
+                            </select>
+                          </div>
+                        </div>
+
+                        <div class="form-group row">
+                          <div class="offset-sm-2 col-sm-10">
+                            <button type="submit" class="btn btn-danger">Crear examen</button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+
+                    <div class="active tab-pane" id="crearCurso">
+                      <form class="form-horizontal">
+                        <div class="form-group row">
+                          <label for="inputName" class="col-sm-2 col-form-label">Centro de estudios</label>
+                          <div class="col-sm-10">
+                            <select class="form-control" id="cbo-centro" name="centro" required>
+                            </select>
+                          </div>
+                        </div>
+
+                        <div class="form-group row">
+                          <label for="inputName" class="col-sm-2 col-form-label">Escuela</label>
+                          <div class="col-sm-10">
+                            <select class="form-control select2" style="width: 100%;" id="cbo-eap" name="escuela"
+                              required>
+                            </select>
+                          </div>
+                        </div>
+
+                        <div class="form-group row">
+                          <label for="inputName" class="col-sm-2 col-form-label">Curso</label>
+                          <div class="col-sm-10">
+                            <input type="email" class="form-control" id="txt-curso" placeholder="Nombre del curso"
+                              required>
+                          </div>
+                        </div>
+
+                        <div class="form-group row">
+                          <label for="inputName" class="col-sm-2 col-form-label">Periodo</label>
+                          <div class="col-sm-10">
+                            <select class="form-control" id="cbo-periodo" name="periodo" required>
+                              <option value="periodo"></option>
+                              <option value="2020-0">2020-0</option>
+                              <option value="2020-I">2020-I</option>
+                              <option value="2020-II">2020-II</option>
+                              <option value="20201-0">2021-0</option>
+                            </select>
+                          </div>
+                        </div>
+
+                        <div class="form-group row">
+                          <label for="inputName2" class="col-sm-2 col-form-label">Alumnos</label>
+                          <div class="col-sm-10">
+                            <textarea class="form-control" placeholder="ejemplo@unmsm.edu.pe" id="txt-alumnos" rows="4"
+                              required></textarea>
+                          </div>
+                        </div>
+
+                        <div class="form-group row">
+                          <div class="offset-sm-2 col-sm-10">
+
+                          </div>
+                        </div>
+                      </form>
+                      <button class="btn btn-danger" id="btn-crear">Crear Curso</button>
+                    </div>
+
+                    <section class="content">
+                      <div class="container-fluid">
+                        <div class="row">
+                          <!-- /.col (left) -->
+
+                          <!-- /.col (right) -->
+                        </div>
+                        <!-- /.row -->
+                      </div><!-- /.container-fluid -->
+                    </section>
+                    <!-- /.tab-pane -->
+                  </div>
+                  <!-- /.tab-content -->
+                </div><!-- /.card-body -->
+              </div>
+              <!-- /.card -->
+            </div>
+            <!-- /.col -->
+          </div>
+          <!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    <div class="modal fade" id="modal-default">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="text-center">
+            <h3 class="modal-title">Instrucciones</h3>
+            <hr>
+          </div>
+          <div class="box-body with-border">
+            <form class="form-horizontal" id="frm-usos">
+              <ol>
+                <li> En:
+                  <button class="btn btn-primary text-center btn-sm">Crear Curso</button>
+                  Ingresa el correo de los alumnos que estén matriculados en ese curso.
+                </li>
+                <li>Crea el Curso ingresando los datos solicitados.</li>
+                <li>Ve a <button class="btn btn-primary text-center btn-sm">Crear Examen</button>
+                  y define la cantidad de preguntas de tu examen (Max:10).
+                </li>
+                <li>Edita el título, la descripción y las alternativas.</li>
+                <li>Selecciona la alternativa correcta haciendo click en: <input type="radio" checked="checked" />
+                </li>
+                <li>Ve a <button class="btn btn-primary text-center btn-sm">Parámetros</button> y asigna la fecha y hora
+                  que desees que empiece el examen.</li>
+                <li>Selecciona el curso.</li>
+                <li>Ya creado el examen se <b>generará un código</b> para que lo compartas con tus alumnos.</li>
+                <li>Una vez finalizado el examen podrás acceder a <b>"Ver Resultados"</b> para ver los resultados.</li>
+              </ol>
+              <div class="modal-footer center-block">
+                <button type="button" class="btn btn-success" data-dismiss="modal">¡Entendido!</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+
+
+
+    <!-- Modal Curso creado-->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+      aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header" style="text-align: center;">
+            <h5 class="modal-title" id="exampleModalLongTitle"> ¡Curso creado!</h5>
+          </div>
+          <div class="col-xs">
+            <img src="dist/img/Icons/success.png" height="180px" width="420px"
+              style="vertical-align:middle;margin:0px 50px"></img>
+            <div class="modal-body">
+              Podrás visualizarlo en 'Examen' y en 'Ver Cursos'
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-success" data-dismiss="modal">¡Entendido!</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- fin Modal -->
+
+
+    <!-- Modal Preguntas-->
+    <div class="modal fade" id="modalPregunta" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header" style="text-align: center;">
+            <h5 class="modal-title" id="tituloDescripcion">d</h5>
+          </div>
+          <div class="box-body">
+            <form class="form-horizontal" id="">
+              <div id="alternativa1" class="form-group row">
+                <label for="inputName" class="col-sm-2 col-form-label">1.</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control">
+                </div>
+              </div>
+              <div id="alternativa2" class="form-group row">
+                <label for="inputName" class="col-sm-2 col-form-label">2.</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control">
+                </div>
+              </div>
+              <div id="alternativa3" class="form-group row">
+                <label for="inputName" class="col-sm-2 col-form-label">3.</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control">
+                </div>
+              </div>
+              <div id="alternativa4" class="form-group row">
+                <label for="inputName" class="col-sm-2 col-form-label">4.</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control">
+                </div>
+              </div>
+              <div id="alternativa5" class="form-group row">
+                <label for="inputName" class="col-sm-2 col-form-label">5.</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control">
+                </div>
+              </div>
+
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-success" data-dismiss="modal">¡Entendido!</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- fin Modal -->
+
+    <footer class="main-footer">
+      <div class="float-right d-none d-sm-block">
+        <b>Version</b> 1.0.0-pre
+      </div>
+      <strong>Copyright &copy; 2020 <a href="https://github.com/ManriqueCesar/WebSecurity">Grupo 3</a>.</strong> All
+      rights reserved.
+    </footer>
+
+    <aside class="control-sidebar control-sidebar-dark">
+    </aside>
+
+  </div>
+  <!-- ./wrapper -->
+
+  <!-- jQuery -->
+  <script src="bower_components/AdminLTE/plugins/jquery/jquery.min.js"></script>
+  <!-- Bootstrap 4 -->
+  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="bower_components/AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- Select2 -->
+  <script src="bower_components/AdminLTE/plugins/select2/js/select2.full.min.js"></script>
+  <!-- InputMask -->
+  <script src="bower_components/AdminLTE/plugins/moment/moment.min.js"></script>
+  <script src="bower_components/AdminLTE/plugins/inputmask/jquery.inputmask.min.js"></script>
+  <!-- date-picker -->
+  <script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
+  <script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+  <!-- Tempusdominus Bootstrap 4 -->
+  <script src="bower_components/AdminLTE/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js">
+  </script>
+  <!-- Cookies js -->
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+  <script type="text/javascript" src="plugins/wickedpicker/src/wickedpicker.js"></script>
+
+  <script type="text/javascript">
+    function preloadFunc() {
+      if (Cookies.get('rol') != 'ROLE_PROF') {
+        document.location.href = "index.html";
+      }
+    }
+    window.onpaint = preloadFunc();
+  </script>
+  <!-- AdminLTE App -->
+  <script src="bower_components/AdminLTE/dist/js/adminlte.min.js"></script>
+  <script src="script/newTest.js"></script>
+  <script src="script/cookies.js"></script>
+
+</body>
+
+</html>

@@ -1,4 +1,4 @@
-package com.websecurity.pwcev.apirest.entidadModelo;
+package com.websecurity.pwcev.apirest.entidadmodelo;
 
 import java.util.ArrayList;
 

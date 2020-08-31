@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.websecurity.pwcev.apirest.entidadmodelo.DetalleCursoModelo;
+import com.websecurity.pwcev.apirest.entidadModelo.DetalleCursoModelo;
 import com.websecurity.pwcev.apirest.model.Curso;
 import com.websecurity.pwcev.apirest.model.DetalleCurso;
 import com.websecurity.pwcev.apirest.model.Usuario;
