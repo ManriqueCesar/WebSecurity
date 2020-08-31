@@ -199,7 +199,7 @@
                     </div>
                   </div>
                 </div>
-                <button type="submit" class="addRow btn btn-info">Agregar Pregunta</button>
+                <button type="submit" class="addRow btn btn-info" id="btn-demo">Agregar Pregunta</button>
                 <!-- /.card-body -->
               </div>
               <!-- /.card -->
@@ -256,7 +256,7 @@
                         <div class="form-group row">
                           <label for="inputName" class="col-sm-2 col-form-label">Titulo</label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputTitulo" style="width:47%;">
+                            <input type="text" class="form-control" id="inputTitulo" style="width:50%;">
                           </div>
                         </div>
 
@@ -264,7 +264,8 @@
                           <label for="inputFecha" class="col-sm-2 col-form-label">Fecha Inicio</label>
                           <div class="col-sm-10 input-group-prepend">
                             <span class="input-group-text"><i class="far fa-clock"></i></span>
-                            <input type="text" class="form-control float-right miFecha" id="horaInicio" >
+                            <input type="text" class="form-control float-right miFecha" id="horaInicio"
+                              style="width: 46%;">
                           </div>
                         </div>
 
@@ -272,7 +273,8 @@
                           <label for="inputFecha" class="col-sm-2 col-form-label">Hora Inicio</label>
                           <div class="col-sm-10 input-group-prepend">
                             <span class="input-group-text"><i class="far fa-clock"></i></span>
-                            <input type="text" id="timepicker-two" name="timepicker-two" class="timepicker" />
+                            <input type="text" id="timepicker-two" name="timepicker-two" class="timepicker"
+                              style="width: 46%;" />
                           </div>
                         </div>
 
@@ -280,24 +282,25 @@
                           <label for="inputFecha" class="col-sm-2 col-form-label">Duración</label>
                           <div class="col-sm-10 input-group-prepend">
                             <span class="input-group-text"><i class="far fa-clock"></i></span>
-                            <input type="number" class="form-control float-right" style="width: 38%;" id="duracion">
+                            <input type="number" class="form-control float-right" style="width: 46%;" id="duracion">
                           </div>
                         </div>
 
                         <div class="form-group row">
                           <label for="inputName" class="col-sm-2 col-form-label">Curso</label>
                           <div class="col-sm-10">
-                            <select class="form-control select2" style="width: 57%;" id="cbocurso" name="curso">
+                            <select class="form-control select2" style="width: 50%;" id="cbocurso" name="curso">
                             </select>
                           </div>
                         </div>
 
-                        <div class="form-group row">
-                          <div class="offset-sm-2 col-sm-10">
-                            <button type="submit" class="btn btn-danger" id="btn-crearExamen">Crear examen</button>
-                          </div>
-                        </div>
+                        
                       </form>
+                      <div class="form-group row">
+                        <div class="offset-sm-2 col-sm-10">
+                          <button  class="btn btn-danger" id="btn-crearExamen">Crear examen</button>
+                        </div>
+                      </div>
                     </div>
 
                     <div class="active tab-pane" id="crearCurso">
@@ -381,9 +384,23 @@
                           </li>
                         </ul>
                       </div>
+
+
+                      <div>
+                        <div class="box-heager" id="examen-editable-holder">
+                          <label id="descripcion1"
+                            style="color:blue; vertical-align: middle; width: max-content;">INGRESAR LA DESCRIPCIÓN DE
+                            LA PREGUNTA</label>
+                          <input class="clickedit" type="text" />
+                          <div class="clearfix"></div>
+
+                        </div>
+                        <hr>
+                      </div>
+
                       <form class="form-horizontal">
-                        <label>Descripción1 </label>
-                        <div>
+
+                        <div class="d-block">
                           <li> Alternativa #1
                             <textarea class="form-control" placeholder="alternativa1" id="alternativa1-1" rows="2"
                               required></textarea>
@@ -404,12 +421,6 @@
                         <div>
                           <li> Alternativa #4
                             <textarea class="form-control" placeholder="alternativa4" id="alternativa1-4" rows="2"
-                              required></textarea>
-                          </li>
-                        </div>
-                        <div>
-                          <li> Alternativa #5
-                            <textarea class="form-control" placeholder="alternativa5" id="alternativa1-5" rows="2"
                               required></textarea>
                           </li>
                         </div>
@@ -439,8 +450,20 @@
                           </li>
                         </ul>
                       </div>
+
+                      <div>
+                        <div class="box-heager" id="examen-editable-holder">
+                          <label id="descripcion2"
+                            style="color:blue; vertical-align: middle; width: max-content;">INGRESAR LA DESCRIPCIÓN DE
+                            LA PREGUNTA</label>
+                          <input class="clickedit" type="text" />
+                          <div class="clearfix"></div>
+
+                        </div>
+                        <hr>
+                      </div>
+
                       <form class="form-horizontal">
-                        <label>Descripción2 </label>
                         <div>
                           <li> Alternativa #1
                             <textarea class="form-control" placeholder="alternativa1" id="alternativa2-1" rows="2"
@@ -462,12 +485,6 @@
                         <div>
                           <li> Alternativa #4
                             <textarea class="form-control" placeholder="alternativa4" id="alternativa2-4" rows="2"
-                              required></textarea>
-                          </li>
-                        </div>
-                        <div>
-                          <li> Alternativa #5
-                            <textarea class="form-control" placeholder="alternativa5" id="alternativa2-5" rows="2"
                               required></textarea>
                           </li>
                         </div>
@@ -497,8 +514,21 @@
                           </li>
                         </ul>
                       </div>
+
+                      <div>
+                        <div class="box-heager" id="examen-editable-holder">
+                          <label id="descripcion3"
+                            style="color:blue; vertical-align: middle; width: max-content;">INGRESAR LA DESCRIPCIÓN DE
+                            LA PREGUNTA</label>
+                          <input class="clickedit" type="text" />
+                          <div class="clearfix"></div>
+
+                        </div>
+                        <hr>
+                      </div>
+
+
                       <form class="form-horizontal">
-                        <label>Descripción3 </label>
                         <div>
                           <li> Alternativa #1
                             <textarea class="form-control" placeholder="alternativa1" id="alternativa3-1" rows="2"
@@ -520,12 +550,6 @@
                         <div>
                           <li> Alternativa #4
                             <textarea class="form-control" placeholder="alternativa4" id="alternativa3-4" rows="2"
-                              required></textarea>
-                          </li>
-                        </div>
-                        <div>
-                          <li> Alternativa #5
-                            <textarea class="form-control" placeholder="alternativa5" id="alternativa3-5" rows="2"
                               required></textarea>
                           </li>
                         </div>
@@ -555,8 +579,20 @@
                           </li>
                         </ul>
                       </div>
+
+                      <div>
+                        <div class="box-heager" id="examen-editable-holder">
+                          <label id="descripcion4"
+                            style="color:blue; vertical-align: middle; width: max-content;">INGRESAR LA DESCRIPCIÓN DE
+                            LA PREGUNTA</label>
+                          <input class="clickedit" type="text" />
+                          <div class="clearfix"></div>
+
+                        </div>
+                        <hr>
+                      </div>
+
                       <form class="form-horizontal">
-                        <label>Descripción4 </label>
                         <div>
                           <li> Alternativa #1
                             <textarea class="form-control" placeholder="alternativa1" id="alternativa4-1" rows="2"
@@ -578,12 +614,6 @@
                         <div>
                           <li> Alternativa #4
                             <textarea class="form-control" placeholder="alternativa4" id="alternativa4-4" rows="2"
-                              required></textarea>
-                          </li>
-                        </div>
-                        <div>
-                          <li> Alternativa #5
-                            <textarea class="form-control" placeholder="alternativa5" id="alternativa4-5" rows="2"
                               required></textarea>
                           </li>
                         </div>
@@ -613,8 +643,20 @@
                           </li>
                         </ul>
                       </div>
+
+                      <div>
+                        <div class="box-heager" id="examen-editable-holder">
+                          <label id="descripcion5"
+                            style="color:blue; vertical-align: middle; width: max-content;">INGRESAR LA DESCRIPCIÓN DE
+                            LA PREGUNTA</label>
+                          <input class="clickedit" type="text" />
+                          <div class="clearfix"></div>
+
+                        </div>
+                        <hr>
+                      </div>
+
                       <form class="form-horizontal">
-                        <label>Descripción5</label>
                         <div>
                           <li> Alternativa #1
                             <textarea class="form-control" placeholder="alternativa1" id="alternativa5-1" rows="2"
@@ -639,16 +681,9 @@
                               required></textarea>
                           </li>
                         </div>
-                        <div>
-                          <li> Alternativa #5
-                            <textarea class="form-control" placeholder="alternativa5" id="alternativa5-5" rows="2"
-                              required></textarea>
-                          </li>
-                        </div>
                         <a class="btn btn-success" href="#pregunta4" data-toggle="tab">Anterior</a>
                       </form>
                     </div>
-
 
                     <section class="content">
                       <div class="container-fluid">
@@ -714,8 +749,6 @@
       <!-- /.modal-dialog -->
     </div>
 
-
-
     <!-- Modal Curso creado-->
     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
       aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -739,57 +772,7 @@
     </div>
     <!-- fin Modal -->
 
-
-    <!-- Modal Preguntas-->
-    <div class="modal fade" id="modalPregunta" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-      aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header" style="text-align: center;">
-            <h5 class="modal-title" id="tituloDescripcion">d</h5>
-          </div>
-          <div class="box-body">
-            <form class="form-horizontal" id="">
-              <div id="alternativa1" class="form-group row">
-                <label for="inputName" class="col-sm-2 col-form-label">1.</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control">
-                </div>
-              </div>
-              <div id="alternativa2" class="form-group row">
-                <label for="inputName" class="col-sm-2 col-form-label">2.</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control">
-                </div>
-              </div>
-              <div id="alternativa3" class="form-group row">
-                <label for="inputName" class="col-sm-2 col-form-label">3.</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control">
-                </div>
-              </div>
-              <div id="alternativa4" class="form-group row">
-                <label for="inputName" class="col-sm-2 col-form-label">4.</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control">
-                </div>
-              </div>
-              <div id="alternativa5" class="form-group row">
-                <label for="inputName" class="col-sm-2 col-form-label">5.</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control">
-                </div>
-              </div>
-
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-success" data-dismiss="modal">¡Entendido!</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- fin Modal -->
+    
 
     <footer class="main-footer">
       <div class="float-right d-none d-sm-block">
@@ -838,6 +821,7 @@
   <script src="bower_components/AdminLTE/dist/js/adminlte.min.js"></script>
   <script src="script/demo.js"></script>
   <script src="script/cookies.js"></script>
+
 </body>
 
 </html>

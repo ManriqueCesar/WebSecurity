@@ -164,31 +164,32 @@
 
                 <div class="card">
                   <div class="card-header">
-                    <h3 class="card-title">DataTable</h3>
+                    <h3 class="card-title">Lista de Exámenes</h3>
                   </div>
                   <!-- /.card-header -->
-                  <div class="box-body table-responsive">
-                    <table id="tbl-resultado" class="table table-bordered table-striped" cellspacing="0" width="100%">
+                  <div class="table table-responsive">
+                    <table id="tbl-examenes" class="table table-bordered table-striped">
                       <thead>
-                        <tr>
-                          <th>TITULO</th>
+                        <tr>  
+                          <th>PERIODO</th>
+                          <th>CENTRO ESTUDIOS</th>
+                          <th>ESCUELA</th>
                           <th>CURSO</th>
-                          <th>ALUMNO</th>
-                          <th>NOTA</th>
-                          <th>TIME OUT</th>
-                          <th>ACCION</th>
+                          <th>TITULO EXAMEN</th>
+                          <th>DETALLES</th>
                         </tr>
-                        <tr>
-                          <th>TITULO</th>
+                        <tr>  
+                          <th>PERIODO</th>
+                          <th>CENTRO ESTUDIOS</th>
+                          <th>ESCUELA</th>
                           <th>CURSO</th>
-                          <th>ALUMNO</th>
-                          <th>NOTA</th>
-                          <th>TIME OUT</th>
-                          <th>ACCION</th>
+                          <th>TITULO EXAMEN</th>
+                          <th>DETALLES</th>
+                       
                         </tr>
                       </thead>
-
                     </table>
+
                   </div>
                   <!-- /.card-body -->
                 </div>
@@ -202,6 +203,53 @@
       </section>
       <!-- /.content -->
     </div>
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" id="modal-alumnos"
+    role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+        <div class="modal-header" style="text-align: center;">
+          <h5 class="modal-title" id="exampleModalLongTitle">Lista de alumnos</h5>
+        </div>
+        
+        <section class="content">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-12">
+                <div class="card">
+
+                  <!-- /.card-header -->
+                  <div class="card-body">
+  
+                 <div class="table table-responsive">
+                    <table id="tbl-listado" class="table table-bordered table-striped">
+                      <thead>
+                        <tr>
+                          <th>ALUMNOS</th>
+                          <th>NOTA</th>
+                          <th>TIEMPO FUERA</th>
+                          <th>ACCION</th>
+                        </tr> 
+
+                      </thead>
+                    </table>
+  
+                 </div>
+                  <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+                </div>
+              </div>
+              <!-- /.row -->
+            </div>
+          </div>
+          <!-- /.container-fluid -->
+        </section>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
     <footer class="main-footer">
       <div class="float-right d-none d-sm-block">
         <b>Version</b> 1.0.0-pre
