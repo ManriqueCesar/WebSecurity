@@ -27,8 +27,15 @@
   <link rel="stylesheet" href="bower_components/AdminLTE/dist/css/adminlte.min.css">
   <!-- Plugin css BootsTrap -->
   <link rel="stylesheet" href="dist/css/style.css">
-
+  <!-- iCheck for checkboxes and radio inputs -->
+  <link rel="stylesheet" href="plugins/iCheck/all.css">
+  <link rel="stylesheet" href="plugins/wickedpicker/dist/wickedpicker.min.css">
 </head>
+
+
+
+
+
 
 <body class="hold-transition sidebar-mini">
   <div class="wrapper">
@@ -192,7 +199,7 @@
                     </div>
                   </div>
                 </div>
-                <button type="submit" class="addRow btn btn-info">Agregar Pregunta</button>
+                <button type="submit" class="addRow btn btn-info" id="btn-demo">Agregar Pregunta</button>
                 <!-- /.card-body -->
               </div>
               <!-- /.card -->
@@ -219,66 +226,28 @@
                 <!-- /.card-header -->
                 <div class="card-body">
                   <div class="tab-content">
+
                     <div class="tab-pane" id="activity">
-                      <!-- Post -->
-                      <div class="post">
-                        <div class="user-block">
-                          <div class="box-heager" id="examen-editable-holder">
-                            <label id="txtTitulo" style="color:blue;">INGRESAR TÍTULO DEL EXAMEN</label>
-                            <input class="clickedit" type="text" />
-                            <div class="clearfix"></div>
 
-                          </div>
-                          </span>
-                        </div>
-                        <!-- /.user-block -->
-
-                        <!-- Contenido base -->
-                        <div id="campaign">
-
-                          <div class="pull-left">
-                            <label id="descripcion0">
-                              Editar la descripción
-                            </label>
-                          </div>
-                          <input class="clickedit2" type="text" />
-                          <div class="pull-right">
-                            <a id="btn-pregunta" class="btn btn-success pull-right" style="color:blanchedalmond">
-                              Alternativas
-                            </a>
-                          </div>
-                          <div class="clearfix"></div>
-                          <!--  </form>-->
-                          <hr>
-                        </div>
-
-                        <!-- Contenido para duplicar -->
-                        <div style="display: none;">
-                          <div id="campaign">
-                            <form id="original">
-                              <!-- <a href="#" class="float-right btn-tool" id="close"><i class="fas fa-times"></i></a> -->
-                              <div class="pull-left">
-                                <label id="descripcion">
-                                  Editar la descripción
-                                </label>
-                              </div>
-                              <input class="clickedit2" type="text" />
-                              <div class="pull-right">
-                                <a id="btn-pregunta" class="btn btn-success pull-right" style="color:blanchedalmond"
-                                  valor>
-                                  Alternativas
-                                </a>
-                              </div>
-                              <hr>
-                              <div class="clearfix"></div>
-                            </form>
-                          </div>
-                        </div>
-                        <!-- /Contenido para duplicar -->
-
-
+                      <div class="card-header p-2">
+                        <ul class="nav nav-justified">
+                          <li class="nav-item">
+                            <a class="nav-link" href="#pregunta1" data-toggle="tab">Pregunta1</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#pregunta2" data-toggle="tab">Pregunta2</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#pregunta3" data-toggle="tab">Pregunta3</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#pregunta4" data-toggle="tab">Pregunta4</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#pregunta5" data-toggle="tab">Pregunta5</a>
+                          </li>
+                        </ul>
                       </div>
-
                     </div>
                     <!-- /.tab-pane -->
 
@@ -287,7 +256,7 @@
                         <div class="form-group row">
                           <label for="inputName" class="col-sm-2 col-form-label">Titulo</label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputTitulo" disabled>
+                            <input type="text" class="form-control" id="inputTitulo" style="width:50%;">
                           </div>
                         </div>
 
@@ -295,7 +264,8 @@
                           <label for="inputFecha" class="col-sm-2 col-form-label">Fecha Inicio</label>
                           <div class="col-sm-10 input-group-prepend">
                             <span class="input-group-text"><i class="far fa-clock"></i></span>
-                            <input type="text" class="form-control float-right miFecha" id="horaInicio">
+                            <input type="text" class="form-control float-right miFecha" id="horaInicio"
+                              style="width: 46%;">
                           </div>
                         </div>
 
@@ -303,7 +273,8 @@
                           <label for="inputFecha" class="col-sm-2 col-form-label">Hora Inicio</label>
                           <div class="col-sm-10 input-group-prepend">
                             <span class="input-group-text"><i class="far fa-clock"></i></span>
-                            <input type="text" id="timepicker-two" name="timepicker-two" class="timepicker" />
+                            <input type="text" id="timepicker-two" name="timepicker-two" class="timepicker"
+                              style="width: 46%;" />
                           </div>
                         </div>
 
@@ -311,24 +282,25 @@
                           <label for="inputFecha" class="col-sm-2 col-form-label">Duración</label>
                           <div class="col-sm-10 input-group-prepend">
                             <span class="input-group-text"><i class="far fa-clock"></i></span>
-                            <input type="text" class="form-control float-right" id="duracion">
+                            <input type="number" class="form-control float-right" style="width: 46%;" id="duracion">
                           </div>
                         </div>
 
                         <div class="form-group row">
                           <label for="inputName" class="col-sm-2 col-form-label">Curso</label>
                           <div class="col-sm-10">
-                            <select class="form-control select2" style="width: 80%;" id="cbocurso" name="curso">
+                            <select class="form-control select2" style="width: 50%;" id="cbocurso" name="curso">
                             </select>
                           </div>
                         </div>
 
-                        <div class="form-group row">
-                          <div class="offset-sm-2 col-sm-10">
-                            <button type="submit" class="btn btn-danger">Crear examen</button>
-                          </div>
-                        </div>
+                        
                       </form>
+                      <div class="form-group row">
+                        <div class="offset-sm-2 col-sm-10">
+                          <button  class="btn btn-danger" id="btn-crearExamen">Crear examen</button>
+                        </div>
+                      </div>
                     </div>
 
                     <div class="active tab-pane" id="crearCurso">
@@ -386,6 +358,331 @@
                         </div>
                       </form>
                       <button class="btn btn-danger" id="btn-crear">Crear Curso</button>
+                    </div>
+
+
+
+                    <!-- Preguntas -->
+
+                    <div class="tab-pane" id="pregunta1">
+                      <div class="card-header p-2">
+                        <ul class="nav nav-justified">
+                          <li class="nav-item">
+                            <a class="nav-link" href="#" data-toggle="tab">Pregunta1</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#pregunta2" data-toggle="tab">Pregunta2</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#pregunta3" data-toggle="tab">Pregunta3</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#pregunta4" data-toggle="tab">Pregunta4</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#pregunta5" data-toggle="tab">Pregunta5</a>
+                          </li>
+                        </ul>
+                      </div>
+
+
+                      <div>
+                        <div class="box-heager" id="examen-editable-holder">
+                          <label id="descripcion1"
+                            style="color:blue; vertical-align: middle; width: max-content;">INGRESAR LA DESCRIPCIÓN DE
+                            LA PREGUNTA</label>
+                          <input class="clickedit" type="text" />
+                          <div class="clearfix"></div>
+
+                        </div>
+                        <hr>
+                      </div>
+
+                      <form class="form-horizontal">
+
+                        <div class="d-block">
+                          <li> Alternativa #1
+                            <textarea class="form-control" placeholder="alternativa1" id="alternativa1-1" rows="2"
+                              required></textarea>
+                          </li>
+                        </div>
+                        <div>
+                          <li> Alternativa #2
+                            <textarea class="form-control" placeholder="alternativa2" id="alternativa1-2" rows="2"
+                              required></textarea>
+                          </li>
+                        </div>
+                        <div>
+                          <li> Alternativa #3
+                            <textarea class="form-control" placeholder="alternativa1" id="alternativa1-3" rows="2"
+                              required></textarea>
+                          </li>
+                        </div>
+                        <div>
+                          <li> Alternativa #4
+                            <textarea class="form-control" placeholder="alternativa4" id="alternativa1-4" rows="2"
+                              required></textarea>
+                          </li>
+                        </div>
+                        <a class="btn btn-success" href="#pregunta2" data-toggle="tab">Siguiente</a>
+                      </form>
+                    </div>
+
+
+
+                    <div class="tab-pane" id="pregunta2">
+                      <div class="card-header p-2">
+                        <ul class="nav nav-justified">
+                          <li class="nav-item">
+                            <a class="nav-link" href="#pregunta1" data-toggle="tab">Pregunta1</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#" data-toggle="tab">Pregunta2</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#pregunta3" data-toggle="tab">Pregunta3</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#pregunta4" data-toggle="tab">Pregunta4</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#pregunta5" data-toggle="tab">Pregunta5</a>
+                          </li>
+                        </ul>
+                      </div>
+
+                      <div>
+                        <div class="box-heager" id="examen-editable-holder">
+                          <label id="descripcion2"
+                            style="color:blue; vertical-align: middle; width: max-content;">INGRESAR LA DESCRIPCIÓN DE
+                            LA PREGUNTA</label>
+                          <input class="clickedit" type="text" />
+                          <div class="clearfix"></div>
+
+                        </div>
+                        <hr>
+                      </div>
+
+                      <form class="form-horizontal">
+                        <div>
+                          <li> Alternativa #1
+                            <textarea class="form-control" placeholder="alternativa1" id="alternativa2-1" rows="2"
+                              required></textarea>
+                          </li>
+                        </div>
+                        <div>
+                          <li> Alternativa #2
+                            <textarea class="form-control" placeholder="alternativa2" id="alternativa2-2" rows="2"
+                              required></textarea>
+                          </li>
+                        </div>
+                        <div>
+                          <li> Alternativa #3
+                            <textarea class="form-control" placeholder="alternativa2" id="alternativa2-3" rows="2"
+                              required></textarea>
+                          </li>
+                        </div>
+                        <div>
+                          <li> Alternativa #4
+                            <textarea class="form-control" placeholder="alternativa4" id="alternativa2-4" rows="2"
+                              required></textarea>
+                          </li>
+                        </div>
+                        <a class="btn btn-success" href="#pregunta1" data-toggle="tab">Anterior</a>
+                        <a class="btn btn-success" href="#pregunta3" data-toggle="tab">Siguiente</a>
+                      </form>
+                    </div>
+
+
+                    <div class="tab-pane" id="pregunta3">
+                      <div class="card-header p-2">
+                        <ul class="nav nav-justified">
+                          <li class="nav-item">
+                            <a class="nav-link" href="#pregunta1" data-toggle="tab">Pregunta1</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#pregunta2" data-toggle="tab">Pregunta2</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#" data-toggle="tab">Pregunta3</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#pregunta4" data-toggle="tab">Pregunta4</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#pregunta5" data-toggle="tab">Pregunta5</a>
+                          </li>
+                        </ul>
+                      </div>
+
+                      <div>
+                        <div class="box-heager" id="examen-editable-holder">
+                          <label id="descripcion3"
+                            style="color:blue; vertical-align: middle; width: max-content;">INGRESAR LA DESCRIPCIÓN DE
+                            LA PREGUNTA</label>
+                          <input class="clickedit" type="text" />
+                          <div class="clearfix"></div>
+
+                        </div>
+                        <hr>
+                      </div>
+
+
+                      <form class="form-horizontal">
+                        <div>
+                          <li> Alternativa #1
+                            <textarea class="form-control" placeholder="alternativa1" id="alternativa3-1" rows="2"
+                              required></textarea>
+                          </li>
+                        </div>
+                        <div>
+                          <li> Alternativa #2
+                            <textarea class="form-control" placeholder="alternativa2" id="alternativa3-2" rows="2"
+                              required></textarea>
+                          </li>
+                        </div>
+                        <div>
+                          <li> Alternativa #3
+                            <textarea class="form-control" placeholder="alternativa3" id="alternativa3-3" rows="2"
+                              required></textarea>
+                          </li>
+                        </div>
+                        <div>
+                          <li> Alternativa #4
+                            <textarea class="form-control" placeholder="alternativa4" id="alternativa3-4" rows="2"
+                              required></textarea>
+                          </li>
+                        </div>
+                        <a class="btn btn-success" href="#pregunta2" data-toggle="tab">Anterior</a>
+                        <a class="btn btn-success" href="#pregunta4" data-toggle="tab">Siguiente</a>
+                      </form>
+                    </div>
+
+                    <!-- pregunta 4-->
+                    <div class="tab-pane" id="pregunta4">
+                      <div class="card-header p-2">
+                        <ul class="nav nav-justified">
+                          <li class="nav-item">
+                            <a class="nav-link" href="#pregunta1" data-toggle="tab">Pregunta1</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#pregunta2" data-toggle="tab">Pregunta2</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="pregunta3#" data-toggle="tab">Pregunta3</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#" data-toggle="tab">Pregunta4</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#pregunta5" data-toggle="tab">Pregunta5</a>
+                          </li>
+                        </ul>
+                      </div>
+
+                      <div>
+                        <div class="box-heager" id="examen-editable-holder">
+                          <label id="descripcion4"
+                            style="color:blue; vertical-align: middle; width: max-content;">INGRESAR LA DESCRIPCIÓN DE
+                            LA PREGUNTA</label>
+                          <input class="clickedit" type="text" />
+                          <div class="clearfix"></div>
+
+                        </div>
+                        <hr>
+                      </div>
+
+                      <form class="form-horizontal">
+                        <div>
+                          <li> Alternativa #1
+                            <textarea class="form-control" placeholder="alternativa1" id="alternativa4-1" rows="2"
+                              required></textarea>
+                          </li>
+                        </div>
+                        <div>
+                          <li> Alternativa #2
+                            <textarea class="form-control" placeholder="alternativa2" id="alternativa4-2" rows="2"
+                              required></textarea>
+                          </li>
+                        </div>
+                        <div>
+                          <li> Alternativa #3
+                            <textarea class="form-control" placeholder="alternativa3" id="alternativa4-3" rows="2"
+                              required></textarea>
+                          </li>
+                        </div>
+                        <div>
+                          <li> Alternativa #4
+                            <textarea class="form-control" placeholder="alternativa4" id="alternativa4-4" rows="2"
+                              required></textarea>
+                          </li>
+                        </div>
+                        <a class="btn btn-success" href="#pregunta3" data-toggle="tab">Anterior</a>
+                        <a class="btn btn-success" href="#pregunta5" data-toggle="tab">Siguiente</a>
+                      </form>
+                    </div>
+
+                    <!-- pregunta 5-->
+                    <div class="tab-pane" id="pregunta5">
+                      <div class="card-header p-2">
+                        <ul class="nav nav-justified">
+                          <li class="nav-item">
+                            <a class="nav-link" href="#pregunta1" data-toggle="tab">Pregunta1</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#pregunta2" data-toggle="tab">Pregunta2</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#pregunta" data-toggle="tab">Pregunta3</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#pregunta4" data-toggle="tab">Pregunta4</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#" data-toggle="tab">Pregunta5</a>
+                          </li>
+                        </ul>
+                      </div>
+
+                      <div>
+                        <div class="box-heager" id="examen-editable-holder">
+                          <label id="descripcion5"
+                            style="color:blue; vertical-align: middle; width: max-content;">INGRESAR LA DESCRIPCIÓN DE
+                            LA PREGUNTA</label>
+                          <input class="clickedit" type="text" />
+                          <div class="clearfix"></div>
+
+                        </div>
+                        <hr>
+                      </div>
+
+                      <form class="form-horizontal">
+                        <div>
+                          <li> Alternativa #1
+                            <textarea class="form-control" placeholder="alternativa1" id="alternativa5-1" rows="2"
+                              required></textarea>
+                          </li>
+                        </div>
+                        <div>
+                          <li> Alternativa #2
+                            <textarea class="form-control" placeholder="alternativa2" id="alternativa5-2" rows="2"
+                              required></textarea>
+                          </li>
+                        </div>
+                        <div>
+                          <li> Alternativa #3
+                            <textarea class="form-control" placeholder="alternativa3" id="alternativa5-3" rows="2"
+                              required></textarea>
+                          </li>
+                        </div>
+                        <div>
+                          <li> Alternativa #4
+                            <textarea class="form-control" placeholder="alternativa4" id="alternativa5-4" rows="2"
+                              required></textarea>
+                          </li>
+                        </div>
+                        <a class="btn btn-success" href="#pregunta4" data-toggle="tab">Anterior</a>
+                      </form>
                     </div>
 
                     <section class="content">
@@ -452,8 +749,6 @@
       <!-- /.modal-dialog -->
     </div>
 
-
-
     <!-- Modal Curso creado-->
     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
       aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -477,57 +772,7 @@
     </div>
     <!-- fin Modal -->
 
-
-    <!-- Modal Preguntas-->
-    <div class="modal fade" id="modalPregunta" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-      aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header" style="text-align: center;">
-            <h5 class="modal-title" id="tituloDescripcion">d</h5>
-          </div>
-          <div class="box-body">
-            <form class="form-horizontal" id="">
-              <div id="alternativa1" class="form-group row">
-                <label for="inputName" class="col-sm-2 col-form-label">1.</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control">
-                </div>
-              </div>
-              <div id="alternativa2" class="form-group row">
-                <label for="inputName" class="col-sm-2 col-form-label">2.</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control">
-                </div>
-              </div>
-              <div id="alternativa3" class="form-group row">
-                <label for="inputName" class="col-sm-2 col-form-label">3.</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control">
-                </div>
-              </div>
-              <div id="alternativa4" class="form-group row">
-                <label for="inputName" class="col-sm-2 col-form-label">4.</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control">
-                </div>
-              </div>
-              <div id="alternativa5" class="form-group row">
-                <label for="inputName" class="col-sm-2 col-form-label">5.</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control">
-                </div>
-              </div>
-
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-success" data-dismiss="modal">¡Entendido!</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- fin Modal -->
+    
 
     <footer class="main-footer">
       <div class="float-right d-none d-sm-block">
@@ -561,8 +806,9 @@
   </script>
   <!-- Cookies js -->
   <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
-  <script type="text/javascript" src="plugins/wickedpicker/src/wickedpicker.js"></script>
-
+  <script src="plugins/wickedpicker/src/wickedpicker.js"></script>
+  <!-- iCheck 1.0.1 -->
+  <script src="plugins/iCheck/icheck.min.js"></script>
   <script type="text/javascript">
     function preloadFunc() {
       if (Cookies.get('rol') != 'ROLE_PROF') {
