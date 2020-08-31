@@ -1,5 +1,7 @@
 package com.websecurity.pwcev.apirest.model;
 
+import java.util.List;
+
 public class DetalleRegistroExamen {
 	
 	Examen examen;
@@ -25,6 +27,7 @@ public class DetalleRegistroExamen {
 	public void setRespuestas(Respuesta[] respuestas) {
 		this.respuestas = respuestas;
 	}
+	
 	
 	
 
