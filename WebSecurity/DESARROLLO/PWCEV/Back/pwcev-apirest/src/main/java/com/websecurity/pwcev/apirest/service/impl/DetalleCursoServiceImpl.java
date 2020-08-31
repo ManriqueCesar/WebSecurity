@@ -6,8 +6,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.websecurity.pwcev.apirest.entidadModelo.DetalleCursoModelo;
 import com.websecurity.pwcev.apirest.model.Curso;
 import com.websecurity.pwcev.apirest.model.DetalleCurso;
+import com.websecurity.pwcev.apirest.model.Usuario;
 import com.websecurity.pwcev.apirest.repository.IDetalleCursoRepo;
 import com.websecurity.pwcev.apirest.service.ICursoService;
 import com.websecurity.pwcev.apirest.service.IDetalleCursoService;
@@ -21,25 +23,48 @@ public class DetalleCursoServiceImpl implements IDetalleCursoService {
 	@Autowired
 	private IUsuarioService usuarioService;
 	@Autowired
-	private ICursoService cursoService ;
-	
-	
+	private ICursoService cursoService;
 
 	@Override
-	public DetalleCurso registrar(DetalleCurso registro) {
+	public DetalleCurso registrar(DetalleCursoModelo registro) {
 
-		boolean existeusuario = usuarioService.existeUsuarioById(registro.getUsuario().getIdUsuario());
+		boolean existeusuario = usuarioService.existeUsuarioById(registro.getIdUsuario());
 		Curso curso = new Curso();
-		
+
 		if (existeusuario) {
-			boolean esprofe = usuarioService.validarRol(registro.getUsuario(), 2);
+			boolean esprofe = usuarioService.validarRol(registro.getIdUsuario(), "ROLE_PROF");
 			if (esprofe) {
-				curso=cursoService.registrar(registro.getCurso());
-				registro.setCurso(curso);
-				return repo.save(registro);
+				curso = cursoService.registrar(registro.getCurso());
+				Usuario us = new Usuario();
+				us.setIdUsuario(registro.getIdUsuario());
+				DetalleCurso detalleNuevo = new DetalleCurso();
+				detalleNuevo.setCurso(curso);
+				detalleNuevo.setUsuario(us);
+
+				DetalleCurso detalle = repo.save(detalleNuevo);
+				registrarAlumnos(registro, curso);
+				return detalle;
 			}
 		}
 		return null;
+
+	}
+
+	public void registrarAlumnos(DetalleCursoModelo registro, Curso curso) {
+
+		ArrayList<String> correos = registro.getEmailAlumnos();
+
+		for (int i = 0; i < correos.size(); i++) {
+			String email = correos.get(i);
+			if (usuarioService.existeUsuarioByEmail(email)) {
+				Usuario alumno = usuarioService.findByEmail(email);
+				DetalleCurso detalle = new DetalleCurso();
+				detalle.setCurso(curso);
+				detalle.setUsuario(alumno);
+
+				repo.save(detalle);
+			}
+		}
 	}
 
 	@Override
@@ -61,8 +86,8 @@ public class DetalleCursoServiceImpl implements IDetalleCursoService {
 	public List<Curso> listarCursosPorIdUsuario(Integer idUsuario) {
 		List<DetalleCurso> detalleCursos = repo.findByUsuarioIdUsuario(idUsuario);
 		List<Curso> cursos = new ArrayList<Curso>();
-		if(detalleCursos.size()>0) {
-			for(int i=0	;i<detalleCursos.size();i++) {
+		if (detalleCursos.size() > 0) {
+			for (int i = 0; i < detalleCursos.size(); i++) {
 				Curso curso = new Curso();
 				curso.setIdCurso(detalleCursos.get(i).getCurso().getIdCurso());
 				curso.setCentroEstudios(detalleCursos.get(i).getCurso().getCentroEstudios());
@@ -72,9 +97,35 @@ public class DetalleCursoServiceImpl implements IDetalleCursoService {
 				cursos.add(curso);
 			}
 		}
-		
+
 		return cursos;
-		
+
+	}
+
+	@Override
+	public List<Usuario> listarAlumnosPorCurso(Integer idCurso) {
+		List<DetalleCurso> registro = repo.findByCursoIdCurso(idCurso);
+		List<Usuario> usuarios = new ArrayList<Usuario>();
+		boolean existe = cursoService.existeCurso(idCurso);
+		if (existe) {
+			if (registro.size() > 0) {
+				for (int i = 0; i < registro.size(); i++) {
+					boolean esAlumno = usuarioService.validarRol(registro.get(i).getUsuario().getIdUsuario(), "ROLE_ALUM");
+					if (esAlumno) {
+						Usuario usuario = new Usuario();
+						usuario.setApellido(registro.get(i).getUsuario().getApellido());
+						usuario.setEmail(registro.get(i).getUsuario().getEmail());
+						usuario.setNombre(registro.get(i).getUsuario().getNombre());
+						usuario.setRoles(registro.get(i).getUsuario().getRoles());
+
+						usuarios.add(usuario);
+					}
+
+				}
+			}
+		}
+
+		return usuarios;
 	}
 
 }

@@ -30,7 +30,6 @@ public class UserServiceImpl implements IUsuarioService {
 
 	private Logger logger = org.slf4j.LoggerFactory.getLogger(UserServiceImpl.class);
 
-
 	@Override
 	public List<Usuario> listar() {
 		List<Usuario> users = usuarioRepositorio.findAll();
@@ -54,47 +53,61 @@ public class UserServiceImpl implements IUsuarioService {
 		boolean respuesta = usuarioRepositorio.existsByEmail(email);
 		return respuesta;
 	}
-	
-	public boolean validarRol(Usuario usuario, int idRol) {
+
+	public boolean validarRol(int idUsuario, String rol) {
 		boolean resp = false;
-		int Id = usuario.getIdUsuario();
+		int Id = idUsuario;
 		Optional<Usuario> us = buscarPorId(Id);
 		List<Rol> roles = new ArrayList<>();
 		roles = us.get().getRoles();
 		for (int i = 0; i < roles.size(); i++) {
-			if (roles.get(i).getIdRol() == idRol)
-				resp = true;
+			if (roles.get(i).getNombre().equalsIgnoreCase(rol)) {
+				resp = true;				
+			}
 		}
-
+		System.out.println(resp);
 		return resp;
 	}
 
-/*
-	@Override
-	@Transactional(readOnly = true)
-	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-
-		Usuario usuario = usuarioRepositorio.findByEmail(email);
-
-		if (usuario == null) {
-			logger.error("Error en el login: no existe el correo '" + email + "' en el sistema!");
-			throw new UsernameNotFoundException(
-					"Error en el login: no existe el correo '" + email + "' en el sistema!");
-		}
-
-		List<GrantedAuthority> authorities = usuario.getRoles().stream()
-				.map(role -> new SimpleGrantedAuthority(role.getNombre()))
-				.peek(AuthorityGranter -> logger.info("Role: " + AuthorityGranter.getAuthority()))
-				.collect(Collectors.toList());
-
-		return new User(usuario.getEmail(), usuario.getPassword(), usuario.isEnabled(), true, true, true, authorities);
-	}
-*/
+	/*
+	 * @Override
+	 * 
+	 * @Transactional(readOnly = true) public UserDetails loadUserByUsername(String
+	 * email) throws UsernameNotFoundException {
+	 * 
+	 * Usuario usuario = usuarioRepositorio.findByEmail(email);
+	 * 
+	 * if (usuario == null) {
+	 * logger.error("Error en el login: no existe el correo '" + email +
+	 * "' en el sistema!"); throw new UsernameNotFoundException(
+	 * "Error en el login: no existe el correo '" + email + "' en el sistema!"); }
+	 * 
+	 * List<GrantedAuthority> authorities = usuario.getRoles().stream() .map(role ->
+	 * new SimpleGrantedAuthority(role.getNombre())) .peek(AuthorityGranter ->
+	 * logger.info("Role: " + AuthorityGranter.getAuthority()))
+	 * .collect(Collectors.toList());
+	 * 
+	 * return new User(usuario.getEmail(), usuario.getPassword(),
+	 * usuario.isEnabled(), true, true, true, authorities); }
+	 */
 	@Override
 	@Transactional(readOnly = true)
 	public Usuario findByEmail(String email) {
 		Usuario us = usuarioRepositorio.findByEmail(email);
 		return us;
 	}
-	
+
+	@Override
+	public Usuario findByEmailAndPassword(String email, String password) {
+		Usuario us = usuarioRepositorio.findByEmailAndPassword(email, password);
+
+		Usuario usuario = new Usuario();
+		usuario.setIdUsuario(us.getIdUsuario());
+		usuario.setRoles(us.getRoles());
+		usuario.setNombre(us.getNombre());
+		usuario.setApellido(us.getApellido());
+
+		return usuario;
+	}
+
 }
