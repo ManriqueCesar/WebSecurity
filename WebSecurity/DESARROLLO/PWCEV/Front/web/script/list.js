@@ -46,7 +46,7 @@ $(document).ready(function () {
     },
 
     ajax: {
-      url: ruta + '/resultado/examen/' + idUser,
+      url: ruta + '/examenes/usuario/' + idUser,
       dataSrc: '',
       async: false,
       cache: true,
@@ -55,19 +55,19 @@ $(document).ready(function () {
       }
     },
     columns: [{
-        data: 'examen.curso.periodo'
+        data: 'curso.periodo'
       },
       {
-        data: 'examen.curso.centroEstudios'
+        data: 'curso.centroEstudios'
       },
       {
-        data: 'examen.curso.eap'
+        data: 'curso.eap'
       },
       {
-        data: 'examen.curso.curso'
+        data: 'curso.curso'
       },
       {
-        data: 'examen.titulo'
+        data: 'titulo'
       },
       {
         data: null,
@@ -87,7 +87,7 @@ $(document).on('click', '#btn-listar', function (event) {
   $('#modal-alumnos').modal('toggle');
   var currentRow = $(this).closest("tr");
   var data = $('#tbl-examenes').DataTable().row(currentRow).data();
-  var id = data.idResultado;
+  var id = data.idExamen;
   console.log(id)
   ruta = 'https://api-pwcev.herokuapp.com';
   var x = 0;
