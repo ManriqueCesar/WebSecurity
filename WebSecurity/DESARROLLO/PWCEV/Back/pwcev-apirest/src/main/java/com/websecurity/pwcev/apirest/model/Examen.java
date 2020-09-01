@@ -33,7 +33,7 @@ public class Examen {
 	@Column(name = "fecha_inicio", nullable = false)
 	private Date fechaInicio;
 	
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm:ss")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm")
 	@Column(name = "hora_inicio", nullable = false)
 	private Date horaInicio;
 	
