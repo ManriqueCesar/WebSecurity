@@ -30,7 +30,9 @@ public class DetalleCursoServiceImpl implements IDetalleCursoService {
 
 		boolean existeusuario = usuarioService.existeUsuarioById(registro.getIdUsuario());
 		Curso curso = new Curso();
-
+		
+		System.out.println(existeusuario);
+		
 		if (existeusuario) {
 			boolean esprofe = usuarioService.validarRol(registro.getIdUsuario(), "ROLE_PROF");
 			if (esprofe) {
