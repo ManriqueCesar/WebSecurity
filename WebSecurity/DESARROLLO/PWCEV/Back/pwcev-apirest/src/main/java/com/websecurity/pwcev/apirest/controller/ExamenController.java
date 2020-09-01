@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.websecurity.pwcev.apirest.entidadmodelo.DetalleExamenNota;
 import com.websecurity.pwcev.apirest.model.Curso;
 import com.websecurity.pwcev.apirest.model.DetalleRegistroExamen;
 import com.websecurity.pwcev.apirest.model.Examen;
@@ -106,30 +107,31 @@ public class ExamenController {
 
 			ex = detalle.getExamen();
 			examen = service.registrar(ex);
-			
+
 			try {
 				pre = detalle.getPreguntas();
 
 				for (Pregunta pregta : pre) {
 					pregta.setExamen(examen);
 					pregunta = pre_service.registrar(pregta);
-					
+
 					try {
 
 						res = detalle.getRespuestas();
-						
+
 						for (int i = cont; i < res.length && aux != 4; i++) {
 							Respuesta respta = res[i];
 							respta.setPregunta(pregunta);
 							respuesta = res_service.registrar(respta);
-							aux = aux +1;
+							aux = aux + 1;
 						}
 						aux = 0;
 						cont = cont + 4;
-						
+
 					} catch (DataAccessException e1) {
 						response.put("mensaje", "Error al insertar respuestas en base de datos.");
-						response.put("error", e1.getMessage().concat(": ").concat(e1.getMostSpecificCause().getMessage()));
+						response.put("error",
+								e1.getMessage().concat(": ").concat(e1.getMostSpecificCause().getMessage()));
 						return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 					}
 				}
@@ -139,7 +141,7 @@ public class ExamenController {
 				response.put("error", e2.getMessage().concat(": ").concat(e2.getMostSpecificCause().getMessage()));
 				return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 			}
-			
+
 		} catch (DataAccessException e2) {
 			response.put("mensaje", "Error al insertar examen en base de datos.");
 			response.put("error", e2.getMessage().concat(": ").concat(e2.getMostSpecificCause().getMessage()));
@@ -186,26 +188,46 @@ public class ExamenController {
 		response.put("mensaje", "El examen ha sido eliminado con éxito!");
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
 	}
-	
+
 	@GetMapping("/usuario/{idusuario}")
 	public ResponseEntity<?> listarExamenesporUsuario(@PathVariable("idusuario") Integer idUsuario) {
-		
+
 		List<Examen> examenes = null;
+		List<DetalleExamenNota> examenesNotas = null;
 		Map<String, Object> response = new HashMap<>();
-		
-		try {
-			examenes = service.listarExamenesPorIdUsuario(idUsuario);
-		} catch (DataAccessException e) {
-			response.put("mensaje", "Error al realizar la consulta en la base de datos");
-			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
-			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+
+		if (usuarioService.validarRol(idUsuario, "ROLE_PROF")) {
+
+			try {
+				examenes = service.listarExamenesPorIdUsuario(idUsuario);
+			} catch (DataAccessException e) {
+				response.put("mensaje", "Error al realizar la consulta en la base de datos");
+				response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+				return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+			}
+
+			if (!usuarioService.existeUsuarioById(idUsuario)) {
+				response.put("mensaje", "El usuario no existe con esas credenciales");
+				return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
+			}
+			return new ResponseEntity<List<Examen>>(examenes, HttpStatus.OK);
 		}
-		
-		if (!usuarioService.existeUsuarioById(idUsuario)) { 
-			response.put("mensaje", "El usuario no existe con esas credenciales");
-			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
+		else {
+			
+			try {
+				examenesNotas = service.listarExamenesNotasPorIdUsuario(idUsuario);
+			} catch (DataAccessException e) {
+				response.put("mensaje", "Error al realizar la consulta en la base de datos");
+				response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+				return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+			}
+
+			if (!usuarioService.existeUsuarioById(idUsuario)) {
+				response.put("mensaje", "El usuario no existe con esas credenciales");
+				return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
+			}
+			return new ResponseEntity<List<DetalleExamenNota>>(examenesNotas, HttpStatus.OK);
 		}
-		return new ResponseEntity<List<Examen>>(examenes,HttpStatus.OK);
-				
+
 	}
 }

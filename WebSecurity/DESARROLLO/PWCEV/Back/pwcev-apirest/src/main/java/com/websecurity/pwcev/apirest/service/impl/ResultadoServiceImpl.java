@@ -15,11 +15,8 @@ public class ResultadoServiceImpl implements IResultadoService{
 
 	@Autowired
 	private IResultadoRepo repo;
-	@Override
-	public List<Resultado> ListarPorExamenes(int idExamen) {
-		
-		return repo.findByExamenIdExamen(idExamen);
-	}
+	
+	
 	@Override
 	public Optional<Resultado> CambiarEstado(int idresultado) {
 		Optional<Resultado> resultado=repo.findById(idresultado);
@@ -30,6 +27,13 @@ public class ResultadoServiceImpl implements IResultadoService{
 		}
 		
 		return resultado;
+	}
+
+
+	@Override
+	public List<Resultado> ListarPorExamenes(int idExamen) {
+
+		return repo.findByExamenIdExamen(idExamen);
 	}
 
 }
