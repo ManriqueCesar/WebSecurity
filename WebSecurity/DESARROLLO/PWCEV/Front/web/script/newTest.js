@@ -43,7 +43,7 @@ function cbo_universidad(cboid, opcionxdefecto) {
 function cargarFecha() {
   //Datemask dd/mm/yyyy
   $('.miFecha').datepicker({
-    format: "dd/mm/yyyy",
+    format: "yyyy-mm-dd",
     language: "es"
   });
 }
@@ -96,36 +96,30 @@ $(document).ready(function () {
 
 
 
-  var alternativa11 = $("#alternativa1-1").text("DEMO11");
-  var alternativa12 = $("#alternativa1-2").text("DEMO12");
-  var alternativa13 = $("#alternativa1-3").text("DEMO13");
-  var alternativa14 = $("#alternativa1-4").text("DEMO14");
-  var alternativa15 = $("#alternativa1-5").text("DEMO15");
+  $("#alternativa1-1").text("DEMO11");
+  $("#alternativa1-2").text("DEMO12");
+  $("#alternativa1-3").text("DEMO13");
+  $("#alternativa1-4").text("DEMO14");
 
+  $("#alternativa2-1").text("DEMO21");
+  $("#alternativa2-2").text("DEMO22");
+  $("#alternativa2-3").text("DEMO23");
+  $("#alternativa2-4").text("DEMO24");
 
-  var alternativa21 = $("#alternativa2-1").text("DEMO21");
-  var alternativa22 = $("#alternativa2-2").text("DEMO22");
-  var alternativa23 = $("#alternativa2-3").text("DEMO23");
-  var alternativa24 = $("#alternativa2-4").text("DEMO24");
-  var alternativa25 = $("#alternativa2-5").text("DEMO25");
+  $("#alternativa3-1").text("DEMO31");
+  $("#alternativa3-2").text("DEMO32");
+  $("#alternativa3-3").text("DEMO33");
+  $("#alternativa3-4").text("DEMO34");
 
-  var alternativa31 = $("#alternativa3-1").text("DEMO31");
-  var alternativa32 = $("#alternativa3-2").text("DEMO32");
-  var alternativa33 = $("#alternativa3-3").text("DEMO33");
-  var alternativa34 = $("#alternativa3-4").text("DEMO34");
-  var alternativa35 = $("#alternativa3-5").text("DEMO35");
+  $("#alternativa4-1").text("DEMO41");
+  $("#alternativa4-2").text("DEMO42");
+  $("#alternativa4-3").text("DEMO43");
+  $("#alternativa4-4").text("DEMO44");
 
-  var alternativa41 = $("#alternativa4-1").text("DEMO41");
-  var alternativa42 = $("#alternativa4-2").text("DEMO42");
-  var alternativa43 = $("#alternativa4-3").text("DEMO43");
-  var alternativa44 = $("#alternativa4-4").text("DEMO44");
-  var alternativa45 = $("#alternativa4-5").text("DEMO45");
-
-  var alternativa51 = $("#alternativa5-1").text("DEMO51");
-  var alternativa52 = $("#alternativa5-2").text("DEMO52");
-  var alternativa53 = $("#alternativa5-3").text("DEMO53");
-  var alternativa54 = $("#alternativa5-4").text("DEMO54");
-  var alternativa55 = $("#alternativa5-5").text("DEMO");
+  $("#alternativa5-1").text("DEMO51");
+  $("#alternativa5-2").text("DEMO52");
+  $("#alternativa5-3").text("DEMO53");
+  $("#alternativa5-4").text("DEMO54");
 
 
 
@@ -198,14 +192,17 @@ $(document).on('click', '#btn-crear', function (event) {
 
 //demo
 $(document).on('click', '#btn-demo', function (event) {
-
+  var ruta = 'https://api-pwcev.herokuapp.com';
 
   var examen = {};
   var preguntaObjeto = {};
-  var respuestas = [];
   var request = {};
-
+  var preguntas = [];
+  var pregunta ={};
+  pregunta.idPregunta = 0;
+  var respuestas = [];
   examen.idExamen = null;
+
   preguntaObjeto.idPregunta = 0;
 
   var estadoDefecto = false;
@@ -217,25 +214,24 @@ $(document).on('click', '#btn-demo', function (event) {
 
   /*examen y curso */
 
-  var examenes={};
-
-  var curso={};
+  var curso = {};
 
 
-  console.log(examenes);
+  console.log(examen);
 
   var titulo = $("#inputTitulo").val();
   var fechaInicio = $("#horaInicio").val();
-  var horaInicio =$("#timepicker-two").val();
+  var horaInicio = $("#timepicker-two").val();
   var tiempoDuracion = $("#duracion").val();
   var cursoId = $("#cbocurso").val();
 
-  examenes.titulo=titulo;
-  examenes.fechaInicio=fechaInicio;
-  examenes.horaInicio= horaInicio;
-  examenes.tiempoDuracion= tiempoDuracion;
-  curso.cursoId= cursoId;
-  examenes.curso = curso;
+  examen.titulo = titulo;
+  examen.fechaInicio = fechaInicio;
+  examen.horaInicio = horaInicio;
+  examen.tiempoDuracion = tiempoDuracion;
+  examen.descripcion = "Prohibido copiar";
+  curso.idCurso = cursoId;
+  examen.curso = curso;
 
 
   /* pregunta 1*/
@@ -245,11 +241,6 @@ $(document).on('click', '#btn-demo', function (event) {
   var alternativa13 = $("#alternativa1-3").val();
   var alternativa14 = $("#alternativa1-4").val();
 
-  var preg1 = [descrip1, examen, idPregunta, puntaje];
-  var respuesta1 = [alternativa11, estadoRespuesta, idRespuesta, preguntaObjeto];
-  var respuesta2 = [alternativa12, estadoDefecto, idRespuesta, preguntaObjeto];
-  var respuesta3 = [alternativa13, estadoDefecto, idRespuesta, preguntaObjeto];
-  var respuesta4 = [alternativa14, estadoDefecto, idRespuesta, preguntaObjeto];
 
   /* pregunta 2 */
 
@@ -259,11 +250,6 @@ $(document).on('click', '#btn-demo', function (event) {
   var alternativa23 = $("#alternativa2-3").val();
   var alternativa24 = $("#alternativa2-4").val();
 
-  var preg2 = [descrip2, examen, idPregunta, puntaje];
-  var respuesta5 = [alternativa21, estadoRespuesta, idRespuesta, preguntaObjeto];
-  var respuesta6 = [alternativa22, estadoDefecto, idRespuesta, preguntaObjeto];
-  var respuesta7 = [alternativa23, estadoDefecto, idRespuesta, preguntaObjeto];
-  var respuesta8 = [alternativa24, estadoDefecto, idRespuesta, preguntaObjeto];
 
   /* pregunta 3 */
 
@@ -273,11 +259,6 @@ $(document).on('click', '#btn-demo', function (event) {
   var alternativa33 = $("#alternativa3-3").val();
   var alternativa34 = $("#alternativa3-4").val();
 
-  var preg3 = [descrip3, examen, idPregunta, puntaje];
-  var respuesta9 = [alternativa31, estadoRespuesta, idRespuesta, preguntaObjeto];
-  var respuesta10 = [alternativa32, estadoDefecto, idRespuesta, preguntaObjeto];
-  var respuesta11 = [alternativa33, estadoDefecto, idRespuesta, preguntaObjeto];
-  var respuesta12 = [alternativa34, estadoDefecto, idRespuesta, preguntaObjeto];
 
   /* pregunta 4 */
 
@@ -287,11 +268,6 @@ $(document).on('click', '#btn-demo', function (event) {
   var alternativa43 = $("#alternativa4-3").val();
   var alternativa44 = $("#alternativa4-4").val();
 
-  var preg4 = [descrip4, examen, idPregunta, puntaje];
-  var respuesta13 = [alternativa41, estadoRespuesta, idRespuesta, preguntaObjeto];
-  var respuesta14 = [alternativa42, estadoDefecto, idRespuesta, preguntaObjeto];
-  var respuesta15 = [alternativa43, estadoDefecto, idRespuesta, preguntaObjeto];
-  var respuesta16 = [alternativa44, estadoDefecto, idRespuesta, preguntaObjeto];
 
   /* pregunta 5*/
 
@@ -301,28 +277,217 @@ $(document).on('click', '#btn-demo', function (event) {
   var alternativa53 = $("#alternativa5-3").val();
   var alternativa54 = $("#alternativa5-4").val();
 
-  var preg5 = [descrip5, examen, idPregunta, puntaje];
-  var respuesta17 = [alternativa51, estadoRespuesta, idRespuesta, preguntaObjeto];
-  var respuesta18 = [alternativa52, estadoDefecto, idRespuesta, preguntaObjeto];
-  var respuesta19 = [alternativa53, estadoDefecto, idRespuesta, preguntaObjeto];
-  var respuesta20 = [alternativa54, estadoDefecto, idRespuesta, preguntaObjeto];
+  /* Arreglo de preguntas */ 
+ 
+  var pregunta1 = new Object();
+  pregunta1.descripcion = descrip1;
+  pregunta1.idPregunta = idPregunta;
+  pregunta1.puntaje = puntaje;
+  pregunta1.examen = examen;
+
+  var pregunta2 = new Object();
+  pregunta2.descripcion = descrip2;
+  pregunta2.idPregunta = idPregunta;
+  pregunta2.puntaje = puntaje;
+  pregunta2.examen = examen;
+
+  var pregunta3 = new Object();
+  pregunta3.descripcion = descrip3;
+  pregunta3.idPregunta = idPregunta;
+  pregunta3.puntaje = puntaje;
+  pregunta3.examen = examen;
+
+  var pregunta4 = new Object();
+  pregunta4.descripcion = descrip4;
+  pregunta4.idPregunta = idPregunta;
+  pregunta4.puntaje = puntaje;
+  pregunta4.examen = examen;
+
+  var pregunta5 = new Object();
+  pregunta5.descripcion = descrip5;
+  pregunta5.idPregunta = idPregunta;
+  pregunta5.puntaje = puntaje;
+  pregunta5.examen = examen;
 
 
-  var respuestas = [
-    respuesta1, respuesta2, respuesta3, respuesta4, respuesta5,
-    respuesta6, respuesta7, respuesta8, respuesta9, respuesta10,
-    respuesta11, respuesta12, respuesta13, respuesta14, respuesta15,
-    respuesta16, respuesta17, respuesta18, respuesta19, respuesta20
-  ];
+  preguntas[0] = pregunta1;
+  preguntas[1] = pregunta2;
+  preguntas[2] = pregunta3;
+  preguntas[3] = pregunta4;
 
-  var preguntas = [
-    preg1, preg2, preg3, preg4, preg5
-  ];
+  /*arreglo de respuestas*/
 
+  var respuesta1 = new Object();
+  respuesta1.descripcion=alternativa11;
+  respuesta1.estado=estadoRespuesta;
+  respuesta1.idRespuesta=idRespuesta;
+  respuesta1.pregunta=pregunta;
+
+  var respuesta2 = new Object();
+  respuesta2.descripcion=alternativa12;
+  respuesta2.estado=estadoDefecto;
+  respuesta2.idRespuesta=idRespuesta;
+  respuesta2.pregunta=pregunta;
+
+  var respuesta3 = new Object();
+  respuesta3.descripcion=alternativa13;
+  respuesta3.estado=estadoDefecto;
+  respuesta3.idRespuesta=idRespuesta;
+  respuesta3.pregunta=pregunta;
+
+  var respuesta4 = new Object();
+  respuesta4.descripcion=alternativa14;
+  respuesta4.estado=estadoDefecto;
+  respuesta4.idRespuesta=idRespuesta;
+  respuesta4.pregunta=pregunta;
+
+  var respuesta5 = new Object();
+  respuesta5.descripcion=alternativa21;
+  respuesta5.estado=estadoDefecto;
+  respuesta5.idRespuesta=idRespuesta;
+  respuesta5.pregunta=pregunta;
+  
+
+
+  var respuesta6 = new Object();
+  respuesta6.descripcion=alternativa22;
+  respuesta6.estado=estadoRespuesta;
+  respuesta6.idRespuesta=idRespuesta;
+  respuesta6.pregunta=pregunta;
+
+  var respuesta7 = new Object();
+  respuesta7.descripcion=alternativa23;
+  respuesta7.estado=estadoDefecto;
+  respuesta7.idRespuesta=idRespuesta;
+  respuesta7.pregunta=pregunta;
+
+  var respuesta8 = new Object();
+  respuesta8.descripcion=alternativa24;
+  respuesta8.estado=estadoDefecto;
+  respuesta8.idRespuesta=idRespuesta;
+  respuesta8.pregunta=pregunta;
+
+  var respuesta9 = new Object();
+  respuesta9.descripcion=alternativa31;
+  respuesta9.estado=estadoDefecto;
+  respuesta9.idRespuesta=idRespuesta;
+  respuesta9.pregunta=pregunta;
+
+  var respuesta10 = new Object();
+  respuesta10.descripcion=alternativa32;
+  respuesta10.estado=estadoDefecto;
+  respuesta10.idRespuesta=idRespuesta;
+  respuesta10.pregunta=pregunta;
+  
+  
+  var respuesta11 = new Object();
+  respuesta11.descripcion=alternativa33;
+  respuesta11.estado=estadoRespuesta;
+  respuesta11.idRespuesta=idRespuesta;
+  respuesta11.pregunta=pregunta;
+
+  var respuesta12 = new Object();
+  respuesta12.descripcion=alternativa34;
+  respuesta12.estado=estadoDefecto;
+  respuesta12.idRespuesta=idRespuesta;
+  respuesta12.pregunta=pregunta;
+
+  var respuesta13 = new Object();
+  respuesta13.descripcion=alternativa41;
+  respuesta13.estado=estadoDefecto;
+  respuesta13.idRespuesta=idRespuesta;
+  respuesta13.pregunta=pregunta;
+
+  var respuesta14 = new Object();
+  respuesta14.descripcion=alternativa42;
+  respuesta14.estado=estadoDefecto;
+  respuesta14.idRespuesta=idRespuesta;
+  respuesta14.pregunta=pregunta;
+
+  var respuesta15 = new Object();
+  respuesta15.descripcion=alternativa43;
+  respuesta15.estado=estadoDefecto;
+  respuesta15.idRespuesta=idRespuesta;
+  respuesta15.pregunta=pregunta;
+  
+  var respuesta16 = new Object();
+  respuesta16.descripcion=alternativa44;
+  respuesta16.estado=estadoRespuesta;
+  respuesta16.idRespuesta=idRespuesta;
+  respuesta16.pregunta=pregunta;
+
+
+  var respuesta17 = new Object();
+  respuesta17.descripcion=alternativa51;
+  respuesta17.estado=estadoDefecto;
+  respuesta17.idRespuesta=idRespuesta;
+  respuesta17.pregunta=pregunta;
+
+  var respuesta18 = new Object();
+  respuesta18.descripcion=alternativa52;
+  respuesta18.estado=estadoDefecto;
+  respuesta18.idRespuesta=idRespuesta;
+  respuesta18.pregunta=pregunta;
+
+  var respuesta19 = new Object();
+  respuesta19.descripcion=alternativa53;
+  respuesta19.estado=estadoDefecto;
+  respuesta19.idRespuesta=idRespuesta;
+  respuesta19.pregunta=pregunta;
+  
+  var respuesta20 = new Object();
+  respuesta20.descripcion=alternativa54;
+  respuesta20.estado=estadoDefecto;
+  respuesta20.idRespuesta=idRespuesta;
+  respuesta20.pregunta=pregunta;
+
+
+  respuestas[0]=respuesta1;
+  respuestas[1]=respuesta2;
+  respuestas[2]=respuesta3;
+  respuestas[3]=respuesta4;
+  respuestas[4]=respuesta5;
+  respuestas[5]=respuesta6;
+  respuestas[6]=respuesta7;
+  respuestas[7]=respuesta8;
+  respuestas[8]=respuesta9;
+  respuestas[9]=respuesta10;
+  respuestas[10]=respuesta11;
+  respuestas[11]=respuesta12;
+  respuestas[12]=respuesta13;
+  respuestas[13]=respuesta14;
+  respuestas[14]=respuesta15;
+  respuestas[15]=respuesta16;
+  respuestas[16]=respuesta17;
+  respuestas[17]=respuesta18;
+  respuestas[18]=respuesta19;
+  respuestas[19]=respuesta20;
+
+
+
+  request.examen = examen;
   request.preguntas = preguntas;
   request.respuestas = respuestas;
-  request.examenes = examenes;
+
   console.log(request);
+
+
+  $.ajax({
+    url: ruta + '/examenes/',
+    type: 'POST',
+    dataType: 'json',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    data: JSON.stringify(request)
+  }).done(function () {
+    $('#exampleModalCenter').modal('toggle');
+  }).fail(function (jqXHR, textStatus, errorThrown) {
+    console.log("error")
+  })
+
+
 
 });
 
@@ -423,14 +588,16 @@ $(document).on('click', '#btn-crearExamen', function (event) {
     respuesta16, respuesta17, respuesta18, respuesta19, respuesta20
   ];
 
-  var preguntas = [
-    preg1, preg2, preg3, preg4, preg5
-  ];
+  var preguntita = {};
+  pregunta[descripcion] = descrip1;
+  pregunta[fechaInicio] = fechaInicio;
+  pregunta[horaInicio] = horaInicio;
 
-  request.preguntas = preguntas;
+  //request
+  request.preguntas = preguntita;
   request.respuestas = respuestas;
   request.examen = examen;
-
+  console.log(preguntita);
 
 });
 
@@ -439,8 +606,9 @@ $(document).on('click', '#btn-crearExamen', function (event) {
 $('#tabParam').click(function () {
   Cargar_curso_id('cbocurso', 1);
   var options = {
-    now: "08:00", //hh:mm 24 hour format only, defaults to current time 
-    twentyFour: false, //Display 24 hour format, defaults to false 
+    timeFormat: 'HH:mm:ss',
+    now: "08:00:00", //hh:mm 24 hour format only, defaults to current time 
+    twentyFour: true, //Display 24 hour format, defaults to false 
     upArrow: 'wickedpicker__controls__control-up', //The up arrow class selector to use, for custom CSS 
     downArrow: 'wickedpicker__controls__control-down', //The down arrow class selector to use, for custom CSS 
     close: 'wickedpicker__close', //The close class selector to use, for custom CSS 
@@ -450,7 +618,8 @@ $('#tabParam').click(function () {
     minutesInterval: 1, //Change interval for minutes, defaults to 1 
     beforeShow: null, //A function to be called before the Wickedpicker is shown 
     show: null, //A function to be called when the Wickedpicker is shown 
-    clearable: false, //Make the picker's input clearable (has clickable "x") 
+    clearable: false, //Make the picker's input clearable (has clickable "x"),
+    timeSeparator: ':'  
   };
   $('.timepicker').wickedpicker(options);
 
