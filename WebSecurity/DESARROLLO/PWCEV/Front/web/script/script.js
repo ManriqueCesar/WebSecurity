@@ -150,7 +150,7 @@ $(document).ready(function () {
         $("#loading").text("Identidad confirmada, redireccionando...");
         console.log("bienvenido " + apellido);
         setTimeout(function () {
-          document.location.href = "waiting.html";
+          document.location.href = "myExam.html";
         }, 5000);
       }
     }, 500)

@@ -192,6 +192,12 @@ $(document).on('click', '#btn-crear', function (event) {
 
 //demo
 $(document).on('click', '#btn-demo', function (event) {
+  
+});
+
+
+//Crear curso
+$(document).on('click', '#btn-crearExamen', function (event) {
   var ruta = 'https://api-pwcev.herokuapp.com';
 
   var examen = {};
@@ -482,122 +488,16 @@ $(document).on('click', '#btn-demo', function (event) {
     },
     data: JSON.stringify(request)
   }).done(function () {
-    $('#exampleModalCenter').modal('toggle');
+    $('#examenCreado').modal('toggle');
   }).fail(function (jqXHR, textStatus, errorThrown) {
     console.log("error")
   })
-
-
-
 });
 
-
-//Crear curso
-$(document).on('click', '#btn-crearExamen', function (event) {
-  var ruta = 'https://api-pwcev.herokuapp.com';
-
-  var examenes = {};
-  var examen = {};
-  var pregunta = {};
-  var request = {};
-
-  examen.idExamen = null;
-  pregunta.idPregunta = 0;
-
-  var estadoDefecto = false;
-  var estadoRespuesta = true;
-  var idRespuesta = null;
-  var puntaje = 4;
-  var idPregunta = null;
-
-  /* pregunta 1*/
-
-  var descrip1 = $("#descripcion1").text();
-  var alternativa11 = $("#alternativa1-1").val();
-  var alternativa12 = $("#alternativa1-2").val();
-  var alternativa13 = $("#alternativa1-3").val();
-  var alternativa14 = $("#alternativa1-4").val();
-
-  var preg1 = [descrip1, examen, idPregunta, puntaje];
-  var respuesta1 = [alternativa11, estadoRespuesta, idRespuesta, pregunta];
-  var respuesta2 = [alternativa12, estadoDefecto, idRespuesta, pregunta];
-  var respuesta3 = [alternativa13, estadoDefecto, idRespuesta, pregunta];
-  var respuesta4 = [alternativa14, estadoDefecto, idRespuesta, pregunta];
-
-  /* pregunta 2 */
-
-  var descrip2 = $("#descripcion2").text();
-  var alternativa21 = $("#alternativa2-1").val();
-  var alternativa22 = $("#alternativa2-2").val();
-  var alternativa23 = $("#alternativa2-3").val();
-  var alternativa24 = $("#alternativa2-4").val();
-
-  var preg2 = [descrip2, examen, idPregunta, puntaje];
-  var respuesta5 = [alternativa21, estadoRespuesta, idRespuesta, pregunta];
-  var respuesta6 = [alternativa22, estadoDefecto, idRespuesta, pregunta];
-  var respuesta7 = [alternativa23, estadoDefecto, idRespuesta, pregunta];
-  var respuesta8 = [alternativa24, estadoDefecto, idRespuesta, pregunta];
-
-  /* pregunta 3 */
-
-  var descrip3 = $("#descripcion3").text();
-  var alternativa31 = $("#alternativa3-1").val();
-  var alternativa32 = $("#alternativa3-2").val();
-  var alternativa33 = $("#alternativa3-3").val();
-  var alternativa34 = $("#alternativa3-4").val();
-
-  var preg3 = [descrip3, examen, idPregunta, puntaje];
-  var respuesta9 = [alternativa31, estadoRespuesta, idRespuesta, pregunta];
-  var respuesta10 = [alternativa32, estadoDefecto, idRespuesta, pregunta];
-  var respuesta11 = [alternativa33, estadoDefecto, idRespuesta, pregunta];
-  var respuesta12 = [alternativa34, estadoDefecto, idRespuesta, pregunta];
-
-  /* pregunta 4 */
-
-  var descrip4 = $("#descripcion4").text();
-  var alternativa41 = $("#alternativa4-1").val();
-  var alternativa42 = $("#alternativa4-2").val();
-  var alternativa43 = $("#alternativa4-3").val();
-  var alternativa44 = $("#alternativa4-4").val();
-
-  var preg4 = [descrip4, examen, idPregunta, puntaje];
-  var respuesta13 = [alternativa41, estadoRespuesta, idRespuesta, pregunta];
-  var respuesta14 = [alternativa42, estadoDefecto, idRespuesta, pregunta];
-  var respuesta15 = [alternativa43, estadoDefecto, idRespuesta, pregunta];
-  var respuesta16 = [alternativa44, estadoDefecto, idRespuesta, pregunta];
-
-  /* pregunta 5*/
-
-  var descrip5 = $("#descripcion5").text();
-  var alternativa51 = $("#alternativa5-1").val();
-  var alternativa52 = $("#alternativa5-2").val();
-  var alternativa53 = $("#alternativa5-3").val();
-  var alternativa54 = $("#alternativa5-4").val();
-
-  var preg5 = [descrip5, examen, idPregunta, puntaje];
-  var respuesta17 = [alternativa51, estadoRespuesta, idRespuesta, pregunta];
-  var respuesta18 = [alternativa52, estadoDefecto, idRespuesta, pregunta];
-  var respuesta19 = [alternativa53, estadoDefecto, idRespuesta, pregunta];
-  var respuesta20 = [alternativa54, estadoDefecto, idRespuesta, pregunta];
+//demo
+$(document).on('click', '#btn-demo', function (event) {
 
 
-  var respuestas = [
-    respuesta1, respuesta2, respuesta3, respuesta4, respuesta5,
-    respuesta6, respuesta7, respuesta8, respuesta9, respuesta10,
-    respuesta11, respuesta12, respuesta13, respuesta14, respuesta15,
-    respuesta16, respuesta17, respuesta18, respuesta19, respuesta20
-  ];
-
-  var preguntita = {};
-  pregunta[descripcion] = descrip1;
-  pregunta[fechaInicio] = fechaInicio;
-  pregunta[horaInicio] = horaInicio;
-
-  //request
-  request.preguntas = preguntita;
-  request.respuestas = respuestas;
-  request.examen = examen;
-  console.log(preguntita);
 
 });
 
