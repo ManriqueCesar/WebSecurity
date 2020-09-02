@@ -44,8 +44,12 @@ function cargarFecha() {
   //Datemask dd/mm/yyyy
   $('.miFecha').datepicker({
     format: "yyyy-mm-dd",
+    startDate: '-0m',
     language: "es"
-  });
+  }).on('changeDate', function(ev){
+    $('#miFecha').text($('#datepicker').data('date'));
+    $('#datepicker').datepicker('hide');
+});
 }
 
 function setNombre() {
@@ -185,6 +189,9 @@ $(document).on('click', '#btn-crear', function (event) {
     data: JSON.stringify(request)
   }).done(function () {
     $('#exampleModalCenter').modal('toggle');
+    $('#cbo-periodo').val("");
+    $('#txt-curso').val("");
+    $('#txt-alumnos').val("");
   }).fail(function (jqXHR, textStatus, errorThrown) {
     console.log("error")
   })

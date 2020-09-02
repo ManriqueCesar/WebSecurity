@@ -87,8 +87,10 @@ $(document).on('click', '#btn-listar', function (event) {
   $('#modal-alumnos').modal('toggle');
   var currentRow = $(this).closest("tr");
   var data = $('#tbl-examenes').DataTable().row(currentRow).data();
-  var id = data.idExamen;
-  console.log(id)
+  var idExamen = data.idExamen;
+
+
+ 
   ruta = 'https://api-pwcev.herokuapp.com';
   var x = 0;
   $('#tbl-listado').DataTable({
@@ -109,7 +111,7 @@ $(document).on('click', '#btn-listar', function (event) {
     },
 
     ajax: {
-      url: ruta + '/resultado/examen/' + id,
+      url: ruta + '/resultado/examen/' + idExamen,
       dataSrc: '',
       async: false,
       cache: false,
@@ -150,38 +152,26 @@ $(document).on('click', '#btn-listar', function (event) {
 
 
 $(document).on('click', '#btn-marcar', function (event) {
+  var ruta = 'https://api-pwcev.herokuapp.com';
   var currentRow = $(this).closest("tr");
-  var data = $('#tbl-examenes').DataTable().row(currentRow).data();
-  var id = data.idUsuario;
-  var estado = data['estado'];
+  var data = $('#tbl-listado').DataTable().row(currentRow).data();
+  var idResultado = data.idResultado;
+  console.log(idResultado);
+
+
+  /*var estado = data['estado'];
   var request = {};
   if (estado == true) {
     estado = false;
   } else {
     estado = true;
-  }
-  request.id = id;
-  request.clase = data['clase'];
-  request.marca = data['marca'];
-  request.modelo = data['modelo'];
-  request.estado = estado;
-  var auditoria = {};
-  auditoria.usuario = getCookie('usuario');
-  auditoria.origen = "WEB";
-  auditoria.fecha = moment().format('YYYY-MM-DD hh:mm:ss');
-  request.auditoria = auditoria;
+  }*/
   $.ajax({
-    url: ipgeneral + '/autos/modelos',
-    type: 'POST',
-    dataType: 'json',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-      'X-Auth-Token': token
-    },
-    data: JSON.stringify(request)
-  }).done(function (data) {
-    $('#tbl-modelo').DataTable().ajax.reload(null, false);
+    url: ruta + '/resultado/'+idResultado,
+    type: 'PUT',
+    success: function(response) {
+      //...
+    }
   }).fail(function (jqXHR, textStatus, errorThrown) {
     alert(jqXHR.responseJSON.resultado.mensajeRespuesta);
   })
