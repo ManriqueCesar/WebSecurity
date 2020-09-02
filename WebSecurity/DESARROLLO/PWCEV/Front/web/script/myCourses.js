@@ -22,7 +22,8 @@ $(document).ready(function () {
   $('#tbl-misCursos').DataTable({
     "responsive": true,
     "ordering": true,
-    "info": true,
+    "info": false,
+    "searching": false,
     "autoWidth": false,
       initComplete: function() {
           this.api().columns().every(function() {
@@ -66,11 +67,7 @@ $(document).ready(function () {
   columns: [
     { data: 'periodo'},
     { data: 'curso'},
-    { data: null,
-      render: function (data, type, row) {
-            return 'LENIS WONG PORTILLO'; /////////// CAMBIO
-      }
-    },
+    { data: 'profesor'},
     { data: null,
         render: function (data, type, row) {
               return '<button title="LISTA" class="btn btn-primary" id="btn-listar">LISTA</button>';
@@ -80,6 +77,57 @@ $(document).ready(function () {
 
 
 }); 
+
+
+$(document).on('click', '#btn-listar', function (event) {
+  $('#modal-alumnos').modal('toggle');
+  var currentRow = $(this).closest("tr");
+  var data = $('#tbl-misCursos').DataTable().row(currentRow).data();
+  var idCurso = data.idCurso;
+  console.log(idCurso)
+  ruta = 'https://api-pwcev.herokuapp.com';
+  var x = 0;
+  $('#tbl-listado').DataTable({
+    "destroy": true,
+    "lengthChange": false,
+    "searching": false,
+    "autoWidth": false,
+    "responsive": true,
+    initComplete: function () {
+      this.api().columns().every(function () {
+        var column = this;
+
+      });
+
+      $(".cboselect").select2({
+        closeOnSelect: false
+      });
+    },
+
+    ajax: {
+      url: ruta + '/detallecurso/curso/alumnos/'+idCurso,
+      dataSrc: '',
+      async: false,
+      cache: false,
+      error: function (jqXHR, textStatus, errorThrown) {
+        $('#tbl-listado').DataTable().clear().draw();
+      }
+    },
+    columns: [{
+        data: null,
+        render: function (data, type, row) {
+          return data.apellido + ' ' + data.nombre
+        }
+      },
+      {
+       data:'email' }
+      
+    ]
+  });
+
+
+});
+
 
 $('#btn-close').click(function () {
   deleteCookie();

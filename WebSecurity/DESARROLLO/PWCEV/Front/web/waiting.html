@@ -200,33 +200,13 @@
                                   <td>5</td>
                                   <td class="question-response-rows-value">-</td>
                               </tr>
-                              <tr class="question-response-rows" data-question="6">
-                                  <td>6</td>
-                                  <td class="question-response-rows-value">-</td>
-                              </tr>
-                              <tr class="question-response-rows" data-question="7">
-                                  <td>7</td>
-                                  <td class="question-response-rows-value">-</td>
-                              </tr>
-                              <tr class="question-response-rows" data-question="8">
-                                  <td>8</td>
-                                  <td class="question-response-rows-value">-</td>
-                              </tr>
-                              <tr class="question-response-rows" data-question="9">
-                                  <td>9</td>
-                                  <td class="question-response-rows-value">-</td>
-                              </tr>
-                              <tr class="question-response-rows" data-question="10">
-                                  <td>10</td>
-                                  <td class="question-response-rows-value">-</td>
-                              </tr>
                               
                           </tbody>
                       </table>
                       <div class="col-xs-12">
-                          <a href="javascript:void(0)" class="btn btn-success" id="quick-access-prev">< Back</a>
+                          <!-- <a href="javascript:void(0)" class="btn btn-success" id="quick-access-prev">< Back</a> -->
                           <span class="alert alert-info" id="quick-access-info"></span>
-                          <a href="javascript:void(0)" class="btn btn-success" id="quick-access-next">Next ></a>
+                          <!-- <a href="javascript:void(0)" class="btn btn-success" id="quick-access-next">Next ></a> -->
                       </div>
                   </div>
    
@@ -259,12 +239,12 @@
         <!-- Preguntas -->
         <div class="container">
           <div class="col-xs-9">
-            <h1 class="text-center">Título Examen</h1>
+            <h1 class="text-center" id="tituloExamen">Título Examen</h1>
             <form id="examwizard-question">
                   <div class="question" data-question="1">
                       <div class="row">
                           <div class="col-xs-12">
-                              <h2 class="question-title color-green">Q. Set Your Question Here?</h2>
+                              <h2 class="question-title color-green" id="titulo1">DESCRIPCION PREGUNTA 1</h2>
                           </div>
                       </div>
                       <div class="row mt-50">
@@ -292,220 +272,118 @@
                   <div class="question hidden" data-question="2">
                       <div class="row">
                           <div class="col-xs-12">
-                              <h2 class="question-title color-green">Q. Set Your Question Here?</h2>
+                              <h2 class="question-title color-green" id="titulo2">DESCRIPCION PREGUNTA 2</h2>
                           </div>
                       </div>
                       <div class="row mt-50">
                           <div class="col-xs-12">
                               <div class="alert alert-danger hidden"></div>
                               <div class="green-radio color-green">
-                                  <ol type="A">
-                                      <li class="font-size-30 answer-number">
-                                          <input type="checkbox" name="fieldName[1]" data-alternateName="answer[1]" data-alternateValue="A" data-alternatetype="checkbox" value="1" id="answer-1-1"/><label for="answer-1-1" class="answer-text"><span></span>BE 2 PREPARED YOUR EXAM WILL START SOON</label>
-                                      </li>
-                                      <li class="font-size-30 answer-number">
-                                          <input type="checkbox" name="fieldName[1]" data-alternateName="answer[1]" data-alternateValue="B" data-alternatetype="checkbox" value="2" id="answer-1-2"/><label for="answer-1-2" class="answer-text"><span></span>BE 2 PREPARED YOUR EXAM WILL START SOON</label>
-                                      </li>
-                                      <li class="font-size-30 answer-number">
-                                          <input type="checkbox" name="fieldName[1]" data-alternateName="answer[1]" data-alternateValue="C" data-alternatetype="checkbox" value="3" id="answer-1-3"/><label for="answer-1-3" class="answer-text"><span></span>BE 2 PREPARED YOUR EXAM WILL START SOON</label>
-                                      </li>
-                                      <li class="font-size-30 answer-number">
-                                          <input type="checkbox" name="fieldName[1]" data-alternateName="answer[1]" data-alternateValue="D" data-alternatetype="checkbox" value="4" id="answer-1-4"/><label for="answer-1-4" class="answer-text"><span></span>BE 2 PREPARED YOUR EXAM WILL START SOON</label>
-                                      </li>
-                                  </ol>
-                              </div>
+                                <ol type="A">
+                                    <li class="font-size-30 answer-number">
+                                        <input type="radio" data-alternatetype="radio" name="fieldName[1]" data-alternateName="answer[1]" data-alternateValue="A" value="1" id="answer-1-1"/><label for="answer-1-1" class="answer-text"><span></span>BE 2 PREPARED YOUR EXAM WILL START SOON</label>
+                                    </li>
+                                    <li class="font-size-30 answer-number">
+                                        <input type="radio" data-alternatetype="radio" name="fieldName[1]" data-alternateName="answer[1]" data-alternateValue="B" value="2" id="answer-1-2"/><label for="answer-1-2" class="answer-text"><span></span>BE 2 PREPARED YOUR EXAM WILL START SOON</label>
+                                    </li>
+                                    <li class="font-size-30 answer-number">
+                                        <input type="radio" data-alternatetype="radio" name="fieldName[1]" data-alternateName="answer[1]" data-alternateValue="C" value="3" id="answer-1-3"/><label for="answer-1-3" class="answer-text"><span></span>BE 2 PREPARED YOUR EXAM WILL START SOON</label>
+                                    </li>
+                                    <li class="font-size-30 answer-number">
+                                        <input type="radio" data-alternatetype="radio" name="fieldName[1]" data-alternateName="answer[1]" data-alternateValue="D" value="4" id="answer-1-4"/><label for="answer-1-4" class="answer-text"><span></span>BE 2 PREPARED YOUR EXAM WILL START SOON</label>
+                                    </li>
+                                </ol>
+                            </div>
                           </div>
                       </div>
                   </div>
                   <div class="question hidden" data-question="3">
                       <div class="row">
                           <div class="col-xs-12">
-                              <h2 class="question-title color-green">Q. Set Your Question Here?</h2>
+                              <h2 class="question-title color-green" id="titulo3">DESCRIPCION PREGUNTA 3</h2>
                           </div>
                       </div>
                       <div class="row mt-50">
-                          <div class="col-xs-12">
-                              <div class="alert alert-danger hidden"></div>
-                              <div class="green-radio color-green">
-                                  <ol type="A">
-                                      <li class="font-size-30 answer-number">
-                                          <input type="checkbox" name="fieldName[2]" data-alternateName="answer[2]" data-alternateValue="A" data-alternatetype="checkbox" value="1" id="answer-2-1"/><label for="answer-2-1" class="answer-text"><span></span>BE 3 PREPARED YOUR EXAM WILL START SOON</label>
-                                      </li>
-                                      <li class="font-size-30 answer-number">
-                                          <input type="checkbox" name="fieldName[2]" data-alternateName="answer[2]" data-alternateValue="B" data-alternatetype="checkbox" value="2" id="answer-2-2"/><label for="answer-2-2" class="answer-text"><span></span>BE 3 PREPARED YOUR EXAM WILL START SOON</label>
-                                      </li>
-                                      <li class="font-size-30 answer-number">
-                                          <input type="checkbox" name="fieldName[2]" data-alternateName="answer[2]" data-alternateValue="C" data-alternatetype="checkbox" value="3" id="answer-2-3"/><label for="answer-2-3" class="answer-text"><span></span>BE 3 PREPARED YOUR EXAM WILL START SOON</label>
-                                      </li>
-                                      <li class="font-size-30 answer-number">
-                                          <input type="checkbox" name="fieldName[2]" data-alternateName="answer[2]" data-alternateValue="D" data-alternatetype="checkbox" value="4" id="answer-2-4"/><label for="answer-2-4" class="answer-text"><span></span>BE 3 PREPARED YOUR EXAM WILL START SOON</label>
-                                      </li>
-                                  </ol>
-                              </div>
+                        <div class="col-xs-12">
+                            <div class="alert alert-danger hidden"></div>
+                            <div class="green-radio color-green">
+                              <ol type="A">
+                                  <li class="font-size-30 answer-number">
+                                      <input type="radio" data-alternatetype="radio" name="fieldName[2]" data-alternateName="answer[2]" data-alternateValue="A" value="1" id="answer-2-1"/><label for="answer-2-1" class="answer-text"><span></span>BE 2 PREPARED YOUR EXAM WILL START SOON</label>
+                                  </li>
+                                  <li class="font-size-30 answer-number">
+                                      <input type="radio" data-alternatetype="radio" name="fieldName[2]" data-alternateName="answer[2]" data-alternateValue="B" value="2" id="answer-2-2"/><label for="answer-2-2" class="answer-text"><span></span>BE 2 PREPARED YOUR EXAM WILL START SOON</label>
+                                  </li>
+                                  <li class="font-size-30 answer-number">
+                                      <input type="radio" data-alternatetype="radio" name="fieldName[2]" data-alternateName="answer[2]" data-alternateValue="C" value="3" id="answer-2-3"/><label for="answer-2-3" class="answer-text"><span></span>BE 2 PREPARED YOUR EXAM WILL START SOON</label>
+                                  </li>
+                                  <li class="font-size-30 answer-number">
+                                      <input type="radio" data-alternatetype="radio" name="fieldName[2]" data-alternateName="answer[2]" data-alternateValue="D" value="4" id="answer-2-4"/><label for="answer-2-4" class="answer-text"><span></span>BE 2 PREPARED YOUR EXAM WILL START SOON</label>
+                                  </li>
+                              </ol>
                           </div>
-                      </div>
+                        </div>
+                    </div>
                   </div>
                   <div class="question hidden" data-question="4">
                       <div class="row">
                           <div class="col-xs-12">
-                              <h2 class="question-title color-green">Q. Set Your Question Here?</h2>
+                              <h2 class="question-title color-green" id="titulo4">DESCRIPCION PREGUNTA 4</h2>
                           </div>
                       </div>
 
                       <div class="row mt-50">
-                          <div class="col-xs-12">
-                              <div class="alert alert-danger hidden"></div>
-                              <div class="green-radio color-green">
-                                  <input type="text" name="fieldName[3]" data-alternateName="answer[3]" data-alternateValue="Text" id="answer-3-4" class="form-control" placeholder="Fill Text..."/>
-                              </div>
+                        <div class="col-xs-12">
+                            <div class="alert alert-danger hidden"></div>
+                            <div class="green-radio color-green">
+                              <ol type="A">
+                                  <li class="font-size-30 answer-number">
+                                      <input type="radio" data-alternatetype="radio" name="fieldName[3]" data-alternateName="answer[3]" data-alternateValue="A" value="1" id="answer-3-1"/><label for="answer-3-1" class="answer-text"><span></span>BE 2 PREPARED YOUR EXAM WILL START SOON</label>
+                                  </li>
+                                  <li class="font-size-30 answer-number">
+                                      <input type="radio" data-alternatetype="radio" name="fieldName[3]" data-alternateName="answer[3]" data-alternateValue="B" value="2" id="answer-3-2"/><label for="answer-3-2" class="answer-text"><span></span>BE 2 PREPARED YOUR EXAM WILL START SOON</label>
+                                  </li>
+                                  <li class="font-size-30 answer-number">
+                                      <input type="radio" data-alternatetype="radio" name="fieldName[3]" data-alternateName="answer[3]" data-alternateValue="C" value="3" id="answer-3-3"/><label for="answer-3-3" class="answer-text"><span></span>BE 2 PREPARED YOUR EXAM WILL START SOON</label>
+                                  </li>
+                                  <li class="font-size-30 answer-number">
+                                      <input type="radio" data-alternatetype="radio" name="fieldName[3]" data-alternateName="answer[3]" data-alternateValue="D" value="4" id="answer-3-4"/><label for="answer-3-4" class="answer-text"><span></span>BE 2 PREPARED YOUR EXAM WILL START SOON</label>
+                                  </li>
+                              </ol>
                           </div>
-                      </div>
+                        </div>
+                    </div>
                   </div>
                   <div class="question hidden" data-question="5">
                       <div class="row">
                           <div class="col-xs-12">
-                              <h2 class="question-title color-green">Q. Set Your Question Here?</h2>
+                              <h2 class="question-title color-green" id="titulo5">DESCRIPCION PREGUNTA 5</h2>
                           </div>
                       </div>
 
                       <div class="row mt-50">
-                          <div class="col-xs-12">
-                              <div class="alert alert-danger hidden"></div>
-                              <div class="green-radio color-green">
-                                  <textarea name="fieldName[4]" data-alternateName="answer[4]" data-alternateValue="Text" id="answer-4-1" class="form-control" placeholder="Fill Textarea..."></textarea>
-                              </div>
+                        <div class="col-xs-12">
+                            <div class="alert alert-danger hidden"></div>
+                            <div class="green-radio color-green">
+                              <ol type="A">
+                                  <li class="font-size-30 answer-number">
+                                      <input type="radio" data-alternatetype="radio" name="fieldName[4]" data-alternateName="answer[4]" data-alternateValue="A" value="1" id="answer-4-1"/><label for="answer-4-1" class="answer-text"><span></span>BE 2 PREPARED YOUR EXAM WILL START SOON</label>
+                                  </li>
+                                  <li class="font-size-30 answer-number">
+                                      <input type="radio" data-alternatetype="radio" name="fieldName[4]" data-alternateName="answer[4]" data-alternateValue="B" value="2" id="answer-4-2"/><label for="answer-4-2" class="answer-text"><span></span>BE 2 PREPARED YOUR EXAM WILL START SOON</label>
+                                  </li>
+                                  <li class="font-size-30 answer-number">
+                                      <input type="radio" data-alternatetype="radio" name="fieldName[4]" data-alternateName="answer[4]" data-alternateValue="C" value="3" id="answer-4-3"/><label for="answer-4-3" class="answer-text"><span></span>BE 2 PREPARED YOUR EXAM WILL START SOON</label>
+                                  </li>
+                                  <li class="font-size-30 answer-number">
+                                      <input type="radio" data-alternatetype="radio" name="fieldName[4]" data-alternateName="answer[4]" data-alternateValue="D" value="4" id="answer-4-4"/><label for="answer-4-4" class="answer-text"><span></span>BE 2 PREPARED YOUR EXAM WILL START SOON</label>
+                                  </li>
+                              </ol>
                           </div>
-                      </div>
+                        </div>
+                    </div>
                   </div>
-                  <div class="question hidden" data-question="6">
-                      <div class="row">
-                          <div class="col-xs-12">
-                              <h2 class="question-title color-green">Q. Set Your Question Here?</h2>
-                          </div>
-                      </div>
-
-                      <div class="row mt-50">
-                          <div class="col-xs-12">
-                              <div class="alert alert-danger hidden"></div>
-                              <div class="green-radio color-green">
-                                  <select name="fieldName[5]" data-alternateName="answer[5]" data-alternateType="select" class="form-control">
-                                      <option value="">None</option>
-                                      <option value="1" data-alternateValue="A">A</option>
-                                      <option value="2" data-alternateValue="B">B</option>
-                                      <option value="3" data-alternateValue="C">C</option>
-                                  </select>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="question hidden" data-question="7">
-                      <div class="row">
-                          <div class="col-xs-12">
-                              <h2 class="question-title color-green">Q. Set Your Question Here? (Multiple Select)</h2>
-                          </div>
-                      </div>
-
-                      <div class="row mt-50">
-                          <div class="col-xs-12">
-                              <div class="alert alert-danger hidden"></div>
-                              <div class="green-radio color-green">
-                                  <select name="fieldName[6]" data-alternateName="answer[6]" data-alternateType="select" class="form-control" multiple>
-                                      <option value="">None</option>
-                                      <option value="1" data-alternateValue="A">A</option>
-                                      <option value="2" data-alternateValue="B">B</option>
-                                      <option value="3" data-alternateValue="C">C</option>
-                                  </select>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="question hidden" data-question="8">
-                      <div class="row">
-                          <div class="col-xs-12">
-                              <h2 class="question-title color-green">Q. Set Your Question Here?</h2>
-                          </div>
-                      </div>
-
-                      <div class="row mt-50">
-                          <div class="col-xs-12">
-                              <div class="alert alert-danger hidden"></div>
-                              <div class="green-radio color-green">
-                                  <ol type="A">
-                                      <li class="font-size-30 answer-number">
-                                          <input type="radio" data-alternatetype="radio" name="fieldName[7]" data-alternateName="answer[7]" data-alternateValue="A" value="1" id="answer-7-1"/><label for="answer-7-1" class="answer-text"><span></span>BE 8 PREPARED YOUR EXAM WILL START SOON</label>
-                                      </li>
-                                      <li class="font-size-30 answer-number">
-                                          <input type="radio" data-alternatetype="radio" name="fieldName[7]" data-alternateName="answer[7]" data-alternateValue="B" value="2" id="answer-7-2"/><label for="answer-7-2" class="answer-text"><span></span>BE 8 PREPARED YOUR EXAM WILL START SOON</label>
-                                      </li>
-                                      <li class="font-size-30 answer-number">
-                                          <input type="radio" data-alternatetype="radio" name="fieldName[7]" data-alternateName="answer[7]" data-alternateValue="C" value="3" id="answer-7-3"/><label for="answer-7-3" class="answer-text"><span></span>BE 8 PREPARED YOUR EXAM WILL START SOON</label>
-                                      </li>
-                                      <li class="font-size-30 answer-number">
-                                          <input type="radio" data-alternatetype="radio" name="fieldName[7]" data-alternateName="answer[7]" data-alternateValue="D" value="4" id="answer-7-4"/><label for="answer-7-4" class="answer-text"><span></span>BE 8 PREPARED YOUR EXAM WILL START SOON</label>
-                                      </li>
-                                  </ol>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="question hidden" data-question="9">
-                      <div class="row">
-                          <div class="col-xs-12">
-                              <h2 class="question-title color-green">Q. Set Your Question Here?</h2>
-                          </div>
-                      </div>
-
-                      <div class="row mt-50">
-                          <div class="col-xs-12">
-                              <div class="alert alert-danger hidden"></div>
-                              <div class="green-radio color-green">
-                                  <ol type="A">
-                                      <li class="font-size-30 answer-number">
-                                          <input type="radio" data-alternatetype="radio" name="fieldName[8]" data-alternateName="answer[8]" data-alternateValue="A" value="1" id="answer-8-1"/><label for="answer-8-1" class="answer-text"><span></span>BE 9 PREPARED YOUR EXAM WILL START SOON</label>
-                                      </li>
-                                      <li class="font-size-30 answer-number">
-                                          <input type="radio" data-alternatetype="radio" name="fieldName[8]" data-alternateName="answer[8]" data-alternateValue="B" value="2" id="answer-8-2"/><label for="answer-8-2" class="answer-text"><span></span>BE 9 PREPARED YOUR EXAM WILL START SOON</label>
-                                      </li>
-                                      <li class="font-size-30 answer-number">
-                                          <input type="radio" data-alternatetype="radio" name="fieldName[8]" data-alternateName="answer[8]" data-alternateValue="C" value="3" id="answer-8-3"/><label for="answer-8-3" class="answer-text"><span></span>BE 9 PREPARED YOUR EXAM WILL START SOON</label>
-                                      </li>
-                                      <li class="font-size-30 answer-number">
-                                          <input type="radio" data-alternatetype="radio" name="fieldName[8]" data-alternateName="answer[8]" data-alternateValue="D" value="4" id="answer-8-4"/><label for="answer-8-4" class="answer-text"><span></span>BE 9 PREPARED YOUR EXAM WILL START SOON</label>
-                                      </li>
-                                  </ol>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="question hidden" data-question="10">
-                      <div class="row">
-                          <div class="col-xs-12">
-                              <h2 class="question-title color-green">Q. Set Your Question Here?</h2>
-                          </div>
-                      </div>
-
-                      <div class="row mt-50">
-                          <div class="col-xs-12">
-                              <div class="alert alert-danger hidden"></div>
-                              <div class="green-radio color-green">
-                                  <ol type="A">
-                                      <li class="font-size-30 answer-number">
-                                          <input type="radio" data-alternatetype="radio" name="fieldName[9]" data-alternateName="answer[9]" data-alternateValue="A" value="1" id="answer-9-1"/><label for="answer-9-1" class="answer-text"><span></span>BE 10 PREPARED YOUR EXAM WILL START SOON</label>
-                                      </li>
-                                      <li class="font-size-30 answer-number">
-                                          <input type="radio" data-alternatetype="radio" name="fieldName[9]" data-alternateName="answer[9]" data-alternateValue="B" value="2" id="answer-9-2"/><label for="answer-9-2" class="answer-text"><span></span>BE 10 PREPARED YOUR EXAM WILL START SOON</label>
-                                      </li>
-                                      <li class="font-size-30 answer-number">
-                                          <input type="radio" data-alternatetype="radio" name="fieldName[9]" data-alternateName="answer[9]" data-alternateValue="C" value="3" id="answer-9-3"/><label for="answer-9-3" class="answer-text"><span></span>BE 10 PREPARED YOUR EXAM WILL START SOON</label>
-                                      </li>
-                                      <li class="font-size-30 answer-number">
-                                          <input type="radio" data-alternatetype="radio" name="fieldName[9]" data-alternateName="answer[9]" data-alternateValue="D" value="4" id="answer-9-4"/><label for="answer-9-4" class="answer-text"><span></span>BE 10 PREPARED YOUR EXAM WILL START SOON</label>
-                                      </li>
-                                  </ol>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
+       
 
 
 
@@ -708,7 +586,7 @@
           enableModal: true,
       },
       quickAccessOption: {
-          quickAccessPagerItem: 9,
+          quickAccessPagerItem: 5,
       },
   });
 </script>
