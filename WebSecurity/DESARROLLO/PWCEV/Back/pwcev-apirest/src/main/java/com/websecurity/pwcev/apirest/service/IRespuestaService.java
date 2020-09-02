@@ -13,5 +13,6 @@ public interface IRespuestaService {
 	List<Respuesta> listar();
 	void eliminar(Integer id);
 	boolean existeRespuesta(Integer id);
+	boolean esRespuestaVerdadera(Integer id);
 
 }

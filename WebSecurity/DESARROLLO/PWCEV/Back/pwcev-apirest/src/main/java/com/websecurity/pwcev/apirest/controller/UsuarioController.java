@@ -16,8 +16,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.websecurity.pwcev.apirest.model.Respuesta;
 import com.websecurity.pwcev.apirest.model.Usuario;
 import com.websecurity.pwcev.apirest.service.IUsuarioService;
 

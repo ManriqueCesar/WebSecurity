@@ -7,14 +7,23 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.websecurity.pwcev.apirest.entidadmodelo.DetalleExamenCompleto;
+import com.websecurity.pwcev.apirest.entidadmodelo.DetalleExamenCulminado;
 import com.websecurity.pwcev.apirest.entidadmodelo.DetalleExamenNota;
+import com.websecurity.pwcev.apirest.entidadmodelo.RespuestaExamen;
 import com.websecurity.pwcev.apirest.model.Curso;
 import com.websecurity.pwcev.apirest.model.DetalleCurso;
 import com.websecurity.pwcev.apirest.model.Examen;
+import com.websecurity.pwcev.apirest.model.Pregunta;
+import com.websecurity.pwcev.apirest.model.Respuesta;
 import com.websecurity.pwcev.apirest.model.Resultado;
+import com.websecurity.pwcev.apirest.model.Usuario;
 import com.websecurity.pwcev.apirest.repository.IDetalleCursoRepo;
 import com.websecurity.pwcev.apirest.repository.IExamenRepo;
+import com.websecurity.pwcev.apirest.repository.IPreguntaRepo;
+import com.websecurity.pwcev.apirest.repository.IRespuestaRepo;
 import com.websecurity.pwcev.apirest.repository.IResultadoRepo;
+import com.websecurity.pwcev.apirest.repository.IUsuarioRepo;
 import com.websecurity.pwcev.apirest.service.IExamenService;
 
 @Service
@@ -25,9 +34,24 @@ public class ExamenServiceImpl implements IExamenService {
 	
 	@Autowired
 	private IResultadoRepo repoResul;
+	
+	@Autowired
+	private IPreguntaRepo repoPreg;
+	
+	@Autowired
+	private IRespuestaRepo repoResp;
 
 	@Autowired
 	private IDetalleCursoRepo repoDC;
+	
+	@Autowired
+	private IUsuarioRepo repoUsuario;
+
+	@Autowired
+	private IExamenRepo repoExam;
+	
+	@Autowired
+	private RespuestaServiceImpl serviceResp;
 
 	@Override
 	public Examen registrar(Examen t) {
@@ -148,6 +172,72 @@ public class ExamenServiceImpl implements IExamenService {
 		}
 
 		return examenesNotas;
+	}
+
+	@Override
+	public DetalleExamenCompleto examenCompleto(Integer idExamen) {
+		
+		Optional<Examen> examen;
+		List<Pregunta> preguntas = new ArrayList<Pregunta>();
+		List<Respuesta> respuestas =  new ArrayList<Respuesta>();
+		DetalleExamenCompleto examenCompleto =  new DetalleExamenCompleto();
+		
+		
+		examen = repo.findById(idExamen);
+		
+		preguntas = repoPreg.findByExamenIdExamen(idExamen);
+		
+		for (Pregunta pregunta : preguntas) {
+			
+			respuestas.addAll(repoResp.findByPreguntaIdPregunta(pregunta.getIdPregunta()));
+		}
+		
+		examenCompleto.setExamen(examen);
+		examenCompleto.setPreguntas(preguntas);
+		examenCompleto.setRespuestas(respuestas);
+		
+		
+		return examenCompleto;
+	}
+
+	@Override
+	public Resultado registrarSolucion(DetalleExamenCulminado detalle) {
+
+		Optional<Usuario> usuario;
+		Resultado resultado =  new Resultado();
+		Optional<Examen> examen;
+		float tiempoFuera;
+		float nota = 0;
+		boolean estado = true;
+		List<RespuestaExamen> respuestasExamen = new ArrayList<RespuestaExamen>();
+		
+		usuario = repoUsuario.findById(detalle.getIdUsuario());
+		examen = repoExam.findById(detalle.getIdExamen());
+		respuestasExamen = detalle.getRespuestas();
+		tiempoFuera = detalle.getTiempoFuera();
+
+		for (RespuestaExamen respuestaExamen : respuestasExamen) {
+			if (serviceResp.esRespuestaVerdadera(respuestaExamen.getIdRespueta())) {
+				Optional<Pregunta> pregunta = repoPreg.findById(respuestaExamen.getIdPregunta());
+				
+				nota = nota + (pregunta.get().getPuntaje());
+			}
+		}
+		
+		if (tiempoFuera > 100) {
+			estado = false;
+		}
+		
+		resultado.setEstado(estado);
+		resultado.setExamen(examen.get());
+		resultado.setUsuario(usuario.get());
+		resultado.setIdResultado(null);
+		resultado.setNota(nota);
+		resultado.setTiempoFuera(tiempoFuera);
+		
+		repoResul.save(resultado);
+		
+		return resultado;
 	}
 
 }

@@ -1,6 +1,5 @@
 package com.websecurity.pwcev.apirest.model;
 
-import java.util.List;
 
 public class DetalleRegistroExamen {
 	

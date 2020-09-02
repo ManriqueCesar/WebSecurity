@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -19,12 +18,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.websecurity.pwcev.apirest.entidadmodelo.DetalleExamenCompleto;
+import com.websecurity.pwcev.apirest.entidadmodelo.DetalleExamenCulminado;
 import com.websecurity.pwcev.apirest.entidadmodelo.DetalleExamenNota;
-import com.websecurity.pwcev.apirest.model.Curso;
 import com.websecurity.pwcev.apirest.model.DetalleRegistroExamen;
 import com.websecurity.pwcev.apirest.model.Examen;
 import com.websecurity.pwcev.apirest.model.Pregunta;
 import com.websecurity.pwcev.apirest.model.Respuesta;
+import com.websecurity.pwcev.apirest.model.Resultado;
 import com.websecurity.pwcev.apirest.service.IExamenService;
 import com.websecurity.pwcev.apirest.service.IPreguntaService;
 import com.websecurity.pwcev.apirest.service.IRespuestaService;
@@ -53,23 +54,27 @@ public class ExamenController {
 	@GetMapping("/{id}")
 	public ResponseEntity<?> listarPorId(@PathVariable("id") Integer idExamen) {
 
-		Optional<Examen> examen = null;
+		DetalleExamenCompleto examen = null;
 		Map<String, Object> response = new HashMap<>();
-
+		
+		if (!service.existeExamen(idExamen)) {
+			response.put("mensaje",
+					"El examen ID: ".concat(idExamen.toString().concat(" no existe en la base de datos!")));
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
+		}
+		
 		try {
-			examen = service.findById(idExamen);
+			examen = service.examenCompleto(idExamen);
+			
+			
 		} catch (DataAccessException e) {
 			response.put("mensaje", "Error al realizar la consulta en la base de datos");
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
-		if (!service.existeExamen(idExamen)) {
-			response.put("mensaje",
-					"El examen ID: ".concat(idExamen.toString().concat(" no existe en la base de datos!")));
-			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
-		}
-		return new ResponseEntity<Optional<Examen>>(examen, HttpStatus.OK);
+		
+		return new ResponseEntity<DetalleExamenCompleto>(examen, HttpStatus.OK);
 	}
 
 	/*
@@ -98,8 +103,6 @@ public class ExamenController {
 		Pregunta[] pre = null;
 		int cont = 0;
 		int aux = 0;
-		System.out.println("Hola");
-		System.out.println(detalle.getExamen().getCurso().getIdCurso());
 
 		Map<String, Object> response = new HashMap<>();
 
@@ -229,5 +232,26 @@ public class ExamenController {
 			return new ResponseEntity<List<DetalleExamenNota>>(examenesNotas, HttpStatus.OK);
 		}
 
+	}
+	
+	@PostMapping("/enviar")
+	public ResponseEntity<?> registrarSolucion(@RequestBody DetalleExamenCulminado detalle) {
+		
+		
+		Map<String, Object> response = new HashMap<>();
+		Resultado resultado =  new Resultado();
+		
+		try {
+			resultado = service.registrarSolucion(detalle);
+			
+		} catch (DataAccessException e) {
+			response.put("mensaje", "Error al realizar la consulta en la base de datos");
+			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+
+		response.put("mensaje", "La solución se registro correctamente.");
+		response.put("resultado",resultado);
+		return new ResponseEntity<Map<String, Object>>(response,  HttpStatus.OK);
 	}
 }

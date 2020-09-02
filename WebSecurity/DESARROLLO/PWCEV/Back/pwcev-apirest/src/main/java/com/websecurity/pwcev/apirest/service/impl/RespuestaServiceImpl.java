@@ -47,4 +47,9 @@ public class RespuestaServiceImpl implements IRespuestaService{
 		return repo.existsById(id);
 	}
 
+	@Override
+	public boolean esRespuestaVerdadera(Integer id) {
+		return repo.findById(id).get().isEstado();
+	}
+
 }
