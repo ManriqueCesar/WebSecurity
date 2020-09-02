@@ -18,15 +18,16 @@ public class ResultadoServiceImpl implements IResultadoService{
 	
 	
 	@Override
-	public Optional<Resultado> CambiarEstado(int idresultado) {
-		Optional<Resultado> resultado=repo.findById(idresultado);
-		if(resultado.get().getEstado()) {
-			resultado.get().setEstado(false);
+	public Resultado CambiarEstado(int idresultado) {
+		Resultado resultado=repo.findById(idresultado);
+		if(resultado.getEstado()) {
+			resultado.setEstado(false);
 		}else {
-			resultado.get().setEstado(true);
+			resultado.setEstado(true);
 		}
-		
-		return resultado;
+	
+	
+		return repo.save(resultado);
 	}
 
 
@@ -34,6 +35,13 @@ public class ResultadoServiceImpl implements IResultadoService{
 	public List<Resultado> ListarPorExamenes(int idExamen) {
 
 		return repo.findByExamenIdExamen(idExamen);
+	}
+
+
+	@Override
+	public Resultado ResultadoDeUsuario(int idUsuario, int idExamen) {
+		
+		return repo.findByExamenIdExamenAndUsuarioIdUsuario(idExamen, idUsuario);
 	}
 
 }
