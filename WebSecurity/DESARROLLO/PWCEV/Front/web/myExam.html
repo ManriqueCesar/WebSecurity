@@ -46,8 +46,8 @@
           <a href="myCourses.html" class="nav-link">Mis Cursos</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="#" class="nav-link">Mis Exámenes</a>
-          </li>
+          <a href="#" class="nav-link">Mis Exámenes</a>
+        </li>
       </ul>
       <ul class="navbar-nav ml-auto">
         <!-- Messages Dropdown Menu -->
@@ -169,24 +169,67 @@
                 <div class="table table-responsive">
                   <table id="tbl-misExamenes" class="table table-bordered table-striped">
                     <thead>
-                      <tr>  
+                      <tr>
+                        <th>PERIODO</th>
                         <th>CURSO</th>
                         <th>TITULO</th>
-                        <th>PERIODO</th>
+
                         <th>FECHA</th>
-                        <th>OBSERVACION</th>
+                        <th>HORA INICIO</th>
+                        <th>RENDIR EXAMEN</th>
                       </tr>
                       <tr>
+                        <th>PERIODO</th>
                         <th>CURSO</th>
                         <th>TITULO</th>
                         <th>FECHA</th>
-                        <th>PERIODO</th>
-                        <th>OBSERVACION</th>
+                        <th>HORA INICIO</th>
+                        <th>RENDIR EXAMEN</th>
                       </tr>
                     </thead>
                   </table>
 
                 </div>
+                <!-- /.card-body -->
+              </div>
+              <!-- /.card -->
+            </div>
+          </div>
+          <!-- /.row -->
+        </div>
+    </div>
+    <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+
+  <div class="modal fade bd-example-modal-lg" tabindex="-1" id="modal-notas" role="dialog"
+  aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header" style="text-align: center;">
+        <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+      </div>
+      <section class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <!-- /.card-header -->
+                <div class="card-body">
+                  <div class="table table-responsive">
+                    <table id="tbl-listado" class="table table-bordered table-striped">
+                      <thead>
+                        <tr>
+                          <th>EXAMEN</th>
+                          <th>NOTA</th>
+                          <th>TIEMPO FUERA</th>
+                          <th>ACCION</th>
+                        </tr>
+                        
+                      </thead>
+                    </table>
+                  </div>
                   <!-- /.card-body -->
                 </div>
                 <!-- /.card -->
@@ -197,57 +240,60 @@
         </div>
         <!-- /.container-fluid -->
       </section>
-      <!-- /.content -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
+      </div>
     </div>
+  </div>
+</div>
 
-    <div class="modal fade" id="modal-default">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="text-center">
-            <h3 class="modal-title">Instrucciones</h3>
-            <hr>
-          </div>
+  <footer class="main-footer">
+    <div class="float-right d-none d-sm-block">
+      <b>Version</b> 1.0.0-pre
+    </div>
+    <strong>Copyright &copy; 2020 <a href="https://github.com/ManriqueCesar/WebSecurity">Grupo 3</a>.</strong> All
+    rights reserved.
+  </footer>
 
-          <div class="box-body with-border">
-            <form class="form-horizontal" id="frm-usos">
-              <ol>
-                <li>Define el Centro de estudios.</li>
-                <li>Selecciona la Escuela Profesional.</li>
-                <li>Ingresa el nombre del Curso.</li>
-                <li>Ingresa el correo de los alumnos que estén matriculados en ese curso.</li>
-                <li>Selecciona el periodo académico</li>
-                <li>Crea el Curso.</li>
-                ¡Ahora podrás crear el examen y seleccionar el curso con los alumnos asignados a éste!
-              </ol>
-              <div class="modal-footer center-block">
-                <button type="button" class="btn btn-success" data-dismiss="modal">¡Entendido!</button>
-              </div>
+  <div class="modal fade" id="modal-default">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="text-center">
+          <h3 class="modal-title">Instrucciones</h3>
+          <hr>
+        </div>
 
-            </form>
+        <div class="box-body with-border">
+          <form class="form-horizontal" id="frm-usos">
+            <ol>
+              <li>Define el Centro de estudios.</li>
+              <li>Selecciona la Escuela Profesional.</li>
+              <li>Ingresa el nombre del Curso.</li>
+              <li>Ingresa el correo de los alumnos que estén matriculados en ese curso.</li>
+              <li>Selecciona el periodo académico</li>
+              <li>Crea el Curso.</li>
+              ¡Ahora podrás crear el examen y seleccionar el curso con los alumnos asignados a éste!
+            </ol>
+            <div class="modal-footer center-block">
+              <button type="button" class="btn btn-success" data-dismiss="modal">¡Entendido!</button>
+            </div>
 
-          </div>
+          </form>
 
         </div>
-        <!-- /.modal-content -->
+
       </div>
-      <!-- /.modal-dialog -->
+      <!-- /.modal-content -->
     </div>
+    <!-- /.modal-dialog -->
+  </div>
 
 
-    <footer class="main-footer">
-      <div class="float-right d-none d-sm-block">
-        <b>Version</b> 1.0.0-pre
-      </div>
-      <strong>Copyright &copy; 2020 <a href="https://github.com/ManriqueCesar/WebSecurity">Grupo 3</a>.</strong> All
-      rights reserved.
-    </footer>
-
-
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-      <!-- Control sidebar content goes here -->
-    </aside>
-    <!-- /.control-sidebar -->
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
   </div>
 
   <!-- jQuery -->

@@ -1,6 +1,3 @@
-
-
-
 function cargarFecha() {
   //Initialize Select2 Elements
   //Initialize Select2 Elements
@@ -40,18 +37,18 @@ function cargarFecha() {
 
 
 
-window.onload = function(){
+window.onload = function () {
   TimeMe.trackTimeOnElement('area-of-interest-1');
   TimeMe.trackTimeOnElement('area-of-interest-2');
-  setInterval(function(){
+  setInterval(function () {
     var timeSpentOnPage = TimeMe.getTimeOnCurrentPageInSeconds();
     document.getElementById('timeInSeconds').textContent = timeSpentOnPage.toFixed(2);
 
- //   var timeSpentOnElement = TimeMe.getTimeOnElementInSeconds('area-of-interest-1');
- //   document.getElementById('area-of-interest-time-1').textContent = timeSpentOnElement.toFixed(2);
+    //   var timeSpentOnElement = TimeMe.getTimeOnElementInSeconds('area-of-interest-1');
+    //   document.getElementById('area-of-interest-time-1').textContent = timeSpentOnElement.toFixed(2);
 
-//    var timeSpentOnElement = TimeMe.getTimeOnElementInSeconds('area-of-interest-2');
-//    document.getElementById('area-of-interest-time-2').textContent = timeSpentOnElement.toFixed(2);
+    //    var timeSpentOnElement = TimeMe.getTimeOnElementInSeconds('area-of-interest-2');
+    //    document.getElementById('area-of-interest-time-2').textContent = timeSpentOnElement.toFixed(2);
   }, 25);
 }
 
@@ -65,17 +62,45 @@ $(document).ready(function () {
   var user = Cookies.get('apellido');
   setNombre();
   document.getElementById('imgUser').src = "../web/dist/js/labeled_images/" + user + "/1.jpg";
-   // Initialize library and start tracking time
-    // Initialize library and start tracking time
-    TimeMe.initialize({
-	currentPageName: "my-home-page", // current page
-	idleTimeoutInSeconds: 30 // seconds
-    });
+  // Initialize library and start tracking time
+  // Initialize library and start tracking time
+  TimeMe.initialize({
+    currentPageName: "my-home-page", // current page
+    idleTimeoutInSeconds: 30 // seconds
+  });
 
-    // ... Some time later ...
+  // ... Some time later ...
 
-    // Retrieve time spent on current page
-    var timeSpentOnPage = TimeMe.getTimeOnCurrentPageInSeconds();
+  // Retrieve time spent on current page
+  var timeSpentOnPage = TimeMe.getTimeOnCurrentPageInSeconds();
+
+});
+
+
+
+
+
+$(document).on('click', '#btn-enviar', function (event) {
+  var ruta = 'https://api-pwcev.herokuapp.com';
+
+
+
+  $.ajax({
+    url: ruta+'/resultado/examen/'+id+'/usuario/'+idUser,
+    type: 'GET',
+    dataType: 'json',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    }
+  }).done(function (data) {
+  
+    
+  
+   
+  }).fail(function (jqXHR, textStatus, errorThrown) {
+    console.log("error")
+  })
 
 });
 
@@ -83,12 +108,3 @@ $('#btn-close').click(function () {
   deleteCookie();
 
 });
-
-
-
-
-
-
-
-
-
