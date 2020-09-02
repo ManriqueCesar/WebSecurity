@@ -158,25 +158,14 @@ $(document).on('click', '#btn-marcar', function (event) {
   var idResultado = data.idResultado;
   console.log(idResultado);
 
-
-  /*var estado = data['estado'];
-  var request = {};
-  if (estado == true) {
-    estado = false;
-  } else {
-    estado = true;
-  }*/
   $.ajax({
     url: ruta + '/resultado/'+idResultado,
-    type: 'PUT',
-    success: function(response) {
-      //...
-    }
-  }).fail(function (jqXHR, textStatus, errorThrown) {
-    alert(jqXHR.responseJSON.resultado.mensajeRespuesta);
-  })
+    type: 'PUT'
+  }).done(function (data) {
+    $('#tbl-listado').DataTable().ajax.reload(null, false);
+  });
+  
 });
-
 
 $('#btn-close').click(function () {
   deleteCookie();
