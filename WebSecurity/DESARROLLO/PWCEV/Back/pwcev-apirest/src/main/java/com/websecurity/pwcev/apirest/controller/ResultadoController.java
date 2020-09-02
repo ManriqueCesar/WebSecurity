@@ -53,7 +53,7 @@ public class ResultadoController {
 	@PutMapping("/{idresultado}")
 	public ResponseEntity<?> cambiodeEstado(@PathVariable("idresultado") Integer idresultado) {
 		
-		Optional<Resultado> resultado = null;
+		Resultado resultado = null;
 		Map<String, Object> response = new HashMap<>();
 		
 		try {
@@ -64,8 +64,7 @@ public class ResultadoController {
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	
-		return new ResponseEntity<Optional<Resultado>>(resultado,HttpStatus.OK);
+		return new ResponseEntity<Resultado>(resultado,HttpStatus.OK);
 				
 	}
-
 }

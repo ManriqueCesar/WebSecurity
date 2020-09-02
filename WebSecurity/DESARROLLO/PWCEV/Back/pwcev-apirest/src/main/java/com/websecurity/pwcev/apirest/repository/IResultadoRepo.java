@@ -10,4 +10,5 @@ public interface IResultadoRepo extends JpaRepository<Resultado, Integer>{
 	
 	List<Resultado> findByExamenIdExamen(int idExamen);
 	Resultado findByExamenIdExamenAndUsuarioIdUsuario(int idExamen, int IdUsuario);
+	Resultado findById(int idResultado);
 }
