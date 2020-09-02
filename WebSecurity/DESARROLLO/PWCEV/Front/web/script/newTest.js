@@ -327,6 +327,7 @@ $(document).on('click', '#btn-crearExamen', function (event) {
   preguntas[1] = pregunta2;
   preguntas[2] = pregunta3;
   preguntas[3] = pregunta4;
+  preguntas[4] = pregunta5;
 
   /*arreglo de respuestas*/
 
