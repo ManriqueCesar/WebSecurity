@@ -158,6 +158,7 @@ public class DetalleCursoServiceImpl implements IDetalleCursoService {
 					boolean esAlumno = usuarioService.validarRol(registro.get(i).getUsuario().getIdUsuario(),"ROLE_ALUM");
 					if (esAlumno) {
 						Usuario usuario = new Usuario();
+						usuario.setIdUsuario(registro.get(i).getUsuario().getIdUsuario());
 						usuario.setApellido(registro.get(i).getUsuario().getApellido());
 						usuario.setEmail(registro.get(i).getUsuario().getEmail());
 						usuario.setNombre(registro.get(i).getUsuario().getNombre());

@@ -8,6 +8,7 @@ import com.websecurity.pwcev.apirest.model.Resultado;
 public interface IResultadoService {
 	
 	List<Resultado> ListarPorExamenes(int idExamen);
+	List<Resultado> ListarPorExamenes(int idExamen,int idCurso);
 	Resultado CambiarEstado(int idresultado);
 	Resultado ResultadoDeUsuario(int idUsuario,int idExamen);
 
