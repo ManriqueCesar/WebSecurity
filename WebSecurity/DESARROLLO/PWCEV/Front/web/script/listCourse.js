@@ -120,6 +120,23 @@ $(document).on('click', '#btn-listar', function (event) {
 
 });
 
+$(document).on('click', '#btn-eliminar', function (event) {
+  ruta = 'https://api-pwcev.herokuapp.com';
+  var currentRow = $(this).closest("tr");
+  var data = $('#tbl-resultado').DataTable().row(currentRow).data();
+  var id = data.idCurso;
+  $.ajax({
+    url: ruta + '/examenes/' + id,
+    type: 'DELETE',
+    dataType: 'json'
+  }).done(function (data) {
+    $(currentRow).closest('tr').fadeOut('slow', function () { });
+    $('#tbl-resultado').DataTable().ajax.reload(null, false);
+  }).fail(function (jqXHR, textStatus, errorThrown) {
+  })
+});
+
+
 $('#btn-close').click(function () {
     deleteCookie();
   });
