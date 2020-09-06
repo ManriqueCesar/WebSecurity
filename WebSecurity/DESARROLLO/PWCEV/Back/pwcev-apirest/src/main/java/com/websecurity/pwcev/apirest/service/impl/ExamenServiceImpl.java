@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.websecurity.pwcev.apirest.entidadmodelo.DetalleExamenCompleto;
 import com.websecurity.pwcev.apirest.entidadmodelo.DetalleExamenCulminado;
@@ -27,6 +28,7 @@ import com.websecurity.pwcev.apirest.repository.IUsuarioRepo;
 import com.websecurity.pwcev.apirest.service.IExamenService;
 
 @Service
+@Transactional
 public class ExamenServiceImpl implements IExamenService {
 
 	@Autowired
@@ -70,6 +72,25 @@ public class ExamenServiceImpl implements IExamenService {
 
 	@Override
 	public void eliminar(Integer id) {
+		
+		List<Pregunta> preguntas =  new ArrayList<Pregunta>();
+		System.out.println("Hola");
+		preguntas = repoPreg.findByExamenIdExamen(id);
+		
+		for (Pregunta pregunta : preguntas) {
+			repoResp.deleteByPreguntaIdPregunta(pregunta.getIdPregunta());
+			System.out.println("Elimnando respuestas "+pregunta.getIdPregunta() );
+		}
+		
+		System.out.println("Hola1");
+		repoPreg.deleteByExamenIdExamen(id);
+		List<Resultado> resultados = repoResul.findByExamenIdExamen(id);
+		
+		System.out.println("Hola2");
+		if (resultados.size() > 0) {
+			repoResul.deleteByExamenIdExamen(id);
+		}
+		
 		repo.deleteById(id);
 	}
 
