@@ -197,10 +197,6 @@ $(document).on('click', '#btn-crear', function (event) {
   })
 });
 
-//demo
-$(document).on('click', '#btn-demo', function (event) {
-  
-});
 
 
 //Crear curso
