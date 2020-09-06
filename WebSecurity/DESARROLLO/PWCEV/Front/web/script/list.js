@@ -88,7 +88,8 @@ $(document).on('click', '#btn-listar', function (event) {
   var currentRow = $(this).closest("tr");
   var data = $('#tbl-examenes').DataTable().row(currentRow).data();
   var idExamen = data.idExamen;
-
+  var idCurso = data.curso.idCurso;
+  console.log(idCurso);
 
  
   ruta = 'https://api-pwcev.herokuapp.com';
@@ -111,7 +112,7 @@ $(document).on('click', '#btn-listar', function (event) {
     },
 
     ajax: {
-      url: ruta + '/resultado/examen/' + idExamen,
+      url: ruta + '/resultado/examen/'+ idExamen+'/curso/'+idCurso,
       dataSrc: '',
       async: false,
       cache: false,
