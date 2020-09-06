@@ -50,6 +50,27 @@ public class ResultadoController {
 		return new ResponseEntity<List<Resultado>>(resultados,HttpStatus.OK);
 				
 	}
+	@GetMapping("/examen/{idexamen}/curso/{idcurso}")
+	public ResponseEntity<?> listarResultadosDeCursoPorExamen(@PathVariable("idexamen") Integer idExamen,@PathVariable("idcurso") Integer idCurso) {
+		
+		List<Resultado> resultados = null;
+		Map<String, Object> response = new HashMap<>();
+		
+		try {
+			resultados = service.ListarPorExamenes(idExamen, idCurso);
+		} catch (DataAccessException e) {
+			response.put("mensaje", "Error al realizar la consulta en la base de datos");
+			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		
+		if (!exameneService.existeExamen(idExamen)) {
+			response.put("mensaje", "No existe el examen");
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<List<Resultado>>(resultados,HttpStatus.OK);
+				
+	}
 	@PutMapping("/{idresultado}")
 	public ResponseEntity<?> cambiodeEstado(@PathVariable("idresultado") Integer idresultado) {
 		
@@ -65,6 +86,27 @@ public class ResultadoController {
 		}
 	
 		return new ResponseEntity<Resultado>(resultado,HttpStatus.OK);
+				
+	}
+	@GetMapping("/examen/{idexamen}/usuario/{idUsuario}")
+	public ResponseEntity<?> notaAlumnoPorExamen(@PathVariable("idexamen") Integer idExamen,@PathVariable("idUsuario") Integer idUsuario) {
+		
+		Resultado resultados = new Resultado();
+		Map<String, Object> response = new HashMap<>();
+		
+		try {
+			resultados = service.ResultadoDeUsuario(idUsuario, idExamen);
+		} catch (DataAccessException e) {
+			response.put("mensaje", "Error al realizar la consulta en la base de datos");
+			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		
+		if (!exameneService.existeExamen(idExamen)) {
+			response.put("mensaje", "No existe el examen");
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<Resultado>(resultados,HttpStatus.OK);
 				
 	}
 }
