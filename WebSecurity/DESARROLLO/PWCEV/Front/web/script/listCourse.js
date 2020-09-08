@@ -14,8 +14,19 @@ $(document).ready(function () {
   $('#tbl-resultado').DataTable({
     "responsive": true,
     "ordering": true,
-    "info": true,
     "autoWidth": false,
+    "language":{ 
+      "sSearch": "Buscar:",
+      "zeroRecords": "No se encontraron resultados",
+      "info": "Mostrando cursos del _START_ al _END_ , de un total de _TOTAL_ cursos",
+      "infoEmpty": "Mostrando cursos del 0 al 0, de un total de 0 cursos",
+      "infoFiltered": "(Filtrando de un total de _MAX_ cursos)",
+        "oPaginate": {
+          "sFirst":"Primero",
+          "sLast":"Ultimo",
+          "sNext":"Siguiente",
+          "sPrevious":"Anterior",
+    }},
       initComplete: function() {
           this.api().columns().every(function() {
           var column = this;
@@ -67,8 +78,9 @@ $(document).ready(function () {
       },
     { data: null,
         render: function (data, type, row) {
-              return '<button title="MODIFICAR" class="fa fa-edit" id="btn-modificar"  type="button"data-toggle="modal" data-target="#modal-default"></button>'+
-                  '<button  id="btn-eliminar" title="ELIMINAR" class="fa fa-trash"  type="button"></button>';
+              return '<img src="dist/img/icons/eliminar.png"  id="btn-eliminar" title="ELIMINAR" width=30px;  height=30px; type="button"></button>'+' | ' +
+                     '<img src="dist/img/icons/editar.png"  id="btn-editar" title="EDITAR" width=30px;  height=30px; type="button"></button>'
+              ;
           
         }
       }]
@@ -90,7 +102,19 @@ $(document).on('click', '#btn-listar', function (event) {
         "lengthChange": false,
         "searching": false,
         "autoWidth": false,
-        "responsive": true,
+        "responsive": true, 
+        "language":{ 
+          "sSearch": "Buscar:",
+          "zeroRecords": "No se encontraron resultados",
+          "info": "Mostrando alumnos del _START_ al _END_ , de un total de _TOTAL_ alumnos",
+          "infoEmpty": "Mostrando alumnos del 0 al 0, de un total de 0 alumnos",
+          "infoFiltered": "(Filtrando de un total de _MAX_ alumnos)",
+            "oPaginate": {
+              "sFirst":"Primero",
+              "sLast":"Ultimo",
+              "sNext":"Siguiente",
+              "sPrevious":"Anterior",
+        }},
       initComplete: function() {
           this.api().columns().every(function() {
           var column = this;
@@ -125,14 +149,29 @@ $(document).on('click', '#btn-eliminar', function (event) {
   var currentRow = $(this).closest("tr");
   var data = $('#tbl-resultado').DataTable().row(currentRow).data();
   var id = data.idCurso;
-  $.ajax({
-    url: ruta + '/examenes/' + id,
+
+
+ $.ajax({
+    url: ruta + '/cursos/' + id,
     type: 'DELETE',
     dataType: 'json'
   }).done(function (data) {
-    $(currentRow).closest('tr').fadeOut('slow', function () { });
-    $('#tbl-resultado').DataTable().ajax.reload(null, false);
+    $(currentRow).closest('tr').fadeOut(1500, function () { 
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Curso eliminado',
+        showConfirmButton: false,
+        timer: 1500
+      })
+
+      $('#tbl-resultado').DataTable().ajax.reload(null, false);
+   
+
+  }); 
+    
   }).fail(function (jqXHR, textStatus, errorThrown) {
+    
   })
 });
 

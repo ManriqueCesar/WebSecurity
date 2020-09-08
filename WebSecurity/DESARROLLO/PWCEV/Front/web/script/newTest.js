@@ -41,11 +41,12 @@ function cbo_universidad(cboid, opcionxdefecto) {
 }
 
 function cargarFecha() {
+  var fechaHoy= new Date();
   //Datemask dd/mm/yyyy
   $('.miFecha').datepicker({
     format: "yyyy-mm-dd",
-    startDate: '-0m',
-    language: "es"
+    startDate: fechaHoy,
+    language: 'es'
   }).on('changeDate', function(ev){
     $('#miFecha').text($('#datepicker').data('date'));
     $('#datepicker').datepicker('hide');
@@ -93,12 +94,6 @@ $(document).ready(function () {
   cbo_universidad('cbo-centro', 'UNMSM');
 
   cargarFecha();
-
-
-
-
-
-
 
   $("#alternativa1-1").text("DEMO11");
   $("#alternativa1-2").text("DEMO12");
@@ -188,18 +183,28 @@ $(document).on('click', '#btn-crear', function (event) {
     },
     data: JSON.stringify(request)
   }).done(function () {
-    $('#exampleModalCenter').modal('toggle');
+
+    Swal.fire({
+      icon: 'success',
+      title: '¡Curso Creado!',
+      text: 'Podrás verlo en Parámetros'
+    })
+
     $('#cbo-periodo').val("");
     $('#txt-curso').val("");
     $('#txt-alumnos').val("");
   }).fail(function (jqXHR, textStatus, errorThrown) {
-    console.log("error")
+    Swal.fire({
+      icon: 'error',
+      title: '¡Error!',
+      text: jqXHR.responseJSON.mensaje
+    })
   })
 });
 
 
 
-//Crear curso
+//Crear examen
 $(document).on('click', '#btn-crearExamen', function (event) {
   var ruta = 'https://api-pwcev.herokuapp.com';
 
@@ -492,17 +497,18 @@ $(document).on('click', '#btn-crearExamen', function (event) {
     },
     data: JSON.stringify(request)
   }).done(function () {
-    $('#examenCreado').modal('toggle');
+    Swal.fire({
+      icon: 'success',
+      title: '¡Examen Creado!',
+      text: 'Podrás ver los detalles en Ver Exámenes',
+    })
   }).fail(function (jqXHR, textStatus, errorThrown) {
-    console.log("error")
+    Swal.fire({
+      icon: 'error',
+      title: '¡Error!',
+      text: jqXHR.responseJSON.mensaje +' \n Verifica que todos los campos estén llenados correctamente',
+    })
   })
-});
-
-//demo
-$(document).on('click', '#btn-demo', function (event) {
-
-
-
 });
 
 

@@ -8,42 +8,28 @@ function setNombre() {
 $(document).ready(function () {
   setNombre();
   var idUser = Cookies.get('id');
+  var usuario = Cookies.get('usuario');
   ruta = 'https://api-pwcev.herokuapp.com';
-  var x = 0;
   $('#tbl-examenes').DataTable({
+    "colReorder": true,
     "responsive": true,
     "ordering": true,
     "info": true,
     "autoWidth": false,
-    initComplete: function () {
-      this.api().columns().every(function () {
-        var column = this;
-        x++;
-        var select = $('<select class="cboselect" id="columna' + x + '" multiple="multiple" style="width: 100%; color:blue;"><option value=""></option></select>')
-          .appendTo($(column.header()).empty())
-          //.appendTo($(column.footer()).empty())
-          .on('change', function () {
-            var vals = $('option:selected', this).map(function (index, element) {
-              return $.fn.dataTable.util.escapeRegex($(element).val());
-            }).toArray().join('|');
+    "searching":true,
+    "language":{ 
+      "sSearch": "Buscar:",
+      "zeroRecords": "No se encontraron resultados",
+      "info": "Mostrando exámenes del _START_ al _END_ , de un total de _TOTAL_ exámenes",
+      "infoEmpty": "Mostrando exámenes del 0 al 0, de un total de 0 exámenes",
+      "infoFiltered": "(Filtrando de un total de _MAX_ registros)",
+        "oPaginate": {
+          "sFirst":"Primero",
+          "sLast":"Ultimo",
+          "sNext":"Siguiente",
+          "sPrevious":"Anterior",
+    }},
 
-            column
-              .search(vals.length > 0 ? '^(' + vals + ')$' : '', true, false)
-              .draw();
-          });
-
-        column.data().unique().sort().each(function (d, j) {
-          select.append('<option value="' + d + '">' + d + '</option>')
-        });
-      });
-
-      $(".cboselect").select2({
-        closeOnSelect: false,
-        theme: "classic"
-      });
-      $('#columna1').val('2020-II').trigger('change');
-      $('#columna2').val('UNMSM').trigger('change');
-    },
 
     ajax: {
       url: ruta + '/examenes/usuario/' + idUser,
@@ -76,9 +62,35 @@ $(document).ready(function () {
         }
 
       }
-    ]
-  });
+    ],
+    dom: 'Bfrtip',
+    buttons: [
+      {
+        'extend': 'excelHtml5',
+        'autoFilter': true,
+        "text": '<img src="dist/img/icons/excel.png" alt="Descargar Excel" height = "30px" width="40px">',
+        customize: function (xlsx) {
+          var sheet = xlsx.xl.worksheets['sheet1.xml'];
+          $('c[r=A1] t', sheet).text('WebSecurity |'+' Lista de Exámenes | ' +usuario);
+      },
+      exportOptions: {
+          columns: [0, 1, 2, 3, 4]
+      },
+    },
+      {
+        'extend': 'pdfHtml5',
+        'autoFilter': true,
+        "text": '<img src="dist/img/icons/pdf.png" alt="Descargar PDF" height = "30px" width="30px">',
+      exportOptions: {
+          columns: [0, 1, 2, 3, 4]
+      }
 
+  },
+    
+     
+  ]
+  });
+ 
 
 });
 
@@ -89,6 +101,7 @@ $(document).on('click', '#btn-listar', function (event) {
   var data = $('#tbl-examenes').DataTable().row(currentRow).data();
   var idExamen = data.idExamen;
   var idCurso = data.curso.idCurso;
+  var nombreExamen = data.titulo;
   console.log(idCurso);
 
  
@@ -100,6 +113,18 @@ $(document).on('click', '#btn-listar', function (event) {
     "searching": false,
     "autoWidth": false,
     "responsive": true,
+    "language":{ 
+      "sSearch": "Buscar:",
+      "zeroRecords": "No se encontraron resultados",
+      "info": "Mostrando alumnos del _START_ al _END_ , de un total de _TOTAL_ alumnos",
+      "infoEmpty": "Mostrando alumnos del 0 al 0, de un total de 0 alumnos",
+      "infoFiltered": "(Filtrando de un total de _MAX_ alumnos)",
+        "oPaginate": {
+          "sFirst":"Primero",
+          "sLast":"Ultimo",
+          "sNext":"Siguiente",
+          "sPrevious":"Anterior",
+    }},
     initComplete: function () {
       this.api().columns().every(function () {
         var column = this;
@@ -139,13 +164,37 @@ $(document).on('click', '#btn-listar', function (event) {
         data: null,
         render: function (data, type, row) {
           if (data.estado == true) {
-            return '<button id="btn-marcar" title="ANULAR EXAMEN"  type="button" class="btn btn-danger">ANULAR</button>';
+            return '<button id="btn-marcar" title="ANULAR EXAMEN"  type="button" class="btn btn-sucess">HABILITADO</button>';
           } else {
-            return '<button id="btn-marcar" title="HABILITAR EXAMEN"  type="button" class="btn btn-success">HABILITAR</button>';
+            return '<button id="btn-marcar" title="HABILITAR EXAMEN"  type="button" class="btn btn-danger">ANULADO</button>';
           }
         }
       }
-    ]
+    ],
+    dom: 'Bfrtip',
+    buttons: [
+      {
+        'extend': 'excelHtml5',
+        "text": '<img src="dist/img/icons/excel.png" alt="Descargar Excel" height = "30px" width="40px">',
+        customize: function (xlsx) {
+          var sheet = xlsx.xl.worksheets['sheet1.xml'];
+          $('c[r=A1] t', sheet).text('Lista de Alumnos | Examen: '+nombreExamen);
+      },
+      exportOptions: {
+          columns: [0, 1, 2,3]
+      },
+    },
+      {
+        'extend': 'pdfHtml5',
+        "text": '<img src="dist/img/icons/pdf.png" alt="Descargar PDF" height = "30px" width="30px">',
+      exportOptions: {
+          columns: [0, 1, 2,3]
+      }
+
+  },
+    
+     
+  ]
   });
 
 
