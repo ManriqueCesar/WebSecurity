@@ -14,13 +14,14 @@
   <!-- DataTables -->
   <link rel="stylesheet" href="bower_components/AdminLTE/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="bower_components/AdminLTE/plugins/datatables-buttons/css/buttons.bootstrap4.min.css  ">
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.21/b-1.6.3/b-flash-1.6.3/b-html5-1.6.3/datatables.min.css"/>
+  <link rel="stylesheet" type="text/css"
+    href="https://cdn.datatables.net/v/dt/dt-1.10.21/b-1.6.3/b-flash-1.6.3/b-html5-1.6.3/datatables.min.css" />
   <!-- Theme style -->
   <link rel="stylesheet" href="bower_components/AdminLTE/dist/css/adminlte.min.css">
   <!-- Select2 -->
   <link rel="stylesheet" href="bower_components/select2/dist/css/select2.min.css">
-   <!-- Ionicons -->
-   <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -62,22 +63,22 @@
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
       <a href="index.html" class="brand-link">
-        <img src="dist/img/security.png" alt="WebSecurity Logo"
-          class="brand-image img-circle elevation-3" style="opacity: .8">
+        <img src="dist/img/security.png" alt="WebSecurity Logo" class="brand-image img-circle elevation-3"
+          style="opacity: .8">
         <span class="brand-text font-weight-light">Web Security</span>
       </a>
 
       <!-- Sidebar -->
       <div class="sidebar">
-          <!-- Nombre de usuario y foto -->
-          <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-            <div class="image">
-              <img src="dist/img/unmsm.png" class="img-circle elevation-2" alt="User Image">
-            </div>
-            <div class="info">
-              <a href="#" class="d-block" id="nombreUser"></a>
-            </div>
+        <!-- Nombre de usuario y foto -->
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+          <div class="image">
+            <img src="dist/img/unmsm.png" class="img-circle elevation-2" alt="User Image">
           </div>
+          <div class="info">
+            <a href="#" class="d-block" id="nombreUser"></a>
+          </div>
+        </div>
         <!-- Sidebar Menu -->
         <nav class="mt-2">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -89,13 +90,13 @@
                 <p>
                   Mis Exámenes
                   <i class="right fas fa-angle-left"></i>
-                  <span class="badge badge-info right">2</span> 
+                  <span class="badge badge-info right">2</span>
                 </p>
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <a href="#" class="nav-link">
-         
+
                     <p style="color: white;">2 Exámenes pendientes</p>
                   </a>
                 </li>
@@ -106,34 +107,34 @@
                 </li>
               </ul>
 
-              <li class="nav-item has-treeview">
-                <a href="#" class="nav-link">
-                  <i class="nav-icon fas fa-copy"></i>
-                  <p>
-                    Mis Cursos
-                    <i class="fas fa-angle-left right"></i>
-                  </p>
-                </a>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a href="#l" class="nav-link">
-                      <p>10 cursos creados</p>
-                    </a>
-                  </li>
- 
-                </ul>
-              </li>
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-copy"></i>
+                <p>
+                  Mis Cursos
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="#l" class="nav-link">
+                    <p>10 cursos creados</p>
+                  </a>
+                </li>
+
+              </ul>
+            </li>
             </li>
 
- 
+
 
           </ul>
         </nav>
         <!-- /.sidebar-menu -->
 
-        </div>
+      </div>
 
-        <!-- /.sidebar -->
+      <!-- /.sidebar -->
     </aside>
 
     <!-- Content Wrapper. Contains page content -->
@@ -172,12 +173,13 @@
                   <div class="table table-responsive">
                     <table id="tbl-examenes" class="table table-bordered table-striped">
                       <thead>
-                        <tr>  
+                        <tr>
                           <th>PERIODO</th>
                           <th>CENTRO ESTUDIOS</th>
                           <th>ESCUELA</th>
                           <th>CURSO</th>
                           <th>TITULO EXAMEN</th>
+                          <th>FECHA INICIO</th>
                           <th>DETALLES</th>
                         </tr>
 
@@ -197,53 +199,53 @@
       </section>
       <!-- /.content -->
     </div>
-    <div class="modal fade bd-example-modal-lg" tabindex="-1" id="modal-alumnos"
-    role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" id="modal-alumnos" role="dialog"
+      aria-labelledby="myLargeModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
-        <div class="modal-header" style="text-align: center;">
-          <h5 class="modal-title" id="exampleModalLongTitle">Lista de alumnos</h5>
-        </div>
-        
-        <section class="content">
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col-12">
-                <div class="card">
-
-                  <!-- /.card-header -->
-                  <div class="card-body">
-  
-                 <div class="table table-responsive">
-                    <table id="tbl-listado" class="table table-bordered table-striped">
-                      <thead>
-                        <tr>
-                          <th>ALUMNOS</th>
-                          <th>NOTA</th>
-                          <th>TIEMPO FUERA</th>
-                          <th>ACCION</th>
-                        </tr> 
-
-                      </thead>
-                    </table>
-  
-                 </div>
-                  <!-- /.card-body -->
-                </div>
-                <!-- /.card -->
-                </div>
-              </div>
-              <!-- /.row -->
-            </div>
+          <div class="modal-header" style="text-align: center;">
+            <h5 class="modal-title" id="exampleModalLongTitle">Lista de alumnos</h5>
           </div>
-          <!-- /.container-fluid -->
-        </section>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
+
+          <section class="content">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-12">
+                  <div class="card">
+
+                    <!-- /.card-header -->
+                    <div class="card-body">
+
+                      <div class="table table-responsive">
+                        <table id="tbl-listado" class="table table-bordered table-striped">
+                          <thead>
+                            <tr>
+                              <th>ALUMNOS</th>
+                              <th>NOTA</th>
+                              <th>TIEMPO FUERA</th>
+                              <th>ACCION</th>
+                            </tr>
+
+                          </thead>
+                        </table>
+
+                      </div>
+                      <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                  </div>
+                </div>
+                <!-- /.row -->
+              </div>
+            </div>
+            <!-- /.container-fluid -->
+          </section>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
     <footer class="main-footer">
       <div class="float-right d-none d-sm-block">
         <b>Version</b> 1.0.0-pre
@@ -261,7 +263,7 @@
   <!-- ./wrapper -->
 
   <!-- jQuery -->
-  <script src="bower_components/AdminLTE/plugins/jquery/jquery.min.js"></script>  
+  <script src="bower_components/AdminLTE/plugins/jquery/jquery.min.js"></script>
   <!-- Bootstrap 4 -->
   <script src="bower_components/AdminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- DataTables -->
@@ -273,36 +275,21 @@
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
-  <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.21/b-1.6.3/b-flash-1.6.3/b-html5-1.6.3/datatables.min.js"></script>
+  <script type="text/javascript"
+    src="https://cdn.datatables.net/v/dt/dt-1.10.21/b-1.6.3/b-flash-1.6.3/b-html5-1.6.3/datatables.min.js"></script>
   <!-- AdminLTE App -->
   <script src="bower_components/AdminLTE/dist/js/adminlte.min.js"></script>
   <!-- AdminLTE for demo purposes -->
   <script src="bower_components/AdminLTE/dist/js/demo.js"></script>
   <!-- Select2 -->
   <script src="bower_components/select2/dist/js/select2.full.min.js"></script>
-   <!-- Cookies js -->
-   <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
-   <script src="script/cookies.js"></script>
+  <!-- MomentJS  -->
+  <script src="bower_components/AdminLTE/plugins/moment/moment.min.js"></script>
+  <!-- Cookies js -->
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+  <script src="script/cookies.js"></script>
   <!-- page script -->
   <script src="script/list.js"></script>
-
-  <script>
-    $(function () {
-      $("#example1").DataTable({
-        "responsive": true,
-        "autoWidth": false,
-      });
-      $('#example2').DataTable({
-        "paging": true,
-        "lengthChange": false,
-        "searching": false,
-        "ordering": true,
-        "info": true,
-        "autoWidth": false,
-        "responsive": true,
-      });
-    });
-  </script>
 </body>
 
 </html>

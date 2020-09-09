@@ -198,7 +198,10 @@ $(document).on('click', '#btn-enviar', function (event) {
     var horaFin = moment().format('HH:mm:ss');
     var fechaFin = moment(fechaInicio).add(duracion, 'minutes').format('YYYY-MM-DD HH:mm');
     var fechaInicio = fechaI + ' ' + horaI;
-    if (fechaFin > fechaEnvio) {
+    if (fechaFin < fechaEnvio) {
+      console.log(fechaFin);
+      console.log(fechaEnvio);
+
       //optimizar
       if ($("input[id='answer-0-1']:radio").is(':checked')) {
         var respuestas1 = data.respuestas[0].idRespuesta;

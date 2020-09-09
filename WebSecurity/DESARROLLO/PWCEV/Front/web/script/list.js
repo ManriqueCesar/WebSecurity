@@ -56,27 +56,29 @@ $(document).ready(function () {
       {
         data: 'titulo'
       },
-      
+      {
+        data: 'fechaInicio'
+      },
       {
         data: null,
         render: function (data, type, row) {
-          var fechaI = data.examen.fechaInicio;
-          var horaI = data.examen.horaInicio;
+          var fechaI = data.fechaInicio;
+          var horaI = data.horaInicio;
           var fechaInicio = fechaI + ' ' + horaI;
           var fechaActual = moment().format('MM-DD-YYYY HH:mm');
           console.log(fechaInicio);
-          var duracion = data.examen.tiempoDuracion; //segundos
+          var duracion = data.tiempoDuracion; //segundos
           console.log('duracion ' + duracion);
           var fechaFin = moment(fechaInicio).add(duracion, 'minutes').format('YYYY-MM-DD HH:mm');
           console.log('fechaInicio: ' + fechaInicio);
           console.log('fechaFin: ' + fechaFin);
           var fechaActual = moment().format('YYYY-MM-DD HH:mm');
           if (fechaActual < fechaInicio) {
-            return '<a title="RENDIR EXAMEN" class="btn btn-success disabled"  >RENDIR EXAMEN </a>';
+            return '<a title="EXAMEN EN ESPERA" class="btn btn-primary disabled">EN ESPERA</a>';
           } else if (fechaActual <= fechaFin) {
-            return '<button title="RENDIR EXAMEN" class="btn btn-success" id="btn-rendir">RENDIR EXAMEN</a>'
+            return '<button title="Examen en curso..." class="btn btn-primary" id="btn-rendir"disabled >EN CURSO</a>'
           } else {
-            return '<button title="VER NOTAS" class="btn btn-warning" id="btn-listar">NOTAS</button>';
+            return '<button title="VER NOTAS  " class="btn btn-primary" id="btn-listar">NOTAS</button>';
           }
         }
 
@@ -93,7 +95,7 @@ $(document).ready(function () {
           $('c[r=A1] t', sheet).text('WebSecurity |'+' Lista de Exámenes | ' +usuario);
       },
       exportOptions: {
-          columns: [0, 1, 2, 3, 4]
+          columns: [0, 1, 2, 3, 4,5]
       },
     },
       {
@@ -101,7 +103,7 @@ $(document).ready(function () {
         'autoFilter': true,
         "text": '<img src="dist/img/icons/pdf.png" alt="Descargar PDF" height = "30px" width="30px">',
       exportOptions: {
-          columns: [0, 1, 2, 3, 4]
+          columns: [0, 1, 2, 3, 4,5]
       }
 
   },

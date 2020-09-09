@@ -485,7 +485,11 @@ $(document).on('click', '#btn-crearExamen', function (event) {
   request.respuestas = respuestas;
 
   console.log(request);
-
+  document.getElementById('inputTitulo').value = '';
+  document.getElementById('horaInicio').value = '';
+  document.getElementById('duracion').value = '';
+  document.getElementById('timepicker-two').value = '';
+  $("#cbocurso").val(-1);
 
   $.ajax({
     url: ruta + '/examenes/',
@@ -497,7 +501,10 @@ $(document).on('click', '#btn-crearExamen', function (event) {
     },
     data: JSON.stringify(request)
   }).done(function () {
-    Swal.fire({
+          //limpiar
+  
+    Swal.fire(
+      {
       icon: 'success',
       title: '¡Examen Creado!',
       text: 'Podrás ver los detalles en Ver Exámenes',
