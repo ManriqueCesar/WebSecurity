@@ -222,7 +222,7 @@ $(document).on('click', '#btn-crearExamen', function (event) {
   var estadoDefecto = false;
   var estadoRespuesta = true;
   var idRespuesta = null;
-  var puntaje = 5;
+  var puntaje = 4;
   var idPregunta = null;
 
 

@@ -194,10 +194,11 @@ $(document).on('click', '#btn-enviar', function (event) {
     var fechaI = data.examen.fechaInicio;
     var horaI = data.examen.horaInicio;
     var duracion = data.examen.tiempoDuracion;
+    var fechaEnvio = moment().format('HH:mm:ss');
     var horaFin = moment().format('HH:mm:ss');
     var fechaFin = moment(fechaInicio).add(duracion, 'minutes').format('YYYY-MM-DD HH:mm');
     var fechaInicio = fechaI + ' ' + horaI;
-    if (fechaFin > fechaInicioExamen) {
+    if (fechaFin > fechaEnvio) {
       //optimizar
       if ($("input[id='answer-0-1']:radio").is(':checked')) {
         var respuestas1 = data.respuestas[0].idRespuesta;
@@ -282,7 +283,7 @@ $(document).on('click', '#btn-enviar', function (event) {
       //algoritmo antiplagio
 
       console.log(fechaInicioExamen);
-      var fechaEnvio = moment().format('HH:mm:ss');
+     
       console.log("fechaInicioExamen " + fechaInicioExamen);
       console.log("fechaEnvio " + fechaEnvio);
       console.log('tiempo:  ' + tiempo);
