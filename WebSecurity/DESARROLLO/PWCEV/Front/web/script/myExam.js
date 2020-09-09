@@ -4,7 +4,13 @@ function setNombre() {
 }
 
 $(document).ready(function () {
-
+  Swal.fire({
+    position: 'top-end',
+    icon: 'info',
+    title: '¡Refresca la página al momento que empiece tu examen!',
+    showConfirmButton: false,
+    timer: 2500
+  })
   var user = Cookies.get('apellido');
   var idUser = Cookies.get('id');
   setNombre();
@@ -87,7 +93,11 @@ $(document).ready(function () {
         data: 'examen.fechaInicio'
       },
       {
-        data: 'examen.horaInicio'
+        data: null,
+        render: function (data, type, row) {
+          return data.examen.horaInicio + ' | ' + data.examen.tiempoDuracion + "'" 
+        }
+        
       },
       {
         data: null,

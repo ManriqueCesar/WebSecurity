@@ -123,7 +123,7 @@ $(document).on('click', '#btn-listar', function (event) {
   var idExamen = data.idExamen;
   var idCurso = data.curso.idCurso;
   var nombreExamen = data.titulo;
-  console.log(idCurso);
+  console.log(data.idResultado);
 
  
   ruta = 'https://api-pwcev.herokuapp.com';
@@ -185,9 +185,12 @@ $(document).on('click', '#btn-listar', function (event) {
         data: null,
         render: function (data, type, row) {
           if (data.estado == true) {
-            return '<button id="btn-marcar" title="ANULAR EXAMEN"  type="button" class="btn btn-sucess">HABILITADO</button>';
-          } else {
-            return '<button id="btn-marcar" title="HABILITAR EXAMEN"  type="button" class="btn btn-danger">ANULADO</button>';
+            return '<button id="btn-marcar" title="ANULAR EXAMEN"  type="button" class="btn btn-success">HABILITADO</button>';
+          } else if (data.estado == false && data.idResultado != null ){
+            return '<button id="btn-marcar" title="HABILITAR EXAMEN"  type="button" class="btn btn-warning">ANULADO</button>';
+          }
+          else if(data.idResultado == null){
+            return '<a title="HABILITAR EXAMEN"  type="button" class="btn btn-danger">NO RINDIÓ</a>'
           }
         }
       }
@@ -227,7 +230,7 @@ $(document).on('click', '#btn-marcar', function (event) {
   var currentRow = $(this).closest("tr");
   var data = $('#tbl-listado').DataTable().row(currentRow).data();
   var idResultado = data.idResultado;
-  console.log(idResultado);
+  console.log(data);
 
   $.ajax({
     url: ruta + '/resultado/'+idResultado,

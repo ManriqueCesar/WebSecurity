@@ -331,7 +331,7 @@ $(document).on('click', '#btn-crearExamen', function (event) {
   preguntas[4] = pregunta5;
 
   /*arreglo de respuestas*/
-
+  /* pregunta 1*/
   var respuesta1 = new Object();
   respuesta1.descripcion=alternativa11;
   respuesta1.estado=estadoRespuesta;
@@ -356,9 +356,11 @@ $(document).on('click', '#btn-crearExamen', function (event) {
   respuesta4.idRespuesta=idRespuesta;
   respuesta4.pregunta=pregunta;
 
+
+  /* pregunta 2*/
   var respuesta5 = new Object();
   respuesta5.descripcion=alternativa21;
-  respuesta5.estado=estadoDefecto;
+  respuesta5.estado=estadoRespuesta;
   respuesta5.idRespuesta=idRespuesta;
   respuesta5.pregunta=pregunta;
   
@@ -366,7 +368,7 @@ $(document).on('click', '#btn-crearExamen', function (event) {
 
   var respuesta6 = new Object();
   respuesta6.descripcion=alternativa22;
-  respuesta6.estado=estadoRespuesta;
+  respuesta6.estado=estadoDefecto;
   respuesta6.idRespuesta=idRespuesta;
   respuesta6.pregunta=pregunta;
 
@@ -382,9 +384,10 @@ $(document).on('click', '#btn-crearExamen', function (event) {
   respuesta8.idRespuesta=idRespuesta;
   respuesta8.pregunta=pregunta;
 
+    /* pregunta 3*/
   var respuesta9 = new Object();
   respuesta9.descripcion=alternativa31;
-  respuesta9.estado=estadoDefecto;
+  respuesta9.estado=estadoRespuesta;
   respuesta9.idRespuesta=idRespuesta;
   respuesta9.pregunta=pregunta;
 
@@ -397,7 +400,7 @@ $(document).on('click', '#btn-crearExamen', function (event) {
   
   var respuesta11 = new Object();
   respuesta11.descripcion=alternativa33;
-  respuesta11.estado=estadoRespuesta;
+  respuesta11.estado=estadoDefecto;
   respuesta11.idRespuesta=idRespuesta;
   respuesta11.pregunta=pregunta;
 
@@ -407,9 +410,10 @@ $(document).on('click', '#btn-crearExamen', function (event) {
   respuesta12.idRespuesta=idRespuesta;
   respuesta12.pregunta=pregunta;
 
+    /* pregunta 4*/
   var respuesta13 = new Object();
   respuesta13.descripcion=alternativa41;
-  respuesta13.estado=estadoDefecto;
+  respuesta13.estado=estadoRespuesta;
   respuesta13.idRespuesta=idRespuesta;
   respuesta13.pregunta=pregunta;
 
@@ -427,11 +431,11 @@ $(document).on('click', '#btn-crearExamen', function (event) {
   
   var respuesta16 = new Object();
   respuesta16.descripcion=alternativa44;
-  respuesta16.estado=estadoRespuesta;
+  respuesta16.estado=estadoDefecto;
   respuesta16.idRespuesta=idRespuesta;
   respuesta16.pregunta=pregunta;
 
-
+  /* pregunta 5*/
   var respuesta17 = new Object();
   respuesta17.descripcion=alternativa51;
   respuesta17.estado=estadoDefecto;
