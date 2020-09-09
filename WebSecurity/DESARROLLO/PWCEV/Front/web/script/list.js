@@ -9,6 +9,7 @@ $(document).ready(function () {
   setNombre();
   var idUser = Cookies.get('id');
   var usuario = Cookies.get('usuario');
+  var fechaEnvio = moment().format('YYYY-MM-DD HH:mm');
   ruta = 'https://api-pwcev.herokuapp.com';
   $('#tbl-examenes').DataTable({
     "colReorder": true,
@@ -55,10 +56,28 @@ $(document).ready(function () {
       {
         data: 'titulo'
       },
+      
       {
         data: null,
         render: function (data, type, row) {
-          return '<button title="LISTA" class="btn btn-primary" id="btn-listar">LISTA</button>';
+          var fechaI = data.examen.fechaInicio;
+          var horaI = data.examen.horaInicio;
+          var fechaInicio = fechaI + ' ' + horaI;
+          var fechaActual = moment().format('MM-DD-YYYY HH:mm');
+          console.log(fechaInicio);
+          var duracion = data.examen.tiempoDuracion; //segundos
+          console.log('duracion ' + duracion);
+          var fechaFin = moment(fechaInicio).add(duracion, 'minutes').format('YYYY-MM-DD HH:mm');
+          console.log('fechaInicio: ' + fechaInicio);
+          console.log('fechaFin: ' + fechaFin);
+          var fechaActual = moment().format('YYYY-MM-DD HH:mm');
+          if (fechaActual < fechaInicio) {
+            return '<a title="RENDIR EXAMEN" class="btn btn-success disabled"  >RENDIR EXAMEN </a>';
+          } else if (fechaActual <= fechaFin) {
+            return '<button title="RENDIR EXAMEN" class="btn btn-success" id="btn-rendir">RENDIR EXAMEN</a>'
+          } else {
+            return '<button title="VER NOTAS" class="btn btn-warning" id="btn-listar">NOTAS</button>';
+          }
         }
 
       }
