@@ -196,11 +196,14 @@ $(document).on('click', '#btn-enviar', function (event) {
     var duracion = data.examen.tiempoDuracion;
     var fechaEnvio = moment().format('HH:mm:ss');
     var horaFin = moment().format('HH:mm:ss');
-    var fechaFin = moment(fechaInicio).add(duracion, 'minutes').format('YYYY-MM-DD HH:mm');
     var fechaInicio = fechaI + ' ' + horaI;
-    if (fechaFin < fechaEnvio) {
-      console.log(fechaFin);
-      console.log(fechaEnvio);
+    console.log('fechaInicio '+fechaInicio);
+    var fechaFin = moment(fechaInicio).add(duracion, 'minutes').format('YYYY-MM-DD HH:mm:ss');
+  
+    console.log('FechaFin '+moment(fechaFin).format('HH:mm:ss'));
+    console.log('FechaEnvio '+fechaEnvio);
+    if (moment(fechaFin).format('HH:mm:ss') > fechaEnvio) {
+   
 
       //optimizar
       if ($("input[id='answer-0-1']:radio").is(':checked')) {

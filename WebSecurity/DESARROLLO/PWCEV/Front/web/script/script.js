@@ -165,9 +165,12 @@ $('#btn-ingresar').click(function () {
   validar_credenciales(sCorreo, sContrasena);
 });
 
+$('#btn-registrar').click(function () {
+  $('#modal-registro').modal('toggle');
+});
+
 $('#btn-close').click(function () {
   deleteCookie();
 
 });
-
 

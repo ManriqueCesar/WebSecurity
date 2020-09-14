@@ -58,7 +58,7 @@
             Plataforma Web de Control de Exámenes Virtuales
           </span>
 
-          <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+          <div class="wrap-input100 validate-input">
             <input id="txt-email" class="input100" type="text" name="email" placeholder="email" autofocus required>
             <span class="focus-input100"></span>
             <span class="symbol-input100">
@@ -66,7 +66,7 @@
             </span>
           </div>
 
-          <div class="wrap-input100 validate-input" data-validate="Password is required">
+          <div class="wrap-input100 validate-input">
             <input id="txt-password" class="input100" type="password" name="pass" placeholder="Contraseña" required>
             <span class="focus-input100"></span>
             <span class="symbol-input100">
@@ -79,12 +79,11 @@
               Iniciar Sesión
             </button>
           </div>
-          
-          <div class="text-center p-t-136" id="btn-camara">
-            <a class="txt2" href="index.html">
-              Si eres Alumno, recuerda activar tu cámara
-              <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
-            </a>
+  
+          <div class="text-center p-t-136">
+            <i class="btn btn-block" id="btn-registrar">
+              <button  class="btn btn-block bg-gradient-info btn-xs"> ¿No estás registrado?</button>
+            </i>
           </div>
         </form>
       </div>
@@ -109,6 +108,21 @@
       </div>
     </div>
   </div>
+
+  <div class="modal fade" id="modal-registro">
+    <div class="modal-dialog">
+      <div class="modal-content bg-white">
+        <div class="text-center">
+          <h3 style="color:white;" class="modal-title">Registro | Docente</h3>
+          <hr style="color:white;">
+        </div>
+        <div class="modal-footer justify-content-between">
+          <button id="btn-close" type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   </div>
 
 
