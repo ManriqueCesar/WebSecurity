@@ -50,7 +50,12 @@ public class ResultadoServiceImpl implements IResultadoService{
 		return repo.findByExamenIdExamenAndUsuarioIdUsuario(idExamen, idUsuario);
 	}
 
-
+	@Override
+	public boolean existeResultadoDeUsuario(int idUsuario, int idExamen) {
+		
+		return repo.existsByExamenIdExamenAndUsuarioIdUsuario(idExamen, idUsuario);
+	}
+	
 	@Override
 	public List<Resultado> ListarPorExamenes(int idExamen, int idCurso) {
 		List<Usuario> alumnos = detalleCurso.listarAlumnosPorCurso(idCurso);
