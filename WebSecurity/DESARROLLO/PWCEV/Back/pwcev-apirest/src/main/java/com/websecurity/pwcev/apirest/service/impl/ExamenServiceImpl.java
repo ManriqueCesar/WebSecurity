@@ -26,7 +26,6 @@ import com.websecurity.pwcev.apirest.repository.IRespuestaRepo;
 import com.websecurity.pwcev.apirest.repository.IResultadoRepo;
 import com.websecurity.pwcev.apirest.repository.IUsuarioRepo;
 import com.websecurity.pwcev.apirest.service.IExamenService;
-import com.websecurity.pwcev.apirest.service.IResultadoService;
 
 @Service
 @Transactional
@@ -55,8 +54,7 @@ public class ExamenServiceImpl implements IExamenService {
 	
 	@Autowired
 	private RespuestaServiceImpl serviceResp;
-	@Autowired
-	private IResultadoService serviceResul;
+
 	@Override
 	public Examen registrar(Examen t) {
 		return repo.save(t);
@@ -238,7 +236,6 @@ public class ExamenServiceImpl implements IExamenService {
 		examen = repoExam.findById(detalle.getIdExamen());
 		respuestasExamen = detalle.getRespuestas();
 		tiempoFuera = detalle.getTiempoFuera();
-		boolean existexamen= serviceResul.existeResultadoDeUsuario(detalle.getIdUsuario(), detalle.getIdExamen());
 
 		for (RespuestaExamen respuestaExamen : respuestasExamen) {
 			if (serviceResp.esRespuestaVerdadera(respuestaExamen.getIdRespueta())) {
@@ -255,12 +252,7 @@ public class ExamenServiceImpl implements IExamenService {
 		resultado.setEstado(estado);
 		resultado.setExamen(examen.get());
 		resultado.setUsuario(usuario.get());
-		if(existexamen) {
-			Resultado resultado1 = serviceResul.ResultadoDeUsuario(detalle.getIdUsuario(), detalle.getIdExamen());
-			resultado.setIdResultado(resultado1.getIdResultado());
-		}else {
 		resultado.setIdResultado(null);
-		}
 		resultado.setNota(nota);
 		resultado.setTiempoFuera(tiempoFuera);
 		

@@ -2,14 +2,12 @@ package com.websecurity.pwcev.apirest.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.websecurity.pwcev.apirest.model.Resultado;
 import com.websecurity.pwcev.apirest.model.Usuario;
-import com.websecurity.pwcev.apirest.repository.IDetalleCursoRepo;
 import com.websecurity.pwcev.apirest.repository.IResultadoRepo;
 import com.websecurity.pwcev.apirest.service.IDetalleCursoService;
 import com.websecurity.pwcev.apirest.service.IResultadoService;
@@ -50,12 +48,7 @@ public class ResultadoServiceImpl implements IResultadoService{
 		return repo.findByExamenIdExamenAndUsuarioIdUsuario(idExamen, idUsuario);
 	}
 
-	@Override
-	public boolean existeResultadoDeUsuario(int idUsuario, int idExamen) {
-		
-		return repo.existsByExamenIdExamenAndUsuarioIdUsuario(idExamen, idUsuario);
-	}
-	
+
 	@Override
 	public List<Resultado> ListarPorExamenes(int idExamen, int idCurso) {
 		List<Usuario> alumnos = detalleCurso.listarAlumnosPorCurso(idCurso);
