@@ -41,16 +41,16 @@ function cbo_universidad(cboid, opcionxdefecto) {
 }
 
 function cargarFecha() {
-  var fechaHoy= new Date();
+  var fechaHoy = new Date();
   //Datemask dd/mm/yyyy
   $('.miFecha').datepicker({
     format: "yyyy-mm-dd",
     startDate: fechaHoy,
     language: 'es'
-  }).on('changeDate', function(ev){
+  }).on('changeDate', function (ev) {
     $('#miFecha').text($('#datepicker').data('date'));
     $('#datepicker').datepicker('hide');
-});
+  });
 }
 
 function setNombre() {
@@ -121,25 +121,6 @@ $(document).ready(function () {
   $("#alternativa5-4").text("DEMO54");
 
 
-
-
-
-  var uniqueId = 1;
-  var contador = 0;
-
-  //funcion para duplicar preguntas
-  /*  $('.addRow').click(function () {
-      // duplicarAlternativas(unique);
-      duplicar(uniqueId);
-      uniqueId++;
-      contador++;
-      if (contador > 8) {
-        console.log('maximo')
-        $('.addRow').prop('disabled', true);
-      }
-    });*/
-
-  // $(document).on('change', '[type=radio]', function (e) {});
   $('#close').click(function () {
     console.log("asd1");
     var id = $(this).closest("form")
@@ -212,7 +193,7 @@ $(document).on('click', '#btn-crearExamen', function (event) {
   var preguntaObjeto = {};
   var request = {};
   var preguntas = [];
-  var pregunta ={};
+  var pregunta = {};
   pregunta.idPregunta = 0;
   var respuestas = [];
   examen.idExamen = null;
@@ -291,8 +272,8 @@ $(document).on('click', '#btn-crearExamen', function (event) {
   var alternativa53 = $("#alternativa5-3").val();
   var alternativa54 = $("#alternativa5-4").val();
 
-  /* Arreglo de preguntas */ 
- 
+  /* Arreglo de preguntas */
+
   var pregunta1 = new Object();
   pregunta1.descripcion = descrip1;
   pregunta1.idPregunta = idPregunta;
@@ -333,154 +314,154 @@ $(document).on('click', '#btn-crearExamen', function (event) {
   /*arreglo de respuestas*/
   /* pregunta 1*/
   var respuesta1 = new Object();
-  respuesta1.descripcion=alternativa11;
-  respuesta1.estado=estadoRespuesta;
-  respuesta1.idRespuesta=idRespuesta;
-  respuesta1.pregunta=pregunta;
+  respuesta1.descripcion = alternativa11;
+  respuesta1.estado = estadoRespuesta;
+  respuesta1.idRespuesta = idRespuesta;
+  respuesta1.pregunta = pregunta;
 
   var respuesta2 = new Object();
-  respuesta2.descripcion=alternativa12;
-  respuesta2.estado=estadoDefecto;
-  respuesta2.idRespuesta=idRespuesta;
-  respuesta2.pregunta=pregunta;
+  respuesta2.descripcion = alternativa12;
+  respuesta2.estado = estadoDefecto;
+  respuesta2.idRespuesta = idRespuesta;
+  respuesta2.pregunta = pregunta;
 
   var respuesta3 = new Object();
-  respuesta3.descripcion=alternativa13;
-  respuesta3.estado=estadoDefecto;
-  respuesta3.idRespuesta=idRespuesta;
-  respuesta3.pregunta=pregunta;
+  respuesta3.descripcion = alternativa13;
+  respuesta3.estado = estadoDefecto;
+  respuesta3.idRespuesta = idRespuesta;
+  respuesta3.pregunta = pregunta;
 
   var respuesta4 = new Object();
-  respuesta4.descripcion=alternativa14;
-  respuesta4.estado=estadoDefecto;
-  respuesta4.idRespuesta=idRespuesta;
-  respuesta4.pregunta=pregunta;
+  respuesta4.descripcion = alternativa14;
+  respuesta4.estado = estadoDefecto;
+  respuesta4.idRespuesta = idRespuesta;
+  respuesta4.pregunta = pregunta;
 
 
   /* pregunta 2*/
   var respuesta5 = new Object();
-  respuesta5.descripcion=alternativa21;
-  respuesta5.estado=estadoRespuesta;
-  respuesta5.idRespuesta=idRespuesta;
-  respuesta5.pregunta=pregunta;
-  
+  respuesta5.descripcion = alternativa21;
+  respuesta5.estado = estadoRespuesta;
+  respuesta5.idRespuesta = idRespuesta;
+  respuesta5.pregunta = pregunta;
+
 
 
   var respuesta6 = new Object();
-  respuesta6.descripcion=alternativa22;
-  respuesta6.estado=estadoDefecto;
-  respuesta6.idRespuesta=idRespuesta;
-  respuesta6.pregunta=pregunta;
+  respuesta6.descripcion = alternativa22;
+  respuesta6.estado = estadoDefecto;
+  respuesta6.idRespuesta = idRespuesta;
+  respuesta6.pregunta = pregunta;
 
   var respuesta7 = new Object();
-  respuesta7.descripcion=alternativa23;
-  respuesta7.estado=estadoDefecto;
-  respuesta7.idRespuesta=idRespuesta;
-  respuesta7.pregunta=pregunta;
+  respuesta7.descripcion = alternativa23;
+  respuesta7.estado = estadoDefecto;
+  respuesta7.idRespuesta = idRespuesta;
+  respuesta7.pregunta = pregunta;
 
   var respuesta8 = new Object();
-  respuesta8.descripcion=alternativa24;
-  respuesta8.estado=estadoDefecto;
-  respuesta8.idRespuesta=idRespuesta;
-  respuesta8.pregunta=pregunta;
+  respuesta8.descripcion = alternativa24;
+  respuesta8.estado = estadoDefecto;
+  respuesta8.idRespuesta = idRespuesta;
+  respuesta8.pregunta = pregunta;
 
-    /* pregunta 3*/
+  /* pregunta 3*/
   var respuesta9 = new Object();
-  respuesta9.descripcion=alternativa31;
-  respuesta9.estado=estadoRespuesta;
-  respuesta9.idRespuesta=idRespuesta;
-  respuesta9.pregunta=pregunta;
+  respuesta9.descripcion = alternativa31;
+  respuesta9.estado = estadoRespuesta;
+  respuesta9.idRespuesta = idRespuesta;
+  respuesta9.pregunta = pregunta;
 
   var respuesta10 = new Object();
-  respuesta10.descripcion=alternativa32;
-  respuesta10.estado=estadoDefecto;
-  respuesta10.idRespuesta=idRespuesta;
-  respuesta10.pregunta=pregunta;
-  
-  
+  respuesta10.descripcion = alternativa32;
+  respuesta10.estado = estadoDefecto;
+  respuesta10.idRespuesta = idRespuesta;
+  respuesta10.pregunta = pregunta;
+
+
   var respuesta11 = new Object();
-  respuesta11.descripcion=alternativa33;
-  respuesta11.estado=estadoDefecto;
-  respuesta11.idRespuesta=idRespuesta;
-  respuesta11.pregunta=pregunta;
+  respuesta11.descripcion = alternativa33;
+  respuesta11.estado = estadoDefecto;
+  respuesta11.idRespuesta = idRespuesta;
+  respuesta11.pregunta = pregunta;
 
   var respuesta12 = new Object();
-  respuesta12.descripcion=alternativa34;
-  respuesta12.estado=estadoDefecto;
-  respuesta12.idRespuesta=idRespuesta;
-  respuesta12.pregunta=pregunta;
+  respuesta12.descripcion = alternativa34;
+  respuesta12.estado = estadoDefecto;
+  respuesta12.idRespuesta = idRespuesta;
+  respuesta12.pregunta = pregunta;
 
-    /* pregunta 4*/
+  /* pregunta 4*/
   var respuesta13 = new Object();
-  respuesta13.descripcion=alternativa41;
-  respuesta13.estado=estadoRespuesta;
-  respuesta13.idRespuesta=idRespuesta;
-  respuesta13.pregunta=pregunta;
+  respuesta13.descripcion = alternativa41;
+  respuesta13.estado = estadoRespuesta;
+  respuesta13.idRespuesta = idRespuesta;
+  respuesta13.pregunta = pregunta;
 
   var respuesta14 = new Object();
-  respuesta14.descripcion=alternativa42;
-  respuesta14.estado=estadoDefecto;
-  respuesta14.idRespuesta=idRespuesta;
-  respuesta14.pregunta=pregunta;
+  respuesta14.descripcion = alternativa42;
+  respuesta14.estado = estadoDefecto;
+  respuesta14.idRespuesta = idRespuesta;
+  respuesta14.pregunta = pregunta;
 
   var respuesta15 = new Object();
-  respuesta15.descripcion=alternativa43;
-  respuesta15.estado=estadoDefecto;
-  respuesta15.idRespuesta=idRespuesta;
-  respuesta15.pregunta=pregunta;
-  
+  respuesta15.descripcion = alternativa43;
+  respuesta15.estado = estadoDefecto;
+  respuesta15.idRespuesta = idRespuesta;
+  respuesta15.pregunta = pregunta;
+
   var respuesta16 = new Object();
-  respuesta16.descripcion=alternativa44;
-  respuesta16.estado=estadoDefecto;
-  respuesta16.idRespuesta=idRespuesta;
-  respuesta16.pregunta=pregunta;
+  respuesta16.descripcion = alternativa44;
+  respuesta16.estado = estadoDefecto;
+  respuesta16.idRespuesta = idRespuesta;
+  respuesta16.pregunta = pregunta;
 
   /* pregunta 5*/
   var respuesta17 = new Object();
-  respuesta17.descripcion=alternativa51;
-  respuesta17.estado=estadoDefecto;
-  respuesta17.idRespuesta=idRespuesta;
-  respuesta17.pregunta=pregunta;
+  respuesta17.descripcion = alternativa51;
+  respuesta17.estado = estadoDefecto;
+  respuesta17.idRespuesta = idRespuesta;
+  respuesta17.pregunta = pregunta;
 
   var respuesta18 = new Object();
-  respuesta18.descripcion=alternativa52;
-  respuesta18.estado=estadoDefecto;
-  respuesta18.idRespuesta=idRespuesta;
-  respuesta18.pregunta=pregunta;
+  respuesta18.descripcion = alternativa52;
+  respuesta18.estado = estadoDefecto;
+  respuesta18.idRespuesta = idRespuesta;
+  respuesta18.pregunta = pregunta;
 
   var respuesta19 = new Object();
-  respuesta19.descripcion=alternativa53;
-  respuesta19.estado=estadoDefecto;
-  respuesta19.idRespuesta=idRespuesta;
-  respuesta19.pregunta=pregunta;
-  
+  respuesta19.descripcion = alternativa53;
+  respuesta19.estado = estadoDefecto;
+  respuesta19.idRespuesta = idRespuesta;
+  respuesta19.pregunta = pregunta;
+
   var respuesta20 = new Object();
-  respuesta20.descripcion=alternativa54;
-  respuesta20.estado=estadoDefecto;
-  respuesta20.idRespuesta=idRespuesta;
-  respuesta20.pregunta=pregunta;
+  respuesta20.descripcion = alternativa54;
+  respuesta20.estado = estadoDefecto;
+  respuesta20.idRespuesta = idRespuesta;
+  respuesta20.pregunta = pregunta;
 
 
-  respuestas[0]=respuesta1;
-  respuestas[1]=respuesta2;
-  respuestas[2]=respuesta3;
-  respuestas[3]=respuesta4;
-  respuestas[4]=respuesta5;
-  respuestas[5]=respuesta6;
-  respuestas[6]=respuesta7;
-  respuestas[7]=respuesta8;
-  respuestas[8]=respuesta9;
-  respuestas[9]=respuesta10;
-  respuestas[10]=respuesta11;
-  respuestas[11]=respuesta12;
-  respuestas[12]=respuesta13;
-  respuestas[13]=respuesta14;
-  respuestas[14]=respuesta15;
-  respuestas[15]=respuesta16;
-  respuestas[16]=respuesta17;
-  respuestas[17]=respuesta18;
-  respuestas[18]=respuesta19;
-  respuestas[19]=respuesta20;
+  respuestas[0] = respuesta1;
+  respuestas[1] = respuesta2;
+  respuestas[2] = respuesta3;
+  respuestas[3] = respuesta4;
+  respuestas[4] = respuesta5;
+  respuestas[5] = respuesta6;
+  respuestas[6] = respuesta7;
+  respuestas[7] = respuesta8;
+  respuestas[8] = respuesta9;
+  respuestas[9] = respuesta10;
+  respuestas[10] = respuesta11;
+  respuestas[11] = respuesta12;
+  respuestas[12] = respuesta13;
+  respuestas[13] = respuesta14;
+  respuestas[14] = respuesta15;
+  respuestas[15] = respuesta16;
+  respuestas[16] = respuesta17;
+  respuestas[17] = respuesta18;
+  respuestas[18] = respuesta19;
+  respuestas[19] = respuesta20;
 
 
 
@@ -488,7 +469,6 @@ $(document).on('click', '#btn-crearExamen', function (event) {
   request.preguntas = preguntas;
   request.respuestas = respuestas;
 
-  console.log(request);
   document.getElementById('inputTitulo').value = '';
   document.getElementById('horaInicio').value = '';
   document.getElementById('duracion').value = '';
@@ -505,10 +485,9 @@ $(document).on('click', '#btn-crearExamen', function (event) {
     },
     data: JSON.stringify(request)
   }).done(function () {
-          //limpiar
-  
-    Swal.fire(
-      {
+    //limpiar
+
+    Swal.fire({
       icon: 'success',
       title: '¡Examen Creado!',
       text: 'Podrás ver los detalles en Ver Exámenes',
@@ -517,7 +496,7 @@ $(document).on('click', '#btn-crearExamen', function (event) {
     Swal.fire({
       icon: 'error',
       title: '¡Error!',
-      text: jqXHR.responseJSON.mensaje +' \n Verifica que todos los campos estén llenados correctamente',
+      text: jqXHR.responseJSON.mensaje + ' \n Verifica que todos los campos estén llenados correctamente',
     })
   })
 });
@@ -540,7 +519,7 @@ $('#tabParam').click(function () {
     beforeShow: null, //A function to be called before the Wickedpicker is shown 
     show: null, //A function to be called when the Wickedpicker is shown 
     clearable: false, //Make the picker's input clearable (has clickable "x"),
-    timeSeparator: ':'  
+    timeSeparator: ':'
   };
   $('.timepicker').wickedpicker(options);
 

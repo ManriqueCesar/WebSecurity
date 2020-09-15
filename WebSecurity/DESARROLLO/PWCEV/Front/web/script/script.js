@@ -41,19 +41,12 @@ function validar_credenciales(sCorreo, sContrasena) {
     data: JSON.stringify(request),
   }).done(function (data) {
     $("#btn-ingresar").removeAttr('disabled');
-    console.log(data.nombre);
-    console.log(data.apellido);
-    console.log(data.roles[0].nombre);
-    console.log(data);
     Cookies.set('apellido', data.apellido, {
       expires: 2
     });
 
     if (data.roles[0].nombre == 'ROLE_ALUM') {
-      $('#modal-default').modal({
-        backdrop: 'static',
-        keyboard: false
-      })
+      $('#modal-default').modal();
       Promise.all([
         faceapi.nets.tinyFaceDetector.loadFromUri('../web/dist/js/models'),
         faceapi.nets.faceLandmark68Net.loadFromUri('../web/dist/js/models'),
@@ -76,9 +69,6 @@ function validar_credenciales(sCorreo, sContrasena) {
       Cookies.set('id', data.idUsuario, {
         expires: 200
       });
-      Cookies.set('rol', data.roles[0].nombre, {
-        expires: 200
-      });
     } else if (data.roles[0].nombre == 'ROLE_PROF') {
       Cookies.set('rol', data.roles[0].nombre, {
         expires: 200
@@ -97,7 +87,6 @@ function validar_credenciales(sCorreo, sContrasena) {
 
   }).fail(function (jqXHR, textStatus, errorThrown) {
     $("#btn-ingresar").removeAttr('disabled');
-    console.log(jqXHR)
     var Toast = Swal.mixin({
       toast: true,
       position: 'top-end',
@@ -150,12 +139,14 @@ $(document).ready(function () {
         $("#loading").text("Identidad confirmada, redireccionando...");
         console.log("bienvenido " + apellido);
         setTimeout(function () {
+          Cookies.set('rol', data.roles[0].nombre, {
+            expires: 200
+          });
           document.location.href = "myExam.html";
         }, 5000);
       }
     }, 500)
   })
-
 });
 
 $('#btn-ingresar').click(function () {
@@ -165,12 +156,6 @@ $('#btn-ingresar').click(function () {
   validar_credenciales(sCorreo, sContrasena);
 });
 
-$('#btn-registrar').click(function () {
-  $('#modal-registro').modal('toggle');
-});
-
 $('#btn-close').click(function () {
   deleteCookie();
-
 });
-

@@ -1,11 +1,4 @@
 
-function setNombre() {
-    var user = Cookies.get('usuario');
-    $('#nombreUser').text(user);
-  
-  }
-
-
 $(document).ready(function () {
   setNombre();
   var idUser = Cookies.get('id');

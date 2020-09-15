@@ -1,21 +1,6 @@
-
-
-
-
-
-function setNombre() {
-  var usuario = Cookies.get('usuario');
-  $('#nombreUser').text(usuario);
-
-}
-var user = Cookies.get('apellido');
-setNombre();
-document.getElementById('imgUser').src = "../web/dist/js/labeled_images/" + user + "/1.jpg";
-
-
-
 $(document).ready(function () {
   setNombre();
+  document.getElementById('imgUser').src = "../web/dist/js/labeled_images/" + user + "/1.jpg";
   var idUser = Cookies.get('id');
   ruta = 'https://api-pwcev.herokuapp.com';
   var x=0;

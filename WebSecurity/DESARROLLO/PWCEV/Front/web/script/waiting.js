@@ -1,7 +1,5 @@
 function cargarFecha() {
   //Initialize Select2 Elements
-  //Initialize Select2 Elements
-  console.log("asdasd");
   //Datemask dd/mm/yyyy
   $('#datemask').inputmask('dd/mm/yyyy', {
     'placeholder': 'dd/mm/yyyy'
@@ -12,7 +10,6 @@ function cargarFecha() {
   })
   //Money Euro
   $('[data-mask]').inputmask()
-
   //Date range picker
   $('#reservationdate').datetimepicker({
     format: 'L'
@@ -43,19 +40,7 @@ window.onload = function () {
   setInterval(function () {
     var timeSpentOnPage = TimeMe.getTimeOnCurrentPageInSeconds();
     document.getElementById('timeInSeconds').textContent = timeSpentOnPage.toFixed(2);
-
-    //   var timeSpentOnElement = TimeMe.getTimeOnElementInSeconds('area-of-interest-1');
-    //   document.getElementById('area-of-interest-time-1').textContent = timeSpentOnElement.toFixed(2);
-
-    //    var timeSpentOnElement = TimeMe.getTimeOnElementInSeconds('area-of-interest-2');
-    //    document.getElementById('area-of-interest-time-2').textContent = timeSpentOnElement.toFixed(2);
   }, 25);
-}
-
-function setNombre() {
-  var usuario = Cookies.get('usuario');
-  $('#nombreUser').text(usuario);
-
 }
 
 $(document).ready(function () {
@@ -86,7 +71,6 @@ $(document).ready(function () {
       'Content-Type': 'application/json'
     }
   }).done(function (data) {
-    console.log(data);
     var titulo = data.examen.titulo;
 
     $("#tituloExamen").text(titulo);
@@ -197,13 +181,13 @@ $(document).on('click', '#btn-enviar', function (event) {
     var fechaEnvio = moment().format('HH:mm:ss');
     var horaFin = moment().format('HH:mm:ss');
     var fechaInicio = fechaI + ' ' + horaI;
-    console.log('fechaInicio '+fechaInicio);
+    console.log('fechaInicio ' + fechaInicio);
     var fechaFin = moment(fechaInicio).add(duracion, 'minutes').format('YYYY-MM-DD HH:mm:ss');
-  
-    console.log('FechaFin '+moment(fechaFin).format('HH:mm:ss'));
-    console.log('FechaEnvio '+fechaEnvio);
+
+    console.log('FechaFin ' + moment(fechaFin).format('HH:mm:ss'));
+    console.log('FechaEnvio ' + fechaEnvio);
     if (moment(fechaFin).format('HH:mm:ss') > fechaEnvio) {
-   
+
 
       //optimizar
       if ($("input[id='answer-0-1']:radio").is(':checked')) {
@@ -241,7 +225,7 @@ $(document).on('click', '#btn-enviar', function (event) {
 
       if ($("input[id='answer-3-1']:radio").is(':checked')) {
         var respuestas4 = data.respuestas[12].idRespuesta;
-      } else if ($("input[id='answer-3-3']:radio").is(':checked')) {
+      } else if ($("input[id='answer-3-2']:radio").is(':checked')) {
         var respuestas4 = data.respuestas[13].idRespuesta;
       } else if ($("input[id='answer-3-3']:radio").is(':checked')) {
         var respuestas4 = data.respuestas[14].idRespuesta;
@@ -289,7 +273,7 @@ $(document).on('click', '#btn-enviar', function (event) {
       //algoritmo antiplagio
 
       console.log(fechaInicioExamen);
-     
+
       console.log("fechaInicioExamen " + fechaInicioExamen);
       console.log("fechaEnvio " + fechaEnvio);
       console.log('tiempo:  ' + tiempo);
@@ -297,15 +281,13 @@ $(document).on('click', '#btn-enviar', function (event) {
       var tiempoFuera = moment.utc(moment(FechaResta, "HH:mm:ss").diff(moment(fechaInicioExamen, "HH:mm:ss"))).format("HH:mm:ss");
       console.log('fecharesta: ' + FechaResta);
       console.log('timeOut: ' + tiempoFuera);
-      var timeOut= moment(tiempoFuera,'HH:mm:ss').seconds();
+      var timeOut = moment(tiempoFuera, 'HH:mm:ss').seconds();
 
 
       request.tiempoFuera = timeOut;
       request.idExamen = idExamen;
       request.idUsuario = idUsuario;
       request.respuestas = respuestas;
-
-      console.log(request);
 
       $.ajax({
         url: ruta + '/examenes/enviar',
