@@ -11,5 +11,6 @@ public interface IResultadoService {
 	List<Resultado> ListarPorExamenes(int idExamen,int idCurso);
 	Resultado CambiarEstado(int idresultado);
 	Resultado ResultadoDeUsuario(int idUsuario,int idExamen);
+	boolean existeResultadoDeUsuario(int idUsuario, int idExamen);
 
 }
