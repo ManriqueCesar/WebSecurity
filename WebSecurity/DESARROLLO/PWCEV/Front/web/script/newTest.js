@@ -419,7 +419,7 @@ $(document).on('click', '#btn-crearExamen', function (event) {
   /* pregunta 5*/
   var respuesta17 = new Object();
   respuesta17.descripcion = alternativa51;
-  respuesta17.estado = estadoDefecto;
+  respuesta17.estado = estadoRespuesta;
   respuesta17.idRespuesta = idRespuesta;
   respuesta17.pregunta = pregunta;
 

@@ -18,21 +18,27 @@
   <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
   <!-- iCheck -->
   <link rel="stylesheet" href="plugins/iCheck/square/blue.css">
-  <!-- SweetAlert2 -->
-  <link rel="stylesheet" href="bower_components/AdminLTE/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
   <!-- Toastr -->
   <link rel="stylesheet" href="bower_components/AdminLTE/plugins/toastr/toastr.min.css">
   <!-- Google Font -->
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
+
   <link rel="icon" type="image/png" href="dist/img/icons/favicon.ico" />
+
   <link rel="stylesheet" type="text/css" href="dist/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+
   <link rel="stylesheet" type="text/css" href="dist/vendor/animate/animate.css">
+
   <link rel="stylesheet" type="text/css" href="dist/vendor/css-hamburgers/hamburgers.min.css">
+
   <link rel="stylesheet" type="text/css" href="bower_components/select2/dist/css/select2.min.css">
+
   <link rel="stylesheet" type="text/css" href="dist/css/util.css">
   <link rel="stylesheet" type="text/css" href="dist/css/main.css">
+
+
 
 </head>
 
@@ -72,7 +78,11 @@
             </button>
           </div>
   
-
+          <div class="text-center p-t-136">
+            <i class="btn btn-block" id="btn-registrar">
+              <button  class="btn btn-block bg-gradient-info btn-xs">Si eres Alumno, recuerda activar tu cámara</button>
+            </i>
+          </div>
         </form>
       </div>
     </div>
@@ -97,6 +107,20 @@
     </div>
   </div>
 
+  <div class="modal fade" id="modal-registro">
+    <div class="modal-dialog">
+      <div class="modal-content bg-white">
+        <div class="text-center">
+          <h3 style="color:white;" class="modal-title">Registro | Docente</h3>
+          <hr style="color:white;">
+        </div>
+        <div class="modal-footer justify-content-between">
+          <button id="btn-close" type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   </div>
 
 
@@ -107,6 +131,10 @@
   <!-- Bootstrap -->
   <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
   <!--===============================================================================================-->
+
+  <!-- Select2 -->
+  <script src="bower_components/select2/dist/js/select2.min.js"></script>
+  <!--===============================================================================================-->
   <script src="dist/vendor/tilt/tilt.jquery.min.js"></script>
 
   <!-- iCheck -->
@@ -115,7 +143,7 @@
  <!-- Cookies js -->
  <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
   <!-- SweetAlert2 -->
-  <script src="bower_components/AdminLTE/plugins/sweetalert2/sweetalert2.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
   <!-- Toastr -->
   <script src="bower_components/AdminLTE/plugins/toastr/toastr.min.js"></script>
 
