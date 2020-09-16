@@ -47,6 +47,7 @@ public class ResultadoServiceImpl implements IResultadoService{
 	@Override
 	public Resultado ResultadoDeUsuario(int idUsuario, int idExamen) {
 		Usuario usuario = new Usuario();
+		usuario.setIdUsuario(idUsuario);
 		Resultado resultado =notaConSinRendirExamen( usuario, idExamen);
 		return resultado;
 	}
