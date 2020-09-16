@@ -44,8 +44,9 @@ public class ResultadoServiceImpl implements IResultadoService{
 
 	@Override
 	public Resultado ResultadoDeUsuario(int idUsuario, int idExamen) {
-		
-		return repo.findByExamenIdExamenAndUsuarioIdUsuario(idExamen, idUsuario);
+		Usuario usuario = new Usuario();
+		Resultado resultado =notaConSinRendirExamen( usuario, idExamen);
+		return resultado;
 	}
 
 
