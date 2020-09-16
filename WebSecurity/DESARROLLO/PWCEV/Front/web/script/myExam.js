@@ -155,14 +155,14 @@ $(document).on('click', '#btn-listar', function (event) {
     if (data.estado == true) {
       if (data.nota >= 15) {
         $("#tbl-listado").append('<tr>' +
-          '<td >' + data.examen.descripcion + '</td>' +
+          '<td >' + data.examen.titulo + '</td>' +
           '<td >' + data.nota + '</td>' +
           '<td >' + data.tiempoFuera + ' ' + 'segundos' + '</td>' +
           '<td style="color:green;">APROBADO</td>' +
           '</td></tr>');
       } else {
         $("#tbl-listado").append('<tr>' +
-          '<td >' + data.examen.descripcion + '</td>' +
+          '<td >' + data.examen.titulo + '</td>' +
           '<td >' + data.nota + '</td>' +
           '<td >' + data.tiempoFuera + ' ' + 'segundos' + '</td>' +
           '<td style="color:red;">DESAPROBADO</td>' +
@@ -170,7 +170,7 @@ $(document).on('click', '#btn-listar', function (event) {
       }
     } else {
       $("#tbl-listado").append('<tr>' +
-        '<td >' + data.examen.descripcion + '</td>' +
+        '<td >' + data.examen.titulo + '</td>' +
         '<td >' + data.nota + '</td>' +
         '<td >' + data.tiempoFuera + ' ' + 'segundos' + '</td>' +
         '<td style="color:red;">ANULADO</td>' +
