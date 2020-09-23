@@ -2,7 +2,7 @@ $(document).ready(function () {
   Swal.fire({
     position: 'top-end',
     icon: 'info',
-    title: '¡Refresca la página al momento que empiece tu examen!',
+    title: '¡Recuerda refrescar la página!',
     showConfirmButton: false,
     timer: 2500
   })
@@ -149,20 +149,20 @@ $(document).on('click', '#btn-listar', function (event) {
       'Content-Type': 'application/json'
     }
   }).done(function (data) {
-
+    console.log(data)
     var filas = document.getElementById("tbl-listado").rows.length;
 
     if (data.estado == true) {
       if (data.nota >= 15) {
         $("#tbl-listado").append('<tr>' +
-          '<td >' + data.examen.descripcion + '</td>' +
+          '<td >' + data.examen.titulo + '</td>' +
           '<td >' + data.nota + '</td>' +
           '<td >' + data.tiempoFuera + ' ' + 'segundos' + '</td>' +
           '<td style="color:green;">APROBADO</td>' +
           '</td></tr>');
       } else {
         $("#tbl-listado").append('<tr>' +
-          '<td >' + data.examen.descripcion + '</td>' +
+          '<td >' + data.examen.titulo + '</td>' +
           '<td >' + data.nota + '</td>' +
           '<td >' + data.tiempoFuera + ' ' + 'segundos' + '</td>' +
           '<td style="color:red;">DESAPROBADO</td>' +
@@ -170,7 +170,7 @@ $(document).on('click', '#btn-listar', function (event) {
       }
     } else {
       $("#tbl-listado").append('<tr>' +
-        '<td >' + data.examen.descripcion + '</td>' +
+        '<td >' + data.examen.titulo + '</td>' +
         '<td >' + data.nota + '</td>' +
         '<td >' + data.tiempoFuera + ' ' + 'segundos' + '</td>' +
         '<td style="color:red;">ANULADO</td>' +

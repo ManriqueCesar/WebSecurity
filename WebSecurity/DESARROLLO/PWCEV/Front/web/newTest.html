@@ -192,7 +192,7 @@
                     </div>
                   </div>
                 </div>
-                <button type="submit" class="addRow btn btn-info" id="btn-demo" disabled>Asignar respuestas</button>
+                <button type="submit" class="addRow btn btn-info" id="btn-asignarRespuestas">Asignar respuestas</button>
                 <!-- /.card-body -->
               </div>
               <!-- /.card -->
@@ -249,7 +249,7 @@
                         <div class="form-group row">
                           <label for="inputName" class="col-sm-2 col-form-label">Titulo</label>
                           <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputTitulo" style="width:50%;">
+                            <input type="text" class="form-control" id="inputTitulo" style="width:50%;" required>
                           </div>
                         </div>
 
@@ -258,7 +258,7 @@
                           <div class="col-sm-10 input-group-prepend">
                             <span class="input-group-text"><i class="far fa-clock"></i></span>
                             <input type="text" class="form-control float-right miFecha" id="horaInicio"
-                              style="width: 46%;">
+                              style="width: 46%;" required>
                           </div>
                         </div>
 
@@ -267,7 +267,7 @@
                           <div class="col-sm-10 input-group-prepend">
                             <span class="input-group-text"><i class="far fa-clock"></i></span>
                             <input type="text" id="timepicker-two" name="timepicker-two" class="timepicker"
-                              style="width: 46%;" />
+                              style="width: 46%;" required/>
                           </div>
                         </div>
 
@@ -275,14 +275,14 @@
                           <label for="inputFecha" class="col-sm-2 col-form-label">Duración</label>
                           <div class="col-sm-10 input-group-prepend">
                             <span class="input-group-text"><i class="far fa-clock"></i></span>
-                            <input type="number" class="form-control float-right" style="width: 46%;" id="duracion">
+                            <input type="number" class="form-control float-right" style="width: 46%;" id="duracion" required>
                           </div>
                         </div>
 
                         <div class="form-group row">
                           <label for="inputName" class="col-sm-2 col-form-label">Curso</label>
                           <div class="col-sm-10">
-                            <select class="form-control select2" style="width: 50%;" id="cbocurso" name="curso">
+                            <select class="form-control select2" style="width: 50%;" id="cbocurso" name="curso" >
                             </select>
                           </div>
                         </div>
@@ -783,7 +783,12 @@
   <script src="script/newTest.js"></script>
   <script src="script/cookies.js"></script>
 
-
+  <style type="text/css">
+    .block {
+       display: block;
+    }
+ </style>
+ 
 </body>
 
 </html>

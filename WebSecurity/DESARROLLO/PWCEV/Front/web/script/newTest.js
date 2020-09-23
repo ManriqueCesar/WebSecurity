@@ -53,12 +53,6 @@ function cargarFecha() {
   });
 }
 
-function setNombre() {
-  var user = Cookies.get('usuario');
-  $('#nombreUser').text(user);
-
-}
-
 function editarTitulo() {
   var defaultTítulo = 'INGRESAR LA DESCRIPCIÓN DE LA PREGUNTA';
 
@@ -419,7 +413,7 @@ $(document).on('click', '#btn-crearExamen', function (event) {
   /* pregunta 5*/
   var respuesta17 = new Object();
   respuesta17.descripcion = alternativa51;
-  respuesta17.estado = estadoDefecto;
+  respuesta17.estado = estadoRespuesta;
   respuesta17.idRespuesta = idRespuesta;
   respuesta17.pregunta = pregunta;
 
@@ -525,7 +519,43 @@ $('#tabParam').click(function () {
 
 });
 
+$('#btn-asignarRespuestas').click(function () {
+  Swal.mixin({
+    html:
+    '<label class="block"><input id="swal-radio" type="radio">A</label>' +
+    '<label class="block"><input id="swal-radio" type="radio">B</label>'+
+    '<label class="block"><input id="swal-radio" type="radio">C</label>'+
+    '<label class="block"><input id="swal-radio" type="radio">D</label>',
+    confirmButtonText: 'Siguiente &rarr;',
+    showCancelButton: true,
+    progressSteps: ['1', '2', '3','4','5']
+  }).queue([
+    {
+      title: 'Pregunta 1',
+      text: 'Chaining swal2 modals is easy'
+    },
+    'Pregunta 2',
+    'Pregunta 3',
+    'Pregunta 4',
+    'Pregunta 5'
+  ]).then((result) => {
+    if (result.value) {
+      const answers = JSON.stringify(result.value)
+      Swal.fire({ 
+        title: 'Finalizado!',
+        html: `
+          Las claves son:
+          <pre><code>${answers}</code></pre>
+        `,
+        confirmButtonText: 'Lovely!'
+      })
+    }
+  })
+});
+
 
 $('#btn-close').click(function () {
   deleteCookie();
 });
+
+
