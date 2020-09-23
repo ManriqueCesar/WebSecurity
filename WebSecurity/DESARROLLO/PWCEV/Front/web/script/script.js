@@ -69,6 +69,9 @@ function validar_credenciales(sCorreo, sContrasena) {
       Cookies.set('id', data.idUsuario, {
         expires: 200
       });
+      Cookies.set('rol', data.roles[0].nombre, {
+        expires: 200
+      });
     } else if (data.roles[0].nombre == 'ROLE_PROF') {
       Cookies.set('rol', data.roles[0].nombre, {
         expires: 200
@@ -82,6 +85,7 @@ function validar_credenciales(sCorreo, sContrasena) {
       Cookies.set('id', data.idUsuario, {
         expires: 200
       });
+
       window.location.href = 'newTest.html';
     }
 
@@ -139,9 +143,7 @@ $(document).ready(function () {
         $("#loading").text("Identidad confirmada, redireccionando...");
         console.log("bienvenido " + apellido);
         setTimeout(function () {
-          Cookies.set('rol', data.roles[0].nombre, {
-            expires: 200
-          });
+          
           document.location.href = "myExam.html";
         }, 5000);
       }
