@@ -1,0 +1,1 @@
+Lista de artefactos que componen el frontend.
