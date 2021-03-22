@@ -1,92 +1,98 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>WebSecurity | Log in</title>
-  <!-- Tell the browser to be responsive to screen width -->
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <!-- Bootstrap -->
-  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
-  <!-- Font Awesome 
-  <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">-->
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
-  <!-- iCheck -->
-  <link rel="stylesheet" href="plugins/iCheck/square/blue.css">
-  <!-- Toastr -->
-  <link rel="stylesheet" href="bower_components/AdminLTE/plugins/toastr/toastr.min.css">
-  <!-- Google Font -->
-  <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
+<link href="dist/img/unmsm.png" rel="icon" />
+<title>VIEX | Log in</title>
+<meta name="description" content="This professional design html template is for build a Money Transfer and online payments website.">
+<meta name="author" content="harnishdesign.net">
 
+<!-- Web Fonts
+============================================= -->
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Rubik:300,300i,400,400i,500,500i,700,700i,900,900i' type='text/css'>
 
-  <link rel="icon" type="image/png" href="dist/img/icons/favicon.ico" />
-
-  <link rel="stylesheet" type="text/css" href="dist/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-
-  <link rel="stylesheet" type="text/css" href="dist/vendor/animate/animate.css">
-
-  <link rel="stylesheet" type="text/css" href="dist/vendor/css-hamburgers/hamburgers.min.css">
-
-  <link rel="stylesheet" type="text/css" href="bower_components/select2/dist/css/select2.min.css">
-
-  <link rel="stylesheet" type="text/css" href="dist/css/util.css">
-  <link rel="stylesheet" type="text/css" href="dist/css/main.css">
-
-
-
+<!-- Stylesheet
+============================================= -->
+<link rel="stylesheet" type="text/css" href="dist/vendor/bootstrap/css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="dist/vendor/font-awesome/css/all.min.css" />
+<link rel="stylesheet" type="text/css" href="dist/css/login.css" />
 </head>
+<body>
 
-<body >
+<!-- Preloader -->
+<div id="preloader">
+  <div data-loader="dual-ring"></div>
+</div>
+<!-- Preloader End -->
 
-  <div class=" limiter">
-    <div class="container-login100">
-      <div class="wrap-login100">
-        <div class="login100-pic js-tilt" data-tilt>
-          <img src="dist/img/unmsm.png" alt="Imagen Logo">
+<div id="main-wrapper" class="h-100">
+  <div class="container-fluid px-0 h-100">
+    <div class="row no-gutters h-100">
+      <!-- Welcome Text
+      ============================================= -->
+      <div class="col-md-6">
+        <div class="hero-wrap d-flex align-items-center h-100">
+          <div class="hero-mask opacity-8 bg-primary"></div>
+          <div class="hero-bg hero-bg-scroll" style="background-image:url('./dist/img/test.jpg');"></div>
+          <div class="hero-content mx-auto w-100 h-100 d-flex flex-column">
+            <div class="row no-gutters">
+              <div class="col-10 col-lg-9 mx-auto">
+                <div class="logo mt-5 mb-5 mb-md-0"> <a class="d-flex" href="index.html" title="Viex"><img src="dist/img/viex-logo.png" alt="Viex"></a> </div>
+              </div>
+            </div>
+              <div class="row no-gutters my-auto">
+                <div class="col-10 col-lg-9 mx-auto">
+                  <h1 class="text-11 text-white mb-4">¡Bienvenido!</h1>
+                  <p class="text-4 text-white line-height-4 mb-5">Plataforma de Creación de Exámenes Virtuales</p>
+                  <p class="text-4 text-white line-height-4">Empieza a crear tus exámenes de una manera segura y confiable</p>
+                </div>
+              </div>
+          </div>
         </div>
-
-        <form method="POST" class="login100-form validate-form"  >
-          <span class="login100-form-title">
-            Plataforma Web de Control de Exámenes Virtuales
-          </span>
-
-          <div class="wrap-input100 validate-input">
-            <input id="txt-email" class="input100" type="text" name="email" placeholder="email" autofocus required>
-            <span class="focus-input100"></span>
-            <span class="symbol-input100">
-              <i class="fa fa-envelope" aria-hidden="true"></i>
-            </span>
-          </div>
-
-          <div class="wrap-input100 validate-input">
-            <input id="txt-password" class="input100" type="password" name="pass" placeholder="Contraseña" required>
-            <span class="focus-input100"></span>
-            <span class="symbol-input100">
-              <i class="fa fa-lock" aria-hidden="true"></i>
-            </span>
-          </div>
-
-          <div class="container-login100-form-btn" id="formulario-login">
-            <button id="btn-ingresar" class="login100-form-btn">
-              Iniciar Sesión
-            </button>
-          </div>
-  
-          <div class="text-center p-t-136">
-            <i class="btn btn-block" id="btn-registrar">
-              <button  class="btn btn-block bg-gradient-info btn-xs">Si eres Alumno, recuerda activar tu cámara</button>
-            </i>
-          </div>
-        </form>
       </div>
+      <!-- Welcome Text End -->
+      
+      <!-- Login Form
+      ============================================= -->
+      <div class="col-md-6 d-flex align-items-center">
+        <div class="container my-4">
+          <div class="row">
+            <div class="col-11 col-lg-9 col-xl-8 mx-auto">
+              <h3 class="font-weight-400 mb-4">Iniciar Sesion</h3>
+              <form id="loginForm" method="post">
+                <div class="form-group">
+                  <label for="emailAddress">Correo</label>
+                  <input type="email" class="form-control" id="txt-email" required placeholder="Ingresa tu correo" autofocus>
+                </div>
+                <div class="form-group">
+                  <label for="loginPassword">Contraseña</label>
+                  <input type="password" class="form-control"  id="txt-password" required placeholder="Ingresa tu contraseña">
+                </div>
+
+                <div class="row">
+                  <div class="col-sm">
+                    <div class="form-check custom-control custom-checkbox">
+                      <input id="remember-me" name="remember" class="custom-control-input" type="checkbox">
+                      <label class="custom-control-label" for="remember-me">Recuerdame</label>
+                    </div>
+                  </div>
+                  <div class="col-sm text-right"><a class="btn-link" href="#">¿Olvidaste la contraseña?</a></div>
+                </div>
+                <div id="formulario-login">
+                  <button class="btn btn-primary btn-block my-4" type="submit" id="btn-ingresar">Iniciar Sesion</button>
+                </div>
+              </form>
+              <p class="text-3 text-center text-muted">¿No tienes una cuenta?<a class="btn-link" href="signup.html">Registrate</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Login Form End -->
     </div>
   </div>
+
 
   <div class="modal fade" id="modal-default">
     <div class="modal-dialog">
@@ -121,53 +127,30 @@
     </div>
   </div>
 
-  </div>
 
 
-  <script src="https://kit.fontawesome.com/c9032fc236.js" crossorigin="anonymous"></script>
-  
-  <!-- jQuery 3 -->
-  <script src="bower_components/jquery/node_modules/jquery/dist/jquery.min.js"></script>
-  <!-- Bootstrap -->
-  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-  <!--===============================================================================================-->
 
-  <!-- Select2 -->
-  <script src="bower_components/select2/dist/js/select2.min.js"></script>
-  <!--===============================================================================================-->
-  <script src="dist/vendor/tilt/tilt.jquery.min.js"></script>
+</div>
 
-  <!-- iCheck -->
-  <script src="plugins/iCheck/icheck.min.js"></script>
-  <script defer src="script/face-api.min.js"></script>
- <!-- Cookies js -->
+<!-- Back to Top
+============================================= --> 
+<a id="back-to-top" data-toggle="tooltip" title="Back to Top" href="javascript:void(0)"><i class="fa fa-chevron-up"></i></a> 
+
+<!-- Script -->
+
+<!-- jQuery -->
+<script src="bower_components/AdminLTE/plugins/jquery/jquery.min.js"></script>
+<!-- Cookies js -->
  <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
-  <!-- SweetAlert2 -->
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-  <!-- Toastr -->
-  <script src="bower_components/AdminLTE/plugins/toastr/toastr.min.js"></script>
+<!-- Bootstrap -->
+<script src="dist/vendor/bootstrap/js/bootstrap.bundle.min.js"></script> 
+<!-- SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
-  <script defer src="script/script.js"></script>
-  <script defer src="script/cookies.js"></script>
+<script defer src="script/face-api.min.js"></script>
+<script src="script/theme.js"></script>
+<script defer src="script/script2.js"></script>
+<script defer src="script/cookies.js"></script>
 
-  <script>
-    $('.js-tilt').tilt({
-      scale: 1.1
-    })
-  </script>
-
-<style>
-  .overlay{
-      position:fixed;
-      top:50%;
-      left:50%;
-  }
-  .overlay i {
-    font-weight: bold;
-    color: #f39c12;
-    border-color: #e08e0b;
-  }
-  </style>
 </body>
-
 </html>

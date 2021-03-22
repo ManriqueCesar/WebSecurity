@@ -30,48 +30,69 @@
   <!-- iCheck for checkboxes and radio inputs -->
   <link rel="stylesheet" href="plugins/iCheck/all.css">
   <link rel="stylesheet" href="plugins/wickedpicker/dist/wickedpicker.min.css">
+
+
+
+
+
+  <!-- Vendor CSS Files -->
+  <link href="./mentor/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="./mentor/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="./mentor/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="./mentor/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="./mentor/assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="./mentor/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="./mentor/assets/vendor/aos/aos.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="./mentor/assets/css/style.css" rel="stylesheet">
+
 </head>
 
 
 <body class="hold-transition sidebar-mini">
-  <div class="wrapper">
-    <!-- Navbar -->
-    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-      <!-- Left navbar links -->
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-        </li>
-        <li class="nav-item d-none d-sm-inline-block">
-          <a href="#" class="nav-link">Crear Examen</a>
-        </li>
-        <li class="nav-item d-none d-sm-inline-block">
-          <a href="list.html" class="nav-link">Ver Exámenes</a>
-        </li>
-        <li class="nav-item d-none d-sm-inline-block">
-          <a href="listCourse.html" class="nav-link">Ver Cursos</a>
-        </li>
-      </ul>
-      <ul class="navbar-nav ml-auto">
-        <!-- Messages Dropdown Menu -->
 
-        <!-- Cerrar sesión -->
-        <li class="nav-item d-none d-sm-inline-block">
-          <a id="btn-close" href="index.html">Cerrar sesión</a>
-        </li>
-
-      </ul>
-    </nav>
-
-    <!-- /.navbar -->
+     <!-- ======= Header ======= -->
+     
+     <header id="header" class="fixed-top">
+      <div>
+      
+        <nav class="main-header navbar navbar-expand nav-menu d-none d-lg-block">
+        
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+            </li>
+            <li class="active">
+              <a href="newTest.html" class="nav-link">Crear Examen</a>
+            </li>
+            <li>
+              <a href="list.html" class="nav-link">Ver Exámenes</a>
+            </li>
+            <li>
+              <a href="listCourse.html" class="nav-link">Ver Cursos</a>
+            </li>
+            <li class="nav-item navbar-nav ml-auto">
+              <a id="btn-close" class="nav-link" href="index.html">Cerrar sesión</a>
+            </li>
+          </ul>
+          
+        </nav>
+  
+      </div>
+    </header>
+    
+    <!-- End Header -->
+  
+  <div class="wrapper" >
 
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
       <a href="index.html" class="brand-link">
-        <img src="dist/img/security.png" alt="WebSecurity Logo" class="brand-image img-circle elevation-3"
+        <img src="dist/img/security.png" alt="PWCEV Logo" class="brand-image img-circle elevation-3"
           style="opacity: .8">
-        <span class="brand-text font-weight-light" style="color:darkgrey">WebSecurity</span>
+        <span class="brand-text font-weight-light" style="color:white">PWCEV</span>
       </a>
 
       <!-- Sidebar -->
@@ -80,20 +101,21 @@
         <!-- Nombre de usuario y foto -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           <div class="image">
-            <img src="dist/img/unmsm.png" class="img-circle elevation-2" alt="User Image">
+            <img src="dist/img/unmsm.png" class="img-circle elevation-2" alt="User Image"> 
           </div>
+   
           <div class="info">
-            <a href="#" class="d-block" id="nombreUser"></a>
+            <a href="#" class="d-block" id="nombreUser">JUAN PEREZ</a>
           </div>
         </div>
 
         <!-- Sidebar Menu -->
-        <nav class="mt-2">
+        <nav class="mt-1">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <li class="nav-item has-treeview">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
-                <p>
+                <p style="color:white;">
                   Mis Exámenes
                   <i class="right fas fa-angle-left"></i>
                   <span class="badge badge-info right">2</span>
@@ -139,69 +161,16 @@
     </aside>
 
     <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
-      <!-- Content Header (Page header) -->
-      <section class="content-header">
-        <div class="container-fluid">
-          <div class="row mb-2">
-            <div class="col-sm-6">
-              <h1>Crear Examen</h1>
-            </div>
-            <div class="col-sm-6">
-              <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Crear exámenes</li>
-              </ol>
-            </div>
-          </div>
-        </div><!-- /.container-fluid -->
-      </section>
+    <div class="content-wrapper" >
 
       <!-- Main content -->
-      <section class="content">
-        <div class="container-fluid">
+      <section class="content" >
+        <div class="container-fluid" >
           <div class="row">
-            <div class="col-md-3">
-              <!-- Profile Image -->
-              <div class="card card-primary card-outline">
-                <div class="card-body box-profile">
-                  <div class="position-relative p-3 bg-gray" style="height: 35%">
-                    <div class="ribbon-wrapper">
-                      <div class="ribbon bg-primary">
-                        NOTA
-                      </div>
-                    </div>
-                    ¿Cómo crear un examen?<br>
-                    <div class="text-left">
-                      <li>
-                        <small>Crea tu curso</small>
-                      </li>
-                      <li>
-                        <small>Ingresa las preguntas</small>
-                      </li>
-                      <li>
-                        <small>Define los Parámetros</small>
-                      </li>
-                      <li>
-                        <small>¡Puedes crear hasta 5 preguntas!</small>
-                      </li>
-                    </div>
-                    <div class="text-center">
-                      <a id="vermas" href="#" style="color:skyblue" data-toggle="modal" data-target="#modal-default">Ver
-                        más...</a>
-                    </div>
-                  </div>
-                </div>
-                <button type="submit" class="addRow btn btn-info" id="btn-asignarRespuestas">Asignar respuestas</button>
-                <!-- /.card-body -->
-              </div>
-              <!-- /.card -->
-            </div>
-
 
             <!-- /.col -->
-            <div class="col-md-9">
-              <div class="card">
+            <div class="col-md-12" style="margin-top:80px;">
+              <div class="card mt-5">
                 <div class="card-header p-2">
                   <ul class="nav nav-pills">
                     <li class="nav-item">
@@ -291,7 +260,7 @@
                       </form>
                       <div class="form-group row">
                         <div class="offset-sm-2 col-sm-10">
-                          <button  class="btn btn-danger" id="btn-crearExamen">Crear examen</button>
+                          <button  class="btn btn-outline-danger" id="btn-crearExamen">Crear examen</button>
                         </div>
                       </div>
                     </div>
@@ -350,7 +319,7 @@
                           </div>
                         </div>
                       </form>
-                      <button class="btn btn-danger" id="btn-crear">Crear Curso</button>
+                      <button class="btn btn-outline-danger" id="btn-crear">Crear Curso</button>
                     </div>
 
 
@@ -737,7 +706,7 @@
       <div class="float-right d-none d-sm-block">
         <b>Version</b> 1.0.0-pre
       </div>
-      <strong>Copyright &copy; 2020 <a href="https://github.com/ManriqueCesar/WebSecurity">Grupo 3</a>.</strong> All
+      <strong>Copyright &copy; 2020 <a href="https://github.com/ManriqueCesar/WebSecurity">Grupo 1 - PPP1</a>.</strong> All
       rights reserved.
     </footer>
 
@@ -768,6 +737,7 @@
   <script src="plugins/wickedpicker/src/wickedpicker.js"></script>
   <!-- iCheck 1.0.1 -->
   <script src="plugins/iCheck/icheck.min.js"></script>
+
   <script type="text/javascript">
     function preloadFunc() {
       if (Cookies.get('rol') != 'ROLE_PROF') {
@@ -776,6 +746,7 @@
     }
     window.onpaint = preloadFunc();
   </script>
+
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     
   <!-- AdminLTE App -->
@@ -788,6 +759,7 @@
        display: block;
     }
  </style>
+ 
  
 </body>
 
